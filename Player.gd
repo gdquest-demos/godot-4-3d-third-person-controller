@@ -7,14 +7,13 @@ extends CharacterBody3D
 @export var jump_additional_force := 4.5
 @export var rotation_speed := 12.0
 @export var snap_length := 0.5
-@export var do_stop_on_slope := true
-@export var has_infinite_inertia := true
 
 var _move_direction := Vector3.ZERO
 var _last_strong_direction := Vector3.FORWARD
 var _snap := Vector3.DOWN * snap_length
 var _gravity: float = -30.0
 var _ground_height: float = 0.0
+var _aiming: bool = false
 
 #@onready var _model: AstronautSkin = $AstronautSkin
 @onready var _model: Node3D = $MeshInstance3d
@@ -36,8 +35,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			if event.is_pressed():
 				_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.OVER_SHOULDER)
+				_aiming = true
 			else:
 				_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
+				_aiming = false
 
 
 func _physics_process(delta: float) -> void:
@@ -51,7 +52,9 @@ func _physics_process(delta: float) -> void:
 	# this also ensures a good normalized value for the rotation basis.
 	if _move_direction.length() > 0.2:
 		_last_strong_direction = _move_direction.normalized()
-
+	if _aiming:
+		_last_strong_direction = _camera_controller.global_transform.basis * Vector3.BACK
+	
 	_orient_character_to_direction(_last_strong_direction, delta)
 
 	# We separate out the y velocity to not interpolate on the gravity

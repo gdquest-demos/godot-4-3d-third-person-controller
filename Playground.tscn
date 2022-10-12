@@ -46,6 +46,17 @@ size = Vector3(5.98156, 8.85843, 9.39486)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, 9.80336)
 size = Vector3(5.98156, 14.084, 9.39486)
 
+[node name="CsgCylinder3d" type="CSGCylinder3D" parent="CsgCombiner3d"]
+transform = Transform3D(1, 0, 0, 0, -0.0142763, 0.999898, 0, -0.999898, -0.0142763, -13.4598, 1.81669, 0)
+radius = 3.08347
+height = 13.6062
+
+[node name="CsgCylinder3d2" type="CSGCylinder3D" parent="CsgCombiner3d/CsgCylinder3d"]
+transform = Transform3D(1, 0, 0, 0, 1, -9.31323e-10, 0, 9.31323e-10, 1, 0, 0, 0)
+operation = 2
+radius = 2.74026
+height = 13.6062
+
 [node name="CharacterBody3d" parent="." instance=ExtResource("1_stlen")]
 
 [node name="RigidBody3d" type="RigidBody3D" parent="."]
