@@ -27,9 +27,12 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Calculate ground height for camera controller
 	var floor = $RayCast3d.get_collider()
 	if floor != null:
 		_ground_height = $RayCast3d.get_collision_point().y
+	if global_position.y < _ground_height:
+		_ground_height = global_position.y
 	
 	_move_direction = _get_camera_oriented_input()
 
@@ -105,6 +108,10 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 
 func attack() -> void:
 	_attack_animation_player.play("Attack")
+
+
+func shoot() -> void:
+	pass
 
 
 func is_jumping() -> bool:

@@ -59,6 +59,10 @@ size = Vector3(5.98156, 8.85843, 9.39486)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, 9.80336)
 size = Vector3(5.98156, 14.084, 9.39486)
 
+[node name="CsgBox3d5" type="CSGBox3D" parent="CSGPlatforms"]
+transform = Transform3D(0.645098, -0.7641, 0, 0.7641, 0.645098, 0, 0, 0, 1, -6.70983, 0, -18.6326)
+size = Vector3(5.98156, 6.77204, 9.39486)
+
 [node name="CsgCylinder3d" type="CSGCylinder3D" parent="CSGPlatforms"]
 transform = Transform3D(1, 0, 0, 0, -0.0142763, 0.999898, 0, -0.999898, -0.0142763, -13.4598, 1.81669, 0)
 radius = 3.08347
