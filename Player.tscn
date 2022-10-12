@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://clntgyqau4tta"]
+
+[ext_resource type="Script" path="res://Player.gd" id="1_rvo1c"]
+[ext_resource type="Script" path="res://CameraController.gd" id="3_qrkly"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_tv34d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46xqp"]
+albedo_color = Color(0.917647, 0.45098, 0.564706, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_sfh1e"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5yey4"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_gqx4v"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3ix22"]
+
+[node name="CharacterBody3d" type="CharacterBody3D"]
+script = ExtResource("1_rvo1c")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_tv34d")
+
+[node name="MeshInstance3d2" type="MeshInstance3D" parent="MeshInstance3d"]
+transform = Transform3D(1, 0, 0, 0, 0.707452, -0.706761, 0, 0.706761, 0.707452, 0, 0.554498, 0.439553)
+material_override = SubResource("StandardMaterial3D_46xqp")
+mesh = SubResource("BoxMesh_sfh1e")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_5yey4")
+
+[node name="CameraController" type="Node3D" parent="."]
+script = ExtResource("3_qrkly")
+
+[node name="CameraOverShoulderPivot" type="Marker3D" parent="CameraController"]
+transform = Transform3D(-1, -1.06581e-14, -8.74228e-08, -1.29994e-09, 0.999889, 0.0148696, 8.74131e-08, 0.0148696, -0.999889, -0.728058, 2.64958, -2.2628)
+
+[node name="CameraSpringArm" type="SpringArm3D" parent="CameraController"]
+transform = Transform3D(-1, -5.15034e-15, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, 0, 2.33984, 0)
+shape = SubResource("SeparationRayShape3D_gqx4v")
+spring_length = 10.0
+
+[node name="CameraThirdPersonPivot" type="Marker3D" parent="CameraController/CameraSpringArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="PlayerCamera" type="Camera3D" parent="CameraController"]
+transform = Transform3D(-1, -3.71248e-14, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, -8.74228e-07, 6.04006, -9.29023)
+attributes = SubResource("CameraAttributesPractical_3ix22")
+fov = 37.8493
