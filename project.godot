@@ -8,6 +8,16 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Node3D",
+"class": &"CameraController",
+"language": &"GDScript",
+"path": "res://CameraController.gd"
+}]
+_global_script_class_icons={
+"CameraController": ""
+}
+
 [application]
 
 config/name="3DCharacterDemo"

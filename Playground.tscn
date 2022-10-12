@@ -32,14 +32,14 @@ size = Vector3(50, 1, 50)
 
 [node name="CsgBox3d2" type="CSGBox3D" parent="CsgCombiner3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, -7.98003)
-size = Vector3(5.98156, 7.31281, 9.39486)
+size = Vector3(5.98156, 4.57458, 9.39486)
 
 [node name="CsgBox3d3" type="CSGBox3D" parent="CsgCombiner3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, 0.433207)
-size = Vector3(5.98156, 14.8122, 9.39486)
+size = Vector3(5.98156, 8.85843, 9.39486)
 
 [node name="CsgBox3d4" type="CSGBox3D" parent="CsgCombiner3d"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, 9.80336)
-size = Vector3(5.98156, 21.745, 9.39486)
+size = Vector3(5.98156, 14.084, 9.39486)
 
 [node name="CharacterBody3d" parent="." instance=ExtResource("1_stlen")]
