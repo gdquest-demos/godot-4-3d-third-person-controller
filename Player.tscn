@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://clntgyqau4tta"]
+[gd_scene load_steps=15 format=3 uid="uid://clntgyqau4tta"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://CameraController.gd" id="3_qrkly"]
+[ext_resource type="Script" path="res://MeleeAttackArea.gd" id="3_v1vve"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5yey4"]
 
@@ -41,10 +42,27 @@ tracks/1/path = NodePath("MeleeAnchor/MeleeSphere:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeleeAttackArea")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"activate"
+}, {
+"args": [],
+"method": &"deactivate"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_pts2o"]
@@ -81,7 +99,7 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcytg"]
-radius = 0.826095
+radius = 0.721485
 height = 2.65424
 
 [node name="CharacterBody3d" type="CharacterBody3D"]
@@ -134,7 +152,7 @@ skeleton = NodePath("../../..")
 [node name="MeleeAnchor" type="Node3D" parent="CharacterRotationRoot"]
 
 [node name="MeleeSphere" type="MeshInstance3D" parent="CharacterRotationRoot/MeleeAnchor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25195, 1.3255, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25195, 1.075, 0)
 visible = false
 mesh = SubResource("SphereMesh_uex0s")
 skeleton = NodePath("../../..")
@@ -146,7 +164,9 @@ libraries = {
 }
 
 [node name="MeleeAttackArea" type="Area3D" parent="CharacterRotationRoot"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.954493, 1.0525)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.959482, 1.0525)
+script = ExtResource("3_v1vve")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterRotationRoot/MeleeAttackArea"]
 shape = SubResource("CapsuleShape3D_pcytg")
+disabled = true
