@@ -41,7 +41,7 @@ tilt_upper_limit = 0.48
 tilt_lower_limit = -0.8
 
 [node name="CameraOverShoulderPivot" type="Marker3D" parent="CameraController"]
-transform = Transform3D(-1, -1.04414e-14, -8.74228e-08, -2.29301e-08, 0.964989, 0.26229, 8.4362e-08, 0.26229, -0.964989, -0.728058, 3.59808, -2.2628)
+transform = Transform3D(-1, -1.04414e-14, -8.74228e-08, -2.29301e-08, 0.964989, 0.26229, 8.4362e-08, 0.26229, -0.964989, -0.848491, 3.21385, -2.32639)
 
 [node name="CameraSpringArm" type="SpringArm3D" parent="CameraController"]
 transform = Transform3D(-1, -5.15034e-15, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, 0, 2.33984, 0)
@@ -58,4 +58,5 @@ fov = 37.8493
 
 [node name="RayCast3d" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151585, 0)
+target_position = Vector3(0, -2, 0)
 debug_shape_thickness = 5
