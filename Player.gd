@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 @export var move_speed := 6.0
@@ -13,8 +14,10 @@ var _move_direction := Vector3.ZERO
 var _last_strong_direction := Vector3.FORWARD
 var _snap := Vector3.DOWN * snap_length
 var _gravity: float = -30.0
+var _ground_height: float = 0.0
 
 #@onready var _model: AstronautSkin = $AstronautSkin
+@onready var _model: Node3D = $MeshInstance3d
 @onready var _start_position := global_transform.origin
 @onready var _camera_controller: Node3D = $CameraController
 #@onready var _animation_player: AnimationPlayer = $AnimationPlayer
@@ -38,6 +41,10 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	var floor = $RayCast3d.get_collider()
+	if floor != null:
+		_ground_height = $RayCast3d.get_collision_point().y
+	
 	_move_direction = _get_camera_oriented_input()
 
 	# To not orient quickly to the last input, we save a last strong direction,
@@ -100,26 +107,24 @@ func _get_camera_oriented_input() -> Vector3:
 
 
 func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
-	pass
-#	var left_axis := Vector3.UP.cross(direction)
-#	var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quat()
-#	var model_scale := _model.transform.basis.get_scale()
-#	_model.transform.basis = Basis(_model.transform.basis.get_rotation_quat().slerp(rotation_basis, delta * rotation_speed)).scaled(
-#		model_scale
-#	)
+	var left_axis := Vector3.UP.cross(direction)
+	var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quaternion()
+	var model_scale := _model.transform.basis.get_scale()
+	_model.transform.basis = Basis(_model.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
+		model_scale
+	)
 
 
 func take_damage() -> void:
 	start_blink(false)
 
-# ANCHOR: attack
+
 func attack() -> void:
 	pass
 #	_model.attack()
 #	_hit_box_collision.set_deferred("disabled", false)
 #	yield(_model.anim_player, "animation_finished")
 #	_hit_box_collision.set_deferred("disabled", true)
-# END: attack
 
 
 func is_jumping() -> bool:

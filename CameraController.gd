@@ -37,7 +37,7 @@ func _process(delta: float) -> void:
 	
 	# Set camera controller to current ground level for the character
 	var target_position = _anchor.global_position + _offset
-	target_position.y = 0
+	target_position.y = _anchor._ground_height
 	global_position = target_position
 	
 	# Rotates camera using euler rotation
