@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://j4wdss0fn1mq"]
+
+[ext_resource type="Script" path="res://Projectile.gd" id="1_8b555"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_roemr"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pr1dk"]
+radius = 0.1
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_8b555")
+
+[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_roemr")
+
+[node name="Area3d" type="Area3D" parent="."]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3d"]
+shape = SubResource("SphereShape3D_pr1dk")

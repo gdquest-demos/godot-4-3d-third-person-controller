@@ -1,7 +1,10 @@
 class_name Player
 extends CharacterBody3D
 
+const PROJECTILE_SCENE = preload("res://Projectile.tscn")
+
 @export var move_speed := 6.0
+@export var projectile_speed := 100
 @export var acceleration := 4.0
 @export var jump_initial_impulse := 12.0
 @export var jump_additional_force := 4.5
@@ -18,19 +21,21 @@ var _ground_height: float = 0.0
 @onready var _model: Node3D = $CharacterRotationRoot/MeshInstance3d
 @onready var _camera_controller: Node3D = $CameraController
 @onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
+@onready var _aim_recticle: ColorRect = $AimRecticle
+@onready var _ground_raycast: RayCast3D = $GroundRayCast
 @onready var _start_position := global_transform.origin
 
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$CameraController.setup(self)
+	_camera_controller.setup(self)
 
 
 func _physics_process(delta: float) -> void:
 	# Calculate ground height for camera controller
-	var floor = $RayCast3d.get_collider()
+	var floor = _ground_raycast.get_collider()
 	if floor != null:
-		_ground_height = $RayCast3d.get_collision_point().y
+		_ground_height = _ground_raycast.get_collision_point().y
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
 	
@@ -43,6 +48,8 @@ func _physics_process(delta: float) -> void:
 	if is_aiming():
 		_last_strong_direction = _camera_controller.global_transform.basis * Vector3.BACK
 	
+	
+	_aim_recticle.visible = is_aiming()
 	_orient_character_to_direction(_last_strong_direction, delta)
 
 	# We separate out the y velocity to not interpolate on the gravity
@@ -59,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	if is_attacking():
 		if is_aiming():
 			if is_on_floor():
-				pass
+				shoot()
 		else:
 			attack()
 
@@ -73,7 +80,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y += jump_additional_force * delta
 	elif is_landing():
 		_snap = Vector3.DOWN * snap_length
-	
 	move_and_slide()
 
 
@@ -111,7 +117,14 @@ func attack() -> void:
 
 
 func shoot() -> void:
-	pass
+	var projectile = PROJECTILE_SCENE.instantiate()
+	projectile.shooter = self
+	var origin = global_position + Vector3.UP
+	var aim_target = _camera_controller.get_aim_target()
+	var aim_direction = (aim_target - origin).normalized()
+	projectile.velocity = aim_direction * projectile_speed
+	get_parent().add_child(projectile)
+	projectile.global_position = origin
 
 
 func is_jumping() -> bool:
