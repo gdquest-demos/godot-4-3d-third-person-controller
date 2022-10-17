@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b06a7l7l7m33t"]
 
 [ext_resource type="Texture2D" uid="uid://boexk81is8yhq" path="res://gridbox_texture.png" id="1_dxgkr"]
-[ext_resource type="PackedScene" uid="uid://clntgyqau4tta" path="res://Player.tscn" id="1_stlen"]
+[ext_resource type="PackedScene" uid="uid://cidd8fo8cymoo" path="res://Player/Player.tscn" id="1_stlen"]
 [ext_resource type="PackedScene" uid="uid://dxriqehjyv07s" path="res://Box.tscn" id="3_od2wg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v8uq4"]
@@ -77,7 +77,6 @@ height = 13.6062
 [node name="CharacterBody3d" parent="." instance=ExtResource("1_stlen")]
 
 [node name="Box" parent="." instance=ExtResource("3_od2wg")]
-can_sleep = false
 
 [node name="Box2" parent="." instance=ExtResource("3_od2wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08221, 1.01478, 14.505)

@@ -4,7 +4,8 @@ extends CharacterBody3D
 const PROJECTILE_SCENE = preload("res://Projectile.tscn")
 
 @export var move_speed := 6.0
-@export var projectile_speed := 100
+@export var projectile_speed := 50
+@export var attack_impulse := 10
 @export var acceleration := 4.0
 @export var jump_initial_impulse := 12.0
 @export var jump_additional_force := 4.5
@@ -48,7 +49,6 @@ func _physics_process(delta: float) -> void:
 	if is_aiming():
 		_last_strong_direction = _camera_controller.global_transform.basis * Vector3.BACK
 	
-	
 	_aim_recticle.visible = is_aiming()
 	_orient_character_to_direction(_last_strong_direction, delta)
 
@@ -63,17 +63,16 @@ func _physics_process(delta: float) -> void:
 	else:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
 	
-	if is_attacking():
+	if is_just_attacking():
 		if is_aiming():
 			if is_on_floor():
 				shoot()
 		else:
 			attack()
-
 	else:
 		velocity.y += _gravity * delta
 
-	if is_jumping():
+	if is_just_jumping():
 		velocity.y = jump_initial_impulse
 		_snap = Vector3.ZERO
 	elif is_air_boosting():
@@ -84,6 +83,9 @@ func _physics_process(delta: float) -> void:
 
 
 func _get_camera_oriented_input() -> Vector3:
+	if _attack_animation_player.is_playing():
+		return Vector3.ZERO
+	
 	var input_left_right := (
 		Input.get_action_strength("move_right")
 		- Input.get_action_strength("move_left")
@@ -114,6 +116,7 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 
 func attack() -> void:
 	_attack_animation_player.play("Attack")
+	velocity = _rotation_root.transform.basis * Vector3.BACK * attack_impulse
 
 
 func shoot() -> void:
@@ -127,7 +130,7 @@ func shoot() -> void:
 	projectile.global_position = origin
 
 
-func is_jumping() -> bool:
+func is_just_jumping() -> bool:
 	return Input.is_action_just_pressed("action_jump") and is_on_floor()
 
 
@@ -139,7 +142,7 @@ func is_landing() -> bool:
 	return _snap == Vector3.ZERO and is_on_floor()
 
 
-func is_attacking() -> bool:
+func is_just_attacking() -> bool:
 	return Input.is_action_just_pressed("action_attack") and not _attack_animation_player.is_playing()
 
 

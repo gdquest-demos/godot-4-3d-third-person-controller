@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://clntgyqau4tta"]
+[gd_scene load_steps=13 format=3 uid="uid://cidd8fo8cymoo"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_rvo1c"]
-[ext_resource type="Script" path="res://CameraController.gd" id="3_qrkly"]
-[ext_resource type="Script" path="res://MeleeAttackArea.gd" id="3_v1vve"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
+[ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
+[ext_resource type="Script" path="res://Player/MeleeAttackArea.gd" id="3_v1vve"]
+[ext_resource type="PackedScene" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5yey4"]
 
@@ -10,19 +11,11 @@
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3ix22"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_tv34d"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46xqp"]
-albedo_color = Color(0.917647, 0.45098, 0.564706, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_sfh1e"]
-size = Vector3(0.5, 0.5, 0.5)
-
 [sub_resource type="SphereMesh" id="SphereMesh_uex0s"]
 
 [sub_resource type="Animation" id="Animation_nl12d"]
 resource_name = "Attack"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -102,7 +95,7 @@ _data = {
 radius = 0.721485
 height = 2.65424
 
-[node name="CharacterBody3d" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_rvo1c")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
@@ -143,17 +136,6 @@ debug_shape_thickness = 5
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="CharacterRotationRoot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CylinderMesh_tv34d")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3d2" type="MeshInstance3D" parent="CharacterRotationRoot/MeshInstance3d"]
-transform = Transform3D(1, 0, 0, 0, 0.707452, -0.706761, 0, 0.706761, 0.707452, 0, 0.554498, 0.439553)
-material_override = SubResource("StandardMaterial3D_46xqp")
-mesh = SubResource("BoxMesh_sfh1e")
-skeleton = NodePath("../../..")
-
 [node name="MeleeAnchor" type="Node3D" parent="CharacterRotationRoot"]
 
 [node name="MeleeSphere" type="MeshInstance3D" parent="CharacterRotationRoot/MeleeAnchor"]
@@ -175,6 +157,8 @@ script = ExtResource("3_v1vve")
 [node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterRotationRoot/MeleeAttackArea"]
 shape = SubResource("CapsuleShape3D_pcytg")
 disabled = true
+
+[node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("4_ign62")]
 
 [node name="AimRecticle" type="ColorRect" parent="."]
 anchors_preset = 8

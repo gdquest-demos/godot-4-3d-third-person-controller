@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://j4wdss0fn1mq"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://Projectile.gd" id="1_8b555"]
+[ext_resource type="Script" path="res://Player/Projectile.gd" id="1_8b555"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_roemr"]
 radius = 0.1
