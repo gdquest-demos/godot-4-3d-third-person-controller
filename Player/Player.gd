@@ -19,7 +19,6 @@ var _gravity: float = -30.0
 var _ground_height: float = 0.0
 
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
-@onready var _model: Node3D = $CharacterRotationRoot/MeshInstance3d
 @onready var _camera_controller: Node3D = $CameraController
 @onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 @onready var _aim_recticle: ColorRect = $AimRecticle
@@ -39,17 +38,23 @@ func _physics_process(delta: float) -> void:
 		_ground_height = _ground_raycast.get_collision_point().y
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
-	
+
+	var is_just_attacking := Input.is_action_just_pressed("action_attack") and not _attack_animation_player.is_playing()
+	var is_just_jumping := Input.is_action_just_pressed("action_jump") and is_on_floor()
+	var is_aiming := Input.is_action_pressed("action_aim") and is_on_floor()
+	var is_air_boosting := Input.is_action_pressed("action_jump") and not is_on_floor() and velocity.y > 0.0
+	var is_landing := _snap == Vector3.ZERO and is_on_floor()
+
 	_move_direction = _get_camera_oriented_input()
 
 	# To not orient quickly to the last input, we save a last strong direction,
 	# this also ensures a good normalized value for the rotation basis.
 	if _move_direction.length() > 0.2:
 		_last_strong_direction = _move_direction.normalized()
-	if is_aiming():
+	if is_aiming:
 		_last_strong_direction = _camera_controller.global_transform.basis * Vector3.BACK
 	
-	_aim_recticle.visible = is_aiming()
+	_aim_recticle.visible = is_aiming
 	_orient_character_to_direction(_last_strong_direction, delta)
 
 	# We separate out the y velocity to not interpolate on the gravity
@@ -58,13 +63,13 @@ func _physics_process(delta: float) -> void:
 	velocity = velocity.lerp(_move_direction * move_speed, acceleration * delta)
 	velocity.y = y_velocity
 
-	if is_aiming():
+	if is_aiming:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.OVER_SHOULDER)
 	else:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
 	
-	if is_just_attacking():
-		if is_aiming():
+	if is_just_attacking:
+		if is_aiming:
 			if is_on_floor():
 				shoot()
 		else:
@@ -72,12 +77,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y += _gravity * delta
 
-	if is_just_jumping():
+	if is_just_jumping:
 		velocity.y = jump_initial_impulse
 		_snap = Vector3.ZERO
-	elif is_air_boosting():
+	elif is_air_boosting:
 		velocity.y += jump_additional_force * delta
-	elif is_landing():
+	elif is_landing:
 		_snap = Vector3.DOWN * snap_length
 	move_and_slide()
 
@@ -128,26 +133,6 @@ func shoot() -> void:
 	projectile.velocity = aim_direction * projectile_speed
 	get_parent().add_child(projectile)
 	projectile.global_position = origin
-
-
-func is_just_jumping() -> bool:
-	return Input.is_action_just_pressed("action_jump") and is_on_floor()
-
-
-func is_air_boosting() -> bool:
-	return Input.is_action_pressed("action_jump") and not is_on_floor() and velocity.y > 0.0
-
-
-func is_landing() -> bool:
-	return _snap == Vector3.ZERO and is_on_floor()
-
-
-func is_just_attacking() -> bool:
-	return Input.is_action_just_pressed("action_attack") and not _attack_animation_player.is_playing()
-
-
-func is_aiming() -> bool:
-	return Input.is_action_pressed("action_aim") and is_on_floor()
 
 
 func reset_position() -> void:
