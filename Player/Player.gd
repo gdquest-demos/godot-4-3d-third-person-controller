@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody3D
 
-const PROJECTILE_SCENE = preload("res://Projectile.tscn")
+const PROJECTILE_SCENE = preload("res://Player/Projectile.tscn")
 
 @export var move_speed := 6.0
 @export var projectile_speed := 50
