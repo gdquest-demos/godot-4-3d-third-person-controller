@@ -39,6 +39,8 @@ shadow_enabled = true
 [node name="CSGFloor" type="CSGCombiner3D" parent="."]
 material_override = SubResource("StandardMaterial3D_8eocf")
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 
 [node name="CsgBox3d" type="CSGBox3D" parent="CSGFloor"]
 size = Vector3(50, 1, 50)
@@ -46,6 +48,8 @@ size = Vector3(50, 1, 50)
 [node name="CSGPlatforms" type="CSGCombiner3D" parent="."]
 material_override = SubResource("StandardMaterial3D_e7o2h")
 use_collision = true
+collision_layer = 3
+collision_mask = 3
 
 [node name="CsgBox3d2" type="CSGBox3D" parent="CSGPlatforms"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, -7.98003)

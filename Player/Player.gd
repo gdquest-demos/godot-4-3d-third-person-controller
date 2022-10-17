@@ -3,7 +3,7 @@ extends CharacterBody3D
 
 const PROJECTILE_SCENE = preload("res://Player/Projectile.tscn")
 
-@export var move_speed := 6.0
+@export var move_speed := 8.0
 @export var projectile_speed := 50
 @export var attack_impulse := 10
 @export var acceleration := 4.0
@@ -22,7 +22,7 @@ var _ground_height: float = 0.0
 @onready var _camera_controller: Node3D = $CameraController
 @onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 @onready var _aim_recticle: ColorRect = $AimRecticle
-@onready var _ground_raycast: RayCast3D = $GroundRayCast
+@onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _start_position := global_transform.origin
 
 
@@ -33,16 +33,15 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Calculate ground height for camera controller
-	var floor = _ground_raycast.get_collider()
-	if floor != null:
-		_ground_height = _ground_raycast.get_collision_point().y
+	for collision_result in _ground_shapecast.collision_result:
+		_ground_height = max(_ground_height, collision_result.point.y)
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
 
-	var is_just_attacking := Input.is_action_just_pressed("action_attack") and not _attack_animation_player.is_playing()
-	var is_just_jumping := Input.is_action_just_pressed("action_jump") and is_on_floor()
-	var is_aiming := Input.is_action_pressed("action_aim") and is_on_floor()
-	var is_air_boosting := Input.is_action_pressed("action_jump") and not is_on_floor() and velocity.y > 0.0
+	var is_just_attacking := Input.is_action_just_pressed("attack") and not _attack_animation_player.is_playing()
+	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
+	var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
+	var is_air_boosting := Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
 	var is_landing := _snap == Vector3.ZERO and is_on_floor()
 
 	_move_direction = _get_camera_oriented_input()
