@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cidd8fo8cymoo"]
+[gd_scene load_steps=14 format=3 uid="uid://cidd8fo8cymoo"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
@@ -10,6 +10,8 @@
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_gqx4v"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3ix22"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s5n07"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_uex0s"]
 
@@ -98,7 +100,7 @@ height = 2.65424
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_rvo1c")
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+[node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_5yey4")
 
@@ -113,6 +115,7 @@ transform = Transform3D(-1, -1.04414e-14, -8.74228e-08, -2.29301e-08, 0.964989, 
 
 [node name="CameraSpringArm" type="SpringArm3D" parent="CameraController"]
 transform = Transform3D(-1, -5.15034e-15, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, 0, 2.33984, 0)
+collision_mask = 2
 shape = SubResource("SeparationRayShape3D_gqx4v")
 spring_length = 10.0
 
@@ -129,10 +132,10 @@ transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, 0, -100)
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
-[node name="GroundRayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151585, 0)
+[node name="GroundShapeCast" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+shape = SubResource("CylinderShape3D_s5n07")
 target_position = Vector3(0, -2, 0)
-debug_shape_thickness = 5
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
