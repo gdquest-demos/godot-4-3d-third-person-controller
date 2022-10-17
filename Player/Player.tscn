@@ -1,9 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://cidd8fo8cymoo"]
+[gd_scene load_steps=16 format=3 uid="uid://cidd8fo8cymoo"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
 [ext_resource type="Script" path="res://Player/MeleeAttackArea.gd" id="3_v1vve"]
+[ext_resource type="Script" path="res://Player/AimController.gd" id="4_asavx"]
 [ext_resource type="PackedScene" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
+[ext_resource type="Texture2D" uid="uid://bdfgu6dhltmjh" path="res://icon.svg" id="4_kpm4p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5yey4"]
 
@@ -98,6 +100,9 @@ radius = 0.721485
 height = 2.65424
 
 [node name="Player" type="CharacterBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("1_rvo1c")
 
 [node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
@@ -105,13 +110,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_5yey4")
 
 [node name="CameraController" type="Node3D" parent="."]
+top_level = true
 script = ExtResource("3_qrkly")
 invert_mouse_y = true
 tilt_upper_limit = 0.48
 tilt_lower_limit = -0.8
 
 [node name="CameraOverShoulderPivot" type="Marker3D" parent="CameraController"]
-transform = Transform3D(-1, -1.04414e-14, -8.74228e-08, -2.29301e-08, 0.964989, 0.26229, 8.4362e-08, 0.26229, -0.964989, -0.848491, 3.21385, -2.32639)
+transform = Transform3D(-0.994522, 0.0400013, -0.0965717, 0, 0.92388, 0.382683, 0.104528, 0.380587, -0.918818, -0.848491, 3.48765, -2.32639)
 
 [node name="CameraSpringArm" type="SpringArm3D" parent="CameraController"]
 transform = Transform3D(-1, -5.15034e-15, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, 0, 2.33984, 0)
@@ -124,18 +130,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="PlayerCamera" type="Camera3D" parent="CameraController"]
 transform = Transform3D(-1, -3.71248e-14, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, -8.74228e-07, 6.04006, -9.29023)
+top_level = true
 attributes = SubResource("CameraAttributesPractical_3ix22")
 fov = 37.8493
 
 [node name="CameraRayCast" type="RayCast3D" parent="CameraController/PlayerCamera"]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, 0, -100)
+collision_mask = 2
 debug_shape_custom_color = Color(0, 0, 0, 0)
+
+[node name="GrenadeAimController" type="Node3D" parent="."]
+top_level = true
+script = ExtResource("4_asavx")
+
+[node name="AimSprite" type="Sprite3D" parent="GrenadeAimController"]
+modulate = Color(1, 1, 1, 0.364706)
+pixel_size = 0.02
+axis = 1
+texture = ExtResource("4_kpm4p")
 
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("CylinderShape3D_s5n07")
 target_position = Vector3(0, -2, 0)
+debug_shape_custom_color = Color(0.658824, 1, 0, 1)
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 

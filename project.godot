@@ -14,10 +14,15 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Player/CameraController.gd"
 }, {
-"base": "Node3D",
+"base": "MeshInstance3D",
 "class": &"CharacterSkin",
 "language": &"GDScript",
 "path": "res://Player/CharacterSkin.gd"
+}, {
+"base": "Node3D",
+"class": &"GrenadeAimController",
+"language": &"GDScript",
+"path": "res://Player/AimController.gd"
 }, {
 "base": "CharacterBody3D",
 "class": &"Player",
@@ -27,6 +32,7 @@ _global_script_classes=[{
 _global_script_class_icons={
 "CameraController": "",
 "CharacterSkin": "",
+"GrenadeAimController": "",
 "Player": ""
 }
 

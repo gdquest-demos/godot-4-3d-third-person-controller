@@ -15,7 +15,12 @@ enum CAMERA_PIVOT { OVER_SHOULDER, THIRD_PERSON }
 @onready var _camera: Camera3D = $PlayerCamera
 @onready var _camera_raycast: RayCast3D = $PlayerCamera/CameraRayCast
 
+
+var _aim_target : Vector3
+var _aim_target_normal : Vector3
+var _aim_collider: Object
 var _pivot: Node3D
+var _current_pivot_type: CAMERA_PIVOT
 var _rotation_input: float
 var _tilt_input: float
 var _mouse_input := false
@@ -33,9 +38,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			_tilt_input *= -1
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not _anchor:
 		return
+	
+	if _camera_raycast.is_colliding():
+		_aim_target = _camera_raycast.get_collision_point()
+		_aim_target_normal = _camera_raycast.get_collision_normal()
+		_aim_collider = _camera_raycast.get_collider()
+	else:
+		_aim_target = _camera_raycast.global_transform * _camera_raycast.target_position
+		_aim_target_normal = (global_position - _aim_target).normalized()
+		_aim_collider = null
 	
 	# Set camera controller to current ground level for the character
 	var target_position = _anchor.global_position + _offset
@@ -46,18 +60,17 @@ func _process(delta: float) -> void:
 	_euler_rotation.x += _tilt_input * delta
 	_euler_rotation.x = clamp(_euler_rotation.x, tilt_lower_limit, tilt_upper_limit)
 	_euler_rotation.y += _rotation_input * delta
+
 	transform.basis = transform.basis.from_euler(_euler_rotation)
 	
-	_camera.global_transform = _camera.global_transform.interpolate_with(_pivot.global_transform, 0.5)
+	_camera.global_transform = _pivot.global_transform#_camera.global_transform.interpolate_with(_pivot.global_transform, 0.8)
+	_camera.rotation.z = 0
 
 	_rotation_input = 0.0
 	_tilt_input = 0.0
 
 
 func setup(anchor: Node3D) -> void:
-	top_level = true
-	_camera.top_level = true
-	
 	_anchor = anchor
 	_offset = global_transform.origin - anchor.global_transform.origin
 	set_pivot(CAMERA_PIVOT.THIRD_PERSON)
@@ -65,16 +78,30 @@ func setup(anchor: Node3D) -> void:
 
 
 func set_pivot(pivot_type: CAMERA_PIVOT) -> void:
+	if pivot_type == _current_pivot_type:
+		return
+	
 	match(pivot_type):
 		CAMERA_PIVOT.OVER_SHOULDER:
+			_over_shoulder_pivot.look_at(_aim_target)
 			_pivot = _over_shoulder_pivot
-			_camera_raycast.enabled = true
 		CAMERA_PIVOT.THIRD_PERSON:
 			_pivot = _third_person_pivot
-			_camera_raycast.enabled = false
+
+	_current_pivot_type = pivot_type
 
 
 func get_aim_target() -> Vector3:
-	if _camera_raycast.is_colliding():
-		return _camera_raycast.get_collision_point()
-	return _camera_raycast.global_transform * _camera_raycast.target_position
+	return _aim_target
+
+
+func get_aim_target_normal() -> Vector3:
+	return _aim_target_normal
+
+
+func get_aim_collider() -> Object:
+	return _aim_collider
+
+
+func get_camera_basis() -> Basis:
+	return _camera.basis
