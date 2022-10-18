@@ -12,6 +12,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var jump_additional_force := 4.5
 @export var rotation_speed := 12.0
 @export var snap_length := 0.5
+@export var walk_anim_threshold := 0.5
 
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
@@ -19,6 +20,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _aim_recticle: ColorRect = $AimRecticle
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _grenade_aim_controller: GrenadeAimController = $GrenadeAimController
+@onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
 
 @onready var _equipped_weapon: WEAPON_TYPE = WEAPON_TYPE.DEFAULT
 @onready var _move_direction := Vector3.ZERO
@@ -113,6 +115,20 @@ func _physics_process(delta: float) -> void:
 		velocity.y += jump_additional_force * delta
 	elif is_landing:
 		_snap = Vector3.DOWN * snap_length
+	
+	# Set character animation
+	if is_just_jumping:
+		_character_skin.jump()
+	elif not is_on_floor() and velocity.y < 0:
+		_character_skin.fall()
+	elif is_on_floor():
+		var xz_velocity = Vector3(velocity.x, 0, velocity.z)
+		if xz_velocity.length() > walk_anim_threshold:
+			_character_skin.set_moving(true)
+			_character_skin.set_moving_speed(inverse_lerp(0.0, move_speed, xz_velocity.length()))
+		else:
+			_character_skin.set_moving(false)
+	
 	move_and_slide()
 
 
