@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cpfme4lw1val3"]
+[gd_scene load_steps=6 format=3 uid="uid://cpfme4lw1val3"]
 
 [ext_resource type="Script" path="res://Player/Grenade.gd" id="1_ak024"]
 
@@ -10,8 +10,11 @@ point_count = 3
 radius = 0.1
 height = 0.2
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_pr1dk"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_yx73u"]
 radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pr1dk"]
+radius = 1.0
 
 [node name="Grenade" type="Node3D"]
 script = ExtResource("1_ak024")
@@ -20,7 +23,12 @@ throw_curve = SubResource("Curve_3df2q")
 [node name="MeshInstance3d" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_roemr")
 
-[node name="Area3d" type="Area3D" parent="."]
+[node name="CollisionDetectionArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3d"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="CollisionDetectionArea"]
+shape = SubResource("SphereShape3D_yx73u")
+
+[node name="ExplosionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="ExplosionArea"]
 shape = SubResource("SphereShape3D_pr1dk")

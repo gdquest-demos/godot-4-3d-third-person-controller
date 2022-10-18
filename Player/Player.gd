@@ -149,7 +149,7 @@ func shoot() -> void:
 
 
 func throw_grenade() -> void:
-	_grenade_aim_controller.throw_grenade(global_position + Vector3.UP)
+	_grenade_aim_controller.throw_grenade(global_position + Vector3.UP, self)
 
 
 func reset_position() -> void:

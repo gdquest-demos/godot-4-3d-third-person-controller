@@ -18,7 +18,7 @@ enum CAMERA_PIVOT { OVER_SHOULDER, THIRD_PERSON }
 
 var _aim_target : Vector3
 var _aim_target_normal : Vector3
-var _aim_collider: Object
+var _aim_collider: Node
 var _pivot: Node3D
 var _current_pivot_type: CAMERA_PIVOT
 var _rotation_input: float
@@ -99,8 +99,11 @@ func get_aim_target_normal() -> Vector3:
 	return _aim_target_normal
 
 
-func get_aim_collider() -> Object:
-	return _aim_collider
+func get_aim_collider() -> Node:
+	if is_instance_valid(_aim_collider):
+		return _aim_collider
+	else:
+		return null
 
 
 func get_camera_basis() -> Basis:
