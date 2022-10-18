@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b06a7l7l7m33t"]
+[gd_scene load_steps=10 format=3 uid="uid://b06a7l7l7m33t"]
 
 [ext_resource type="Texture2D" uid="uid://boexk81is8yhq" path="res://gridbox_texture.png" id="1_dxgkr"]
 [ext_resource type="PackedScene" uid="uid://cidd8fo8cymoo" path="res://Player/Player.tscn" id="1_stlen"]
 [ext_resource type="PackedScene" uid="uid://dxriqehjyv07s" path="res://Box.tscn" id="3_od2wg"]
+[ext_resource type="PackedScene" uid="uid://bltyl6qdnk7dk" path="res://FlyingEnemy.tscn" id="4_n8dao"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v8uq4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -79,6 +80,7 @@ radius = 2.74026
 height = 13.6062
 
 [node name="CharacterBody3d" parent="." instance=ExtResource("1_stlen")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43125, -1.90735e-06, -14.066)
 
 [node name="Box" parent="." instance=ExtResource("3_od2wg")]
 
@@ -96,3 +98,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.562682, 2.04688, 14.505)
 
 [node name="Box6" parent="." instance=ExtResource("3_od2wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07396, 4.58485, 14.505)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("4_n8dao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6002, 3.11496, 5.62647)
+
+[node name="FlyingEnemy2" parent="." instance=ExtResource("4_n8dao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46725, 3.11496, 10.1252)
+
+[node name="FlyingEnemy3" parent="." instance=ExtResource("4_n8dao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.89345, 3.11496, -4.45808)

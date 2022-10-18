@@ -17,6 +17,8 @@ func deactivate():
 	collision_shape.set_deferred("disabled", true)
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("damageables"):
-		body.damage()
+		var impact_point := global_position - body.global_position
+		var force := -impact_point
+		body.damage(impact_point, force)

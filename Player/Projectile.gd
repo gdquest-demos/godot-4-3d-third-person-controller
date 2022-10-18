@@ -20,9 +20,10 @@ func _process(delta: float) -> void:
 		queue_free()
 
 
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(body: Node3D) -> void:
 	if body == shooter:
 		return
 	if body.is_in_group("damageables"):
-		body.damage()
+		var impact_point := global_position - body.global_position
+		body.damage(impact_point, velocity)
 	queue_free()

@@ -114,6 +114,6 @@ swap_weapons={
 
 [layer_names]
 
-3d_physics/layer_1="Player"
+3d_physics/layer_1="Entities"
 3d_physics/layer_2="Level"
 3d_physics/layer_3="Collectibles"

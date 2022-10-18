@@ -42,7 +42,11 @@ func _explode() -> void:
 	var bodies := _explosion_area.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("damageables"):
-			body.damage()
+			# add some variance to the impact point
+			var impact_point := (global_position - body.global_position).normalized()
+			impact_point = (impact_point + Vector3.DOWN).normalized() * 0.5
+			var force := -impact_point * 10.0
+			body.damage(impact_point, force)
 	
 	queue_free()
 
