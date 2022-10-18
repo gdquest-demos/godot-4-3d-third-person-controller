@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
 [ext_resource type="Script" path="res://Player/MeleeAttackArea.gd" id="3_v1vve"]
 [ext_resource type="Script" path="res://Player/AimController.gd" id="4_asavx"]
-[ext_resource type="PackedScene" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
+[ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
 [ext_resource type="Texture2D" uid="uid://bdfgu6dhltmjh" path="res://icon.svg" id="4_kpm4p"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5yey4"]
