@@ -19,6 +19,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Player/CharacterSkin.gd"
 }, {
+"base": "RigidBody3D",
+"class": &"Collectible",
+"language": &"GDScript",
+"path": "res://Collectible.gd"
+}, {
 "base": "Node3D",
 "class": &"GrenadeAimController",
 "language": &"GDScript",
@@ -32,6 +37,7 @@ _global_script_classes=[{
 _global_script_class_icons={
 "CameraController": "",
 "CharacterSkin": "",
+"Collectible": "",
 "GrenadeAimController": "",
 "Player": ""
 }
@@ -105,3 +111,9 @@ swap_weapons={
 "events": [null, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Level"
+3d_physics/layer_3="Collectibles"

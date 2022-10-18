@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgpnhm4tl10yb"]
+
+[ext_resource type="Texture2D" uid="uid://bdfgu6dhltmjh" path="res://icon.svg" id="1_mhds4"]
+[ext_resource type="Script" path="res://Collectible.gd" id="1_olkdr"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_c2idr"]
+radius = 0.731329
+
+[node name="Collectible" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 2
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+lock_rotation = true
+script = ExtResource("1_olkdr")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679659, 0)
+texture = ExtResource("1_mhds4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439197, 0)
+shape = SubResource("SphereShape3D_c2idr")

@@ -21,6 +21,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _grenade_aim_controller: GrenadeAimController = $GrenadeAimController
 @onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
+@onready var _collectible_magnet_area: Area3D = $CollectibleMagnetArea
 
 @onready var _equipped_weapon: WEAPON_TYPE = WEAPON_TYPE.DEFAULT
 @onready var _move_direction := Vector3.ZERO
@@ -35,6 +36,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
 	_grenade_aim_controller.set_active(false)
+	_collectible_magnet_area.body_entered.connect(_on_collectible_body_entered)
 
 
 func _physics_process(delta: float) -> void:
@@ -149,6 +151,11 @@ func throw_grenade() -> void:
 
 func reset_position() -> void:
 	transform.origin = _start_position
+
+
+func _on_collectible_body_entered(body: Node3D) -> void:
+	if body is Collectible:
+		body.set_follow(self)
 
 
 func _get_camera_oriented_input() -> Vector3:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cidd8fo8cymoo"]
+[gd_scene load_steps=17 format=3 uid="uid://cidd8fo8cymoo"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
@@ -99,6 +99,9 @@ _data = {
 radius = 0.721485
 height = 2.65424
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_nw843"]
+radius = 5.0
+
 [node name="Player" type="CharacterBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -196,3 +199,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.290196)
+
+[node name="CollectibleMagnetArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectibleMagnetArea"]
+shape = SubResource("SphereShape3D_nw843")
