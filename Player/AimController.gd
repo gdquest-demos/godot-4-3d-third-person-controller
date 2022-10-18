@@ -2,6 +2,8 @@ class_name GrenadeAimController
 extends Node3D
 
 const GRENADE_SCENE = preload("res://Player/Grenade.tscn")
+const SURFACE_AIM_COLOR = Color(1, 1, 1, 0.5)
+const ENEMY_AIM_COLOR = Color(1, 0, 0, 0.5)
 
 @export var min_throw_radius := 1.0
 @export var max_throw_radius := 20.0
@@ -37,18 +39,26 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 
 	_aim_sprite.show()
 	
-	var xz_distance := Vector3(target.x, 0.0, target.z)
-	xz_distance -= Vector3(origin.x, 0.0, origin.z)
-	var max_radius := xz_distance.normalized() * max_throw_radius
-	var min_radius := xz_distance.normalized() * min_throw_radius
-	if xz_distance.length() > max_radius.length():
-		xz_distance = max_radius
-	elif xz_distance.length() < min_radius.length():
-		xz_distance = min_radius
-	
-	var height_vector := (target - origin) * Vector3.UP
 	var trans = transform
-	trans.origin = origin + xz_distance + height_vector + (normal * 0.1)
+	
+	if collider is Node and collider.is_in_group("targeteables"):
+		_aim_sprite.modulate = ENEMY_AIM_COLOR
+		normal = (origin - collider.global_position).normalized()
+		trans.origin = collider.global_position + normal
+	else:
+		_aim_sprite.modulate = SURFACE_AIM_COLOR
+		var xz_distance := Vector3(target.x, 0.0, target.z)
+		xz_distance -= Vector3(origin.x, 0.0, origin.z)
+		var max_radius := xz_distance.normalized() * max_throw_radius
+		var min_radius := xz_distance.normalized() * min_throw_radius
+		if xz_distance.length() > max_radius.length():
+			xz_distance = max_radius
+		elif xz_distance.length() < min_radius.length():
+			xz_distance = min_radius
+		
+		var height_vector := (target - origin) * Vector3.UP
+		trans.origin = origin + xz_distance + height_vector + (normal * 0.1)
+	
 	trans.basis.y = normal
 	trans.basis.z = -camera_basis.y
 	trans.basis.x = trans.basis.z.cross(trans.basis.y).normalized()

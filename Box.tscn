@@ -8,6 +8,8 @@
 
 [node name="Box" type="RigidBody3D" groups=["damageables", "targeteables"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01478, 14.505)
+collision_layer = 3
+collision_mask = 3
 can_sleep = false
 script = ExtResource("1_oklwc")
 
