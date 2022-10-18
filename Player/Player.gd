@@ -37,22 +37,17 @@ func _ready() -> void:
 	_grenade_aim_controller.set_active(false)
 
 
-func _unhandled_key_input(event: InputEvent) -> void:
-	match(event.keycode):
-		KEY_1:
-			_equipped_weapon = WEAPON_TYPE.DEFAULT
-			_grenade_aim_controller.set_active(false)
-		KEY_2:
-			_equipped_weapon = WEAPON_TYPE.GRENADE
-			_grenade_aim_controller.set_active(true)
-
-
 func _physics_process(delta: float) -> void:
 	# Calculate ground height for camera controller
 	for collision_result in _ground_shapecast.collision_result:
 		_ground_height = max(_ground_height, collision_result.point.y)
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
+
+	# Swap weapons
+	if Input.is_action_just_pressed("swap_weapons"):
+		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE
+		_grenade_aim_controller.set_active(_equipped_weapon == WEAPON_TYPE.GRENADE)
 
 	# Get input and movement state
 	var is_just_attacking := Input.is_action_just_pressed("attack") and not _attack_animation_player.is_playing()
