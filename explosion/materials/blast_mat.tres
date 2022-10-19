@@ -1,0 +1,37 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3 uid="uid://cgk1a7ucm1dwi"]
+
+[ext_resource type="Shader" path="res://explosion/shaders/blast_shader.gdshader" id="1_05x44"]
+
+[sub_resource type="Gradient" id="Gradient_18564"]
+offsets = PackedFloat32Array(0.06, 0.97)
+colors = PackedColorArray(1, 0.376606, 0, 1, 0.96528, 1, 0.685068, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_juv1n"]
+gradient = SubResource("Gradient_18564")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5laqu"]
+seed = 10
+frequency = 0.04
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u1lix"]
+seamless = true
+noise = SubResource("FastNoiseLite_5laqu")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qeraj"]
+frequency = 0.04
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_d5hrj"]
+seamless = true
+noise = SubResource("FastNoiseLite_qeraj")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_05x44")
+shader_parameter/blast_gradient_sampler_1D = SubResource("GradientTexture1D_juv1n")
+shader_parameter/coverage = 0.4
+shader_parameter/intensity = 1.0
+shader_parameter/noise_2_sampler = SubResource("NoiseTexture2D_u1lix")
+shader_parameter/noise_sampler = SubResource("NoiseTexture2D_d5hrj")
+shader_parameter/uv_y_offset = 0.0
+shader_parameter/uv_y_scale = 0.5
