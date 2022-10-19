@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgkamlsw7pq2j"]
+
+[ext_resource type="PackedScene" uid="uid://dqbsd44l6f1xi" path="res://coin/godot_coin.glb" id="1_0qdgb"]
+[ext_resource type="Script" path="res://coin/bob_and_spin.gd" id="2_eyhxj"]
+
+[node name="Coin" type="Node3D"]
+
+[node name="godot_coin" parent="." instance=ExtResource("1_0qdgb")]
+transform = Transform3D(0.412438, 0, -0.910986, 0, 1, 0, 0.910986, 0, 0.412438, 0, -0.00245296, 0)
+script = ExtResource("2_eyhxj")
