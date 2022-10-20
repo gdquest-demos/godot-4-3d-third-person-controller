@@ -11,6 +11,7 @@ uniform sampler2D blast_gradient_sampler_1D : source_color;
 void vertex()
 {
 	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
+	VERTEX *= 5.0;
 }
 
 void fragment() {
