@@ -334,6 +334,7 @@ _data = {
 }
 
 [node name="Explosion" type="Node3D"]
+top_level = true
 script = ExtResource("1_01mnb")
 
 [node name="Shell" type="MeshInstance3D" parent="."]

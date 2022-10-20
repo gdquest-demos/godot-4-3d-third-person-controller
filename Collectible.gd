@@ -11,12 +11,6 @@ const FOLLOW_TWEEN_DURATION := 0.5
 
 @onready var _initial_tween_position := Vector3.ZERO
 @onready var _follow_node: Node3D = null
-@onready var _sprite: Sprite3D = $Sprite3D
-#@onready var _collision_shape: CollisionShape3D = $Area3D/CollisionShape3D
-
-
-func _physics_process(delta: float) -> void:
-	_sprite.rotate_y(delta * PI)
 
 
 func spawn() -> void:
@@ -36,15 +30,6 @@ func set_follow(follow_node: Node3D) -> void:
 		var tween := create_tween()
 		tween.tween_method(_follow, 0.0, 1.0, 0.5)
 		tween.tween_callback(_collect)
-
-#
-#func _spawn_tween(offset: float, height: float, new_position: Vector3) -> void:
-#	var new_pos = lerp(_initial_tween_position, new_position, offset)
-#	if offset < 0.5:
-#		new_pos.y += lerp(0.0, height, offset * 2)
-#	else:
-#		new_pos.y += lerp(0.0, height, 2 - (offset * 2))
-#	global_position = new_pos
 
 
 func _follow(offset: float) -> void:

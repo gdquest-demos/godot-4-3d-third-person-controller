@@ -1,5 +1,8 @@
 extends Node3D
 
+const EXPLOSION_SCENE := preload("res://explosion/explosion_scene.tscn")
+
+
 @export var throw_curve: Curve
 @export var throw_additional_height := 2.0
 @export var throw_speed := 20.0
@@ -48,6 +51,9 @@ func _explode() -> void:
 			var force := -impact_point * 10.0
 			body.damage(impact_point, force)
 	
+	var explosion: Node3D = EXPLOSION_SCENE.instantiate()
+	get_parent().add_child(explosion)
+	explosion.global_position = global_position
 	queue_free()
 
 
