@@ -1,13 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxriqehjyv07s"]
 
 [ext_resource type="Script" path="res://Box.gd" id="1_oklwc"]
+[ext_resource type="PackedScene" uid="uid://cdtq6fyl7hhgm" path="res://crate/crate.glb" id="2_ggurh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rxelo"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_bexdp"]
-
 [node name="Box" type="RigidBody3D" groups=["damageables", "targeteables"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01478, 14.505)
 collision_layer = 3
 collision_mask = 3
 can_sleep = false
@@ -16,5 +14,4 @@ script = ExtResource("1_oklwc")
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_rxelo")
 
-[node name="MeshInstance3d" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_bexdp")
+[node name="crate" parent="." instance=ExtResource("2_ggurh")]
