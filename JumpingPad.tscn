@@ -1,9 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bd0q5g5doip5p"]
 
 [ext_resource type="Script" path="res://JumpingPad.gd" id="1_w7mtj"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fuwlv"]
-size = Vector3(1, 0.2, 1)
+[ext_resource type="PackedScene" uid="uid://tr1wv7kxwhx4" path="res://jumping_pad/jump_pad.tscn" id="2_24jmh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dspj3"]
 size = Vector3(1, 0.2158, 1)
@@ -11,8 +9,7 @@ size = Vector3(1, 0.2158, 1)
 [node name="JumpingPad" type="Area3D"]
 script = ExtResource("1_w7mtj")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_fuwlv")
+[node name="jump_pad" parent="." instance=ExtResource("2_24jmh")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_dspj3")
