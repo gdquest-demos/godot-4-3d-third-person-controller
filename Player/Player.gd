@@ -13,6 +13,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var rotation_speed := 12.0
 @export var snap_length := 0.5
 @export var walk_anim_threshold := 0.5
+@export var max_throwback_force := 15.0
 
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
@@ -185,7 +186,9 @@ func _get_camera_oriented_input() -> Vector3:
 
 
 func damage(impact_point: Vector3, force: Vector3) -> void:
-	pass
+	# Always throws character up
+	force.y = abs(force.y)
+	velocity = force.limit_length(max_throwback_force)
 
 
 func _orient_character_to_direction(direction: Vector3, delta: float) -> void:

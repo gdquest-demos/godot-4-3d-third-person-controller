@@ -1,0 +1,27 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="ArrayMesh" uid="uid://laarq7txjf7v" path="res://Player/grenade_helper/trajectory_mockup.obj" id="1_gp1nj"]
+[ext_resource type="Shader" path="res://Player/grenade_helper/shaders/grenade_trajectory_shader.gdshader" id="2_732j3"]
+[ext_resource type="Shader" path="res://Player/grenade_helper/shaders/grenade_target_shader.gdshader" id="2_wabvd"]
+[ext_resource type="Texture2D" uid="uid://xyoxovlnkwl" path="res://Player/grenade_helper/textures/target_frame_mask.png" id="3_a6cpj"]
+[ext_resource type="Texture2D" uid="uid://bippf64bo5eeo" path="res://Player/grenade_helper/textures/direction_arrow.png" id="3_qkcbs"]
+[ext_resource type="Texture2D" uid="uid://cqvk4kfl0bxav" path="res://Player/grenade_helper/textures/target_mask.png" id="4_4uhfa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pb4qp"]
+render_priority = 0
+shader = ExtResource("2_732j3")
+shader_parameter/arrow_sampler = ExtResource("3_qkcbs")
+shader_parameter/arrow_scale = 60.0
+shader_parameter/fill_color = Color(1, 0.498039, 0.0392157, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybrxm"]
+render_priority = 0
+shader = ExtResource("2_wabvd")
+shader_parameter/fill_color = Color(1, 0.643137, 0.184314, 1)
+shader_parameter/target_frame_mask_sampler = ExtResource("3_a6cpj")
+shader_parameter/target_mask_sampler = ExtResource("4_4uhfa")
+
+[node name="TrajectoryMockup" type="MeshInstance3D"]
+mesh = ExtResource("1_gp1nj")
+surface_material_override/0 = SubResource("ShaderMaterial_pb4qp")
+surface_material_override/1 = SubResource("ShaderMaterial_ybrxm")

@@ -102,7 +102,7 @@ height = 2.65424
 [sub_resource type="SphereShape3D" id="SphereShape3D_nw843"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["damageables"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -154,9 +154,9 @@ axis = 1
 texture = ExtResource("4_kpm4p")
 
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("CylinderShape3D_s5n07")
-target_position = Vector3(0, -2.2, 0)
+target_position = Vector3(0, -2.3, 0)
 debug_shape_custom_color = Color(0.658824, 1, 0, 1)
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]

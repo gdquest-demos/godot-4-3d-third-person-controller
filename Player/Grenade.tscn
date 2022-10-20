@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpfme4lw1val3"]
+[gd_scene load_steps=6 format=3]
 
 [ext_resource type="Script" path="res://Player/Grenade.gd" id="1_ak024"]
-[ext_resource type="PackedScene" uid="uid://cig23qx6j0er8" path="res://grenade_helper/grenade/grenade.tscn" id="2_krc3u"]
+[ext_resource type="PackedScene" path="res://Player/grenade_helper/grenade/grenade.tscn" id="2_krc3u"]
 
 [sub_resource type="Curve" id="Curve_3df2q"]
 _data = [Vector2(0, 0), 0.0, 2.0, 0, 0, Vector2(0.5, 0.527273), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
