@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://FlyingEnemy.gd" id="1_m7aj4"]
 
-[sub_resource type="Animation" id="Animation_6k5ul"]
-resource_name = "found_player"
+[sub_resource type="Animation" id="Animation_5pcps"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -11,10 +11,10 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -29,8 +29,8 @@ tracks/1/keys = {
 "values": ["!"]
 }
 
-[sub_resource type="Animation" id="Animation_5pcps"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_6k5ul"]
+resource_name = "found_player"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -38,10 +38,10 @@ tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -100,6 +100,33 @@ albedo_color = Color(0.647059, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qjgky"]
 
+[sub_resource type="Animation" id="Animation_aj4yq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0.0872665)]
+}
+
 [sub_resource type="Animation" id="Animation_7sj1l"]
 resource_name = "default"
 length = 2.0
@@ -127,33 +154,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0.0872665), Vector3(0, 0, 0), Vector3(0, 0, -0.0872665)]
-}
-
-[sub_resource type="Animation" id="Animation_aj4yq"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0.0872665)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wnpkd"]
@@ -189,7 +189,7 @@ collision_layer = 0
 shape = SubResource("SphereShape3D_h03f6")
 
 [node name="MeshRoot" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.996195, -0.0871558, 0, 0.0871558, 0.996195, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_tlopx")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshRoot"]

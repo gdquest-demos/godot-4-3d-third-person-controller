@@ -156,7 +156,7 @@ texture = ExtResource("4_kpm4p")
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 shape = SubResource("CylinderShape3D_s5n07")
-target_position = Vector3(0, -2, 0)
+target_position = Vector3(0, -2.2, 0)
 debug_shape_custom_color = Color(0.658824, 1, 0, 1)
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]

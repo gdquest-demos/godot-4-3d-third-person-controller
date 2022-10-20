@@ -41,8 +41,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Calculate ground height for camera controller
-	for collision_result in _ground_shapecast.collision_result:
-		_ground_height = max(_ground_height, collision_result.point.y)
+	if _ground_shapecast.get_collision_count() > 0:
+		for collision_result in _ground_shapecast.collision_result:
+			_ground_height = max(_ground_height, collision_result.point.y)
+	else:
+		_ground_height = global_position.y + _ground_shapecast.target_position.y
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
 
@@ -106,7 +109,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += _gravity * delta
 
 	if is_just_jumping:
-		velocity.y = jump_initial_impulse
+		velocity.y += jump_initial_impulse
 		_snap = Vector3.ZERO
 	elif is_air_boosting:
 		velocity.y += jump_additional_force * delta
