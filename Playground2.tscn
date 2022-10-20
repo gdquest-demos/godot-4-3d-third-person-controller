@@ -154,7 +154,13 @@ transform = Transform3D(-0.382119, 0, 0.924113, 0, 1, 0, -0.924113, 0, -0.382119
 transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.44704, 5.3719, 1.83539)
 
 [node name="Box15" parent="." instance=ExtResource("5_yk44g")]
-transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 4.62605, 5.3719, 2.6489)
+transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.45221, 6.42083, 1.85654)
+
+[node name="Box21" parent="." instance=ExtResource("5_yk44g")]
+transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.45221, 7.48873, 1.85654)
+
+[node name="Box22" parent="." instance=ExtResource("5_yk44g")]
+transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.45221, 8.54957, 1.85654)
 
 [node name="Box16" parent="." instance=ExtResource("5_yk44g")]
 transform = Transform3D(0.899191, 0, 0.437555, 0, 1, 0, -0.437555, 0, 0.899191, -38.7791, 14.6498, 23.5164)
