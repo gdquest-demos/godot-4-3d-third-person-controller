@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bo0s68ux23y2a"]
+[gd_scene load_steps=26 format=3 uid="uid://bo0s68ux23y2a"]
 
 [ext_resource type="Texture2D" uid="uid://boexk81is8yhq" path="res://gridbox_texture.png" id="1_dxgkr"]
 [ext_resource type="PackedScene" uid="uid://dt8lgov6b0sjx" path="res://Player/Player.tscn" id="1_stlen"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" uid="uid://bv7e4v4dmlu8f" path="res://Environment/Water/water_mat.tres" id="9_71adc"]
 [ext_resource type="PackedScene" uid="uid://blrs5mgkwcu5y" path="res://Environment/grass/grass_chunk_scene.tscn" id="10_ymg6d"]
 [ext_resource type="PackedScene" uid="uid://105804ektd2n" path="res://Environment/bushes/bush_1.tscn" id="11_r5jqy"]
+[ext_resource type="Script" path="res://DeathPlane.gd" id="12_ufw5r"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h3p2h"]
 rayleigh_color = Color(0.952941, 0.952941, 0.980392, 1)
@@ -100,6 +101,9 @@ _data = {
 [sub_resource type="PlaneMesh" id="PlaneMesh_eflel"]
 size = Vector2(100, 100)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gym67"]
+size = Vector3(123.862, 5.90531, 125.082)
+
 [node name="Playground" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -111,7 +115,7 @@ light_energy = 1.5
 shadow_enabled = true
 
 [node name="CharacterBody3d" parent="." instance=ExtResource("1_stlen")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.79455, 0.666812, -13.0165)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29823, 1.45533, -13.0165)
 
 [node name="JumpingPad" parent="." instance=ExtResource("3_yenfk")]
 transform = Transform3D(0.893364, 0, 0.449335, 0, 1, 0, -0.449335, 0, 0.893364, -35.1316, 6.60685, 19.929)
@@ -198,6 +202,7 @@ transform = Transform3D(-0.796963, 0, -0.604029, 0, 1, 0, 0.604029, 0, -0.796963
 transform = Transform3D(0.83295, 0, -0.553349, 0, 1, 0, 0.553349, 0, 0.83295, 3.1172, 2.12041, -14.3482)
 
 [node name="GroundEnemy" parent="." instance=ExtResource("5_4pnku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.913244, 1.18489, -8.02112)
 
 [node name="GroundEnemy2" parent="." instance=ExtResource("5_4pnku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 7.20429, -4.01509)
@@ -680,3 +685,11 @@ transform = Transform3D(0.377491, 0, -1.5364, 0, 1.5821, 0, 1.5364, 0, 0.377491,
 
 [node name="Bush3" parent="." instance=ExtResource("11_r5jqy")]
 transform = Transform3D(0.235531, 0, -0.95862, 0, 0.987131, 0, 0.95862, 0, 0.235531, -9.73978, 0.5, -3.62916)
+
+[node name="DeathPlane" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -13.997, 0)
+script = ExtResource("12_ufw5r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.938549, 0)
+shape = SubResource("BoxShape3D_gym67")
