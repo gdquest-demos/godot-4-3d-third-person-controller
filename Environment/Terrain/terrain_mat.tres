@@ -1,0 +1,29 @@
+[gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://c5trc4hy86utg"]
+
+[ext_resource type="Shader" path="res://Environment/Terrain/terrain_shader.gdshader" id="1_tmq40"]
+[ext_resource type="Texture2D" uid="uid://oj33wofxyp33" path="res://Environment/Terrain/Textures/cliff_mat_albedo.png" id="2_oocmn"]
+[ext_resource type="Texture2D" uid="uid://qfrx7oj27t0m" path="res://Environment/Terrain/Textures/cliff_mat_normal.png" id="3_7ta3g"]
+[ext_resource type="Texture2D" uid="uid://tmachtl13mjl" path="res://Environment/Terrain/Textures/cliff_mat_orm.png" id="4_mexqi"]
+[ext_resource type="Texture2D" uid="uid://dj0jtv0nuvg17" path="res://Environment/Terrain/Textures/ground_mat_albedo.png" id="5_mlqge"]
+[ext_resource type="Texture2D" uid="uid://gmvm6bg3lh0i" path="res://Environment/Terrain/Textures/ground_mat_normal.png" id="6_f0qiq"]
+[ext_resource type="Texture2D" uid="uid://iwemoebuvucg" path="res://Environment/Terrain/Textures/grass_mat_orm.png" id="7_7kb77"]
+[ext_resource type="Texture2D" uid="uid://c2b12n5de0huc" path="res://Environment/Terrain/Textures/grass_mat_albedo.png" id="8_i8y51"]
+[ext_resource type="Texture2D" uid="uid://c5dkkyvgddtx4" path="res://Environment/Terrain/Textures/grass_mat_normal.png" id="9_fafy5"]
+[ext_resource type="Texture2D" uid="uid://bng5mcjuskuvs" path="res://Environment/Terrain/Textures/cliff_motif.png" id="10_2oayh"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tmq40")
+shader_parameter/cliff_albedo_sampler = ExtResource("2_oocmn")
+shader_parameter/cliff_normal_sampler = ExtResource("3_7ta3g")
+shader_parameter/cliff_orm_sampler = ExtResource("4_mexqi")
+shader_parameter/dirt_albedo_sampler = ExtResource("5_mlqge")
+shader_parameter/dirt_normal_sampler = ExtResource("6_f0qiq")
+shader_parameter/dirt_orm_sampler = ExtResource("7_7kb77")
+shader_parameter/grass_albedo_sampler = ExtResource("8_i8y51")
+shader_parameter/grass_normal_sampler = ExtResource("9_fafy5")
+shader_parameter/grass_orm_sampler = ExtResource("7_7kb77")
+shader_parameter/triplanar_offset = null
+shader_parameter/triplanar_scale = Vector3(0.3, 0.2, 0.3)
+shader_parameter/triplanar_sharpness = null
+shader_parameter/wall_mask_sampler = ExtResource("10_2oayh")

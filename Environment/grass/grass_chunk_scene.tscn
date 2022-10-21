@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://blrs5mgkwcu5y"]
+
+[ext_resource type="Material" uid="uid://ctfphybt4ar4e" path="res://Environment/grass/grass_mat.tres" id="1_7g28l"]
+[ext_resource type="ArrayMesh" uid="uid://bc00b7tchtvei" path="res://Environment/grass/grass_chunk_1.obj" id="1_dohwo"]
+
+[node name="grass_chunk_scene" type="MeshInstance3D"]
+material_override = ExtResource("1_7g28l")
+mesh = ExtResource("1_dohwo")
