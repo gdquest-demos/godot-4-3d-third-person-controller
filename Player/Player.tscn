@@ -257,7 +257,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(-0.596538, 0, -0.802586, 0, 1, 0, 0.802586, 0, -0.596538, 0, 0, 0)
+transform = Transform3D(0.244244, 0, 0.969715, 0, 1, 0, -0.969715, 0, 0.244244, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
@@ -265,7 +265,6 @@ current = true
 fov = 18.238
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
-light_energy = 0.7
 
 [node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer"]
 layout_mode = 2
