@@ -5,4 +5,5 @@
 
 [node name="grass_chunk_scene" type="MeshInstance3D"]
 material_override = ExtResource("1_7g28l")
+cast_shadow = 0
 mesh = ExtResource("1_dohwo")

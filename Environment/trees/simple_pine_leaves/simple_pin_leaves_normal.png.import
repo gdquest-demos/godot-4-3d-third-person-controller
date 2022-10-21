@@ -1,0 +1,36 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ctt3orpnvqw7"
+path.s3tc="res://.godot/imported/simple_pin_leaves_normal.png-56c4dc261bce46245eaa3b6e8791149c.s3tc.ctex"
+path.etc2="res://.godot/imported/simple_pin_leaves_normal.png-56c4dc261bce46245eaa3b6e8791149c.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc", "etc2"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://Environment/trees/simple_pine_leaves/simple_pin_leaves_normal.png"
+dest_files=["res://.godot/imported/simple_pin_leaves_normal.png-56c4dc261bce46245eaa3b6e8791149c.s3tc.ctex", "res://.godot/imported/simple_pin_leaves_normal.png-56c4dc261bce46245eaa3b6e8791149c.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/bptc_ldr=0
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Environment/trees/simpleç_pine_leaves/simple_pin_leaves_normal.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

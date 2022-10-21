@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://48xlluucrwbp"]
+
+[ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://Environment/trees/tree_1_geo.obj" id="1_1cwwe"]
+[ext_resource type="Material" uid="uid://dow0sucy0ypv3" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves.tres" id="2_myn1u"]
+[ext_resource type="Material" path="res://Environment/trees/simple_bark/simple_bark.tres" id="3_ptm8d"]
+
+[node name="Tree1Geo" type="MeshInstance3D"]
+mesh = ExtResource("1_1cwwe")
+surface_material_override/0 = ExtResource("2_myn1u")
+surface_material_override/1 = ExtResource("3_ptm8d")
