@@ -2,6 +2,8 @@ class_name Player
 extends CharacterBody3D
 
 const PROJECTILE_SCENE = preload("res://Player/Projectile.tscn")
+const COIN_SCENE = preload("res://Collectible.tscn")
+
 enum WEAPON_TYPE { DEFAULT, GRENADE }
 
 @export var move_speed := 8.0
@@ -18,11 +20,12 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
 @onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
-@onready var _aim_recticle: ColorRect = $AimRecticle
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _grenade_aim_controller: GrenadeAimController = $GrenadeAimController
 @onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
 @onready var _collectible_magnet_area: Area3D = $CollectibleMagnetArea
+@onready var _ui_aim_recticle: ColorRect = %AimRecticle
+@onready var _ui_coins_container: HBoxContainer = %CoinsContainer
 
 @onready var _equipped_weapon: WEAPON_TYPE = WEAPON_TYPE.DEFAULT
 @onready var _move_direction := Vector3.ZERO
@@ -31,6 +34,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _gravity: float = -30.0
 @onready var _ground_height: float = 0.0
 @onready var _start_position := global_transform.origin
+@onready var _coins := 0
 
 
 func _ready() -> void:
@@ -82,10 +86,10 @@ func _physics_process(delta: float) -> void:
 	# Set aiming camera and UI
 	if is_aiming:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.OVER_SHOULDER)
-		_aim_recticle.visible = true
+		_ui_aim_recticle.visible = true
 	else:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
-		_aim_recticle.visible = false
+		_ui_aim_recticle.visible = false
 	
 	# Update grenade aim controller
 	var origin = global_position
@@ -157,6 +161,22 @@ func reset_position() -> void:
 	transform.origin = _start_position
 
 
+func collect_coin() -> void:
+	_coins += 1
+	_ui_coins_container.update_coins_amount(_coins)
+
+
+func lose_coins() -> void:
+	var lost_coins = min(_coins, 5)
+	_coins -= lost_coins
+	for i in lost_coins:
+		var coin := COIN_SCENE.instantiate()
+		get_parent().add_child(coin)
+		coin.global_position = global_position
+		coin.spawn(1.5)
+	_ui_coins_container.update_coins_amount(_coins)
+
+
 func _on_collectible_body_entered(body: Node3D) -> void:
 	if body is Collectible:
 		body.set_follow(self)
@@ -189,6 +209,7 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	# Always throws character up
 	force.y = abs(force.y)
 	velocity = force.limit_length(max_throwback_force)
+	lose_coins()
 
 
 func _orient_character_to_direction(direction: Vector3, delta: float) -> void:

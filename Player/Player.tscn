@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cidd8fo8cymoo"]
+[gd_scene load_steps=19 format=3 uid="uid://cidd8fo8cymoo"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Player/AimController.gd" id="4_asavx"]
 [ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
 [ext_resource type="Texture2D" uid="uid://bdfgu6dhltmjh" path="res://icon.svg" id="4_kpm4p"]
+[ext_resource type="Script" path="res://Player/CoinsContainer.gd" id="7_8eehq"]
+[ext_resource type="PackedScene" uid="uid://cgkamlsw7pq2j" path="res://coin/godot_coin_scene.tscn" id="8_6qxxt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_5yey4"]
 
@@ -180,12 +182,31 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.9
 script = ExtResource("3_v1vve")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterRotationRoot/MeleeAttackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246944)
 shape = SubResource("CapsuleShape3D_pcytg")
 disabled = true
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("4_ign62")]
 
-[node name="AimRecticle" type="ColorRect" parent="."]
+[node name="CollectibleMagnetArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectibleMagnetArea"]
+shape = SubResource("SphereShape3D_nw843")
+
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="AimRecticle" type="ColorRect" parent="PlayerUI"]
+unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -200,9 +221,64 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.290196)
 
-[node name="CollectibleMagnetArea" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="CoinsContainer" type="HBoxContainer" parent="PlayerUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_top = -100.0
+offset_right = -80.0
+offset_bottom = -4.0
+grow_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 30
+alignment = 2
+script = ExtResource("7_8eehq")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectibleMagnetArea"]
-shape = SubResource("SphereShape3D_nw843")
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer"]
+custom_minimum_size = Vector2i(96, 96)
+layout_mode = 2
+offset_right = 96.0
+offset_bottom = 96.0
+size_flags_horizontal = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PlayerUI/CoinsContainer/SubViewportContainer"]
+own_world_3d = true
+transparent_bg = true
+handle_input_locally = false
+gui_disable_input = true
+size = Vector2i(96, 96)
+render_target_update_mode = 4
+
+[node name="Coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport" instance=ExtResource("8_6qxxt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
+
+[node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
+transform = Transform3D(0.999671, 0, -0.0256736, 0, 1, 0, 0.0256736, 0, 0.999671, 0, 0, 0)
+y_amplitude = 0.0
+
+[node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
+current = true
+fov = 18.238
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
+light_energy = 0.5
+
+[node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer"]
+layout_mode = 2
+offset_left = 143.0
+offset_top = 2.0
+offset_right = 256.0
+offset_bottom = 93.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+text = "0"
+
+[node name="Timer" type="Timer" parent="PlayerUI/CoinsContainer"]
+wait_time = 3.0
+one_shot = true
+
+[editable path="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin"]
