@@ -1,6 +1,6 @@
 extends Node3D
 
-const EXPLOSION_SCENE := preload("res://explosion/explosion_scene.tscn")
+const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.tscn")
 
 
 @export var throw_curve: Curve

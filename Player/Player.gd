@@ -2,7 +2,7 @@ class_name Player
 extends CharacterBody3D
 
 const PROJECTILE_SCENE = preload("res://Player/Projectile.tscn")
-const COIN_SCENE = preload("res://Collectible.tscn")
+const COIN_SCENE = preload("res://Coin/Coin.tscn")
 
 enum WEAPON_TYPE { DEFAULT, GRENADE }
 

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqqm2bixse18o"]
+
+[ext_resource type="Script" path="res://JumpingPad/JumpingPad.gd" id="1_w7mtj"]
+[ext_resource type="PackedScene" path="res://JumpingPad/JumpingPadVisuals/jump_pad.tscn" id="2_otx0r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dspj3"]
+size = Vector3(1, 0.2158, 1)
+
+[node name="JumpingPad" type="Area3D"]
+script = ExtResource("1_w7mtj")
+
+[node name="jump_pad" parent="." instance=ExtResource("2_otx0r")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_dspj3")

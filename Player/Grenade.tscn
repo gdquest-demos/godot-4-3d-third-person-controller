@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://bq562nfq7puh"]
 
 [ext_resource type="Script" path="res://Player/Grenade.gd" id="1_ak024"]
 [ext_resource type="PackedScene" path="res://Player/grenade_helper/grenade/grenade.tscn" id="2_krc3u"]
@@ -11,7 +11,7 @@ point_count = 3
 radius = 0.1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pr1dk"]
-radius = 1.0
+radius = 1.5
 
 [node name="Grenade" type="Node3D"]
 script = ExtResource("1_ak024")

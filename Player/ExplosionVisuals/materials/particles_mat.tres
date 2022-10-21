@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ben1qjmc14yjq"]
+
+[ext_resource type="Shader" path="res://Player/ExplosionVisuals/shaders/explosion_trails_shader.gdshader" id="1_ucjx1"]
+
+[sub_resource type="Gradient" id="Gradient_xshra"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0650685, 0.955479)
+colors = PackedColorArray(1, 0.206279, 0, 1, 1, 0.82076, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qwenf"]
+gradient = SubResource("Gradient_xshra")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bqu60"]
+noise_type = 2
+frequency = 0.006
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gkx5e"]
+seamless = true
+noise = SubResource("FastNoiseLite_bqu60")
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_ucjx1")
+shader_parameter/gradient_1D = SubResource("GradientTexture1D_qwenf")
+shader_parameter/noise_sampler = SubResource("NoiseTexture2D_gkx5e")

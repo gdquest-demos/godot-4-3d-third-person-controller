@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const COLLECTIBLE_SCENE := preload("res://Collectible.tscn")
+const COIN_SCENE := preload("res://Coin/Coin.tscn")
 const PROJECTILE_SCENE := preload("res://Player/Projectile.tscn")
 
 @export var shoot_timer := 1.5
@@ -52,7 +52,7 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_alive = false
 	
 	for i in range(collectibles_count):
-		var collectible := COLLECTIBLE_SCENE.instantiate()
+		var collectible := COIN_SCENE.instantiate()
 		get_parent().add_child(collectible)
 		collectible.global_position = global_position
 		collectible.spawn()

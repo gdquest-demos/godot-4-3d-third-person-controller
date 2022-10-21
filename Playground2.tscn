@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dfsryhp6fg7q"]
+[gd_scene load_steps=13 format=3 uid="uid://bo0s68ux23y2a"]
 
 [ext_resource type="Texture2D" uid="uid://boexk81is8yhq" path="res://gridbox_texture.png" id="1_dxgkr"]
-[ext_resource type="PackedScene" uid="uid://cidd8fo8cymoo" path="res://Player/Player.tscn" id="1_stlen"]
-[ext_resource type="PackedScene" uid="uid://bd0q5g5doip5p" path="res://JumpingPad.tscn" id="3_yenfk"]
+[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="1_stlen"]
+[ext_resource type="PackedScene" uid="uid://cqqm2bixse18o" path="res://JumpingPad/JumpingPad.tscn" id="3_yenfk"]
 [ext_resource type="PackedScene" uid="uid://bltyl6qdnk7dk" path="res://Enemies/FlyingEnemy.tscn" id="4_lcfq6"]
 [ext_resource type="PackedScene" uid="uid://cwbc4mr48xp7s" path="res://Enemies/GroundEnemy.tscn" id="5_4pnku"]
-[ext_resource type="PackedScene" uid="uid://dxriqehjyv07s" path="res://Box.tscn" id="5_yk44g"]
+[ext_resource type="PackedScene" path="res://Box/Box.tscn" id="5_yk44g"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v8uq4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
