@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://bba2cietrh6el"]
+
+[ext_resource type="Script" path="res://icones/weapon_ui.gd" id="1_vteie"]
+[ext_resource type="PackedScene" uid="uid://cf7c3gpsngl4a" path="res://icones/icone.tscn" id="2_etwmu"]
+[ext_resource type="Texture2D" uid="uid://cj4npx16cmso7" path="res://icones/bomb_icon.png" id="2_s3oom"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmqom"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="weapon_switch_ui" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -34.0
+offset_right = 80.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_kmqom")
+script = ExtResource("1_vteie")
+
+[node name="Control" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 160.0
+offset_bottom = 68.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 2
+offset_right = 80.0
+offset_bottom = 68.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 2
+
+[node name="Flash" parent="Control/MarginContainer" instance=ExtResource("2_etwmu")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control"]
+layout_mode = 2
+offset_left = 80.0
+offset_right = 160.0
+offset_bottom = 68.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 2
+
+[node name="Grenade" parent="Control/MarginContainer2" instance=ExtResource("2_etwmu")]
+layout_mode = 2
+texture = ExtResource("2_s3oom")

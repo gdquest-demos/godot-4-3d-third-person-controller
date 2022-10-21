@@ -36,13 +36,14 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _start_position := global_transform.origin
 @onready var _coins := 0
 
+signal weapon_switched(weapon_name: String)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
 	_grenade_aim_controller.set_active(false)
 	_collectible_magnet_area.body_entered.connect(_on_collectible_body_entered)
-
+	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
 
 func _physics_process(delta: float) -> void:
 	# Calculate ground height for camera controller
@@ -58,7 +59,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("swap_weapons"):
 		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE
 		_grenade_aim_controller.set_active(_equipped_weapon == WEAPON_TYPE.GRENADE)
-
+		emit_signal("weapon_switched", WEAPON_TYPE.keys()[_equipped_weapon])
+		
 	# Get input and movement state
 	var is_just_attacking := Input.is_action_just_pressed("attack") and not _attack_animation_player.is_playing()
 	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
