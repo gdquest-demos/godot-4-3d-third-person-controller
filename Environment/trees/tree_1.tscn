@@ -1,10 +1,28 @@
-[gd_scene load_steps=4 format=3 uid="uid://48xlluucrwbp"]
+[gd_scene load_steps=10 format=3 uid="uid://48xlluucrwbp"]
 
 [ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://Environment/trees/tree_1_geo.obj" id="1_1cwwe"]
-[ext_resource type="Material" uid="uid://dow0sucy0ypv3" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves.tres" id="2_myn1u"]
+[ext_resource type="Shader" path="res://Environment/bushes/bush_wind.gdshader" id="2_7fdjv"]
+[ext_resource type="Texture2D" uid="uid://bkohv1qjq5s83" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves_albedo.png" id="3_81cnu"]
 [ext_resource type="Material" path="res://Environment/trees/simple_bark/simple_bark.tres" id="3_ptm8d"]
+[ext_resource type="Texture2D" uid="uid://ctt3orpnvqw7" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves_normal.png" id="4_ntsjs"]
+[ext_resource type="Texture2D" uid="uid://b3j82svml7tsy" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves_orm.png" id="5_ewwuc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_sn0gq"]
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p7o41"]
+seamless = true
+noise = SubResource("FastNoiseLite_sn0gq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ry36w"]
+render_priority = 0
+shader = ExtResource("2_7fdjv")
+shader_parameter/albedo_sampler = ExtResource("3_81cnu")
+shader_parameter/normal_sampler = ExtResource("4_ntsjs")
+shader_parameter/orm_sampler = ExtResource("5_ewwuc")
+shader_parameter/wind_noise_sampler = SubResource("NoiseTexture2D_p7o41")
 
 [node name="Tree1Geo" type="MeshInstance3D"]
 mesh = ExtResource("1_1cwwe")
-surface_material_override/0 = ExtResource("2_myn1u")
+surface_material_override/0 = SubResource("ShaderMaterial_ry36w")
 surface_material_override/1 = ExtResource("3_ptm8d")

@@ -1,5 +1,5 @@
 shader_type spatial;
-
+render_mode cull_disabled;
 uniform sampler2D wind_noise_sampler;
 
 uniform sampler2D albedo_sampler : source_color;
@@ -7,7 +7,7 @@ uniform sampler2D orm_sampler;
 uniform sampler2D normal_sampler;
 
 void vertex() {
-	float wind_value = texture(wind_noise_sampler, (UV.y  ) + NODE_POSITION_WORLD.xz + vec2(0.0, (TIME * 0.2))).x;
+	float wind_value = texture(wind_noise_sampler, (UV.y) + VERTEX.y + NODE_POSITION_WORLD.xz + vec2(0.0, (TIME * 0.2))).x;
 	VERTEX.xz += (wind_value) * 0.05 * UV.y;
 }
 
