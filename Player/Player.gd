@@ -7,7 +7,7 @@ const COIN_SCENE = preload("res://Collectible.tscn")
 enum WEAPON_TYPE { DEFAULT, GRENADE }
 
 @export var move_speed := 8.0
-@export var projectile_speed := 50
+@export var projectile_speed := 8
 @export var attack_impulse := 10
 @export var acceleration := 4.0
 @export var jump_initial_impulse := 12.0
@@ -149,6 +149,7 @@ func shoot() -> void:
 	var aim_target = _camera_controller.get_aim_target()
 	var aim_direction = (aim_target - origin).normalized()
 	projectile.velocity = aim_direction * projectile_speed
+	projectile.distance_limit = 10.0
 	get_parent().add_child(projectile)
 	projectile.global_position = origin
 

@@ -4,7 +4,7 @@ const COLLECTIBLE_SCENE := preload("res://Collectible.tscn")
 const PROJECTILE_SCENE := preload("res://Player/Projectile.tscn")
 
 @export var shoot_timer := 1.5
-@export var projectile_speed := 6.0 
+@export var projectile_speed := 6.0
 @export var collectibles_count := 5
 
 @onready var _reaction_animation_player: AnimationPlayer = $ReactionLabel/AnimationPlayer
@@ -37,6 +37,7 @@ func _physics_process(delta: float) -> void:
 			var target := _target.global_position + Vector3.UP
 			var aim_direction := (target - global_position).normalized()
 			projectile.velocity = aim_direction * projectile_speed
+			projectile.distance_limit = 14.0
 			get_parent().add_child(projectile)
 			projectile.global_position = origin
 

@@ -1,22 +1,30 @@
 extends Node3D
 
-const ALIVE_LIMIT = 5
+@export var scale_decay: Curve
+@export var distance_limit: float = 5.0
 
 var velocity: Vector3 = Vector3.ZERO
 var shooter: Node = null
 
 @onready var _area: Area3D = $Area3d
 @onready var _time_alive := 0.0
+@onready var _alive_limit := 0.0
+@onready var _bullet_visuals: Node3D = $Bullet
 
 
 func _ready() -> void:
 	_area.body_entered.connect(Callable(self, "_on_body_entered"))
+	look_at(global_position + velocity)
+	_alive_limit = distance_limit / velocity.length()
 
 
 func _process(delta: float) -> void:
 	global_position += velocity * delta
 	_time_alive += delta
-	if _time_alive > ALIVE_LIMIT:
+	
+	_bullet_visuals.scale = Vector3.ONE * scale_decay.sample(_time_alive/_alive_limit)
+	
+	if _time_alive > _alive_limit:
 		queue_free()
 
 
