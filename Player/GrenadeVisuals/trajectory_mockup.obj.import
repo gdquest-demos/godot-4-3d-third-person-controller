@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://laarq7txjf7v"
+path="res://.godot/imported/trajectory_mockup.obj-3fc2c5c3d7b205e9d7fcc7c160ff5735.mesh"
+
+[deps]
+
+files=["res://.godot/imported/trajectory_mockup.obj-3fc2c5c3d7b205e9d7fcc7c160ff5735.mesh"]
+
+source_file="res://Player/GrenadeVisuals/trajectory_mockup.obj"
+dest_files=["res://.godot/imported/trajectory_mockup.obj-3fc2c5c3d7b205e9d7fcc7c160ff5735.mesh", "res://.godot/imported/trajectory_mockup.obj-3fc2c5c3d7b205e9d7fcc7c160ff5735.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

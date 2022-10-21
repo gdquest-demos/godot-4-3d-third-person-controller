@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8uv1u3dqfsex"]
+
+[ext_resource type="ArrayMesh" uid="uid://laarq7txjf7v" path="res://Player/GrenadeVisuals/trajectory_mockup.obj" id="1_aj1ww"]
+[ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Player/GrenadeVisuals/trajectory_material.tres" id="2_rs318"]
+
+[node name="TrajectoryMockup" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2, 0, 0, 0)
+mesh = ExtResource("1_aj1ww")
+surface_material_override/0 = ExtResource("2_rs318")

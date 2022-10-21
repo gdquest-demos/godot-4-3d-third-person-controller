@@ -1,11 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://dt8lgov6b0sjx"]
+[gd_scene load_steps=22 format=3 uid="uid://dt8lgov6b0sjx"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
 [ext_resource type="Script" path="res://Player/MeleeAttackArea.gd" id="3_v1vve"]
 [ext_resource type="Script" path="res://Player/AimController.gd" id="4_asavx"]
 [ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
-[ext_resource type="Texture2D" uid="uid://bdfgu6dhltmjh" path="res://icon.svg" id="4_kpm4p"]
+[ext_resource type="Material" uid="uid://dus6jtbfyqwj8" path="res://Player/GrenadeVisuals/aim_material.tres" id="4_qvla4"]
+[ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Player/GrenadeVisuals/trajectory_material.tres" id="5_0gw1q"]
 [ext_resource type="Script" path="res://Player/CoinsContainer.gd" id="7_8eehq"]
 [ext_resource type="PackedScene" path="res://Coin/CoinVisuals/godot_coin_scene.tscn" id="8_6qxxt"]
 
@@ -14,6 +15,15 @@
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_gqx4v"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3ix22"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_we0uy"]
+
+[sub_resource type="Curve3D" id="Curve3D_srweg"]
+_data = {
+"points": PackedVector3Array(0.316841, -1.62104, -1.24855, 0, 1.621, 1.249, 0, 1, 0, 0, 2.789, -2.597, -0.11895, -2.78934, 2.59695, 0, 0, 10),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s5n07"]
 
@@ -149,11 +159,29 @@ debug_shape_custom_color = Color(0, 0, 0, 0)
 top_level = true
 script = ExtResource("4_asavx")
 
-[node name="AimSprite" type="Sprite3D" parent="GrenadeAimController"]
-modulate = Color(1, 1, 1, 0.364706)
-pixel_size = 0.02
-axis = 1
-texture = ExtResource("4_kpm4p")
+[node name="AimSprite" type="MeshInstance3D" parent="GrenadeAimController"]
+material_override = ExtResource("4_qvla4")
+mesh = SubResource("PlaneMesh_we0uy")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="GrenadeAimController"]
+visible = false
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.2, 0.05, 0.2, 0)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 1
+path_interval = 0.2
+path_simplify_angle = 1.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 50.0
+path_joined = false
+material = ExtResource("5_0gw1q")
+
+[node name="Path3D" type="Path3D" parent="GrenadeAimController"]
+top_level = true
+visible = false
+curve = SubResource("Curve3D_srweg")
 
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
@@ -257,7 +285,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(0.244244, 0, 0.969715, 0, 1, 0, -0.969715, 0, 0.244244, 0, 0, 0)
+transform = Transform3D(0.902886, 0, -0.429884, 0, 1, 0, 0.429884, 0, 0.902886, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]

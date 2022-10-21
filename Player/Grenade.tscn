@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq562nfq7puh"]
+[gd_scene load_steps=7 format=3 uid="uid://bq562nfq7puh"]
 
 [ext_resource type="Script" path="res://Player/Grenade.gd" id="1_ak024"]
-[ext_resource type="PackedScene" path="res://Player/grenade_helper/grenade/grenade.tscn" id="2_krc3u"]
+[ext_resource type="PackedScene" path="res://Player/GrenadeVisuals/grenade/grenade.tscn" id="2_6f7t1"]
+[ext_resource type="Script" path="res://Player/GrenadeVisuals/grenade/grenade.gd" id="3_lcl5j"]
 
 [sub_resource type="Curve" id="Curve_3df2q"]
 _data = [Vector2(0, 0), 0.0, 2.0, 0, 0, Vector2(0.5, 0.527273), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
@@ -27,4 +28,5 @@ shape = SubResource("SphereShape3D_yx73u")
 [node name="CollisionShape3d" type="CollisionShape3D" parent="ExplosionArea"]
 shape = SubResource("SphereShape3D_pr1dk")
 
-[node name="grenade" parent="." instance=ExtResource("2_krc3u")]
+[node name="grenade" parent="." instance=ExtResource("2_6f7t1")]
+script = ExtResource("3_lcl5j")

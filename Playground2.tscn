@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://bo0s68ux23y2a"]
 
 [ext_resource type="Texture2D" uid="uid://boexk81is8yhq" path="res://gridbox_texture.png" id="1_dxgkr"]
-[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="1_stlen"]
+[ext_resource type="PackedScene" uid="uid://dt8lgov6b0sjx" path="res://Player/Player.tscn" id="1_stlen"]
 [ext_resource type="PackedScene" uid="uid://cqqm2bixse18o" path="res://JumpingPad/JumpingPad.tscn" id="3_yenfk"]
 [ext_resource type="PackedScene" uid="uid://bltyl6qdnk7dk" path="res://Enemies/FlyingEnemy.tscn" id="4_lcfq6"]
 [ext_resource type="PackedScene" uid="uid://cwbc4mr48xp7s" path="res://Enemies/GroundEnemy.tscn" id="5_4pnku"]

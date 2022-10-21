@@ -8,7 +8,9 @@ const ENEMY_AIM_COLOR = Color(1, 0, 0, 0.5)
 @export var min_throw_radius := 1.0
 @export var max_throw_radius := 20.0
 
-@onready var _aim_sprite: Sprite3D = $AimSprite
+@onready var _aim_sprite: MeshInstance3D = $AimSprite
+@onready var _grenade_path: Path3D = $Path3D
+@onready var _csg_polygon: CSGPolygon3D = $CSGPolygon3D
 
 
 func _physics_process(delta: float) -> void:
@@ -35,18 +37,20 @@ func throw_grenade(origin: Vector3, player: Node3D) -> bool:
 func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_basis: Basis, collider: Object) -> void:
 	if collider == null:
 		_aim_sprite.hide()
+#		_csg_polygon.hide()
 		return
 
 	_aim_sprite.show()
+#	_csg_polygon.show()
 	
 	var trans = transform
 	
 	if collider is Node and collider.is_in_group("targeteables"):
-		_aim_sprite.modulate = ENEMY_AIM_COLOR
+#		_aim_sprite.modulate = ENEMY_AIM_COLOR
 		normal = (origin - collider.global_position).normalized()
 		trans.origin = collider.global_position + normal
 	else:
-		_aim_sprite.modulate = SURFACE_AIM_COLOR
+#		_aim_sprite.modulate = SURFACE_AIM_COLOR
 		var xz_distance := Vector3(target.x, 0.0, target.z)
 		xz_distance -= Vector3(origin.x, 0.0, origin.z)
 		var max_radius := xz_distance.normalized() * max_throw_radius
@@ -65,3 +69,11 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	trans.basis.z = trans.basis.y.cross(trans.basis.x).normalized()
 	trans.basis = trans.basis.orthonormalized()
 	transform = trans
+	
+	#wip
+#	_grenade_path.global_position = origin
+#	_grenade_path.look_at(trans.origin)
+#	var path_end_point: Vector3 = _grenade_path.transform.inverse() * trans.origin
+#	print(path_end_point)
+#	_grenade_path.curve.set_point_position(1, -path_end_point)
+

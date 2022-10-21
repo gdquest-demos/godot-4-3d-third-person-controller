@@ -98,7 +98,8 @@ func _physics_process(delta: float) -> void:
 	var camera_basis := _camera_controller.get_camera_basis()
 	var aim_collider := _camera_controller.get_aim_collider()
 	
-	_grenade_aim_controller.set_aim_position(origin, aim_target, aim_normal, camera_basis, aim_collider)
+	if _equipped_weapon == WEAPON_TYPE.GRENADE:
+		_grenade_aim_controller.set_aim_position(origin, aim_target, aim_normal, camera_basis, aim_collider)
 	
 	# Update attack state and position
 	if is_just_attacking:
