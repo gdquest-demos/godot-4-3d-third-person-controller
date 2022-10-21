@@ -1,39 +1,28 @@
-extends Node3D
+extends Path3D
 
 const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.tscn")
 
-
-@export var throw_curve: Curve
-@export var throw_additional_height := 2.0
 @export var throw_speed := 20.0
 
-@onready var _collision_area: Area3D = $CollisionDetectionArea
-@onready var _explosion_area: Area3D = $ExplosionArea
-
-@onready var _initial_position := Vector3.ZERO
-@onready var _target_position := Vector3.ZERO
-@onready var _max_height := 0.0
+@onready var _path_follow: PathFollow3D = $PathFollow3D
+@onready var _collision_area: Area3D = $PathFollow3D/CollisionDetectionArea
+@onready var _explosion_area: Area3D = $PathFollow3D/ExplosionArea
 @onready var _player: Node3D = null
 
 
-func _ready() -> void:
-	_collision_area.body_entered.connect(_on_collision_body_entered)
+func _physics_process(delta: float) -> void:
+	_path_follow.progress += throw_speed * delta
+	if _path_follow.progress_ratio >= 1.0:
+		_explode()
 
 
-func throw(target_position: Vector3, player: Node3D) -> void:
-	_max_height = max(target_position.y, global_position.y) + throw_additional_height
-	_initial_position = global_position
-	_target_position = target_position
+func throw(grenade_curve: Curve3D, player: Node3D) -> void:
+	curve = grenade_curve
 	_player = player
 	
-	var xz_direction := _target_position - _initial_position
-	xz_direction.y = 0.0
-	var xz_distance = xz_direction.length()
-	var throw_duration: float = max(xz_distance/throw_speed, 1.0)
-	
-	var tween := create_tween()
-	tween.tween_method(_interpolate_position, 0.0, 1.0, throw_duration)
-	tween.tween_callback(_explode)
+	# wait a frame to update body position
+	await get_tree().physics_frame
+	_collision_area.body_entered.connect(_on_collision_body_entered)
 
 
 func _on_collision_body_entered(body) -> void:
@@ -53,11 +42,5 @@ func _explode() -> void:
 	
 	var explosion: Node3D = EXPLOSION_SCENE.instantiate()
 	get_parent().add_child(explosion)
-	explosion.global_position = global_position
+	explosion.global_position = _path_follow.global_position
 	queue_free()
-
-
-func _interpolate_position(offset: float) -> void:
-	var additional_height := throw_curve.sample(offset) * throw_additional_height
-	global_position = lerp(_initial_position, _target_position, offset)
-	global_position.y += additional_height

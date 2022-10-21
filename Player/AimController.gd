@@ -10,7 +10,7 @@ const ENEMY_AIM_COLOR = Color(1, 0, 0, 0.5)
 
 @onready var _aim_sprite: MeshInstance3D = $AimSprite
 @onready var _grenade_path: Path3D = $Path3D
-@onready var _csg_polygon: CSGPolygon3D = $CSGPolygon3D
+@onready var _csg_polygon: CSGPolygon3D = $Path3D/CSGPolygon3D
 
 
 func _physics_process(delta: float) -> void:
@@ -28,8 +28,9 @@ func throw_grenade(origin: Vector3, player: Node3D) -> bool:
 	
 	var grenade = GRENADE_SCENE.instantiate()
 	get_parent().add_child(grenade)
-	grenade.global_position = origin
-	grenade.throw(global_position, player)
+	grenade.transform = _grenade_path.transform
+#	grenade.position += _grenade_path.curve.get_point_position(0)
+	grenade.throw(_grenade_path.curve.duplicate(), player)
 	
 	return true
 
@@ -37,11 +38,11 @@ func throw_grenade(origin: Vector3, player: Node3D) -> bool:
 func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_basis: Basis, collider: Object) -> void:
 	if collider == null:
 		_aim_sprite.hide()
-#		_csg_polygon.hide()
+		_csg_polygon.hide()
 		return
 
 	_aim_sprite.show()
-#	_csg_polygon.show()
+	_csg_polygon.show()
 	
 	var trans = transform
 	
@@ -70,10 +71,8 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	trans.basis = trans.basis.orthonormalized()
 	transform = trans
 	
-	#wip
-#	_grenade_path.global_position = origin
-#	_grenade_path.look_at(trans.origin)
-#	var path_end_point: Vector3 = _grenade_path.transform.inverse() * trans.origin
-#	print(path_end_point)
-#	_grenade_path.curve.set_point_position(1, -path_end_point)
+	_grenade_path.global_position = origin
+	_grenade_path.look_at(trans.origin)
+	var path_end_point: Vector3 = _grenade_path.transform.inverse() * trans.origin
+	_grenade_path.curve.set_point_position(1, path_end_point)
 

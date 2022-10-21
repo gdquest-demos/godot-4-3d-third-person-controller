@@ -1,12 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq562nfq7puh"]
+[gd_scene load_steps=6 format=3 uid="uid://bq562nfq7puh"]
 
 [ext_resource type="Script" path="res://Player/Grenade.gd" id="1_ak024"]
 [ext_resource type="PackedScene" path="res://Player/GrenadeVisuals/grenade/grenade.tscn" id="2_6f7t1"]
-[ext_resource type="Script" path="res://Player/GrenadeVisuals/grenade/grenade.gd" id="3_lcl5j"]
 
-[sub_resource type="Curve" id="Curve_3df2q"]
-_data = [Vector2(0, 0), 0.0, 2.0, 0, 0, Vector2(0.5, 0.527273), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Curve3D" id="Curve3D_i73u4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yx73u"]
 radius = 0.1
@@ -14,19 +11,23 @@ radius = 0.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_pr1dk"]
 radius = 1.5
 
-[node name="Grenade" type="Node3D"]
+[node name="Grenade" type="Path3D"]
+top_level = true
+curve = SubResource("Curve3D_i73u4")
 script = ExtResource("1_ak024")
-throw_curve = SubResource("Curve_3df2q")
 
-[node name="CollisionDetectionArea" type="Area3D" parent="."]
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+cubic_interp = false
+loop = false
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="CollisionDetectionArea"]
+[node name="CollisionDetectionArea" type="Area3D" parent="PathFollow3D"]
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="PathFollow3D/CollisionDetectionArea"]
 shape = SubResource("SphereShape3D_yx73u")
 
-[node name="ExplosionArea" type="Area3D" parent="."]
+[node name="ExplosionArea" type="Area3D" parent="PathFollow3D"]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="ExplosionArea"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="PathFollow3D/ExplosionArea"]
 shape = SubResource("SphereShape3D_pr1dk")
 
-[node name="grenade" parent="." instance=ExtResource("2_6f7t1")]
-script = ExtResource("3_lcl5j")
+[node name="grenade" parent="PathFollow3D" instance=ExtResource("2_6f7t1")]
