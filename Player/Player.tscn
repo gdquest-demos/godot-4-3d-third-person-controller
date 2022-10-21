@@ -20,7 +20,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_srweg"]
 _data = {
-"points": PackedVector3Array(0.823633, -1.88017, -1.36716, 0, 1.88, 1.367, 0, 1, 0, 0, 2.313, -1.277, 0.312001, -2.31314, 1.27659, 0, 0, 3),
+"points": PackedVector3Array(-0.157908, -2.12082, -0.578894, 0, 2.121, 0.579, 0, 1, 0, 0, 1.627, -0.773, 0.309031, -1.627, 0.773314, 0, 0, 3),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -280,7 +280,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(0.801498, 0, -0.598, 0, 1, 0, 0.598, 0, 0.801498, 0, 0, 0)
+transform = Transform3D(-0.659867, 0, -0.751385, 0, 1, 0, 0.751385, 0, -0.659867, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]

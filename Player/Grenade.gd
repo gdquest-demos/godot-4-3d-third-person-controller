@@ -9,9 +9,10 @@ const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.
 @onready var _explosion_area: Area3D = $PathFollow3D/ExplosionArea
 @onready var _player: Node3D = null
 
-
 func _physics_process(delta: float) -> void:
-	_path_follow.progress += throw_speed * delta
+	var frame_distance := throw_speed * delta
+	_path_follow.progress += frame_distance
+	
 	if _path_follow.progress_ratio >= 1.0:
 		_explode()
 
