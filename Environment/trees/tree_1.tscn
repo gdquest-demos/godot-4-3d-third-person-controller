@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://48xlluucrwbp"]
+[gd_scene load_steps=11 format=3 uid="uid://48xlluucrwbp"]
 
 [ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://Environment/trees/tree_1_geo.obj" id="1_1cwwe"]
 [ext_resource type="Shader" path="res://Environment/bushes/bush_wind.gdshader" id="2_7fdjv"]
@@ -22,7 +22,18 @@ shader_parameter/normal_sampler = ExtResource("4_ntsjs")
 shader_parameter/orm_sampler = ExtResource("5_ewwuc")
 shader_parameter/wind_noise_sampler = SubResource("NoiseTexture2D_p7o41")
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q8r3i"]
+height = 2.96072
+
 [node name="Tree1Geo" type="MeshInstance3D"]
 mesh = ExtResource("1_1cwwe")
 surface_material_override/0 = SubResource("ShaderMaterial_ry36w")
 surface_material_override/1 = ExtResource("3_ptm8d")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4509, 0)
+shape = SubResource("CylinderShape3D_q8r3i")
