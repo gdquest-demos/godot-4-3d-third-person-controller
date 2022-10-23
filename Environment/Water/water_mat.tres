@@ -4,9 +4,8 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c8gxf"]
 noise_type = 2
-frequency = 0.15
-fractal_type = 0
-fractal_octaves = 1
+frequency = 0.04
+fractal_octaves = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x7vdp"]
 seamless = true
