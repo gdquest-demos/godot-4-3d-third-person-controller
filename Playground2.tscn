@@ -116,15 +116,12 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_stlen")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.298, 0.5, -13.017)
-visible = false
 
 [node name="JumpingPad" parent="." instance=ExtResource("3_yenfk")]
 transform = Transform3D(0.893364, 0, 0.449335, 0, 1, 0, -0.449335, 0, 0.893364, -35.1316, 6.60685, 19.929)
-visible = false
 
 [node name="JumpingPad2" parent="." instance=ExtResource("3_yenfk")]
 transform = Transform3D(0.893364, 0, 0.449335, 0, 1, 0, -0.449335, 0, 0.893364, -44.5883, 13.3676, 9.57254)
-visible = false
 
 [node name="JumpingPad3" parent="." instance=ExtResource("3_yenfk")]
 transform = Transform3D(0.945246, 0, 0.32636, 0, 1, 0, -0.32636, 0, 0.945246, -26.6999, 6.583, -6.43057)
