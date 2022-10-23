@@ -14,8 +14,8 @@ void fragment() {
 	float mask = texture(grass_mask_sampler, UV).x;
 	vec3 gradient_color = texture(gradient, vec2(UV.y, UV.x)).rgb;
 	ALBEDO = gradient_color;
-	ALPHA = mask;
-	ALPHA_SCISSOR_THRESHOLD = 0.5;
+	// ALPHA = mask;
+	// ALPHA_SCISSOR_THRESHOLD = 0.5;
 	NORMAL = NORMAL * (float(FRONT_FACING) * 2.0 - 1.0);
 }
  
