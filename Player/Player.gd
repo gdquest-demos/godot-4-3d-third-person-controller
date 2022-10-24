@@ -13,6 +13,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var jump_initial_impulse := 12.0
 @export var jump_additional_force := 4.5
 @export var rotation_speed := 12.0
+@export var stopping_speed := 0.5
 @export var walk_anim_threshold := 0.5
 @export var max_throwback_force := 15.0
 
@@ -80,6 +81,8 @@ func _physics_process(delta: float) -> void:
 	var y_velocity = velocity.y
 	velocity.y = 0.0
 	velocity = velocity.lerp(_move_direction * move_speed, acceleration * delta)
+	if _move_direction.length() == 0 and velocity.length() < stopping_speed:
+		velocity = Vector3.ZERO
 	velocity.y = y_velocity
 
 	# Set aiming camera and UI
