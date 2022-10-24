@@ -13,7 +13,6 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var jump_initial_impulse := 12.0
 @export var jump_additional_force := 4.5
 @export var rotation_speed := 12.0
-@export var snap_length := 0.5
 @export var walk_anim_threshold := 0.5
 @export var max_throwback_force := 15.0
 
@@ -30,7 +29,6 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _equipped_weapon: WEAPON_TYPE = WEAPON_TYPE.DEFAULT
 @onready var _move_direction := Vector3.ZERO
 @onready var _last_strong_direction := Vector3.FORWARD
-@onready var _snap := Vector3.DOWN * snap_length
 @onready var _gravity: float = -30.0
 @onready var _ground_height: float = 0.0
 @onready var _start_position := global_transform.origin
@@ -66,7 +64,6 @@ func _physics_process(delta: float) -> void:
 	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
 	var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
 	var is_air_boosting := Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
-	var is_landing := _snap == Vector3.ZERO and is_on_floor()
 
 	_move_direction = _get_camera_oriented_input()
 
@@ -118,11 +115,8 @@ func _physics_process(delta: float) -> void:
 
 	if is_just_jumping:
 		velocity.y += jump_initial_impulse
-		_snap = Vector3.ZERO
 	elif is_air_boosting:
 		velocity.y += jump_additional_force * delta
-	elif is_landing:
-		_snap = Vector3.DOWN * snap_length
 	
 	# Set character animation
 	if is_just_jumping:
@@ -137,7 +131,16 @@ func _physics_process(delta: float) -> void:
 		else:
 			_character_skin.set_moving(false)
 	
+	var position_before := global_position
 	move_and_slide()
+	var position_after := global_position
+	
+	# If velocity is not 0 but the difference of positions after move_and_slide is,
+	# character might be stuck somewhere!
+	var delta_position := position_after - position_before
+	var epsilon := 0.001
+	if delta_position.length() < epsilon and velocity.length() > epsilon:
+		global_position += (get_wall_normal() + get_floor_normal()).normalized() * 0.1
 
 
 func attack() -> void:
