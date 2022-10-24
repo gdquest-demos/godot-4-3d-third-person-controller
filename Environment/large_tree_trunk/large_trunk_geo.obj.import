@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bc18k45jn4wcx"
+path="res://.godot/imported/large_trunk_geo.obj-54418bbf744b091b307607225cb0fbef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/large_trunk_geo.obj-54418bbf744b091b307607225cb0fbef.mesh"]
+
+source_file="res://Environment/large_tree_trunk/large_trunk_geo.obj"
+dest_files=["res://.godot/imported/large_trunk_geo.obj-54418bbf744b091b307607225cb0fbef.mesh", "res://.godot/imported/large_trunk_geo.obj-54418bbf744b091b307607225cb0fbef.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

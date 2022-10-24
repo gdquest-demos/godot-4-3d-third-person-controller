@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://con3572kpt8a3"]
+
+[ext_resource type="Shader" path="res://Environment/large_tree_trunk/large_tree_trunk.gdshader" id="1_o0y6w"]
+[ext_resource type="Texture2D" uid="uid://vqumgy47y65a" path="res://Environment/trees/simple_bark/simple_bark_albedo.png" id="2_sfrcg"]
+[ext_resource type="Texture2D" uid="uid://biuslycmdg0lp" path="res://Environment/trees/simple_bark/simple_bark_mask.png" id="3_6u3pj"]
+[ext_resource type="Texture2D" uid="uid://0t565g631mks" path="res://Environment/trees/simple_bark/simple_bark_normal.png" id="4_8hhar"]
+[ext_resource type="Texture2D" uid="uid://cn7jeol1kvocq" path="res://Environment/large_tree_trunk/moss/moss_albedo.png" id="4_e24kr"]
+[ext_resource type="Texture2D" uid="uid://dgpwvrgx1i8um" path="res://Environment/large_tree_trunk/trunk_top/trunk_top_albedo.png" id="5_64a6g"]
+[ext_resource type="Texture2D" uid="uid://4rh8np1t3ks5" path="res://Environment/trees/simple_bark/simple_bark_orm.png" id="5_ns2xq"]
+[ext_resource type="Texture2D" uid="uid://dubwk207cispr" path="res://Environment/large_tree_trunk/moss/moss_normal.png" id="7_kiitn"]
+[ext_resource type="Texture2D" uid="uid://cra3ujt6hgoq8" path="res://Environment/large_tree_trunk/moss/moss_orm.png" id="8_2t2t1"]
+[ext_resource type="Texture2D" uid="uid://cwf2n313rmv35" path="res://Environment/large_tree_trunk/trunk_top/trunk_top_normal.png" id="10_kw1y3"]
+[ext_resource type="Texture2D" uid="uid://dt6dvupgfyhdw" path="res://Environment/large_tree_trunk/trunk_top/trunk_top_orm.png" id="11_8fvah"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_o0y6w")
+shader_parameter/bark_albedo_sampler = ExtResource("2_sfrcg")
+shader_parameter/bark_mask_sampler = ExtResource("3_6u3pj")
+shader_parameter/bark_normal_sampler = ExtResource("4_8hhar")
+shader_parameter/bark_orm_sampler = ExtResource("5_ns2xq")
+shader_parameter/moss_albedo_sampler = ExtResource("4_e24kr")
+shader_parameter/moss_normal_sampler = ExtResource("7_kiitn")
+shader_parameter/moss_orm_sampler = ExtResource("8_2t2t1")
+shader_parameter/triplanar_offset = null
+shader_parameter/triplanar_scale = Vector3(0.1, 0.1, 0.1)
+shader_parameter/triplanar_sharpness = 0.5
+shader_parameter/trunk_top_albedo_sampler = ExtResource("5_64a6g")
+shader_parameter/trunk_top_normal_sampler = ExtResource("10_kw1y3")
+shader_parameter/trunk_top_orm_sampler = ExtResource("11_8fvah")
