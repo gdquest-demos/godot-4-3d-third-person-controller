@@ -14,7 +14,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://Player/CameraController.gd"
 }, {
-"base": "MeshInstance3D",
+"base": "Node3D",
 "class": &"CharacterSkin",
 "language": &"GDScript",
 "path": "res://Player/CharacterSkin.gd"

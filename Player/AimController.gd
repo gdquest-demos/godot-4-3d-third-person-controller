@@ -36,7 +36,11 @@ func throw_grenade(origin: Vector3, player: Node3D) -> bool:
 
 
 func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_basis: Basis, collider: Object) -> void:
-	if collider == null:
+	var xz_distance := Vector3(target.x, 0.0, target.z)
+	xz_distance -= Vector3(origin.x, 0.0, origin.z)
+	var max_radius := xz_distance.normalized() * max_throw_radius
+	
+	if collider == null or xz_distance.length() > max_radius.length():
 		_aim_sprite.hide()
 		_csg_polygon.hide()
 		return
@@ -47,18 +51,11 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	var trans = transform
 	
 	if collider is Node and collider.is_in_group("targeteables"):
-#		_aim_sprite.modulate = ENEMY_AIM_COLOR
 		normal = (origin - collider.global_position).normalized()
 		trans.origin = collider.global_position + normal
 	else:
-#		_aim_sprite.modulate = SURFACE_AIM_COLOR
-		var xz_distance := Vector3(target.x, 0.0, target.z)
-		xz_distance -= Vector3(origin.x, 0.0, origin.z)
-		var max_radius := xz_distance.normalized() * max_throw_radius
 		var min_radius := xz_distance.normalized() * min_throw_radius
-		if xz_distance.length() > max_radius.length():
-			xz_distance = max_radius
-		elif xz_distance.length() < min_radius.length():
+		if xz_distance.length() < min_radius.length():
 			xz_distance = min_radius
 		
 		var height_vector := (target - origin) * Vector3.UP
