@@ -1,37 +1,33 @@
-extends Path3D
+extends RigidBody3D
 
 const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.tscn")
+# Godot Physics makes the trajectory slightly weaker, so we
+# multiply by TRAJECTORY_CORRECTION to fix that
+const TRAJECTORY_CORRECTION := 1.05
+const EXPLOSION_TIMER := 0.2
 
-@export var throw_speed := 20.0
-
-@onready var _path_follow: PathFollow3D = $PathFollow3D
-@onready var _collision_area: Area3D = $PathFollow3D/CollisionDetectionArea
-@onready var _explosion_area: Area3D = $PathFollow3D/ExplosionArea
+@onready var _collision_area: CollisionShape3D = $CollisionShape3d
+@onready var _explosion_area: Area3D = $ExplosionArea
 @onready var _player: Node3D = null
 
-func _physics_process(delta: float) -> void:
-	var frame_distance := throw_speed * delta
-	_path_follow.progress += frame_distance
-	
-	if _path_follow.progress_ratio >= 1.0:
-		_explode()
 
-
-func throw(grenade_curve: Curve3D, player: Node3D) -> void:
-	curve = grenade_curve
+func throw(throw_velocity: Vector3, player: Node3D) -> void:
+	linear_velocity = throw_velocity * TRAJECTORY_CORRECTION
 	_player = player
 	
-	# wait a frame to update body position
 	await get_tree().physics_frame
-	_collision_area.body_entered.connect(_on_collision_body_entered)
+	body_entered.connect(_on_body_entered)
 
 
-func _on_collision_body_entered(body) -> void:
+func _on_body_entered(body: Node) -> void:
 	if body != _player:
 		_explode()
 
 
 func _explode() -> void:
+	body_entered.disconnect(_explode)
+	await get_tree().create_timer(EXPLOSION_TIMER).timeout
+	
 	var bodies := _explosion_area.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("damageables"):
@@ -43,5 +39,5 @@ func _explode() -> void:
 	
 	var explosion: Node3D = EXPLOSION_SCENE.instantiate()
 	get_parent().add_child(explosion)
-	explosion.global_position = _path_follow.global_position
+	explosion.global_position = global_position
 	queue_free()
