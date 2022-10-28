@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://Enemies/Beetle/eye_mask.png" id="2_gw7xv"]
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_3wkwq")
 shader_parameter/face_texture = ExtResource("2_gw7xv")

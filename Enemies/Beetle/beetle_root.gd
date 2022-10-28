@@ -12,7 +12,7 @@ func _ready():
 	play_idle()
 	
 func play_idle():
-	state_machine.travel("IDLE")
+	cycle_state_machine.travel("IDLE")
 	second_action_timer.start()
 	emit_signal("change_state", "IDLE")
 	
