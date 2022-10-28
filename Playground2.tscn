@@ -1,6 +1,5 @@
-[gd_scene load_steps=26 format=3 uid="uid://bo0s68ux23y2a"]
+[gd_scene load_steps=25 format=3 uid="uid://bo0s68ux23y2a"]
 
-[ext_resource type="PackedScene" uid="uid://nsbf3jhjeck6" path="res://Beetle/beetle_root.tscn" id="1_3m7h4"]
 [ext_resource type="PackedScene" uid="uid://bba2cietrh6el" path="res://icones/weapon_ui.tscn" id="1_lix74"]
 [ext_resource type="PackedScene" uid="uid://dt8lgov6b0sjx" path="res://Player/Player.tscn" id="1_stlen"]
 [ext_resource type="PackedScene" uid="uid://cqqm2bixse18o" path="res://JumpingPad/JumpingPad.tscn" id="3_yenfk"]
@@ -59,9 +58,6 @@ size = Vector2(300, 300)
 size = Vector3(130, 6, 130)
 
 [node name="Playground" type="Node3D"]
-
-[node name="BeetleRoot" parent="." instance=ExtResource("1_3m7h4")]
-transform = Transform3D(-0.917769, 0, -0.397116, 0, 1, 0, 0.397116, 0, -0.917769, 0.849412, 0.549799, -9.61762)
 
 [node name="weapon_switch_ui" parent="." instance=ExtResource("1_lix74")]
 anchors_preset = 2

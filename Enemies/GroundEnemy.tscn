@@ -1,6 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cwbc4mr48xp7s"]
 
 [ext_resource type="Script" path="res://Enemies/GroundEnemy.gd" id="1_mefon"]
+[ext_resource type="PackedScene" uid="uid://beyjasox02si3" path="res://Enemies/Beetle/beetle_root.tscn" id="2_qcu3o"]
 
 [sub_resource type="Animation" id="Animation_5pcps"]
 length = 0.001
@@ -93,15 +94,13 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_h03f6"]
 radius = 12.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tlopx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g3iuo"]
+radius = 0.489449
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt8a8"]
-albedo_color = Color(0.647059, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qjgky"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_bm81s"]
+size = Vector3(1, 0.227912, 1)
 
 [node name="GroundEnemy" type="RigidBody3D" groups=["damageables", "targeteables"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.05224, 1.18489, -6.18026)
 collision_layer = 3
 collision_mask = 3
 axis_lock_angular_x = true
@@ -131,13 +130,16 @@ collision_layer = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource("SphereShape3D_h03f6")
 
-[node name="MeshRoot" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_tlopx")
+[node name="CollisionShapeBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0858798, -0.189352)
+shape = SubResource("CapsuleShape3D_g3iuo")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshRoot"]
-material_override = SubResource("StandardMaterial3D_mt8a8")
-mesh = SubResource("BoxMesh_qjgky")
-skeleton = NodePath("../..")
+[node name="CollisionShapeHead" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.460848, -0.382635)
+shape = SubResource("BoxShape3D_bm81s")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 0.1
+
+[node name="BeetleRoot" parent="." instance=ExtResource("2_qcu3o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.426, 0)

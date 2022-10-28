@@ -1,9 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://nsbf3jhjeck6"]
+[gd_scene load_steps=41 format=3 uid="uid://beyjasox02si3"]
 
-[ext_resource type="PackedScene" uid="uid://2tiippcas1yn" path="res://Beetle/beetle_bot_fused.glb" id="1_8tgdq"]
-[ext_resource type="Script" path="res://Beetle/beetle_root.gd" id="1_24xlj"]
-[ext_resource type="Material" uid="uid://dy64y0bygkeky" path="res://Beetle/beetle_eyes_mat.tres" id="3_l5wo5"]
-[ext_resource type="Animation" uid="uid://c8nt4qdap5h01" path="res://Beetle/custom_animation/power_off_lights.res" id="4_shp5b"]
+[ext_resource type="Script" path="res://Enemies/Beetle/beetle_root.gd" id="1_3o2d1"]
+[ext_resource type="PackedScene" uid="uid://2tiippcas1yn" path="res://Enemies/Beetle/beetle_bot_fused.glb" id="2_sn0u1"]
+[ext_resource type="Material" uid="uid://c01o76xe4ki35" path="res://Enemies/Beetle/beetle_eyes_mat.tres" id="3_bftt3"]
+[ext_resource type="Animation" uid="uid://c8nt4qdap5h01" path="res://Enemies/Beetle/custom_animation/power_off_lights.res" id="4_x2t4j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ygfx"]
 albedo_color = Color(0, 0, 0, 1)
@@ -1997,7 +1997,7 @@ _data = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_adlhr"]
 _data = {
-"power_off_lights": ExtResource("4_shp5b")
+"power_off_lights": ExtResource("4_x2t4j")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycuh0"]
@@ -2109,9 +2109,9 @@ graph_offset = Vector2(-83, 22)
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_xwg3f"]
 
 [node name="BeetleRoot" type="Node3D"]
-script = ExtResource("1_24xlj")
+script = ExtResource("1_3o2d1")
 
-[node name="beetle_bot_fused" parent="." instance=ExtResource("1_8tgdq")]
+[node name="beetle_bot_fused" parent="." instance=ExtResource("2_sn0u1")]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
 
 [node name="Skeleton3D" parent="beetle_bot_fused/Armature" index="0"]
@@ -2133,21 +2133,21 @@ bones/12/position = Vector3(-4.30854e-06, 3.20733e-05, -1.70988e-05)
 bones/12/rotation = Quaternion(-0.707107, 3.44213e-07, -2.54651e-07, 0.707107)
 bones/13/rotation = Quaternion(0.560985, 0.560986, 0.430459, 0.430459)
 bones/14/rotation = Quaternion(0.430459, 0.430459, 0.560986, 0.560985)
-bones/16/position = Vector3(-0.0158876, -0.02, 0.356838)
-bones/17/rotation = Quaternion(0.160078, 0.171363, 0.618854, 0.749686)
-bones/18/rotation = Quaternion(-0.661466, -0.0120662, -0.0214883, 0.74957)
-bones/19/rotation = Quaternion(0.0929673, 0.276721, 0.861788, 0.414855)
-bones/20/rotation = Quaternion(-0.800582, -0.010314, -0.0260209, 0.598569)
+bones/16/position = Vector3(-0.0133296, -0.02, 0.346172)
+bones/17/rotation = Quaternion(0.170395, 0.179015, 0.617957, 0.746356)
+bones/18/rotation = Quaternion(-0.66158, -0.0120646, -0.021492, 0.74947)
+bones/19/rotation = Quaternion(0.101577, 0.292955, 0.85569, 0.414312)
+bones/20/rotation = Quaternion(-0.80274, -0.010264, -0.0260911, 0.595669)
 bones/21/position = Vector3(-0.0239784, 0.285311, -0.245566)
-bones/21/rotation = Quaternion(0.212799, 0.0808752, 0.467286, 0.854295)
-bones/22/rotation = Quaternion(-0.67032, -0.0125119, -0.0216826, 0.74165)
-bones/24/rotation = Quaternion(0.134445, -0.148468, -0.629853, 0.750445)
-bones/25/rotation = Quaternion(-0.593906, 0.0129456, 0.0192936, 0.804199)
-bones/26/rotation = Quaternion(0.0838419, -0.264652, -0.848578, 0.450383)
-bones/27/rotation = Quaternion(-0.76385, 0.011111, 0.0248271, 0.64482)
+bones/21/rotation = Quaternion(0.225695, 0.0872062, 0.467355, 0.850315)
+bones/22/rotation = Quaternion(-0.671718, -0.0124905, -0.0217278, 0.740383)
+bones/24/rotation = Quaternion(0.148611, -0.159792, -0.627391, 0.747503)
+bones/25/rotation = Quaternion(-0.605762, 0.0128024, 0.0196787, 0.7953)
+bones/26/rotation = Quaternion(0.0941024, -0.281857, -0.845367, 0.443911)
+bones/27/rotation = Quaternion(-0.772348, 0.010935, 0.0251033, 0.634609)
 bones/28/position = Vector3(0.0239784, 0.285311, -0.245566)
-bones/28/rotation = Quaternion(0.184082, -0.0627445, -0.481002, 0.854877)
-bones/29/rotation = Quaternion(-0.600585, 0.013483, 0.0194269, 0.799211)
+bones/28/rotation = Quaternion(0.200173, -0.0717899, -0.477365, 0.852584)
+bones/29/rotation = Quaternion(-0.612137, 0.0133342, 0.0198006, 0.790391)
 bones/30/position = Vector3(0.4584, 0.1718, 0.00443449)
 bones/30/rotation = Quaternion(0, 0, -0.689081, 0.724685)
 bones/31/position = Vector3(-1.63913e-06, 1.20485e-05, -5.83427e-06)
@@ -2168,7 +2168,7 @@ bones/42/rotation = Quaternion(-0.560985, 0.560986, 0.430459, -0.430459)
 bones/43/rotation = Quaternion(-0.430459, 0.430459, 0.560986, -0.560985)
 
 [node name="Beetle" parent="beetle_bot_fused/Armature/Skeleton3D" index="0"]
-surface_material_override/1 = ExtResource("3_l5wo5")
+surface_material_override/1 = ExtResource("3_bftt3")
 surface_material_override/2 = SubResource("StandardMaterial3D_5ygfx")
 
 [node name="AnimationPlayer" parent="beetle_bot_fused" index="1"]

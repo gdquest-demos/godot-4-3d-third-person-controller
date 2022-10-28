@@ -7,7 +7,7 @@ const COIN_SCENE := preload("res://Coin/Coin.tscn")
 
 @onready var _reaction_animation_player: AnimationPlayer = $ReactionLabel/AnimationPlayer
 @onready var _detection_area: Area3D = $PlayerDetectionArea
-@onready var _mesh_instance: MeshInstance3D = $MeshRoot/MeshInstance3D
+@onready var _beetle_skin := $BeetleRoot
 @onready var _navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 @onready var _target: Node3D = null
@@ -17,10 +17,17 @@ const COIN_SCENE := preload("res://Coin/Coin.tscn")
 func _ready() -> void:
 	_detection_area.body_entered.connect(_on_body_entered)
 	_detection_area.body_exited.connect(_on_body_exited)
+	_beetle_skin.play_idle()
 
 
 func _physics_process(delta: float) -> void:
-	if _target != null and _alive:
+	if not _alive:
+		return
+	
+	if _target != null:
+		_beetle_skin.play_walk()
+		look_at(Vector3(_target.global_position.x, global_position.y, _target.global_position.z))
+		
 		_navigation_agent.set_target_location(_target.global_position)
 		
 		var next_location := _navigation_agent.get_next_location()
@@ -40,6 +47,9 @@ func _physics_process(delta: float) -> void:
 					force.y = 0.5
 					force *= 10.0
 					collider.damage(impact_point, force)
+					_beetle_skin.play_attack()
+	else:
+		_beetle_skin.play_idle()
 
 
 func damage(impact_point: Vector3, force: Vector3) -> void:
@@ -51,6 +61,7 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 		return
 	
 	_alive = false
+	_beetle_skin.play_poweroff()
 	
 	for i in range(collectibles_count):
 		var collectible := COIN_SCENE.instantiate()
@@ -60,6 +71,10 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_detection_area.body_entered.disconnect(_on_body_entered)
 	_detection_area.body_exited.disconnect(_on_body_exited)
 	_target = null
+	
+	axis_lock_angular_x = false
+	axis_lock_angular_y = false
+	axis_lock_angular_z = false
 	
 	gravity_scale = 1.0
 
