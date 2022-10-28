@@ -1380,10 +1380,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01846, 4.04934, -1.01587)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.821, 23.8633, -9.42108)
 
 [node name="GroundEnemy" parent="Foes" instance=ExtResource("5_4pnku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.425, 1.18489, -2.73277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.425, 0.998134, -2.73277)
 
 [node name="GroundEnemy2" parent="Foes" instance=ExtResource("5_4pnku")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 7.20429, -4.01509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 7.17666, -4.01509)
 
 [node name="GroundEnemy3" parent="Foes" instance=ExtResource("5_4pnku")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3509, 7.20429, 7.79975)

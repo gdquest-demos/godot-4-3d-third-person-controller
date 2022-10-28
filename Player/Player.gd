@@ -195,16 +195,8 @@ func _on_collectible_body_entered(body: Node3D) -> void:
 func _get_camera_oriented_input() -> Vector3:
 	if _attack_animation_player.is_playing():
 		return Vector3.ZERO
-	
-	var input_left_right := (
-		Input.get_action_strength("move_right")
-		- Input.get_action_strength("move_left")
-	)
-	var input_forward_back := (
-		Input.get_action_strength("move_down")
-		- Input.get_action_strength("move_up")
-	)
-	var raw_input = Vector2(input_left_right, input_forward_back)
+
+	var raw_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	var input := Vector3.ZERO
 	# This is to ensure that diagonal input isn't stronger than axis aligned input
@@ -212,6 +204,7 @@ func _get_camera_oriented_input() -> Vector3:
 	input.z = -raw_input.y * sqrt(1.0 - raw_input.x * raw_input.x / 2.0)
 
 	input = _camera_controller.global_transform.basis * input
+	input.y = 0.0
 	return input
 
 
