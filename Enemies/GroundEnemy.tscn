@@ -98,7 +98,7 @@ radius = 12.0
 radius = 0.489449
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bm81s"]
-size = Vector3(1, 0.227912, 1)
+size = Vector3(1.4, 0.2, 1.4)
 
 [node name="GroundEnemy" type="RigidBody3D" groups=["damageables", "targeteables"]]
 collision_layer = 3
@@ -137,6 +137,11 @@ shape = SubResource("CapsuleShape3D_g3iuo")
 [node name="CollisionShapeHead" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.460848, -0.382635)
 shape = SubResource("BoxShape3D_bm81s")
+
+[node name="DeathCollisionShape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.336327, -0.250324)
+shape = SubResource("BoxShape3D_bm81s")
+disabled = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 0.1

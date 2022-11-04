@@ -11,6 +11,8 @@ const PROJECTILE_SCENE := preload("res://Player/Projectile.tscn")
 @onready var _flying_animation_player: AnimationPlayer = $MeshRoot/AnimationPlayer
 @onready var _detection_area: Area3D = $PlayerDetectionArea
 @onready var _mesh_instance: MeshInstance3D = $MeshRoot/MeshInstance3D
+@onready var _death_mesh_collider: CollisionShape3D = $DeathMeshCollider
+@onready var _bee_root := $MeshRoot/bee_root
 
 @onready var _shoot_count := 0.0
 @onready var _target: Node3D = null
@@ -20,7 +22,7 @@ const PROJECTILE_SCENE := preload("res://Player/Projectile.tscn")
 func _ready() -> void:
 	_detection_area.body_entered.connect(_on_body_entered)
 	_detection_area.body_exited.connect(_on_body_exited)
-
+	_bee_root.play_idle()
 
 func _physics_process(delta: float) -> void:
 	if _target != null and _alive:
@@ -29,6 +31,7 @@ func _physics_process(delta: float) -> void:
 		
 		_shoot_count += delta
 		if _shoot_count > shoot_timer:
+			_bee_root.play_spit_attack()
 			_shoot_count -= shoot_timer
 			
 			var projectile = PROJECTILE_SCENE.instantiate()
@@ -61,8 +64,11 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_detection_area.body_entered.disconnect(_on_body_entered)
 	_detection_area.body_exited.disconnect(_on_body_exited)
 	_target = null
+	_death_mesh_collider.set_deferred("disabled", false)
 	
 	gravity_scale = 1.0
+	
+	_bee_root.play_poweroff()
 
 
 func _on_body_entered(body: Node3D) -> void:

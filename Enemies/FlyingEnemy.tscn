@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bltyl6qdnk7dk"]
+[gd_scene load_steps=15 format=3 uid="uid://bltyl6qdnk7dk"]
 
 [ext_resource type="Script" path="res://Enemies/FlyingEnemy.gd" id="1_eehkx"]
+[ext_resource type="PackedScene" uid="uid://d28tem7s0fqin" path="res://Enemies/BeeBot/bee_root.tscn" id="2_btoc7"]
 
 [sub_resource type="Animation" id="Animation_5pcps"]
 length = 0.001
@@ -93,7 +94,9 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_h03f6"]
 radius = 12.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tlopx"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r3occ"]
+radius = 0.296127
+height = 1.09859
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mt8a8"]
 albedo_color = Color(0.647059, 0, 0, 1)
@@ -153,7 +156,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.0872665), Vector3(0, 0, 0), Vector3(0, 0, -0.0872665)]
+"values": [Vector3(0.66148, 3.14159, 0), Vector3(0.66148, 3.14159, 0.0872665), Vector3(0.66148, 3.14159, 0), Vector3(0.66148, 3.14159, -0.0872665)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wnpkd"]
@@ -161,6 +164,9 @@ _data = {
 "RESET": SubResource("Animation_aj4yq"),
 "default": SubResource("Animation_7sj1l")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pl7mw"]
+size = Vector3(0.1, 0.5, 1)
 
 [node name="FlyingEnemy" type="RigidBody3D" groups=["damageables", "targeteables"]]
 collision_layer = 3
@@ -191,9 +197,11 @@ shape = SubResource("SphereShape3D_h03f6")
 
 [node name="MeshRoot" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.996195, -0.0871558, 0, 0.0871558, 0.996195, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_tlopx")
+shape = SubResource("CapsuleShape3D_r3occ")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshRoot"]
+transform = Transform3D(0.998455, -0.0183011, 0.0524617, -0.0183011, 0.783185, 0.621519, -0.0524617, -0.621519, 0.78164, 0.00407339, 0.0482579, -0.211458)
+visible = false
 material_override = SubResource("StandardMaterial3D_mt8a8")
 mesh = SubResource("BoxMesh_qjgky")
 skeleton = NodePath("../..")
@@ -203,3 +211,11 @@ autoplay = "default"
 libraries = {
 "": SubResource("AnimationLibrary_wnpkd")
 }
+
+[node name="bee_root" parent="MeshRoot" instance=ExtResource("2_btoc7")]
+transform = Transform3D(0.999781, 0.0209424, 0, -0.0164124, 0.783522, 0.621148, 0.0130083, -0.621012, 0.783694, -0.0294347, -0.348716, 0.106444)
+
+[node name="DeathMeshCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, -5.37025e-08, -6.89839e-08, 0, 0.789084, -0.614285, 8.74228e-08, -0.614285, -0.789084, 0, 0.244858, 0.372593)
+shape = SubResource("BoxShape3D_pl7mw")
+disabled = true
