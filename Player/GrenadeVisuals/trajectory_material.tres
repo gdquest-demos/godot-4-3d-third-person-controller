@@ -7,5 +7,5 @@
 render_priority = 0
 shader = ExtResource("1_kmqra")
 shader_parameter/arrow_sampler = ExtResource("2_tlckp")
-shader_parameter/arrow_scale = 60.0
+shader_parameter/arrow_scale = 90.0
 shader_parameter/fill_color = Color(1, 0.498039, 0.0392157, 1)

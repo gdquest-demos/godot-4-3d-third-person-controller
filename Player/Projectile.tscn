@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://7bxua1f6rsdo"]
 
 [ext_resource type="Script" path="res://Player/Projectile.gd" id="1_8b555"]
-[ext_resource type="PackedScene" uid="uid://ir2yc22mta0e" path="res://bullets/bullet.tscn" id="2_68e7a"]
+[ext_resource type="PackedScene" uid="uid://ir2yc22mta0e" path="res://Player/BulletVisuals/bullet.tscn" id="2_68e7a"]
 
 [sub_resource type="Curve" id="Curve_a1s10"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.907143, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -14.9899, 0.0, 0, 0]
