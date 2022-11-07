@@ -6,15 +6,23 @@ const COIN_SCENE = preload("res://Coin/Coin.tscn")
 
 enum WEAPON_TYPE { DEFAULT, GRENADE }
 
+## Character maximum movement speed
 @export var move_speed := 8.0
-@export var projectile_speed := 8
-@export var attack_impulse := 10
+## Projectile maximum speed
+@export var projectile_speed := 8.0
+## Forward impulse after a melee attack
+@export var attack_impulse := 10.0
+## Movement acceleration (how fast character achieve maximum speed)
 @export var acceleration := 4.0
+## Jump impulse
 @export var jump_initial_impulse := 12.0
+## Jump impulse when player keeps pressing jump
 @export var jump_additional_force := 4.5
+## Player model rotaion speed
 @export var rotation_speed := 12.0
-@export var stopping_speed := 0.5
-@export var walk_anim_threshold := 0.5
+## Character minimum speed
+@export var stopping_speed := 1.0
+## Max throwback force after player takes a hit
 @export var max_throwback_force := 15.0
 
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
@@ -128,7 +136,7 @@ func _physics_process(delta: float) -> void:
 		_character_skin.fall()
 	elif is_on_floor():
 		var xz_velocity = Vector3(velocity.x, 0, velocity.z)
-		if xz_velocity.length() > walk_anim_threshold:
+		if xz_velocity.length() > stopping_speed:
 			_character_skin.set_moving(true)
 			_character_skin.set_moving_speed(inverse_lerp(0.0, move_speed, xz_velocity.length()))
 		else:
