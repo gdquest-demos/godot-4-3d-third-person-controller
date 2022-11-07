@@ -47,7 +47,7 @@ func _explode() -> void:
 	
 	var bodies := _explosion_area.get_overlapping_bodies()
 	for body in bodies:
-		if body.is_in_group("damageables"):
+		if body.is_in_group("damageables") and not body.is_in_group("player"):
 			# add some variance to the impact point
 			var impact_point := (global_position - body.global_position).normalized()
 			impact_point = (impact_point + Vector3.DOWN).normalized() * 0.5

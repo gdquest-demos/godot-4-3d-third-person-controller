@@ -8,7 +8,7 @@ friction = 0.0
 bounce = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pr1dk"]
-radius = 1.5
+radius = 1.96728
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yx73u"]
 radius = 0.1
