@@ -1,26 +1,43 @@
 extends RigidBody3D
 
 const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.tscn")
-# Godot Physics makes the trajectory slightly weaker, so we
-# multiply by TRAJECTORY_CORRECTION to fix that
-const TRAJECTORY_CORRECTION := 1.05
 const EXPLOSION_TIMER := 0.2
 
 @onready var _collision_area: CollisionShape3D = $CollisionShape3d
 @onready var _explosion_area: Area3D = $ExplosionArea
 @onready var _player: Node3D = null
+@onready var _curve: Curve3D = null
+@onready var _curve_offset: Vector3
+@onready var _collided: bool = false
+
+func _physics_process(delta) -> void:
+	# The throw velocity is not accurate, so we need to fix it using the closest point in the 3D 
+	# curve given to the grenade. This method preserves the physical aspect of the trajectory while
+	# respecting the curve the player expects to see
+	if not _collided:
+		var closest_curve_point = _curve.get_closest_point(global_position - _curve_offset)
+		var fixed_position = _curve_offset + closest_curve_point
+		global_position = lerp(global_position, fixed_position, 0.7)
+		
+		# If it's close to last point in the curve, we just explode the grenade
+		if closest_curve_point.distance_to(_curve.get_baked_points()[-1]) < 0.1:
+			_collided = true
+			_explode()
 
 
-func throw(throw_velocity: Vector3, player: Node3D) -> void:
-	linear_velocity = throw_velocity * TRAJECTORY_CORRECTION
+func throw(throw_velocity: Vector3, player: Node3D, curve: Curve3D) -> void:
+	_curve_offset = global_position
+	linear_velocity = throw_velocity
 	_player = player
+	_curve = curve.duplicate()
 	
 	await get_tree().physics_frame
 	body_entered.connect(_on_body_entered)
 
 
 func _on_body_entered(body: Node) -> void:
-	if body != _player:
+	if body != _player and not _collided:
+		_collided = true
 		_explode()
 
 

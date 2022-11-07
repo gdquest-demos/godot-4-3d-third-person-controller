@@ -4,10 +4,10 @@ extends Node3D
 const GRENADE_SCENE = preload("res://Player/Grenade.tscn")
 const SURFACE_AIM_COLOR = Color(1, 1, 1, 0.5)
 const ENEMY_AIM_COLOR = Color(1, 0, 0, 0.5)
-const POINTS_IN_CURVE3D = 10
+const POINTS_IN_CURVE3D = 15
 
 @export var max_throw_radius := 11.0
-@export var min_throw_strength := 6.0
+@export var min_throw_strength := 4.0
 @export var max_throw_strength := 12.0
 
 @onready var _aim_sprite: MeshInstance3D = $AimSprite
@@ -32,8 +32,9 @@ func throw_grenade(origin: Vector3, player: Node3D) -> bool:
 	
 	var grenade = GRENADE_SCENE.instantiate()
 	get_parent().add_child(grenade)
-	grenade.global_position = _grenade_path.global_position
-	grenade.throw(_cached_grenade_velocity, player)
+	# Add small vertical correction to avoid spawning the grenade under the floor
+	grenade.global_position = _grenade_path.global_position + Vector3.UP * 0.1
+	grenade.throw(_cached_grenade_velocity, player, _grenade_path.curve)
 	
 	return true
 

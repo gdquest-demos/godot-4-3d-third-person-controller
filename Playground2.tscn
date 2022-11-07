@@ -113,8 +113,11 @@ transform = Transform3D(0.893364, 0, 0.449335, 0, 1, 0, -0.449335, 0, 0.893364, 
 [node name="JumpingPad2" parent="." instance=ExtResource("3_yenfk")]
 transform = Transform3D(0.893364, 0, 0.449335, 0, 1, 0, -0.449335, 0, 0.893364, -44.5883, 13.3676, 9.57254)
 
+[node name="JumpingPad4" parent="." instance=ExtResource("3_yenfk")]
+transform = Transform3D(0.823187, 0, -0.567772, 0, 1, 0, 0.567772, 0, 0.823187, -43.7, 19.0958, 1.42115)
+
 [node name="JumpingPad3" parent="." instance=ExtResource("3_yenfk")]
-transform = Transform3D(0.945246, 0, 0.32636, 0, 1, 0, -0.32636, 0, 0.945246, -26.6999, 6.583, -6.43057)
+transform = Transform3D(0.945246, 0, 0.32636, 0, 1, 0, -0.32636, 0, 0.945246, -26.6437, 6.583, -3.09246)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navmesh = SubResource("NavigationMesh_0d66i")
