@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://Player/CoinsContainer.gd" id="7_8eehq"]
 [ext_resource type="PackedScene" path="res://Coin/CoinVisuals/godot_coin_scene.tscn" id="8_6qxxt"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5yey4"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2xm"]
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_gqx4v"]
 
@@ -122,7 +122,7 @@ script = ExtResource("1_rvo1c")
 
 [node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("CylinderShape3D_5yey4")
+shape = SubResource("CapsuleShape3D_8x2xm")
 
 [node name="CameraController" type="Node3D" parent="."]
 top_level = true
@@ -182,9 +182,10 @@ path_joined = false
 material = ExtResource("5_0gw1q")
 
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_s5n07")
-target_position = Vector3(0, -2.4, 0)
+target_position = Vector3(0, -2.6, 0)
+margin = 0.5
 max_results = 1
 debug_shape_custom_color = Color(0.658824, 1, 0, 1)
 
@@ -263,7 +264,7 @@ alignment = 2
 script = ExtResource("7_8eehq")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer"]
-custom_minimum_size = Vector2i(96, 96)
+custom_minimum_size = Vector2(96, 96)
 offset_right = 96.0
 offset_bottom = 96.0
 size_flags_horizontal = 2
@@ -281,7 +282,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(-0.551184, 0, -0.834386, 0, 1, 0, 0.834386, 0, -0.551184, 0, 0, 0)
+transform = Transform3D(-0.226852, 0, -0.973931, 0, 1, 0, 0.973931, 0, -0.226852, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
