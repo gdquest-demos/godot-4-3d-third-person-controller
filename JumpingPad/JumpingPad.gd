@@ -9,7 +9,7 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if _player:
 		var player_is_just_jumping := Input.is_action_just_pressed("jump")
 		if player_is_just_jumping:

@@ -5,7 +5,7 @@ const COLLECTIBLES_COUNT := 5
 const DESTROYED_BOX_SCENE := preload("res://Box/DestroyedBox.tscn")
 
 
-func damage(impact_point: Vector3, force: Vector3):
+func damage(_impact_point: Vector3, _force: Vector3):
 	for i in range(COLLECTIBLES_COUNT):
 		var collectible := COIN_SCENE.instantiate()
 		get_parent().add_child(collectible)

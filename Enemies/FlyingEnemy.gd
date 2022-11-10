@@ -10,7 +10,6 @@ const PROJECTILE_SCENE := preload("res://Player/Projectile.tscn")
 @onready var _reaction_animation_player: AnimationPlayer = $ReactionLabel/AnimationPlayer
 @onready var _flying_animation_player: AnimationPlayer = $MeshRoot/AnimationPlayer
 @onready var _detection_area: Area3D = $PlayerDetectionArea
-@onready var _mesh_instance: MeshInstance3D = $MeshRoot/MeshInstance3D
 @onready var _death_mesh_collider: CollisionShape3D = $DeathMeshCollider
 @onready var _bee_root := $MeshRoot/bee_root
 

@@ -26,7 +26,7 @@ func set_active(active: bool) -> void:
 	visible = active
 
 
-func throw_grenade(origin: Vector3, player: Node3D) -> bool:
+func throw_grenade(_origin: Vector3, player: Node3D) -> bool:
 	if not visible:
 		return false
 	

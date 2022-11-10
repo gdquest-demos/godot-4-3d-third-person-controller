@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://d0clqeui16y0o"]
 
 [ext_resource type="PackedScene" uid="uid://n4c3p8bt5sb1" path="res://JumpingPad/JumpingPadVisuals/jump_pad.glb" id="1_b8bry"]
-[ext_resource type="Material" uid="uid://bdge7uuxt6y30" path="res://JumpingPad/JumpingPadVisuals/jump_pad_screen_mat.tres" id="2_54yml"]
+[ext_resource type="Material" path="res://JumpingPad/JumpingPadVisuals/jump_pad_screen_mat.tres" id="2_54yml"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7h2g"]
 albedo_color = Color(0, 0, 0, 1)

@@ -216,7 +216,7 @@ func _get_camera_oriented_input() -> Vector3:
 	return input
 
 
-func damage(impact_point: Vector3, force: Vector3) -> void:
+func damage(_impact_point: Vector3, force: Vector3) -> void:
 	# Always throws character up
 	force.y = abs(force.y)
 	velocity = force.limit_length(max_throwback_force)
