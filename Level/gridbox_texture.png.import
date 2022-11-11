@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://boexk81is8yhq"
-path.s3tc="res://.godot/imported/gridbox_texture.png-8c8dff9be9954ae155ed54b53ae35358.s3tc.ctex"
-path.etc2="res://.godot/imported/gridbox_texture.png-8c8dff9be9954ae155ed54b53ae35358.etc2.ctex"
+path.s3tc="res://.godot/imported/gridbox_texture.png-c03ac9b87049f33239d268b57c8b42f8.s3tc.ctex"
+path.etc2="res://.godot/imported/gridbox_texture.png-c03ac9b87049f33239d268b57c8b42f8.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc", "etc2"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://gridbox_texture.png"
-dest_files=["res://.godot/imported/gridbox_texture.png-8c8dff9be9954ae155ed54b53ae35358.s3tc.ctex", "res://.godot/imported/gridbox_texture.png-8c8dff9be9954ae155ed54b53ae35358.etc2.ctex"]
+source_file="res://Level/gridbox_texture.png"
+dest_files=["res://.godot/imported/gridbox_texture.png-c03ac9b87049f33239d268b57c8b42f8.s3tc.ctex", "res://.godot/imported/gridbox_texture.png-c03ac9b87049f33239d268b57c8b42f8.etc2.ctex"]
 
 [params]
 
