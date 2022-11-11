@@ -1,17 +1,17 @@
 extends RigidBody3D
 
 const COIN_SCENE := preload("res://Coin/Coin.tscn")
-const PROJECTILE_SCENE := preload("res://Player/Bullet.tscn")
+const BULLET_SCENE := preload("res://Player/Bullet.tscn")
 
 @export var shoot_timer := 1.5
-@export var projectile_speed := 6.0
-@export var collectibles_count := 5
+@export var bullet_speed := 6.0
+@export var coins_count := 5
 
 @onready var _reaction_animation_player: AnimationPlayer = $ReactionLabel/AnimationPlayer
 @onready var _flying_animation_player: AnimationPlayer = $MeshRoot/AnimationPlayer
 @onready var _detection_area: Area3D = $PlayerDetectionArea
 @onready var _death_mesh_collider: CollisionShape3D = $DeathMeshCollider
-@onready var _bee_root := $MeshRoot/bee_root
+@onready var _bee_root: Node3D = $MeshRoot/bee_root
 
 @onready var _shoot_count := 0.0
 @onready var _target: Node3D = null
@@ -23,6 +23,7 @@ func _ready() -> void:
 	_detection_area.body_exited.connect(_on_body_exited)
 	_bee_root.play_idle()
 
+
 func _physics_process(delta: float) -> void:
 	if _target != null and _alive:
 		var target_transform = transform.looking_at(_target.global_position)
@@ -33,15 +34,15 @@ func _physics_process(delta: float) -> void:
 			_bee_root.play_spit_attack()
 			_shoot_count -= shoot_timer
 			
-			var projectile = PROJECTILE_SCENE.instantiate()
-			projectile.shooter = self
+			var bullet = BULLET_SCENE.instantiate()
+			bullet.shooter = self
 			var origin = global_position
 			var target := _target.global_position + Vector3.UP
 			var aim_direction := (target - global_position).normalized()
-			projectile.velocity = aim_direction * projectile_speed
-			projectile.distance_limit = 14.0
-			get_parent().add_child(projectile)
-			projectile.global_position = origin
+			bullet.velocity = aim_direction * bullet_speed
+			bullet.distance_limit = 14.0
+			get_parent().add_child(bullet)
+			bullet.global_position = origin
 
 
 func damage(impact_point: Vector3, force: Vector3) -> void:
@@ -53,11 +54,11 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	
 	_alive = false
 	
-	for i in range(collectibles_count):
-		var collectible := COIN_SCENE.instantiate()
-		get_parent().add_child(collectible)
-		collectible.global_position = global_position
-		collectible.spawn()
+	for i in range(coins_count):
+		var coin := COIN_SCENE.instantiate()
+		get_parent().add_child(coin)
+		coin.global_position = global_position
+		coin.spawn()
 	_flying_animation_player.stop(true)
 	_flying_animation_player.seek(0.0, true)
 	_detection_area.body_entered.disconnect(_on_body_entered)

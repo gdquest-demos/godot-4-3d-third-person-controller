@@ -66,7 +66,7 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	trans.basis = trans.basis.orthonormalized()
 	transform = trans
 	
-	# Set grenade path by predicting its projectile motion
+	# Set grenade path by predicting its bullet motion
 
 	_grenade_path.global_position = origin
 	
@@ -99,8 +99,8 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	
 	var f4 := sqrt(f4_1)
 	
-	# Now we calculate the times in which the projectile can hit the target position.
-	# t1 is when the projectile is going up, t2 is when the projectile is going down.
+	# Now we calculate the times in which the bullet can hit the target position.
+	# t1 is when the bullet is going up, t2 is when the bullet is going down.
 	var t1 := f1 * (f2 + f3 + f4) # Downwards movement
 	var t2 := f1 * (f2 + f3 - f4) # Upwards movement
 	

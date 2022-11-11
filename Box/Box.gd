@@ -1,16 +1,16 @@
 extends RigidBody3D
 
 const COIN_SCENE := preload("res://Coin/Coin.tscn")
-const COLLECTIBLES_COUNT := 5
+const COINS_COUNT := 5
 const DESTROYED_BOX_SCENE := preload("res://Box/DestroyedBox.tscn")
 
 
 func damage(_impact_point: Vector3, _force: Vector3):
-	for i in range(COLLECTIBLES_COUNT):
-		var collectible := COIN_SCENE.instantiate()
-		get_parent().add_child(collectible)
-		collectible.global_position = global_position
-		collectible.spawn()
+	for i in range(COINS_COUNT):
+		var coin := COIN_SCENE.instantiate()
+		get_parent().add_child(coin)
+		coin.global_position = global_position
+		coin.spawn()
 	
 	var destroyed_box := DESTROYED_BOX_SCENE.instantiate()
 	get_parent().add_child(destroyed_box)

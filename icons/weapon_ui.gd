@@ -7,6 +7,7 @@ extends PanelContainer
 
 var selected_node = null
 
+
 func switch_to(node_name : String):
 	# Return if same node
 	if node_name == selected_node: return

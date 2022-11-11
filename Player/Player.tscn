@@ -216,11 +216,11 @@ disabled = true
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("4_ign62")]
 
-[node name="CollectibleMagnetArea" type="Area3D" parent="."]
+[node name="CoinMagnetArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectibleMagnetArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CoinMagnetArea"]
 shape = SubResource("SphereShape3D_nw843")
 
 [node name="PlayerUI" type="Control" parent="."]

@@ -2,12 +2,12 @@ extends RigidBody3D
 
 const COIN_SCENE := preload("res://Coin/Coin.tscn")
 
-@export var collectibles_count := 5
+@export var coins_count := 5
 @export var stopping_distance := 0.0
 
 @onready var _reaction_animation_player: AnimationPlayer = $ReactionLabel/AnimationPlayer
 @onready var _detection_area: Area3D = $PlayerDetectionArea
-@onready var _beetle_skin := $BeetleRoot
+@onready var _beetle_skin: Node3D = $BeetleRoot
 @onready var _navigation_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var _death_collision_shape: CollisionShape3D = $DeathCollisionShape
 
@@ -64,11 +64,11 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_alive = false
 	_beetle_skin.play_poweroff()
 	
-	for i in range(collectibles_count):
-		var collectible := COIN_SCENE.instantiate()
-		get_parent().add_child(collectible)
-		collectible.global_position = global_position
-		collectible.spawn()
+	for i in range(coins_count):
+		var coin := COIN_SCENE.instantiate()
+		get_parent().add_child(coin)
+		coin.global_position = global_position
+		coin.spawn()
 	_detection_area.body_entered.disconnect(_on_body_entered)
 	_detection_area.body_exited.disconnect(_on_body_exited)
 	_target = null

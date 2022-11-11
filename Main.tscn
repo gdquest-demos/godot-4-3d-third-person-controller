@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3]
+[gd_scene load_steps=32 format=3 uid="uid://ccjru1onq2k2c"]
 
 [ext_resource type="PackedScene" path="res://icons/weapon_ui.tscn" id="1_3u7h6"]
 [ext_resource type="PackedScene" path="res://Player/Player.tscn" id="2_q87gh"]

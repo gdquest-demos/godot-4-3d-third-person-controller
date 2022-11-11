@@ -1,15 +1,15 @@
 class_name Player
 extends CharacterBody3D
 
-const PROJECTILE_SCENE = preload("res://Player/Bullet.tscn")
+const BULLET_SCENE = preload("res://Player/Bullet.tscn")
 const COIN_SCENE = preload("res://Coin/Coin.tscn")
 
 enum WEAPON_TYPE { DEFAULT, GRENADE }
 
 ## Character maximum movement speed
 @export var move_speed := 8.0
-## Projectile maximum speed
-@export var projectile_speed := 8.0
+## Bullet maximum speed
+@export var bullet_speed := 8.0
 ## Forward impulse after a melee attack
 @export var attack_impulse := 10.0
 ## Movement acceleration (how fast character achieve maximum speed)
@@ -31,7 +31,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _grenade_aim_controller: GrenadeAimController = $GrenadeAimController
 @onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
-@onready var _collectible_magnet_area: Area3D = $CollectibleMagnetArea
+@onready var _coin_magnet_area: Area3D = $CoinMagnetArea
 @onready var _ui_aim_recticle: ColorRect = %AimRecticle
 @onready var _ui_coins_container: HBoxContainer = %CoinsContainer
 
@@ -49,7 +49,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
 	_grenade_aim_controller.set_active(false)
-	_collectible_magnet_area.body_entered.connect(_on_collectible_body_entered)
+	_coin_magnet_area.body_entered.connect(_on_coin_body_entered)
 	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
 
 func _physics_process(delta: float) -> void:
@@ -160,15 +160,15 @@ func attack() -> void:
 
 
 func shoot() -> void:
-	var projectile = PROJECTILE_SCENE.instantiate()
-	projectile.shooter = self
+	var bullet = BULLET_SCENE.instantiate()
+	bullet.shooter = self
 	var origin = global_position + Vector3.UP
 	var aim_target = _camera_controller.get_aim_target()
 	var aim_direction = (aim_target - origin).normalized()
-	projectile.velocity = aim_direction * projectile_speed
-	projectile.distance_limit = 10.0
-	get_parent().add_child(projectile)
-	projectile.global_position = origin
+	bullet.velocity = aim_direction * bullet_speed
+	bullet.distance_limit = 10.0
+	get_parent().add_child(bullet)
+	bullet.global_position = origin
 
 
 func throw_grenade() -> void:
@@ -195,9 +195,9 @@ func lose_coins() -> void:
 	_ui_coins_container.update_coins_amount(_coins)
 
 
-func _on_collectible_body_entered(body: Node3D) -> void:
-	if body is Collectible:
-		body.set_follow(self)
+func _on_coin_body_entered(body: Node3D) -> void:
+	if body is Coin:
+		body.set_target(self)
 
 
 func _get_camera_oriented_input() -> Vector3:
