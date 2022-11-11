@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		_aim_collider = null
 	
 	# Set camera controller to current ground level for the character
-	var target_position = _anchor.global_position + _offset
+	var target_position := _anchor.global_position + _offset
 	target_position.y = lerp(global_position.y, _anchor._ground_height, 0.1)
 	global_position = target_position
 	

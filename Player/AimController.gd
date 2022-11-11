@@ -1,10 +1,10 @@
 class_name GrenadeAimController
 extends Node3D
 
-const GRENADE_SCENE = preload("res://Player/Grenade.tscn")
-const SURFACE_AIM_COLOR = Color(1, 1, 1, 0.5)
-const ENEMY_AIM_COLOR = Color(1, 0, 0, 0.5)
-const POINTS_IN_CURVE3D = 15
+const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
+const SURFACE_AIM_COLOR := Color(1, 1, 1, 0.5)
+const ENEMY_AIM_COLOR := Color(1, 0, 0, 0.5)
+const POINTS_IN_CURVE3D := 15
 
 @export var max_throw_radius := 11.0
 @export var min_throw_strength := 4.0
@@ -30,7 +30,7 @@ func throw_grenade(_origin: Vector3, player: Node3D) -> bool:
 	if not visible:
 		return false
 	
-	var grenade = GRENADE_SCENE.instantiate()
+	var grenade := GRENADE_SCENE.instantiate()
 	get_parent().add_child(grenade)
 	# Add small vertical correction to avoid spawning the grenade under the floor
 	grenade.global_position = _grenade_path.global_position + Vector3.UP * 0.1
@@ -53,7 +53,7 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	distance = distance.limit_length(max_throw_radius)
 	target = origin + distance
 	
-	var trans = transform
+	var trans := transform
 	
 	# Set target sprite position
 	trans.origin = origin + distance + (normal * 0.1)
@@ -83,7 +83,7 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	
 	# Now we calculate the necessary factors to discover v0
 	var g := Vector3.DOWN * _gravity_length
-	var g_squared = _gravity_length * _gravity_length
+	var g_squared := _gravity_length * _gravity_length
 	
 	var f1 := 2.0/(g_squared)
 	var f2 := v0_l * v0_l

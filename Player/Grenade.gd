@@ -15,8 +15,8 @@ func _physics_process(_delta) -> void:
 	# curve given to the grenade. This method preserves the physical aspect of the trajectory while
 	# respecting the curve the player expects to see
 	if not _collided:
-		var closest_curve_point = _curve.get_closest_point(global_position - _curve_offset)
-		var fixed_position = _curve_offset + closest_curve_point
+		var closest_curve_point := _curve.get_closest_point(global_position - _curve_offset)
+		var fixed_position := _curve_offset + closest_curve_point
 		global_position = lerp(global_position, fixed_position, 0.7)
 		
 		# If it's close to last point in the curve, we just explode the grenade

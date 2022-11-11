@@ -14,9 +14,9 @@ const FOLLOW_TWEEN_DURATION := 0.5
 
 
 func spawn(coin_delay: float = 0.5) -> void:
-	var rand_height = MIN_LAUNCH_HEIGHT + (randf() * MAX_LAUNCH_HEIGHT)
-	var rand_dir = Vector3.FORWARD.rotated(Vector3.UP, randf() * 2 * PI)
-	var rand_pos = rand_dir * (MIN_LAUNCH_RANGE + (randf() * MAX_LAUNCH_RANGE))
+	var rand_height := MIN_LAUNCH_HEIGHT + (randf() * MAX_LAUNCH_HEIGHT)
+	var rand_dir := Vector3.FORWARD.rotated(Vector3.UP, randf() * 2 * PI)
+	var rand_pos := rand_dir * (MIN_LAUNCH_RANGE + (randf() * MAX_LAUNCH_RANGE))
 	rand_pos.y = rand_height
 	apply_central_impulse(rand_pos)
 	

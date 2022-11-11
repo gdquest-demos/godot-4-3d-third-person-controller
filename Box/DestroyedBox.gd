@@ -3,7 +3,7 @@ extends RigidBody3D
 const FLYING_PIECES := 3
 const THROW_STRENGTH := 500
 
-@onready var _pieces_idx = [0, 1, 2, 3, 4, 5]
+@onready var _pieces_idx := [0, 1, 2, 3, 4, 5]
 
 
 func _ready() -> void:
@@ -17,6 +17,6 @@ func _ready() -> void:
 		piece.sleeping = false
 		piece.set_collision_mask_value(2, true)
 		
-		var rand_vector = (Vector3.ONE * 0.5) - Vector3(randf(), randf(), randf())
+		var rand_vector := (Vector3.ONE * 0.5) - Vector3(randf(), randf(), randf())
 		
 		piece.apply_force(rand_vector * THROW_STRENGTH, rand_vector)

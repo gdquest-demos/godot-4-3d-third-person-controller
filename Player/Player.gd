@@ -1,8 +1,8 @@
 class_name Player
 extends CharacterBody3D
 
-const BULLET_SCENE = preload("res://Player/Bullet.tscn")
-const COIN_SCENE = preload("res://Coin/Coin.tscn")
+const BULLET_SCENE := preload("res://Player/Bullet.tscn")
+const COIN_SCENE := preload("res://Coin/Coin.tscn")
 
 enum WEAPON_TYPE { DEFAULT, GRENADE }
 
@@ -86,7 +86,7 @@ func _physics_process(delta: float) -> void:
 	_orient_character_to_direction(_last_strong_direction, delta)
 
 	# We separate out the y velocity to not interpolate on the gravity
-	var y_velocity = velocity.y
+	var y_velocity := velocity.y
 	velocity.y = 0.0
 	velocity = velocity.lerp(_move_direction * move_speed, acceleration * delta)
 	if _move_direction.length() == 0 and velocity.length() < stopping_speed:
@@ -102,7 +102,7 @@ func _physics_process(delta: float) -> void:
 		_ui_aim_recticle.visible = false
 	
 	# Update grenade aim controller
-	var origin = global_position
+	var origin := global_position
 	var aim_target := _camera_controller.get_aim_target()
 	var aim_normal := _camera_controller.get_aim_target_normal()
 	var camera_basis := _camera_controller.get_camera_basis()
@@ -135,7 +135,7 @@ func _physics_process(delta: float) -> void:
 	elif not is_on_floor() and velocity.y < 0:
 		_character_skin.fall()
 	elif is_on_floor():
-		var xz_velocity = Vector3(velocity.x, 0, velocity.z)
+		var xz_velocity := Vector3(velocity.x, 0, velocity.z)
 		if xz_velocity.length() > stopping_speed:
 			_character_skin.set_moving(true)
 			_character_skin.set_moving_speed(inverse_lerp(0.0, move_speed, xz_velocity.length()))
@@ -160,11 +160,11 @@ func attack() -> void:
 
 
 func shoot() -> void:
-	var bullet = BULLET_SCENE.instantiate()
+	var bullet := BULLET_SCENE.instantiate()
 	bullet.shooter = self
-	var origin = global_position + Vector3.UP
-	var aim_target = _camera_controller.get_aim_target()
-	var aim_direction = (aim_target - origin).normalized()
+	var origin := global_position + Vector3.UP
+	var aim_target := _camera_controller.get_aim_target()
+	var aim_direction := (aim_target - origin).normalized()
 	bullet.velocity = aim_direction * bullet_speed
 	bullet.distance_limit = 10.0
 	get_parent().add_child(bullet)
@@ -185,7 +185,7 @@ func collect_coin() -> void:
 
 
 func lose_coins() -> void:
-	var lost_coins = min(_coins, 5)
+	var lost_coins: int = min(_coins, 5)
 	_coins -= lost_coins
 	for i in lost_coins:
 		var coin := COIN_SCENE.instantiate()
@@ -204,7 +204,7 @@ func _get_camera_oriented_input() -> Vector3:
 	if _attack_animation_player.is_playing():
 		return Vector3.ZERO
 
-	var raw_input = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 	var input := Vector3.ZERO
 	# This is to ensure that diagonal input isn't stronger than axis aligned input

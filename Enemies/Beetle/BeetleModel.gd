@@ -1,8 +1,8 @@
 extends Node3D
 
-@onready var state_machine = $AnimationTree["parameters/playback"]
-@onready var cycle_state_machine = $AnimationTree["parameters/Cycle/playback"]
-@onready var second_action_state_machine = $AnimationTree["parameters/Cycle/IDLE/playback"]
+@onready var state_machine: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/playback"]
+@onready var cycle_state_machine: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/Cycle/playback"]
+@onready var second_action_state_machine: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/Cycle/IDLE/playback"]
 
 @onready var second_action_timer : Timer = $Timer
 

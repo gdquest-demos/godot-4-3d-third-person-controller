@@ -1,7 +1,8 @@
 extends RigidBody3D
 
 const COIN_SCENE := preload("res://Coin/Coin.tscn")
-const BULLET_SCENE := preload("res://Player/Bullet.tscn")
+# For some reason, Godot complains if we don't specifically say this is a PackedScene.
+const BULLET_SCENE: PackedScene = preload("res://Player/Bullet.tscn")
 
 @export var shoot_timer := 1.5
 @export var bullet_speed := 6.0
@@ -26,7 +27,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if _target != null and _alive:
-		var target_transform = transform.looking_at(_target.global_position)
+		var target_transform := transform.looking_at(_target.global_position)
 		transform = transform.interpolate_with(target_transform, 0.1)
 		
 		_shoot_count += delta
@@ -34,9 +35,9 @@ func _physics_process(delta: float) -> void:
 			_bee_root.play_spit_attack()
 			_shoot_count -= shoot_timer
 			
-			var bullet = BULLET_SCENE.instantiate()
+			var bullet := BULLET_SCENE.instantiate()
 			bullet.shooter = self
-			var origin = global_position
+			var origin := global_position
 			var target := _target.global_position + Vector3.UP
 			var aim_direction := (target - global_position).normalized()
 			bullet.velocity = aim_direction * bullet_speed

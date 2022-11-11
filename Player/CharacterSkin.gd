@@ -3,7 +3,7 @@ extends Node3D
 
 var animation_tree
 var state_machine
-var moving_blend_path = "parameters/StateMachine/move/blend_position"
+var moving_blend_path := "parameters/StateMachine/move/blend_position"
 
 # False : set animation to "idle"
 # True : set animation to "move"

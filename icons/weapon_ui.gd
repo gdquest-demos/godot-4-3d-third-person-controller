@@ -1,11 +1,11 @@
 extends PanelContainer
 
-@onready var nodes = {
+@onready var nodes := {
 	"DEFAULT" : %Flash,
 	"GRENADE" : %Grenade
 }
 
-var selected_node = null
+var selected_node: String = null
 
 
 func switch_to(node_name : String):
