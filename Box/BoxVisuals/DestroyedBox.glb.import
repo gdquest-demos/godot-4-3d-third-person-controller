@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cdtq6fyl7hhgm"
-path="res://.godot/imported/crate.glb-d56f42590ca3ca5e296f2319bf14ae9f.scn"
+uid="uid://c57hyrm4d3n3o"
+path="res://.godot/imported/DestroyedBox.glb-b8c8ecac1aae2fab01445422a4d452cf.scn"
 
 [deps]
 
-source_file="res://Box/BoxVisuals/crate.glb"
-dest_files=["res://.godot/imported/crate.glb-d56f42590ca3ca5e296f2319bf14ae9f.scn"]
+source_file="res://Box/BoxVisuals/DestroyedBox.glb"
+dest_files=["res://.godot/imported/DestroyedBox.glb-b8c8ecac1aae2fab01445422a4d452cf.scn"]
 
 [params]
 

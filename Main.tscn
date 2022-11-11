@@ -1,20 +1,20 @@
-[gd_scene load_steps=32 format=3 uid="uid://bo0s68ux23y2a"]
+[gd_scene load_steps=32 format=3 uid="uid://bxs6ieemgoaoy"]
 
-[ext_resource type="PackedScene" uid="uid://bba2cietrh6el" path="res://icones/weapon_ui.tscn" id="1_lix74"]
-[ext_resource type="PackedScene" uid="uid://dt8lgov6b0sjx" path="res://Player/Player.tscn" id="1_stlen"]
-[ext_resource type="PackedScene" uid="uid://cqqm2bixse18o" path="res://JumpingPad/JumpingPad.tscn" id="3_yenfk"]
-[ext_resource type="Material" uid="uid://con3572kpt8a3" path="res://Environment/large_tree_trunk/large_tree_trunk_mat.tres" id="4_hd81o"]
-[ext_resource type="PackedScene" uid="uid://bltyl6qdnk7dk" path="res://Enemies/FlyingEnemy.tscn" id="4_lcfq6"]
-[ext_resource type="PackedScene" uid="uid://cwbc4mr48xp7s" path="res://Enemies/GroundEnemy.tscn" id="5_4pnku"]
-[ext_resource type="PackedScene" uid="uid://eo4fnnqorgja" path="res://terrain_main_ground.glb" id="5_me5f1"]
-[ext_resource type="PackedScene" path="res://Box/Box.tscn" id="5_yk44g"]
-[ext_resource type="Material" uid="uid://c5trc4hy86utg" path="res://Environment/Terrain/terrain_mat.tres" id="7_ditj6"]
-[ext_resource type="PackedScene" uid="uid://48xlluucrwbp" path="res://Environment/trees/tree_1.tscn" id="8_g447d"]
-[ext_resource type="Material" uid="uid://bv7e4v4dmlu8f" path="res://Environment/Water/water_mat.tres" id="9_71adc"]
-[ext_resource type="PackedScene" uid="uid://blrs5mgkwcu5y" path="res://Environment/grass/grass_chunk_scene.tscn" id="10_ymg6d"]
-[ext_resource type="PackedScene" uid="uid://105804ektd2n" path="res://Environment/bushes/bush_1.tscn" id="11_r5jqy"]
-[ext_resource type="Script" path="res://DeathPlane.gd" id="12_ufw5r"]
-[ext_resource type="PackedScene" path="res://Environment/flowers/flower_patch.tscn" id="14_1ots5"]
+[ext_resource type="PackedScene" path="res://icons/weapon_ui.tscn" id="1_3u7h6"]
+[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="2_q87gh"]
+[ext_resource type="PackedScene" path="res://JumpingPad/JumpingPad.tscn" id="3_w2mh2"]
+[ext_resource type="PackedScene" uid="uid://eo4fnnqorgja" path="res://terrain_main_ground.glb" id="4_vprlf"]
+[ext_resource type="Material" uid="uid://c5trc4hy86utg" path="res://Environment/Terrain/terrain_mat.tres" id="5_xal68"]
+[ext_resource type="Material" uid="uid://con3572kpt8a3" path="res://Environment/large_tree_trunk/large_tree_trunk_mat.tres" id="6_q3y6j"]
+[ext_resource type="PackedScene" path="res://Environment/trees/tree.tscn" id="7_rvx5i"]
+[ext_resource type="Material" uid="uid://bv7e4v4dmlu8f" path="res://Environment/Water/water_mat.tres" id="8_rcg5n"]
+[ext_resource type="Script" path="res://DeathPlane.gd" id="9_i1hvo"]
+[ext_resource type="PackedScene" path="res://Environment/grass/GrassChunk.tscn" id="10_8c06q"]
+[ext_resource type="PackedScene" path="res://Environment/bushes/bush.tscn" id="11_f8df7"]
+[ext_resource type="PackedScene" path="res://Box/Box.tscn" id="12_xvr0j"]
+[ext_resource type="PackedScene" path="res://Enemies/BeeBot.tscn" id="13_012dc"]
+[ext_resource type="PackedScene" path="res://Enemies/Beetle.tscn" id="14_tmmem"]
+[ext_resource type="PackedScene" path="res://Environment/flowers/flower_patch.tscn" id="15_jqya0"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h3p2h"]
 rayleigh_color = Color(0.952941, 0.952941, 0.980392, 1)
@@ -82,7 +82,7 @@ size = Vector3(130, 6, 130)
 
 [node name="Playground" type="Node3D"]
 
-[node name="weapon_switch_ui" parent="." instance=ExtResource("1_lix74")]
+[node name="weapon_switch_ui" parent="." instance=ExtResource("1_3u7h6")]
 anchors_preset = 2
 anchor_left = 0.0
 anchor_top = 1.0
@@ -104,19 +104,19 @@ light_color = Color(1, 0.952941, 0.929412, 1)
 light_energy = 1.5
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("1_stlen")]
+[node name="Player" parent="." instance=ExtResource("2_q87gh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.298, 0.5, -13.017)
 
-[node name="JumpingPad" parent="." instance=ExtResource("3_yenfk")]
+[node name="JumpingPad" parent="." instance=ExtResource("3_w2mh2")]
 transform = Transform3D(0.893364, 0, 0.449335, 0, 1, 0, -0.449335, 0, 0.893364, -35.1316, 6.60685, 19.929)
 
-[node name="JumpingPad2" parent="." instance=ExtResource("3_yenfk")]
+[node name="JumpingPad2" parent="." instance=ExtResource("3_w2mh2")]
 transform = Transform3D(0.893364, 0, 0.449335, 0, 1, 0, -0.449335, 0, 0.893364, -44.5883, 13.3676, 9.57254)
 
-[node name="JumpingPad4" parent="." instance=ExtResource("3_yenfk")]
+[node name="JumpingPad4" parent="." instance=ExtResource("3_w2mh2")]
 transform = Transform3D(0.823187, 0, -0.567772, 0, 1, 0, 0.567772, 0, 0.823187, -43.7, 19.0958, 1.42115)
 
-[node name="JumpingPad3" parent="." instance=ExtResource("3_yenfk")]
+[node name="JumpingPad3" parent="." instance=ExtResource("3_w2mh2")]
 transform = Transform3D(0.945246, 0, 0.32636, 0, 1, 0, -0.32636, 0, 0.945246, -26.6437, 6.583, -3.09246)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -131,13 +131,13 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/TerrainCollision"]
 shape = SubResource("ConcavePolygonShape3D_1b8aq")
 
-[node name="terrain_main_ground" parent="NavigationRegion3D" instance=ExtResource("5_me5f1")]
+[node name="terrain_main_ground" parent="NavigationRegion3D" instance=ExtResource("4_vprlf")]
 
 [node name="Plane" parent="NavigationRegion3D/terrain_main_ground" index="0"]
-material_override = ExtResource("7_ditj6")
+material_override = ExtResource("5_xal68")
 
 [node name="large_trunk" parent="NavigationRegion3D/terrain_main_ground" index="1"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk" index="0"]
 collision_layer = 3
@@ -147,7 +147,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_xbb7l")
 
 [node name="large_trunk001" parent="NavigationRegion3D/terrain_main_ground" index="2"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk001" index="0"]
 collision_layer = 3
@@ -157,7 +157,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_qwtds")
 
 [node name="large_trunk002" parent="NavigationRegion3D/terrain_main_ground" index="3"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk002" index="0"]
 collision_layer = 3
@@ -167,7 +167,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_v4wc0")
 
 [node name="large_trunk003" parent="NavigationRegion3D/terrain_main_ground" index="4"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk003" index="0"]
 collision_layer = 3
@@ -177,7 +177,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_1dpny")
 
 [node name="terrain" parent="NavigationRegion3D/terrain_main_ground" index="5"]
-material_override = ExtResource("7_ditj6")
+material_override = ExtResource("5_xal68")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/terrain" index="0"]
 collision_layer = 3
@@ -187,7 +187,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_0qnox")
 
 [node name="large_trunk004" parent="NavigationRegion3D/terrain_main_ground" index="6"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk004" index="0"]
 collision_layer = 3
@@ -197,7 +197,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_15y4f")
 
 [node name="large_trunk005" parent="NavigationRegion3D/terrain_main_ground" index="7"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk005" index="0"]
 collision_layer = 3
@@ -207,7 +207,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_8bth8")
 
 [node name="large_trunk006" parent="NavigationRegion3D/terrain_main_ground" index="8"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk006" index="0"]
 collision_layer = 3
@@ -217,7 +217,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_05e45")
 
 [node name="large_trunk007" parent="NavigationRegion3D/terrain_main_ground" index="9"]
-material_override = ExtResource("4_hd81o")
+material_override = ExtResource("6_q3y6j")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk007" index="0"]
 collision_layer = 3
@@ -228,1434 +228,1434 @@ shape = SubResource("ConcavePolygonShape3D_h4t6m")
 
 [node name="Trees" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="Tree1Geo" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.237162, 0, 1.56006, 0, 1.57798, 0, -1.56006, 0, 0.237162, 1.32415, 0.5, -3.43875)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo5" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo5" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.32032, 0, -1.11186, 0, 2.2976, 0, 1.11186, 0, -2.32032, -3.61803, 0.5, -0.636436)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo6" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo6" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-1.11738, 0, -1.11422, 0, 1.57798, 0, 1.11422, 0, -1.11738, 11.526, 12.44, 0.170918)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo11" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo11" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(1.54779, 0, 0.307202, 0, 1.57798, 0, -0.307202, 0, 1.54779, -5.27404, 12.44, 14.4709)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo12" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo12" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(1.97016, 0, 0.391031, 0, 1.94428, 0, -0.391031, 0, 1.97016, -1.64044, 12.44, 12.0847)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo18" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo18" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.4606, 0, 2.04995, 0, 2.67393, 0, -2.04995, 0, 2.4606, -30.3401, 20.1608, 31.0639)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo30" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo30" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.40107, 2.26067e-08, 3.22586, -5.27342e-08, 3.15929, -7.51225e-08, -3.22586, -6.84726e-08, -2.40107, -40.1657, 20.1608, 38.7457)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo19" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo19" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.3023, 0, 1.91807, 0, 2.62333, 0, -1.91807, 0, 2.3023, -27.5743, 20.1608, 25.8917)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo20" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo20" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-3.13954, 0, 0.1896, 0, 2.80504, 0, -0.1896, 0, -3.13954, -18.4425, 20.1608, 30.431)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo29" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo29" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.124459, 0, 3.48393, 0, 3.09226, 0, -3.48393, 0, 0.124459, -31.1614, 20.1608, 37.6778)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo21" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo21" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.99115, 0, 0.180641, 0, 2.62333, 0, -0.180641, 0, -2.99115, -24.0011, 20.1608, 32.3029)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo22" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo22" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.33182, 0, 0.323652, 0, 2.1291, 0, -0.323652, 0, 2.33182, -21.5517, 20.1608, 26.0668)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo28" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo28" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.33182, 0, 0.323652, 0, 2.1291, 0, -0.323652, 0, 2.33182, -41.8625, 20.1608, 31.4403)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo26" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo26" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(1.82851, 0, 0.253794, 0, 1.72169, 0, -0.253794, 0, 1.82851, -33.8762, 20.1608, 26.9542)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo23" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo23" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.96814, 0, 0.411969, 0, 2.62333, 0, -0.411969, 0, 2.96814, -16.4706, 20.1608, 23.1369)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo27" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo27" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.96814, 0, 0.411969, 0, 2.62333, 0, -0.411969, 0, 2.96814, -35.7461, 20.1608, 31.419)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo24" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo24" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.05619, 0, 1.14639, 0, 2.1291, 0, -1.14639, 0, 2.05619, -13.0593, 20.1608, 28.4159)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo25" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo25" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.6173, 0, 1.45922, 0, 2.62333, 0, -1.45922, 0, 2.6173, -9.38475, 20.1608, 23.8443)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo13" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo13" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.833685, 0, 1.16637, 0, 1.47089, 0, -1.16637, 0, 0.833685, 8.39262, 12.44, 3.29896)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo7" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo7" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.5271, 0, -0.483624, 0, 2.2976, 0, 0.483624, 0, 2.5271, 17.1664, 12.44, 0.851777)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo8" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo8" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(1.40758, 8.36131e-08, 1.8459, -9.97595e-08, 2.13728, -3.81333e-08, -1.8459, -5.17484e-08, 1.40758, 13.8582, 12.44, -4.35457)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo9" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo9" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(2.09797, 0, -0.4015, 0, 1.96417, 0, 0.4015, 0, 2.09797, 22.6208, 12.44, 0.745172)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo10" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo10" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(1.12129, 7.14793e-08, 1.47046, -7.94692e-08, 1.82712, -3.03774e-08, -1.47046, -4.42388e-08, 1.12129, 19.7927, 12.44, -3.70564)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo2" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo2" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.237162, 0, 1.56006, 0, 1.57798, 0, -1.56006, 0, 0.237162, 7.93394, 0.5, -10.5838)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo3" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo3" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.350357, 0, 2.30465, 0, 2.23926, 0, -2.30465, 0, 0.350357, -10.3752, 0.5, -8.97505)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo31" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo31" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.350357, 0, 2.30465, 0, 2.23926, 0, -2.30465, 0, 0.350357, -16.3411, -0.105803, -47.1024)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo50" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo50" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.350357, 0, 2.30465, 0, 2.23926, 0, -2.30465, 0, 0.350357, -3.7375, -0.105803, -52.6325)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo38" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo38" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.402512, 0, 2.64772, 0, 2.53194, 0, -2.64772, 0, 0.402512, -29.0891, -0.105803, -46.745)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo39" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo39" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.402512, 0, 2.64772, 0, 2.53194, 0, -2.64772, 0, 0.402512, -37.5481, -0.105803, -44.8387)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo40" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo40" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-1.63232, 5.35022e-08, -2.1232, 2.08544e-07, 2.53194, -8.89452e-08, 2.1232, -2.07558e-07, -1.63232, -41.718, -0.105803, -49.0682)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo32" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo32" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.65641, 0, 1.85424, 0, 2.86598, 0, -1.85424, 0, -2.65641, -21.5237, -0.105803, -49.6043)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo33" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo33" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-0.304196, 1.20374e-07, -3.73431, 2.56971e-07, 3.1882, 1.20995e-07, 3.73431, -2.09586e-07, -0.304196, -27.6594, -0.105803, -53.1786)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo34" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo34" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.65641, 0, 1.85424, 0, 2.86598, 0, -1.85424, 0, -2.65641, -35.344, -0.105803, -51.0936)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo35" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo35" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.65641, 0, 1.85424, 0, 2.86598, 0, -1.85424, 0, -2.65641, -14.7327, -0.105803, -54.0126)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo36" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo36" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.65641, 0, 1.85424, 0, 2.86598, 0, -1.85424, 0, -2.65641, -7.64382, -0.105803, -56.9315)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo37" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo37" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.65641, 0, 1.85424, 0, 2.86598, 0, -1.85424, 0, -2.65641, -9.6692, -0.105803, -49.2469)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo41" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo41" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.23283, 0, 0.20866, 0, 2.86598, 0, -0.20866, 0, 3.23283, 7.23532, -0.105803, -76.5913)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo42" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo42" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.23283, 0, 0.20866, 0, 2.86598, 0, -0.20866, 0, 3.23283, 3.51736, -0.105803, -69.8869)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo43" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo43" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.23283, 0, 0.20866, 0, 2.86598, 0, -0.20866, 0, 3.23283, 0.304853, -0.105803, -77.1556)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo44" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo44" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.23283, 0, 0.20866, 0, 2.86598, 0, -0.20866, 0, 3.23283, 16.3123, -0.105803, -70.1077)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo45" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo45" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.23283, 0, 0.20866, 0, 2.86598, 0, -0.20866, 0, 3.23283, 12.5944, -0.105803, -63.4033)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo46" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo46" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.23283, 0, 0.20866, 0, 2.86598, 0, -0.20866, 0, 3.23283, 9.38186, -0.105803, -70.6721)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo47" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo47" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.85003, 0, 0.248497, 0, 3.38104, 0, -0.248497, 0, 3.85003, 6.98172, -0.105803, -64.5593)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo48" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo48" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.85003, 0, 0.248497, 0, 3.38104, 0, -0.248497, 0, 3.85003, 2.59558, -0.105803, -56.65)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo49" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo49" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(3.85003, 0, 0.248497, 0, 3.38104, 0, -0.248497, 0, 3.85003, -1.19425, -0.105803, -65.225)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo14" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo14" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-1.83506, 0.0265728, 2.1901, 0.0543187, 2.68699, 0.00865862, -2.18961, 0.0443876, -1.83526, -40.597, 6.7, -2.56236)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo15" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo15" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-3.47562, 0, 0.661251, 0, 3.2307, 0, -0.661251, 0, -3.47562, -46.7359, 6.7, -3.08057)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo17" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo17" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-2.80648, 0, 0.533945, 0, 2.69876, 0, -0.533945, 0, -2.80648, -30.5081, 6.7, 8.73083)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo16" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo16" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(-1.2559, 1.11131e-07, -2.38131, 1.26085e-07, 2.65905, 6.0709e-08, 2.38131, -8.21803e-08, -1.2559, -42.0321, 6.7, -7.3459)
 skeleton = NodePath("../../..")
 
-[node name="Tree1Geo4" parent="NavigationRegion3D/Trees" instance=ExtResource("8_g447d")]
+[node name="Tree1Geo4" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(1.40533, -0.0623495, 0.86904, -0.0185807, 1.6057, 0.151182, -0.871191, -0.134823, 1.39863, -9.40334, 0.5, -13.2136)
 skeleton = NodePath("../../..")
 
 [node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.12, -2, 7.71762)
-material_override = ExtResource("9_71adc")
+material_override = ExtResource("8_rcg5n")
 mesh = SubResource("PlaneMesh_eflel")
 
 [node name="DeathPlane" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
-script = ExtResource("12_ufw5r")
+script = ExtResource("9_i1hvo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane"]
 shape = SubResource("BoxShape3D_gym67")
 
 [node name="Grass" type="Node3D" parent="."]
 
-[node name="grass_chunk_scene" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, 2.34687, 0.5, -13.06)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene2" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene2" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, 2.12788, 0.5, -13.9155)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene3" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene3" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, 1.36213, 0.5, -13.1986)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene4" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene4" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, 1.36913, 0.5, -14.2492)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene5" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene5" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, 0.652629, 0.5, -14.5588)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene6" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene6" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, 1.27351, 0.5, -15.1867)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene7" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene7" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, 0.264793, 0.5, -15.4745)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene8" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene8" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, 1.16926, 0.5, -16.009)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene25" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene25" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.206221, 4.23095e-08, 0.978505, 4.26741e-08, 1, -3.42453e-08, -0.978505, 3.46947e-08, -0.206221, 2.12823, 0.5, -16.4868)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene26" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene26" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.690479, 3.11565e-08, 0.723353, 3.12978e-08, 1, -1.31969e-08, -0.723353, 1.35272e-08, -0.690479, 2.22378, 0.5, -15.6635)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene27" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene27" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.177969, 3.65131e-08, 0.84445, 3.68278e-08, 0.863, -2.95537e-08, -0.84445, 2.99416e-08, -0.177969, 0.125076, 0.5, -17.2793)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene28" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene28" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.690479, 3.11565e-08, 0.723353, 3.12978e-08, 1, -1.31969e-08, -0.723353, 1.35272e-08, -0.690479, 0.22063, 0.5, -16.4559)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene29" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene29" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.177969, 3.65131e-08, 0.84445, 3.68278e-08, 0.863, -2.95537e-08, -0.84445, 2.99416e-08, -0.177969, 3.25087, 0.5, -17.6755)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene30" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene30" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.690479, 3.11565e-08, 0.723353, 3.12978e-08, 1, -1.31969e-08, -0.723353, 1.35272e-08, -0.690479, 3.34643, 0.5, -16.8522)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene31" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene31" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.206221, 4.23095e-08, 0.978505, 4.26741e-08, 1, -3.42453e-08, -0.978505, 3.46947e-08, -0.206221, 6.21157, 0.5, -14.1205)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene32" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene32" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.690479, 3.11565e-08, 0.723353, 3.12978e-08, 1, -1.31969e-08, -0.723353, 1.35272e-08, -0.690479, 6.30713, 0.5, -13.2971)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene9" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene9" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, 5.28672, 0.5, -13.7661)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene10" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene10" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, 5.06773, 0.5, -14.6216)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene11" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene11" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, 5.57164, 0.5, -16.7091)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene12" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene12" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, 6.25276, 0.5, -15.2392)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene13" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene13" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, 5.0452, 0.5, -15.529)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene14" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene14" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, 4.21336, 0.5, -15.8928)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene15" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene15" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, 3.20464, 0.5, -16.1805)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene16" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene16" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, 4.10911, 0.5, -16.7151)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene17" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene17" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, 0.498229, 0.5, -13.7918)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene18" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene18" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, 0.279243, 0.5, -14.6473)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene19" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene19" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -0.48651, 0.5, -13.9304)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene20" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene20" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -0.479507, 0.5, -14.981)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene21" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene21" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -1.19601, 0.5, -15.2905)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene22" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene22" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -0.575125, 0.5, -15.9184)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene23" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene23" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -1.58385, 0.5, -16.2062)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene112" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene112" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.350533, -4.37542e-08, -0.840861, 3.88761e-08, 0.911, -3.11975e-08, 0.840861, -2.38789e-08, 0.350533, -1.7767, 0.5, -14.8809)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene114" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene114" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.909891, -3.72895e-08, 0.0449469, 3.88761e-08, 0.911, -3.11975e-08, -0.0449469, 3.30775e-08, 0.909891, -0.757448, 0.5, -12.9125)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene119" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene119" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.740707, -3.01815e-08, -0.530353, 2.85123e-08, 0.911, -1.20224e-08, 0.530353, -6.82383e-09, 0.740707, -1.63874, 0.5, -13.803)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene152" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene152" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.461006, -5.00622e-08, -0.887398, 4.26741e-08, 1, -3.42453e-08, 0.887398, -2.20816e-08, 0.461006, -4.10177, 0.5, -13.4517)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene153" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene153" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.85913, -3.36425e-08, -0.511758, 3.12978e-08, 1, -1.31969e-08, 0.511758, -4.67906e-09, 0.85913, -4.71264, 0.5, -14.2364)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene154" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene154" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.85913, -3.36425e-08, -0.511758, 3.12978e-08, 1, -1.31969e-08, 0.511758, -4.67906e-09, 0.85913, -3.87369, 0.5, -12.3892)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene155" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene155" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.534636, -5.5992e-08, -1.02913, 4.94899e-08, 1.11845, -3.97149e-08, 1.02913, -2.46971e-08, 0.534636, -5.16547, 0.5, -12.9748)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene156" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene156" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.998636, -3.76274e-08, -0.594858, 3.63799e-08, 1.11845, -1.53398e-08, 0.594858, -5.23327e-09, 0.998636, -5.8487, 0.5, -13.8525)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene157" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene157" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.998636, -3.76274e-08, -0.594858, 3.63799e-08, 1.11845, -1.53398e-08, 0.594858, -5.23327e-09, 0.998636, -4.91038, 0.5, -11.7865)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene144" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene144" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.722569, 5.45087e-08, 0.691299, 4.26741e-08, 1, -3.42453e-08, -0.691299, 4.75596e-09, -0.722569, 0.493456, 0.5, -12.8866)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene145" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene145" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.978271, 3.33539e-08, 0.207331, 3.12978e-08, 1, -1.31969e-08, -0.207331, -6.42112e-09, -0.978271, 1.32476, 0.5, -12.3409)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene24" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene24" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -0.679382, 0.5, -16.7407)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene33" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene33" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -9.26371, 0.5, -10.7696)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene34" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene34" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, -9.03027, 0.5, -9.08694)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene35" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene35" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, -9.24926, 0.5, -9.94242)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene36" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene36" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -10.015, 0.5, -9.22552)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene37" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene37" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -10.008, 0.5, -10.2761)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene38" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene38" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -10.7245, 0.5, -10.5857)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene39" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene39" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -10.1036, 0.5, -11.2136)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene40" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene40" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -10.2079, 0.5, -12.0359)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene41" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene41" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -7.82621, 0.5, -11.7579)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene42" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene42" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, -7.59277, 0.5, -10.0752)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene43" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene43" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, -7.81176, 0.5, -10.9307)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene44" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene44" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -8.57751, 0.5, -10.2138)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene45" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene45" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -8.57051, 0.5, -11.2644)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene46" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene46" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -9.28701, 0.5, -11.5739)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene47" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene47" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -8.66612, 0.5, -12.2019)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene48" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene48" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -8.77038, 0.5, -13.0242)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene49" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene49" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -6.37373, 0.5, -12.7312)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene50" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene50" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.769279, -1.12238e-08, -0.25677, 1.12238e-08, 0.811, -1.82369e-09, 0.25677, -1.82369e-09, 0.769279, -6.14029, 0.5, -11.0485)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene51" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene51" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.948556, -1.38394e-08, -0.316609, 1.38394e-08, 1, -2.24869e-09, 0.316609, -2.24869e-09, 0.948556, -6.35928, 0.5, -11.904)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene52" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene52" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -7.12503, 0.5, -11.1871)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene53" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene53" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.973143, 1.00625e-08, 0.230203, -1.00625e-08, 1, -1.17397e-09, -0.230203, -1.17397e-09, 0.973143, -7.11803, 0.5, -12.2377)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene54" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene54" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -7.83453, 0.5, -12.5473)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene55" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene55" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.216559, -4.26741e-08, -0.97627, 4.26741e-08, 1, -3.42453e-08, 0.97627, -3.42453e-08, 0.216559, -7.21364, 0.5, -13.1752)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene56" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene56" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.698091, -3.12978e-08, -0.71601, 3.12978e-08, 1, -1.31969e-08, 0.71601, -1.31969e-08, 0.698091, -7.3179, 0.5, -13.9975)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene57" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene57" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.53905, -2.79865e-08, -0.842274, 3.12978e-08, 1, -1.31969e-08, 0.842274, -1.92475e-08, 0.53905, -7.38714, 0.5, -7.96803)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene58" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene58" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.865038, -1.30998e-08, -0.501707, 1.38394e-08, 1, -2.24869e-09, 0.501707, -4.99814e-09, 0.865038, -7.49845, 0.5, -6.2729)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene59" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene59" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.865038, -1.30998e-08, -0.501707, 1.38394e-08, 1, -2.24869e-09, 0.501707, -4.99814e-09, 0.865038, -7.5401, 0.5, -7.15498)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene60" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene60" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.999583, 1.00922e-08, 0.0288638, -1.00625e-08, 1, -1.17397e-09, -0.0288638, 8.83041e-10, 0.999583, -8.43489, 0.5, -6.60755)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene61" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene61" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.999583, 1.00922e-08, 0.0288638, -1.00625e-08, 1, -1.17397e-09, -0.0288638, 8.83041e-10, 0.999583, -8.21579, 0.5, -7.63507)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene62" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene62" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.0148697, -3.48761e-08, -0.999889, 4.26741e-08, 1, -3.42453e-08, 0.999889, -4.21602e-08, 0.0148697, -8.85499, 0.5, -8.08299)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene63" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene63" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.0148697, -3.48761e-08, -0.999889, 4.26741e-08, 1, -3.42453e-08, 0.999889, -4.21602e-08, 0.0148697, -8.12005, 0.5, -8.57254)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene64" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene64" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.53905, -2.79865e-08, -0.842274, 3.12978e-08, 1, -1.31969e-08, 0.842274, -1.92475e-08, 0.53905, -8.05604, 0.5, -9.39895)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene65" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene65" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.53905, -2.79865e-08, -0.842274, 3.12978e-08, 1, -1.31969e-08, 0.842274, -1.92475e-08, 0.53905, -8.60004, 0.5, -5.7369)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene66" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene66" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.865038, -1.30998e-08, -0.501707, 1.38394e-08, 1, -2.24869e-09, 0.501707, -4.99814e-09, 0.865038, -8.71134, 0.5, -4.04177)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene67" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene67" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.865038, -1.30998e-08, -0.501707, 1.38394e-08, 1, -2.24869e-09, 0.501707, -4.99814e-09, 0.865038, -8.75299, 0.5, -4.92385)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene68" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene68" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.999583, 1.00922e-08, 0.0288638, -1.00625e-08, 1, -1.17397e-09, -0.0288638, 8.83041e-10, 0.999583, -9.64778, 0.5, -4.37642)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene69" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene69" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.999583, 1.00922e-08, 0.0288638, -1.00625e-08, 1, -1.17397e-09, -0.0288638, 8.83041e-10, 0.999583, -9.42869, 0.5, -5.40394)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene70" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene70" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.0148697, -3.48761e-08, -0.999889, 4.26741e-08, 1, -3.42453e-08, 0.999889, -4.21602e-08, 0.0148697, -10.0679, 0.5, -5.85186)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene71" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene71" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.0148697, -3.48761e-08, -0.999889, 4.26741e-08, 1, -3.42453e-08, 0.999889, -4.21602e-08, 0.0148697, -9.33294, 0.5, -6.34142)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene72" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene72" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.53905, -2.79865e-08, -0.842274, 3.12978e-08, 1, -1.31969e-08, 0.842274, -1.92475e-08, 0.53905, -9.26893, 0.5, -7.16783)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene73" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene73" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.64824, 3.03371e-08, 0.761437, 3.12978e-08, 1, -1.31969e-08, -0.761437, 1.52765e-08, -0.64824, -11.2945, 0.5, -8.19627)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene74" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene74" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.925057, 1.36564e-08, 0.379827, 1.38394e-08, 1, -2.24869e-09, -0.379827, 3.17643e-09, -0.925057, -11.414, 0.5, -9.89084)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene75" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene75" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.925057, 1.36564e-08, 0.379827, 1.38394e-08, 1, -2.24869e-09, -0.379827, 3.17643e-09, -0.925057, -11.2532, 0.5, -9.02255)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene76" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene76" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.986446, -1.01187e-08, -0.164084, -1.00625e-08, 1, -1.17397e-09, 0.164084, 4.93028e-10, -0.986446, -10.4408, 0.5, -9.68621)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene77" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene77" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.986446, -1.01187e-08, -0.164084, -1.00625e-08, 1, -1.17397e-09, 0.164084, 4.93028e-10, -0.986446, -10.5186, 0.5, -8.63848)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene78" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene78" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.15026, 4.02687e-08, 0.988647, 4.26741e-08, 1, -3.42453e-08, -0.988647, 3.70439e-08, -0.15026, -9.82462, 0.5, -8.28133)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene79" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene79" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.15026, 4.02687e-08, 0.988647, 4.26741e-08, 1, -3.42453e-08, -0.988647, 3.70439e-08, -0.15026, -10.4864, 0.5, -7.69667)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene80" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene80" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.64824, 3.03371e-08, 0.761437, 3.12978e-08, 1, -1.31969e-08, -0.761437, 1.52765e-08, -0.64824, -10.4378, 0.5, -6.86921)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene81" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene81" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.64824, 3.03371e-08, 0.761437, 3.12978e-08, 1, -1.31969e-08, -0.761437, 1.52765e-08, -0.64824, -12.717, 0.5, -7.32778)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene82" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene82" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.750221, 1.10753e-08, 0.30804, 1.12238e-08, 0.811, -1.82369e-09, -0.30804, 2.57609e-09, -0.750221, -12.8365, 0.5, -9.02235)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene83" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene83" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.925057, 1.36564e-08, 0.379827, 1.38394e-08, 1, -2.24869e-09, -0.379827, 3.17643e-09, -0.925057, -12.6757, 0.5, -8.15406)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene84" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene84" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.986446, -1.01187e-08, -0.164084, -1.00625e-08, 1, -1.17397e-09, 0.164084, 4.93028e-10, -0.986446, -11.8634, 0.5, -8.81771)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene85" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene85" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.986446, -1.01187e-08, -0.164084, -1.00625e-08, 1, -1.17397e-09, 0.164084, 4.93028e-10, -0.986446, -11.9412, 0.5, -7.76998)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene86" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene86" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.15026, 4.02687e-08, 0.988647, 4.26741e-08, 1, -3.42453e-08, -0.988647, 3.70439e-08, -0.15026, -11.2472, 0.5, -7.41283)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene87" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene87" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.15026, 4.02687e-08, 0.988647, 4.26741e-08, 1, -3.42453e-08, -0.988647, 3.70439e-08, -0.15026, -11.909, 0.5, -6.82818)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene88" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene88" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.525722, 2.46033e-08, 0.617525, 2.53825e-08, 0.811, -1.07027e-08, -0.617525, 1.23892e-08, -0.525722, -11.8604, 0.5, -6.00072)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene158" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene158" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.902638, 2.378e-08, -0.430401, 4.26741e-08, 1, -3.42453e-08, 0.430401, -4.92781e-08, -0.902638, -30.7607, 6.7, 5.05791)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene159" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene159" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.540828, 5.82637e-09, -0.841134, 3.12978e-08, 1, -1.31969e-08, 0.841134, -3.34629e-08, -0.540828, -29.9556, 6.7, 4.47423)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene160" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene160" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.540828, 5.82637e-09, -0.841134, 3.12978e-08, 1, -1.31969e-08, 0.841134, -3.34629e-08, -0.540828, -31.8304, 6.7, 5.24954)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene161" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene161" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-1.0468, 2.65967e-08, -0.499143, 4.94899e-08, 1.11845, -3.97149e-08, 0.499143, -5.5115e-08, -1.0468, -31.2009, 6.7, 3.97853)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene162" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene162" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.628648, 6.51648e-09, -0.977717, 3.63799e-08, 1.11845, -1.53398e-08, 0.977717, -3.74265e-08, -0.628648, -30.3004, 6.7, 3.32571)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene163" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene163" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.628648, 6.51648e-09, -0.977717, 3.63799e-08, 1.11845, -1.53398e-08, 0.977717, -3.74265e-08, -0.628648, -32.3973, 6.7, 4.19285)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene113" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene113" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -33.2648, 6.7, -0.192695)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene146" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene146" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.34885, 2.72047e-09, -0.937178, 1.38394e-08, 1, -2.24869e-09, 0.937178, -1.37544e-08, -0.34885, -34.9544, 6.7, -0.0169085)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene147" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene147" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.34885, 2.72047e-09, -0.937178, 1.38394e-08, 1, -2.24869e-09, 0.937178, -1.37544e-08, -0.34885, -34.0919, 6.7, -0.206531)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene148" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene148" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.196802, 8.29304e-10, -0.980443, -1.00625e-08, 1, -1.17397e-09, 0.980443, 1.00968e-08, 0.196802, -36.0867, 6.7, -1.49209)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene149" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene149" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.196802, 8.29304e-10, -0.980443, -1.00625e-08, 1, -1.17397e-09, 0.980443, 1.00968e-08, 0.196802, -33.7325, 6.7, -0.953416)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene150" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene150" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983102, 3.56841e-08, -0.183059, 4.26741e-08, 1, -3.42453e-08, 0.183059, -4.14785e-08, -0.983102, -34.0066, 6.7, -2.87687)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene151" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene151" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983102, 3.56841e-08, -0.183059, 4.26741e-08, 1, -3.42453e-08, 0.183059, -4.14785e-08, -0.983102, -32.7923, 6.7, -1.01692)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene164" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene164" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -31.9669, 6.7, -1.09305)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene165" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene165" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -32.3262, 6.7, 1.27775)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene166" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene166" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.34885, 2.72047e-09, -0.937178, 1.38394e-08, 1, -2.24869e-09, 0.937178, -1.37544e-08, -0.34885, -34.0159, 6.7, 1.45353)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene167" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene167" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.34885, 2.72047e-09, -0.937178, 1.38394e-08, 1, -2.24869e-09, 0.937178, -1.37544e-08, -0.34885, -33.1534, 6.7, 1.26391)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene168" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene168" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.196802, 8.29304e-10, -0.980443, -1.00625e-08, 1, -1.17397e-09, 0.980443, 1.00968e-08, 0.196802, -33.8437, 6.7, 0.474107)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene169" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene169" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.196802, 8.29304e-10, -0.980443, -1.00625e-08, 1, -1.17397e-09, 0.980443, 1.00968e-08, 0.196802, -32.7939, 6.7, 0.517013)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene170" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene170" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983102, 3.56841e-08, -0.183059, 4.26741e-08, 1, -3.42453e-08, 0.183059, -4.14785e-08, -0.983102, -32.4601, 6.7, -0.188488)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene171" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene171" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983102, 3.56841e-08, -0.183059, 4.26741e-08, 1, -3.42453e-08, 0.183059, -4.14785e-08, -0.983102, -31.8537, 6.7, 0.453513)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene172" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene172" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -31.0283, 6.7, 0.37742)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene173" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene173" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -31.4031, 6.7, 2.76266)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene174" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene174" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.282917, 2.2063e-09, -0.760052, 1.12238e-08, 0.811, -1.82369e-09, 0.760052, -1.11549e-08, -0.282917, -33.0928, 6.7, 2.93843)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene175" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene175" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.34885, 2.72047e-09, -0.937178, 1.38394e-08, 1, -2.24869e-09, 0.937178, -1.37544e-08, -0.34885, -32.2303, 6.7, 2.74882)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene176" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene176" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.196802, 8.29304e-10, -0.980443, -1.00625e-08, 1, -1.17397e-09, 0.980443, 1.00968e-08, 0.196802, -32.9206, 6.7, 1.95901)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene177" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene177" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.196802, 8.29304e-10, -0.980443, -1.00625e-08, 1, -1.17397e-09, 0.980443, 1.00968e-08, 0.196802, -31.8709, 6.7, 2.00192)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene178" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene178" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983102, 3.56841e-08, -0.183059, 4.26741e-08, 1, -3.42453e-08, 0.183059, -4.14785e-08, -0.983102, -31.537, 6.7, 1.29642)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene179" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene179" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983102, 3.56841e-08, -0.183059, 4.26741e-08, 1, -3.42453e-08, 0.183059, -4.14785e-08, -0.983102, -30.9306, 6.7, 1.93841)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene180" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene180" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -30.1053, 6.7, 1.86232)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene213" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene213" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -29.5099, 6.7, 2.54796)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene214" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene214" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -30.6479, 6.7, 0.978653)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene215" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene215" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -31.1989, 6.7, -0.588135)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene216" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene216" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -29.988, 6.7, -0.401748)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene217" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene217" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -29.4198, 6.7, 0.531671)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene218" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene218" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -28.8138, 6.7, 1.48201)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene219" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene219" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739455, 1.42591e-08, -0.673207, 3.12978e-08, 1, -1.31969e-08, 0.673207, -3.08284e-08, -0.739455, -29.2706, 6.7, 3.73657)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene181" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene181" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.860209, 2.0193e-08, -0.509942, 3.12978e-08, 1, -1.31969e-08, 0.509942, -2.73122e-08, -0.860209, -36.1288, 6.7, 1.58701)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene182" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene182" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.530985, 5.44303e-09, -0.847382, 1.38394e-08, 1, -2.24869e-09, 0.847382, -1.29213e-08, -0.530985, -37.8192, 6.7, 1.41782)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene183" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene183" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.530985, 5.44303e-09, -0.847382, 1.38394e-08, 1, -2.24869e-09, 0.847382, -1.29213e-08, -0.530985, -36.9362, 6.7, 1.40634)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene184" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene184" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.00532321, -1.22752e-09, -0.999985, -1.00625e-08, 1, -1.17397e-09, 0.999985, 1.00561e-08, -0.00532321, -37.4527, 6.7, 0.493362)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene185" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene185" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.00532321, -1.22752e-09, -0.999985, -1.00625e-08, 1, -1.17397e-09, 0.999985, 1.00561e-08, -0.00532321, -36.4333, 6.7, 0.74746)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene186" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene186" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.999813, 4.33278e-08, 0.0193196, 4.26741e-08, 1, -3.42453e-08, -0.0193196, -3.34145e-08, -0.999813, -35.9638, 6.7, 0.123947)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene187" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene187" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.999813, 4.33278e-08, 0.0193196, 4.26741e-08, 1, -3.42453e-08, -0.0193196, -3.34145e-08, -0.999813, -35.4996, 6.7, 0.875192)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene188" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene188" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.860209, 2.0193e-08, -0.509942, 3.12978e-08, 1, -1.31969e-08, 0.509942, -2.73122e-08, -0.860209, -34.6759, 6.7, 0.967416)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene189" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene189" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.860209, 2.0193e-08, -0.509942, 3.12978e-08, 1, -1.31969e-08, 0.509942, -2.73122e-08, -0.860209, -38.3172, 6.7, 0.29855)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene190" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene190" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.530985, 5.44303e-09, -0.847382, 1.38394e-08, 1, -2.24869e-09, 0.847382, -1.29213e-08, -0.530985, -40.0075, 6.7, 0.129367)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene191" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene191" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.530985, 5.44303e-09, -0.847382, 1.38394e-08, 1, -2.24869e-09, 0.847382, -1.29213e-08, -0.530985, -39.1246, 6.7, 0.117892)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene192" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene192" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.00532321, -1.22752e-09, -0.999985, -1.00625e-08, 1, -1.17397e-09, 0.999985, 1.00561e-08, -0.00532321, -39.6411, 6.7, -0.795089)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene193" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene193" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.00532321, -1.22752e-09, -0.999985, -1.00625e-08, 1, -1.17397e-09, 0.999985, 1.00561e-08, -0.00532321, -38.6216, 6.7, -0.540999)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene194" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene194" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.999813, 4.33278e-08, 0.0193196, 4.26741e-08, 1, -3.42453e-08, -0.0193196, -3.34145e-08, -0.999813, -38.1521, 6.7, -1.16452)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene195" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene195" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.999813, 4.33278e-08, 0.0193196, 4.26741e-08, 1, -3.42453e-08, -0.0193196, -3.34145e-08, -0.999813, -37.688, 6.7, -0.413259)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene196" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene196" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.860209, 2.0193e-08, -0.509942, 3.12978e-08, 1, -1.31969e-08, 0.509942, -2.73122e-08, -0.860209, -36.8642, 6.7, -0.321035)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene197" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene197" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.783152, -1.63046e-08, 0.621832, 3.12978e-08, 1, -1.31969e-08, -0.621832, 2.97972e-08, 0.783152, -37.0716, 6.7, -2.80603)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene198" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene198" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.411228, -3.64141e-09, 0.911532, 1.38394e-08, 1, -2.24869e-09, -0.911532, 1.35398e-08, 0.411228, -35.3739, 6.7, -2.86753)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene199" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene199" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.411228, -3.64141e-09, 0.911532, 1.38394e-08, 1, -2.24869e-09, -0.911532, 1.35398e-08, 0.411228, -36.2472, 6.7, -2.73651)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene200" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene200" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130267, -1.46838e-10, 0.991479, -1.00625e-08, 1, -1.17397e-09, -0.991479, -1.01296e-08, -0.130267, -35.6117, 6.7, -1.90189)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene201" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene201" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130267, -1.46838e-10, 0.991479, -1.00625e-08, 1, -1.17397e-09, -0.991479, -1.01296e-08, -0.130267, -36.6562, 6.7, -2.01547)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene202" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene202" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993206, -3.83988e-08, 0.116376, 4.26741e-08, 1, -3.42453e-08, -0.116376, 3.89788e-08, 0.993206, -37.0368, 6.7, -1.3341)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene203" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene203" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993206, -3.83988e-08, 0.116376, 4.26741e-08, 1, -3.42453e-08, -0.116376, 3.89788e-08, 0.993206, -37.5985, 6.7, -2.01548)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene204" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene204" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.783152, -1.63046e-08, 0.621832, 3.12978e-08, 1, -1.31969e-08, -0.621832, 2.97972e-08, 0.783152, -38.4272, 6.7, -1.99519)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene205" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene205" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.783152, -1.63046e-08, 0.621832, 3.12978e-08, 1, -1.31969e-08, -0.621832, 2.97972e-08, 0.783152, -37.891, 6.7, -4.25738)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene206" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene206" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.333506, -2.95319e-09, 0.739252, 1.12238e-08, 0.811, -1.82369e-09, -0.739252, 1.09808e-08, 0.333506, -36.1933, 6.7, -4.31889)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene207" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene207" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.411228, -3.64141e-09, 0.911532, 1.38394e-08, 1, -2.24869e-09, -0.911532, 1.35398e-08, 0.411228, -37.0666, 6.7, -4.18786)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene208" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene208" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130267, -1.46838e-10, 0.991479, -1.00625e-08, 1, -1.17397e-09, -0.991479, -1.01296e-08, -0.130267, -36.4311, 6.7, -3.35335)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene209" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene209" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130267, -1.46838e-10, 0.991479, -1.00625e-08, 1, -1.17397e-09, -0.991479, -1.01296e-08, -0.130267, -37.4755, 6.7, -3.46693)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene210" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene210" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993206, -3.83988e-08, 0.116376, 4.26741e-08, 1, -3.42453e-08, -0.116376, 3.89788e-08, 0.993206, -37.8562, 6.7, -2.78554)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene211" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene211" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993206, -3.83988e-08, 0.116376, 4.26741e-08, 1, -3.42453e-08, -0.116376, 3.89788e-08, 0.993206, -38.4179, 6.7, -3.46694)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene212" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene212" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.635136, -1.3223e-08, 0.504305, 2.53825e-08, 0.811, -1.07027e-08, -0.504305, 2.41654e-08, 0.635136, -39.2465, 6.7, -3.44665)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene89" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene89" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.410783, -2.48886e-08, -0.911734, 3.12978e-08, 1, -1.31969e-08, 0.911734, -2.31142e-08, 0.410783, -5.9119, 0.5, 1.16054)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene90" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene90" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.782847, -1.22333e-08, -0.622214, 1.38394e-08, 1, -2.24869e-09, 0.622214, -6.8507e-09, 0.782847, -6.26862, 0.5, 2.82144)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene91" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene91" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.782847, -1.22333e-08, -0.622214, 1.38394e-08, 1, -2.24869e-09, 0.622214, -6.8507e-09, 0.782847, -6.18151, 0.5, 1.94268)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene92" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene92" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993149, 9.85636e-09, -0.116861, -1.00625e-08, 1, -1.17397e-09, 0.116861, 2.34185e-09, 0.993149, -7.14641, 0.5, 2.35411)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene93" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene93" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993149, 9.85636e-09, -0.116861, -1.00625e-08, 1, -1.17397e-09, 0.116861, 2.34185e-09, 0.993149, -6.78017, 0.5, 1.36941)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene94" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene94" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130751, -2.83716e-08, -0.991416, 4.26741e-08, 1, -3.42453e-08, 0.991416, -4.67854e-08, -0.130751, -7.34738, 0.5, 0.833225)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene95" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene95" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130751, -2.83716e-08, -0.991416, 4.26741e-08, 1, -3.42453e-08, 0.991416, -4.67854e-08, -0.130751, -6.54904, 0.5, 0.455832)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene96" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene96" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.410783, -2.48886e-08, -0.911734, 3.12978e-08, 1, -1.31969e-08, 0.911734, -2.31142e-08, 0.410783, -6.36552, 0.5, -0.352487)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene97" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene97" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.410783, -2.48886e-08, -0.911734, 3.12978e-08, 1, -1.31969e-08, 0.911734, -2.31142e-08, 0.410783, -4.22292, 0.5, 0.724082)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene98" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene98" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.782847, -1.22333e-08, -0.622214, 1.38394e-08, 1, -2.24869e-09, 0.622214, -6.8507e-09, 0.782847, -4.57966, 0.5, 2.38502)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene99" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene99" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.782847, -1.22333e-08, -0.622214, 1.38394e-08, 1, -2.24869e-09, 0.622214, -6.8507e-09, 0.782847, -4.49254, 0.5, 1.50624)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene100" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene100" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993149, 9.85636e-09, -0.116861, -1.00625e-08, 1, -1.17397e-09, 0.116861, 2.34185e-09, 0.993149, -5.45745, 0.5, 1.91767)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene101" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene101" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993149, 9.85636e-09, -0.116861, -1.00625e-08, 1, -1.17397e-09, 0.116861, 2.34185e-09, 0.993149, -5.0912, 0.5, 0.932952)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene102" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene102" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130751, -2.83716e-08, -0.991416, 4.26741e-08, 1, -3.42453e-08, 0.991416, -4.67854e-08, -0.130751, -5.65844, 0.5, 0.396861)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene103" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene103" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130751, -2.83716e-08, -0.991416, 4.26741e-08, 1, -3.42453e-08, 0.991416, -4.67854e-08, -0.130751, -4.86008, 0.5, 0.0193706)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene104" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene104" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.410783, -2.48886e-08, -0.911734, 3.12978e-08, 1, -1.31969e-08, 0.911734, -2.31142e-08, 0.410783, -4.67653, 0.5, -0.788935)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene105" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene105" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.410783, -2.48886e-08, -0.911734, 3.12978e-08, 1, -1.31969e-08, 0.911734, -2.31142e-08, 0.410783, -2.52501, 0.5, 0.306849)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene106" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene106" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.634889, -9.92124e-09, -0.504615, 1.12238e-08, 0.811, -1.82369e-09, 0.504615, -5.55594e-09, 0.634889, -2.88174, 0.5, 1.96779)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene107" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene107" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.782847, -1.22333e-08, -0.622214, 1.38394e-08, 1, -2.24869e-09, 0.622214, -6.8507e-09, 0.782847, -2.79462, 0.5, 1.08901)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene108" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene108" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993149, 9.85636e-09, -0.116861, -1.00625e-08, 1, -1.17397e-09, 0.116861, 2.34185e-09, 0.993149, -3.75953, 0.5, 1.50044)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene109" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene109" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993149, 9.85636e-09, -0.116861, -1.00625e-08, 1, -1.17397e-09, 0.116861, 2.34185e-09, 0.993149, -3.39328, 0.5, 0.515718)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene110" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene110" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130751, -2.83716e-08, -0.991416, 4.26741e-08, 1, -3.42453e-08, 0.991416, -4.67854e-08, -0.130751, -3.96049, 0.5, -0.0204656)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene111" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene111" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130751, -2.83716e-08, -0.991416, 4.26741e-08, 1, -3.42453e-08, 0.991416, -4.67854e-08, -0.130751, -3.16216, 0.5, -0.397863)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene115" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene115" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.949063, 9.18005e-09, -0.315086, -1.00625e-08, 1, -1.17397e-09, 0.315086, 4.28473e-09, 0.949063, -6.55804, 0.5, 5.35483)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene116" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene116" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.949063, 9.18005e-09, -0.315086, -1.00625e-08, 1, -1.17397e-09, 0.315086, 4.28473e-09, 0.949063, -6.00041, 0.5, 4.46441)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene117" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene117" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.328339, -1.83352e-08, -0.94456, 4.26741e-08, 1, -3.42453e-08, 0.94456, -5.15524e-08, -0.328339, -6.44764, 0.5, 3.82473)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene118" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene118" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.328339, -1.83352e-08, -0.94456, 4.26741e-08, 1, -3.42453e-08, 0.94456, -5.15524e-08, -0.328339, -5.58951, 0.5, 3.61636)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene120" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene120" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.218126, -1.9706e-08, -0.975921, 3.12978e-08, 1, -1.31969e-08, 0.975921, -2.76656e-08, 0.218126, -7.01127, 0.5, 6.11633)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene121" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene121" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.641008, -1.05971e-08, -0.767535, 1.38394e-08, 1, -2.24869e-09, 0.767535, -9.18081e-09, 0.641008, -7.69617, 0.5, 7.67093)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene122" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene122" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.641008, -1.05971e-08, -0.767535, 1.38394e-08, 1, -2.24869e-09, 0.767535, -9.18081e-09, 0.641008, -7.43333, 0.5, 6.82789)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene123" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene123" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.949063, 9.18005e-09, -0.315086, -1.00625e-08, 1, -1.17397e-09, 0.315086, 4.28473e-09, 0.949063, -8.46146, 0.5, 7.03591)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene124" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene124" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.949063, 9.18005e-09, -0.315086, -1.00625e-08, 1, -1.17397e-09, 0.315086, 4.28473e-09, 0.949063, -7.90384, 0.5, 6.14549)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene125" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene125" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.328339, -1.83352e-08, -0.94456, 4.26741e-08, 1, -3.42453e-08, 0.94456, -5.15524e-08, -0.328339, -8.35108, 0.5, 5.5058)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene126" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene126" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.328339, -1.83352e-08, -0.94456, 4.26741e-08, 1, -3.42453e-08, 0.94456, -5.15524e-08, -0.328339, -7.49293, 0.5, 5.29743)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene127" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene127" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.218126, -1.9706e-08, -0.975921, 3.12978e-08, 1, -1.31969e-08, 0.975921, -2.76656e-08, 0.218126, -7.14987, 0.5, 4.54288)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene128" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene128" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.348392, 2.3274e-08, 0.937349, 3.12978e-08, 1, -1.31969e-08, -0.937349, 2.47392e-08, -0.348392, -8.70095, 0.5, 2.88313)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene129" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene129" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739126, 1.17437e-08, 0.673567, 1.38394e-08, 1, -2.24869e-09, -0.673567, 7.65973e-09, -0.739126, -8.2331, 0.5, 1.25005)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene130" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene130" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739126, 1.17437e-08, 0.673567, 1.38394e-08, 1, -2.24869e-09, -0.673567, 7.65973e-09, -0.739126, -8.37927, 0.5, 2.12092)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene131" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene131" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983012, -9.67605e-09, 0.183539, -1.00625e-08, 1, -1.17397e-09, -0.183539, -3.00088e-09, -0.983012, -7.38876, 0.5, 1.77549)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene132" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene132" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983012, -9.67605e-09, 0.183539, -1.00625e-08, 1, -1.17397e-09, -0.183539, -3.00088e-09, -0.983012, -7.82055, 0.5, 2.73327)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene133" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene133" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.197281, 2.51535e-08, 0.980347, 4.26741e-08, 1, -3.42453e-08, -0.980347, 4.85914e-08, 0.197281, -7.29077, 0.5, 3.30642)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene134" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene134" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.197281, 2.51535e-08, 0.980347, 4.26741e-08, 1, -3.42453e-08, -0.980347, 4.85914e-08, 0.197281, -8.11272, 0.5, 3.62919)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene135" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene135" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.348392, 2.3274e-08, 0.937349, 3.12978e-08, 1, -1.31969e-08, -0.937349, 2.47392e-08, -0.348392, -8.35034, 0.5, 4.42329)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene136" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene136" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.348392, 2.3274e-08, 0.937349, 3.12978e-08, 1, -1.31969e-08, -0.937349, 2.47392e-08, -0.348392, -10.3348, 0.5, 3.21215)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene137" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene137" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.599431, 9.52414e-09, 0.546263, 1.12238e-08, 0.811, -1.82369e-09, -0.546263, 6.21203e-09, -0.599431, -9.86697, 0.5, 1.57907)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene138" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene138" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.739126, 1.17437e-08, 0.673567, 1.38394e-08, 1, -2.24869e-09, -0.673567, 7.65973e-09, -0.739126, -10.0131, 0.5, 2.44994)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene139" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene139" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983012, -9.67605e-09, 0.183539, -1.00625e-08, 1, -1.17397e-09, -0.183539, -3.00088e-09, -0.983012, -9.02273, 0.5, 2.10448)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene140" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene140" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.983012, -9.67605e-09, 0.183539, -1.00625e-08, 1, -1.17397e-09, -0.183539, -3.00088e-09, -0.983012, -9.45451, 0.5, 3.06227)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene141" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene141" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.197281, 2.51535e-08, 0.980347, 4.26741e-08, 1, -3.42453e-08, -0.980347, 4.85914e-08, 0.197281, -8.92472, 0.5, 3.63542)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene142" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene142" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.197281, 2.51535e-08, 0.980347, 4.26741e-08, 1, -3.42453e-08, -0.980347, 4.85914e-08, 0.197281, -9.74668, 0.5, 3.95818)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene143" parent="Grass" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene143" parent="Grass" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.282546, 1.88752e-08, 0.76019, 2.53825e-08, 0.811, -1.07027e-08, -0.76019, 2.00635e-08, -0.282546, -9.9843, 0.5, 4.75228)
 skeleton = NodePath("../..")
 
 [node name="Bushes" type="Node3D" parent="."]
 
-[node name="Bush1" parent="Bushes" instance=ExtResource("11_r5jqy")]
+[node name="Bush1" parent="Bushes" instance=ExtResource("11_f8df7")]
 transform = Transform3D(1.5821, 0, 0, 0, 1.5821, 0, 0, 0, 1.5821, -9.29808, 0.5, -11.103)
 skeleton = NodePath("../..")
 
-[node name="Bush2" parent="Bushes" instance=ExtResource("11_r5jqy")]
+[node name="Bush2" parent="Bushes" instance=ExtResource("11_f8df7")]
 transform = Transform3D(0.377491, 0, -1.5364, 0, 1.5821, 0, 1.5364, 0, 0.377491, -10.8042, 0.5, -4.43754)
 skeleton = NodePath("../..")
 
-[node name="Bush3" parent="Bushes" instance=ExtResource("11_r5jqy")]
+[node name="Bush3" parent="Bushes" instance=ExtResource("11_f8df7")]
 transform = Transform3D(0.235531, 0, -0.95862, 0, 0.987131, 0, 0.95862, 0, 0.235531, -9.73978, 0.5, -3.62916)
 skeleton = NodePath("../..")
 
 [node name="Boxes" type="Node3D" parent="."]
 
-[node name="Box2" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box2" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.91126, 0, 0.411832, 0, 1, 0, -0.411832, 0, 0.91126, -6.60338, 1.01478, 7.9387)
 
-[node name="Box3" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box3" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.91126, 0, 0.411832, 0, 1, 0, -0.411832, 0, 0.91126, -7.65465, 1.01478, 8.41896)
 
-[node name="Box4" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box4" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(-0.382119, 0, 0.924113, 0, 1, 0, -0.924113, 0, -0.382119, -10.1754, 7.24891, 8.73528)
 
-[node name="Box5" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box5" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(-0.382119, 0, 0.924113, 0, 1, 0, -0.924113, 0, -0.382119, -9.72945, 7.24891, 9.80155)
 
-[node name="Box6" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box6" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.44704, 5.3719, 1.83539)
 
-[node name="Box15" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box15" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.45221, 6.42083, 1.85654)
 
-[node name="Box21" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box21" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.45221, 7.48873, 1.85654)
 
-[node name="Box22" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box22" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.713189, 0, 0.700972, 0, 1, 0, -0.700972, 0, 0.713189, 5.45221, 8.54957, 1.85654)
 
-[node name="Box16" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box16" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.899191, 0, 0.437555, 0, 1, 0, -0.437555, 0, 0.899191, -38.7791, 14.6498, 23.5164)
 
-[node name="Box17" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box17" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.899191, 0, 0.437555, 0, 1, 0, -0.437555, 0, 0.899191, -39.8163, 14.6498, 24.0263)
 
-[node name="Box18" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box18" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.943228, 0, 0.332145, 0, 1, 0, -0.332145, 0, 0.943228, -43.6698, 19.577, 6.62192)
 
-[node name="Box20" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box20" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.943228, 0, 0.332145, 0, 1, 0, -0.332145, 0, 0.943228, -44.2522, 20.628, 6.85372)
 
-[node name="Box19" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box19" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.943228, 0, 0.332145, 0, 1, 0, -0.332145, 0, 0.943228, -44.7584, 19.577, 7.01022)
 
-[node name="Box9" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box9" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.890165, 0, -0.455638, 0, 1, 0, 0.455638, 0, 0.890165, -33.9122, 21.9604, -11.0165)
 
-[node name="Box10" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box10" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.890165, 0, -0.455638, 0, 1, 0, 0.455638, 0, 0.890165, -34.9105, 21.9604, -11.5402)
 
-[node name="Box11" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box11" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.890165, 0, -0.455638, 0, 1, 0, 0.455638, 0, 0.890165, -35.9415, 21.9604, -12.0626)
 
-[node name="Box12" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box12" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.890165, 0, -0.455638, 0, 1, 0, 0.455638, 0, 0.890165, -35.3877, 23.1909, -11.8562)
 
-[node name="Box13" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box13" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.890165, 0, -0.455638, 0, 1, 0, 0.455638, 0, 0.890165, -34.4122, 23.1909, -11.4012)
 
-[node name="Box14" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box14" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.890165, 0, -0.455638, 0, 1, 0, 0.455638, 0, 0.890165, -34.8602, 24.3039, -11.624)
 
-[node name="Box7" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box7" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(-0.885783, 0, -0.4641, 0, 1, 0, 0.4641, 0, -0.885783, 2.68326, 1.05483, -14.6913)
 
-[node name="Box8" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box8" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(-0.848705, 0, -0.528868, 0, 1, 0, 0.528868, 0, -0.848705, 3.1172, 1.05483, -13.6843)
 
-[node name="Box24" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box24" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(-0.440111, 0, 0.897944, 0, 1, 0, -0.897944, 0, -0.440111, 4.17215, 1.05483, -14.1354)
 
-[node name="Box25" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box25" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.879059, 0, 0.476714, 0, 1, 0, -0.476714, 0, 0.879059, 3.66517, 1.05483, -15.2815)
 
-[node name="Box23" parent="Boxes" instance=ExtResource("5_yk44g")]
+[node name="Box23" parent="Boxes" instance=ExtResource("12_xvr0j")]
 transform = Transform3D(0.83295, 0, -0.553349, 0, 1, 0, 0.553349, 0, 0.83295, 3.37622, 2.12041, -14.4554)
 
 [node name="Foes" type="Node3D" parent="."]
 
-[node name="FlyingEnemy" parent="Foes" instance=ExtResource("4_lcfq6")]
+[node name="FlyingEnemy" parent="Foes" instance=ExtResource("13_012dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0521, 9.25905, 13.7191)
 
-[node name="FlyingEnemy2" parent="Foes" instance=ExtResource("4_lcfq6")]
+[node name="FlyingEnemy2" parent="Foes" instance=ExtResource("13_012dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01846, 4.04934, -1.01587)
 
-[node name="FlyingEnemy4" parent="Foes" instance=ExtResource("4_lcfq6")]
+[node name="FlyingEnemy4" parent="Foes" instance=ExtResource("13_012dc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.821, 23.8633, -9.42108)
 
-[node name="GroundEnemy" parent="Foes" instance=ExtResource("5_4pnku")]
+[node name="GroundEnemy" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.425, 0.998134, -2.73277)
 
-[node name="GroundEnemy2" parent="Foes" instance=ExtResource("5_4pnku")]
+[node name="GroundEnemy2" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 7.17666, -4.01509)
 
-[node name="GroundEnemy3" parent="Foes" instance=ExtResource("5_4pnku")]
+[node name="GroundEnemy3" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3509, 7.20429, 7.79975)
 
-[node name="GroundEnemy4" parent="Foes" instance=ExtResource("5_4pnku")]
+[node name="GroundEnemy4" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7016, 13.9473, 12.3918)
 
 [node name="Flowers" type="Node3D" parent="."]
 
-[node name="FlowerPatch" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -7.73042, 0.499587, -7.99566)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch2" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch2" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -8.27604, 0.499587, -7.39421)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch9" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch9" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(1.47451, 0, 1.63273, 0, 2.2, 0, -1.63273, 0, 1.47451, -31.6552, 6.7, 1.57856)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch10" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch10" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(1.7626, 0, 1.95173, 0, 2.50433, 0, -1.95173, 0, 1.7626, -32.2255, 6.7, 2.39521)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch11" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch11" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(-2.62916, 0, 0.0591589, 0, 2.50433, 0, -0.0591589, 0, -2.62916, -32.7118, 6.7, 1.0016)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene213" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene213" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.571473, 2.87155e-08, 0.820621, 3.12978e-08, 1, -1.31969e-08, -0.820621, 1.8142e-08, -0.571473, -32.5436, 6.7, 10.5388)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene214" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene214" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.883937, 1.32847e-08, 0.467606, 1.38394e-08, 1, -2.24869e-09, -0.467606, 4.4837e-09, -0.883937, -32.4984, 6.7, 8.84063)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene215" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene215" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.883937, 1.32847e-08, 0.467606, 1.38394e-08, 1, -2.24869e-09, -0.467606, 4.4837e-09, -0.883937, -32.4224, 6.7, 9.72042)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene216" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene216" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.0538348, 3.6493e-08, 0.99855, 4.26741e-08, 1, -3.42453e-08, -0.99855, 4.07686e-08, -0.0538348, -31.7877, 6.7, 11.1143)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene217" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene217" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.571473, 2.87155e-08, 0.820621, 3.12978e-08, 1, -1.31969e-08, -0.820621, 1.8142e-08, -0.571473, -31.8194, 6.7, 11.9426)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene218" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene218" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.571473, 2.87155e-08, 0.820621, 3.12978e-08, 1, -1.31969e-08, -0.820621, 1.8142e-08, -0.571473, -34.1234, 6.7, 11.2785)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene219" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene219" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.883937, 1.32847e-08, 0.467606, 1.38394e-08, 1, -2.24869e-09, -0.467606, 4.4837e-09, -0.883937, -34.0783, 6.7, 9.58026)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene220" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene220" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.883937, 1.32847e-08, 0.467606, 1.38394e-08, 1, -2.24869e-09, -0.467606, 4.4837e-09, -0.883937, -34.0023, 6.7, 10.4601)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene221" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene221" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.997699, -1.01189e-08, -0.0678066, -1.00625e-08, 1, -1.17397e-09, 0.0678066, -4.8897e-10, -0.997699, -33.1295, 6.7, 9.87818)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene222" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene222" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.997699, -1.01189e-08, -0.0678066, -1.00625e-08, 1, -1.17397e-09, 0.0678066, -4.8897e-10, -0.997699, -33.3084, 6.7, 10.9135)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene223" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene223" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.0538348, 3.6493e-08, 0.99855, 4.26741e-08, 1, -3.42453e-08, -0.99855, 4.07686e-08, -0.0538348, -32.6522, 6.7, 11.3361)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene224" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene224" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.0538348, 3.6493e-08, 0.99855, 4.26741e-08, 1, -3.42453e-08, -0.99855, 4.07686e-08, -0.0538348, -33.3675, 6.7, 11.854)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene225" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene225" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.571473, 2.87155e-08, 0.820621, 3.12978e-08, 1, -1.31969e-08, -0.820621, 1.8142e-08, -0.571473, -33.3993, 6.7, 12.6822)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene226" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene226" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.716873, 1.07739e-08, 0.379228, 1.12238e-08, 0.811, -1.82369e-09, -0.379228, 3.63629e-09, -0.716873, -35.6705, 6.7, 10.3027)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene227" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene227" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.883937, 1.32847e-08, 0.467606, 1.38394e-08, 1, -2.24869e-09, -0.467606, 4.4837e-09, -0.883937, -35.5945, 6.7, 11.1825)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene228" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene228" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.997699, -1.01189e-08, -0.0678066, -1.00625e-08, 1, -1.17397e-09, 0.0678066, -4.8897e-10, -0.997699, -34.7217, 6.7, 10.6006)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene229" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene229" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.997699, -1.01189e-08, -0.0678066, -1.00625e-08, 1, -1.17397e-09, 0.0678066, -4.8897e-10, -0.997699, -34.9006, 6.7, 11.6359)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene230" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene230" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.0538348, 3.6493e-08, 0.99855, 4.26741e-08, 1, -3.42453e-08, -0.99855, 4.07686e-08, -0.0538348, -34.2445, 6.7, 12.0586)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene231" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene231" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.0538348, 3.6493e-08, 0.99855, 4.26741e-08, 1, -3.42453e-08, -0.99855, 4.07686e-08, -0.0538348, -34.9598, 6.7, 12.5764)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene232" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene232" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.149, 2.75046e-08, 0.988837, 4.26741e-08, 1, -3.42453e-08, -0.988837, 4.73003e-08, 0.149, -33.3122, 6.7, 8.18418)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene233" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene233" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.39391, 2.44584e-08, 0.919149, 3.12978e-08, 1, -1.31969e-08, -0.919149, 2.35689e-08, -0.39391, -33.5106, 6.7, 8.98896)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch12" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch12" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(1.42741, 0, -1.67406, 0, 2.2, 0, 1.67406, 0, 1.42741, -34.5089, 6.7, 11.9047)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch13" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch13" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(1.7063, 0, -2.00114, 0, 2.50433, 0, 2.00114, 0, 1.7063, -35.2445, 6.7, 11.2332)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch14" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch14" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(0.400104, 0, 2.59921, 0, 2.50433, 0, -2.59921, 0, 0.400104, -33.7996, 6.7, 10.932)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene234" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene234" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.411197, -2.48991e-08, -0.911547, 3.12978e-08, 1, -1.31969e-08, 0.911547, -2.31029e-08, 0.411197, -32.2922, 6.7, 14.1235)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene235" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene235" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.78313, -1.22364e-08, -0.621858, 1.38394e-08, 1, -2.24869e-09, 0.621858, -6.84515e-09, 0.78313, -32.6481, 6.7, 15.7846)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene236" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene236" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.78313, -1.22364e-08, -0.621858, 1.38394e-08, 1, -2.24869e-09, 0.621858, -6.84515e-09, 0.78313, -32.5614, 6.7, 14.9058)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene237" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene237" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130301, -2.83929e-08, -0.991475, 4.26741e-08, 1, -3.42453e-08, 0.991475, -4.67725e-08, -0.130301, -32.9296, 6.7, 13.4191)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene238" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene238" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.411197, -2.48991e-08, -0.911547, 3.12978e-08, 1, -1.31969e-08, 0.911547, -2.31029e-08, 0.411197, -32.7465, 6.7, 12.6107)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene239" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene239" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.411197, -2.48991e-08, -0.911547, 3.12978e-08, 1, -1.31969e-08, 0.911547, -2.31029e-08, 0.411197, -30.6034, 6.7, 13.6863)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene240" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene240" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.78313, -1.22364e-08, -0.621858, 1.38394e-08, 1, -2.24869e-09, 0.621858, -6.84515e-09, 0.78313, -30.9594, 6.7, 15.3474)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene241" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene241" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.78313, -1.22364e-08, -0.621858, 1.38394e-08, 1, -2.24869e-09, 0.621858, -6.84515e-09, 0.78313, -30.8727, 6.7, 14.4686)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene242" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene242" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993201, 9.85742e-09, -0.11641, -1.00625e-08, 1, -1.17397e-09, 0.11641, 2.33737e-09, 0.993201, -31.8374, 6.7, 14.8805)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene243" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene243" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993201, 9.85742e-09, -0.11641, -1.00625e-08, 1, -1.17397e-09, 0.11641, 2.33737e-09, 0.993201, -31.4716, 6.7, 13.8956)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene244" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene244" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130301, -2.83929e-08, -0.991475, 4.26741e-08, 1, -3.42453e-08, 0.991475, -4.67725e-08, -0.130301, -32.0391, 6.7, 13.3597)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene245" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene245" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130301, -2.83929e-08, -0.991475, 4.26741e-08, 1, -3.42453e-08, 0.991475, -4.67725e-08, -0.130301, -31.2409, 6.7, 12.9819)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene246" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene246" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.411197, -2.48991e-08, -0.911547, 3.12978e-08, 1, -1.31969e-08, 0.911547, -2.31029e-08, 0.411197, -31.0577, 6.7, 12.1735)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene247" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene247" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.635118, -9.92376e-09, -0.504327, 1.12238e-08, 0.811, -1.82369e-09, 0.504327, -5.55143e-09, 0.635118, -29.2616, 6.7, 14.9294)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene248" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene248" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.78313, -1.22364e-08, -0.621858, 1.38394e-08, 1, -2.24869e-09, 0.621858, -6.84515e-09, 0.78313, -29.1749, 6.7, 14.0506)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene249" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene249" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993201, 9.85742e-09, -0.11641, -1.00625e-08, 1, -1.17397e-09, 0.11641, 2.33737e-09, 0.993201, -30.1396, 6.7, 14.4625)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene250" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene250" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.993201, 9.85742e-09, -0.11641, -1.00625e-08, 1, -1.17397e-09, 0.11641, 2.33737e-09, 0.993201, -29.7738, 6.7, 13.4776)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene251" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene251" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130301, -2.83929e-08, -0.991475, 4.26741e-08, 1, -3.42453e-08, 0.991475, -4.67725e-08, -0.130301, -30.3413, 6.7, 12.9416)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene252" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene252" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.130301, -2.83929e-08, -0.991475, 4.26741e-08, 1, -3.42453e-08, 0.991475, -4.67725e-08, -0.130301, -29.5431, 6.7, 12.5639)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene253" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene253" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(-0.32791, -1.83586e-08, -0.944709, 4.26741e-08, 1, -3.42453e-08, 0.944709, -5.1544e-08, -0.32791, -31.9687, 6.7, 16.5792)
 skeleton = NodePath("../..")
 
-[node name="grass_chunk_scene254" parent="Flowers" instance=ExtResource("10_ymg6d")]
+[node name="grass_chunk_scene254" parent="Flowers" instance=ExtResource("10_8c06q")]
 transform = Transform3D(0.218569, -1.97186e-08, -0.975822, 3.12978e-08, 1, -1.31969e-08, 0.975822, -2.76566e-08, 0.218569, -31.6259, 6.7, 15.8245)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch17" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch17" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(-0.870235, 0, -2.48167, 0, 2.50433, 0, 2.48167, 0, -0.870235, -30.9854, 6.7, 13.9675)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch7" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch7" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -7.75194, 0.499587, 3.80676)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch8" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch8" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(-0.890504, 0, -2.01172, 0, 2.2, 0, 2.01172, 0, -0.890504, -10.1316, 0.499587, 2.99693)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch3" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch3" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, -7.93605, 0.499587, -11.8436)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch4" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch4" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.756549, 0.499587, -16.2073)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch6" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch6" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(0.515707, 0, 2.1387, 0, 2.2, 0, -2.1387, 0, 0.515707, 1.79584, 0.499586, -13.3778)
 skeleton = NodePath("../..")
 
-[node name="FlowerPatch5" parent="Flowers" instance=ExtResource("14_1ots5")]
+[node name="FlowerPatch5" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(2.05346, 0, 0.789485, 0, 2.2, 0, -0.789485, 0, 2.05346, -0.0362195, 0.499586, -15.3836)
 skeleton = NodePath("../..")
 

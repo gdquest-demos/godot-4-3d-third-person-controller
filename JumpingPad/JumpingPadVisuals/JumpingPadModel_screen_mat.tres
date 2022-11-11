@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3]
 
-[ext_resource type="Shader" path="res://JumpingPad/JumpingPadVisuals/jump_pad_screen.gdshader" id="1_wo8iw"]
+[ext_resource type="Shader" path="res://JumpingPad/JumpingPadVisuals/JumpingPadModel_screen.gdshader" id="1_wo8iw"]
 [ext_resource type="Texture2D" uid="uid://byjn4swf18j3i" path="res://JumpingPad/JumpingPadVisuals/cross_sprite.png" id="2_f4kcc"]
 
 [resource]

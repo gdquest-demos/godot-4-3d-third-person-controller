@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3]
 
-[ext_resource type="PackedScene" uid="uid://dqbsd44l6f1xi" path="res://Coin/CoinVisuals/godot_coin.glb" id="1_0qdgb"]
-[ext_resource type="Script" path="res://Coin/CoinVisuals/bob_and_spin.gd" id="2_eyhxj"]
+[ext_resource type="PackedScene" uid="uid://dqbsd44l6f1xi" path="res://Coin/CoinVisuals/CoinModel.glb" id="1_0qdgb"]
+[ext_resource type="Script" path="res://Coin/CoinVisuals/CoinModel.gd" id="2_eyhxj"]
 
 [node name="Coin" type="Node3D"]
 

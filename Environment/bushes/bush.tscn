@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://105804ektd2n"]
+[gd_scene load_steps=9 format=3]
 
-[ext_resource type="ArrayMesh" uid="uid://dbvyvmrfv7b41" path="res://Environment/bushes/bush_1.obj" id="1_s7d1x"]
+[ext_resource type="ArrayMesh" uid="uid://dbvyvmrfv7b41" path="res://Environment/bushes/bush.obj" id="1_s7d1x"]
 [ext_resource type="Shader" path="res://Environment/bushes/bush_wind.gdshader" id="2_p862b"]
 [ext_resource type="Texture2D" uid="uid://dap2afqj737q5" path="res://Environment/simple_leaves/simple_leaves_albedo.png" id="2_tqhpl"]
 [ext_resource type="Texture2D" uid="uid://cu1fm3jggdcgv" path="res://Environment/simple_leaves/simple_leaves_normal.png" id="3_w64c0"]

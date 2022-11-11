@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://48xlluucrwbp"]
+[gd_scene load_steps=11 format=3]
 
-[ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://Environment/trees/tree_1_geo.obj" id="1_1cwwe"]
+[ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://Environment/trees/tree.obj" id="1_1cwwe"]
 [ext_resource type="Shader" path="res://Environment/bushes/bush_wind.gdshader" id="2_7fdjv"]
 [ext_resource type="Texture2D" uid="uid://bkohv1qjq5s83" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves_albedo.png" id="3_81cnu"]
-[ext_resource type="Material" path="res://Environment/trees/simple_bark/simple_bark.tres" id="3_ptm8d"]
+[ext_resource type="Material" uid="uid://b5wxyxkrs33pc" path="res://Environment/trees/simple_bark/simple_bark.tres" id="3_ptm8d"]
 [ext_resource type="Texture2D" uid="uid://ctt3orpnvqw7" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves_normal.png" id="4_ntsjs"]
 [ext_resource type="Texture2D" uid="uid://b3j82svml7tsy" path="res://Environment/trees/simple_pine_leaves/simple_pin_leaves_orm.png" id="5_ewwuc"]
 

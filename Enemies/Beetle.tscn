@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwbc4mr48xp7s"]
+[gd_scene load_steps=10 format=3]
 
-[ext_resource type="Script" path="res://Enemies/GroundEnemy.gd" id="1_mefon"]
-[ext_resource type="PackedScene" uid="uid://beyjasox02si3" path="res://Enemies/Beetle/beetle_root.tscn" id="2_qcu3o"]
+[ext_resource type="Script" path="res://Enemies/Beetle.gd" id="1_mefon"]
+[ext_resource type="PackedScene" uid="uid://beyjasox02si3" path="res://Enemies/Beetle/BeetleModel.tscn" id="2_qcu3o"]
 
 [sub_resource type="Animation" id="Animation_5pcps"]
 length = 0.001

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://n4c3p8bt5sb1"
-path="res://.godot/imported/jump_pad.glb-c3dc4bde59e1db0fa73b6afcc85328ce.scn"
+uid="uid://dqbsd44l6f1xi"
+path="res://.godot/imported/CoinModel.glb-44d90d74d289a53709fe5dbe3ffb275d.scn"
 
 [deps]
 
-source_file="res://JumpingPad/JumpingPadVisuals/jump_pad.glb"
-dest_files=["res://.godot/imported/jump_pad.glb-c3dc4bde59e1db0fa73b6afcc85328ce.scn"]
+source_file="res://Coin/CoinVisuals/CoinModel.glb"
+dest_files=["res://.godot/imported/CoinModel.glb-44d90d74d289a53709fe5dbe3ffb275d.scn"]
 
 [params]
 

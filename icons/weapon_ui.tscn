@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bba2cietrh6el"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://icones/weapon_ui.gd" id="1_vteie"]
-[ext_resource type="PackedScene" uid="uid://cf7c3gpsngl4a" path="res://icones/icone.tscn" id="2_etwmu"]
-[ext_resource type="Texture2D" uid="uid://cj4npx16cmso7" path="res://icones/bomb_icon.png" id="2_s3oom"]
+[ext_resource type="Script" path="res://icons/weapon_ui.gd" id="1_vteie"]
+[ext_resource type="PackedScene" path="res://icons/icone.tscn" id="2_etwmu"]
+[ext_resource type="Texture2D" uid="uid://cj4npx16cmso7" path="res://icons/bomb_icon.png" id="2_s3oom"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmqom"]
 bg_color = Color(0, 0, 0, 0.392157)

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://2tiippcas1yn"
-path="res://.godot/imported/beetle_bot_fused.glb-23967d2a99ed75e6874bac355898d3fc.scn"
+path="res://.godot/imported/BeetleModel.glb-3356207828a50c7bd4872b711cfb3787.scn"
 
 [deps]
 
-source_file="res://Enemies/Beetle/beetle_bot_fused.glb"
-dest_files=["res://.godot/imported/beetle_bot_fused.glb-23967d2a99ed75e6874bac355898d3fc.scn"]
+source_file="res://Enemies/Beetle/BeetleModel.glb"
+dest_files=["res://.godot/imported/BeetleModel.glb-3356207828a50c7bd4872b711cfb3787.scn"]
 
 [params]
 

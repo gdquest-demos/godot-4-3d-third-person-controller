@@ -1,9 +1,9 @@
-[gd_scene load_steps=41 format=3 uid="uid://beyjasox02si3"]
+[gd_scene load_steps=41 format=3]
 
-[ext_resource type="Script" path="res://Enemies/Beetle/beetle_root.gd" id="1_3o2d1"]
-[ext_resource type="PackedScene" uid="uid://2tiippcas1yn" path="res://Enemies/Beetle/beetle_bot_fused.glb" id="2_sn0u1"]
-[ext_resource type="Material" uid="uid://c01o76xe4ki35" path="res://Enemies/Beetle/beetle_eyes_mat.tres" id="3_bftt3"]
-[ext_resource type="Animation" uid="uid://c8nt4qdap5h01" path="res://Enemies/Beetle/custom_animation/power_off_lights.res" id="4_x2t4j"]
+[ext_resource type="Script" path="res://Enemies/Beetle/BeetleModel.gd" id="1_3o2d1"]
+[ext_resource type="PackedScene" uid="uid://2tiippcas1yn" path="res://Enemies/Beetle/BeetleModel.glb" id="2_sn0u1"]
+[ext_resource type="Material" uid="uid://c01o76xe4ki35" path="res://Enemies/Beetle/BeetleModel_eyes_mat.tres" id="3_bftt3"]
+[ext_resource type="Animation" uid="uid://c8nt4qdap5h01" path="res://Enemies/Beetle/custom_animation/BeetleModel_power_off_lights.res" id="4_x2t4j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ygfx"]
 albedo_color = Color(0, 0, 0, 1)

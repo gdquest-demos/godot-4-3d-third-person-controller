@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dt8lgov6b0sjx"]
+[gd_scene load_steps=22 format=3]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://dus6jtbfyqwj8" path="res://Player/GrenadeVisuals/aim_material.tres" id="4_qvla4"]
 [ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Player/GrenadeVisuals/trajectory_material.tres" id="5_0gw1q"]
 [ext_resource type="Script" path="res://Player/CoinsContainer.gd" id="7_8eehq"]
-[ext_resource type="PackedScene" path="res://Coin/CoinVisuals/godot_coin_scene.tscn" id="8_6qxxt"]
+[ext_resource type="PackedScene" path="res://Coin/CoinVisuals/CoinModel.tscn" id="8_6qxxt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2xm"]
 
