@@ -1,7 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://ir2yc22mta0e"]
+[gd_scene load_steps=12 format=3]
 
 [ext_resource type="Material" uid="uid://bii1msr5lsqwb" path="res://Player/BulletVisuals/bullet_trail_mat.tres" id="1_eipo0"]
-[ext_resource type="ArrayMesh" uid="uid://ch30025kg24b1" path="res://Player/BulletVisuals/bullet.obj" id="2_iugoo"]
+[ext_resource type="ArrayMesh" uid="uid://ch30025kg24b1" path="res://Player/BulletVisuals/BulletModel.obj" id="2_iugoo"]
 [ext_resource type="Shader" path="res://Player/BulletVisuals/bullet_spark_shader.gdshader" id="3_5yj07"]
 [ext_resource type="Texture2D" uid="uid://dsxj3ih1ne0bu" path="res://Player/BulletVisuals/sparks.png" id="4_ia7or"]
 

@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 const COIN_SCENE := preload("res://Coin/Coin.tscn")
-const PROJECTILE_SCENE := preload("res://Player/Projectile.tscn")
+const PROJECTILE_SCENE := preload("res://Player/Bullet.tscn")
 
 @export var shoot_timer := 1.5
 @export var projectile_speed := 6.0

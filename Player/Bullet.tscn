@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://7bxua1f6rsdo"]
+[gd_scene load_steps=5 format=3 uid="uid://bguebyvtegnv8"]
 
-[ext_resource type="Script" path="res://Player/Projectile.gd" id="1_8b555"]
-[ext_resource type="PackedScene" uid="uid://ir2yc22mta0e" path="res://Player/BulletVisuals/bullet.tscn" id="2_68e7a"]
+[ext_resource type="Script" path="res://Player/Bullet.gd" id="1_8b555"]
+[ext_resource type="PackedScene" path="res://Player/BulletVisuals/BulletModel.tscn" id="2_68e7a"]
 
 [sub_resource type="Curve" id="Curve_a1s10"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.907143, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -14.9899, 0.0, 0, 0]
@@ -10,7 +10,7 @@ point_count = 3
 [sub_resource type="SphereShape3D" id="SphereShape3D_pr1dk"]
 radius = 0.1
 
-[node name="Projectile" type="Node3D"]
+[node name="Bullet" type="Node3D"]
 script = ExtResource("1_8b555")
 scale_decay = SubResource("Curve_a1s10")
 
