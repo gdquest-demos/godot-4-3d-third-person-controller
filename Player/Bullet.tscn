@@ -13,6 +13,7 @@ radius = 0.1
 [node name="Bullet" type="Node3D"]
 script = ExtResource("1_8b555")
 scale_decay = SubResource("Curve_a1s10")
+distance_limit = 6.0
 
 [node name="Area3d" type="Area3D" parent="."]
 
