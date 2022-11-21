@@ -40,8 +40,8 @@ func _physics_process(delta: float) -> void:
 	if not _anchor:
 		return
 	
-	_rotation_input = Input.get_action_raw_strength("camera_left") - Input.get_action_raw_strength("camera_right")
-	_tilt_input = Input.get_action_raw_strength("camera_up") - Input.get_action_raw_strength("camera_down")
+	_rotation_input += Input.get_action_raw_strength("camera_left") - Input.get_action_raw_strength("camera_right")
+	_tilt_input += Input.get_action_raw_strength("camera_up") - Input.get_action_raw_strength("camera_down")
 	
 	if invert_mouse_y:
 		_tilt_input *= -1
