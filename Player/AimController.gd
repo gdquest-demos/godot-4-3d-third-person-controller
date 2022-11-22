@@ -44,7 +44,6 @@ func throw_grenade(_origin: Vector3, player: Node3D) -> bool:
 func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_basis: Basis, collider: Object) -> void:
 	# Check distance from target and clamp it to max_throw_radius
 	var distance := target - origin
-	printt(origin, target, normal)
 	if collider != null and collider.is_in_group("targeteables") and distance.length() < max_throw_radius:
 		normal = (origin - collider.global_position).normalized()
 		target = collider.global_position
