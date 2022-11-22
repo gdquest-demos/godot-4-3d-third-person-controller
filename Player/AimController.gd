@@ -2,19 +2,21 @@ class_name GrenadeAimController
 extends Node3D
 
 const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
-const SURFACE_AIM_COLOR := Color(1, 1, 1, 0.5)
+const IN_RANGE_COLOR := Color(1.0, 0.64, 0.18)
+const OUT_OF_RANGE_COLOR := Color(0.95, 0.0, 0.17)
 const ENEMY_AIM_COLOR := Color(1, 0, 0, 0.5)
 const POINTS_IN_CURVE3D := 15
+const SHADER_PARAM_FILL_COLOR := "shader_parameter/fill_color"
 
-@export var max_throw_radius := 11.0
+@export var max_throw_radius := 10.0
 @export var min_throw_strength := 4.0
-@export var max_throw_strength := 12.0
+@export var max_throw_strength := 14.0
 
 @onready var _aim_sprite: MeshInstance3D = $AimSprite
 @onready var _grenade_path: Path3D = $Path3D
+@onready var _csg_polygon: CSGPolygon3D = $Path3D/CSGPolygon3D
 @onready var _gravity_length: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-
-var _cached_grenade_velocity: Vector3
+@onready var _cached_grenade_velocity: Vector3
 
 
 func _physics_process(delta: float) -> void:
@@ -42,13 +44,19 @@ func throw_grenade(_origin: Vector3, player: Node3D) -> bool:
 func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_basis: Basis, collider: Object) -> void:
 	# Check distance from target and clamp it to max_throw_radius
 	var distance := target - origin
-	
+	printt(origin, target, normal)
 	if collider != null and collider.is_in_group("targeteables") and distance.length() < max_throw_radius:
 		normal = (origin - collider.global_position).normalized()
 		target = collider.global_position
 		distance = target - origin
 	
-	_aim_sprite.visible = distance.length() <= max_throw_radius
+	if distance.length() > max_throw_radius:
+		normal = (origin - target).normalized()
+		_aim_sprite.material_override.set(SHADER_PARAM_FILL_COLOR, OUT_OF_RANGE_COLOR)
+		_csg_polygon.material.set(SHADER_PARAM_FILL_COLOR, OUT_OF_RANGE_COLOR)
+	else:
+		_aim_sprite.material_override.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
+		_csg_polygon.material.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
 	
 	distance = distance.limit_length(max_throw_radius)
 	target = origin + distance
