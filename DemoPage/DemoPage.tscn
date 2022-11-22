@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwgl0ltbmsaex"]
+
+[ext_resource type="Script" path="res://DemoPage/DemoPage.gd" id="1_4brsx"]
+[ext_resource type="Texture2D" uid="uid://dyhby2b841caa" path="res://DemoPage/DemoPageScreenshot.png" id="2_80g6m"]
+
+[node name="DemoPage" type="Node"]
+process_mode = 3
+script = ExtResource("1_4brsx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="DemoPageRoot" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/DemoPageRoot"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.67451, 0.494118, 1, 1)
+
+[node name="Background" type="TextureRect" parent="CanvasLayer/DemoPageRoot"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Example" type="TextureRect" parent="CanvasLayer/DemoPageRoot"]
+visible = false
+modulate = Color(1, 1, 1, 0.45098)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_80g6m")
