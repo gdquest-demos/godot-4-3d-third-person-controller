@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3]
+[gd_scene load_steps=22 format=3 uid="uid://vo6wpw0tvtpr"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
@@ -223,7 +223,7 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CoinMagnetArea"]
 shape = SubResource("SphereShape3D_nw843")
 
-[node name="PlayerUI" type="Control" parent="."]
+[node name="PlayerUI" type="Control" parent="." groups=["camera_mode_toggle"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -282,7 +282,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(-0.226852, 0, -0.973931, 0, 1, 0, 0.973931, 0, -0.226852, 0, 0, 0)
+transform = Transform3D(-0.975276, 0, -0.220996, 0, 1, 0, 0.220996, 0, -0.975276, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]

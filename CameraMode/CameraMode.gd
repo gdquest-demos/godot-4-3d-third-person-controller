@@ -5,6 +5,14 @@ extends Node3D
 
 @onready var camera: Camera3D
 @onready var _cached_camera: Camera3D
+@onready var _enabled := false
+
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		_enabled = true
+	set_process(_enabled)
+	set_process_input(_enabled)
 
 
 func _input(event: InputEvent) -> void:
@@ -23,8 +31,8 @@ func _process(delta: float) -> void:
 	movement += Vector3.LEFT if Input.is_key_pressed(KEY_A) else Vector3.ZERO
 	movement += Vector3.BACK if Input.is_key_pressed(KEY_S) else Vector3.ZERO
 	movement += Vector3.RIGHT if Input.is_key_pressed(KEY_D) else Vector3.ZERO
-	movement += Vector3.UP if Input.is_key_pressed(KEY_Q) else Vector3.ZERO
-	movement += Vector3.DOWN if Input.is_key_pressed(KEY_E) else Vector3.ZERO
+	movement += Vector3.DOWN if Input.is_key_pressed(KEY_Q) else Vector3.ZERO
+	movement += Vector3.UP if Input.is_key_pressed(KEY_E) else Vector3.ZERO
 	
 	var rotation_input = -Input.get_last_mouse_velocity().x * mouse_sensitivity
 	var tilt_input = -Input.get_last_mouse_velocity().y * mouse_sensitivity
@@ -44,6 +52,9 @@ func _toggle_camera_mode() -> void:
 		_cached_camera.current = true
 		camera.queue_free()
 		hide()
+		
+		for node in get_tree().get_nodes_in_group("camera_mode_toggle"):
+			node.show()
 	else:
 		get_tree().paused = true
 		_cached_camera = get_viewport().get_camera_3d()
@@ -53,3 +64,6 @@ func _toggle_camera_mode() -> void:
 		show()
 		camera.fov = _cached_camera.fov
 		camera.global_transform = _cached_camera.global_transform
+		
+		for node in get_tree().get_nodes_in_group("camera_mode_toggle"):
+			node.hide()

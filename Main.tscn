@@ -1,7 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://ccjru1onq2k2c"]
+[gd_scene load_steps=33 format=3 uid="uid://ccjru1onq2k2c"]
 
-[ext_resource type="PackedScene" path="res://icons/weapon_ui.tscn" id="1_3u7h6"]
-[ext_resource type="PackedScene" uid="uid://d0t658t1ycgvk" path="res://Player/Player.tscn" id="2_q87gh"]
+[ext_resource type="PackedScene" uid="uid://mb58xbunfaep" path="res://icons/weapon_ui.tscn" id="1_3u7h6"]
+[ext_resource type="PackedScene" uid="uid://vo6wpw0tvtpr" path="res://Player/Player.tscn" id="2_q87gh"]
 [ext_resource type="PackedScene" path="res://JumpingPad/JumpingPad.tscn" id="3_w2mh2"]
 [ext_resource type="PackedScene" uid="uid://eo4fnnqorgja" path="res://Level/Terrain.glb" id="4_vprlf"]
 [ext_resource type="Material" uid="uid://c5trc4hy86utg" path="res://Environment/Terrain/terrain_mat.tres" id="5_xal68"]
@@ -13,8 +13,9 @@
 [ext_resource type="PackedScene" path="res://Environment/bushes/bush.tscn" id="11_f8df7"]
 [ext_resource type="PackedScene" path="res://Box/Box.tscn" id="12_xvr0j"]
 [ext_resource type="PackedScene" path="res://Enemies/BeeBot.tscn" id="13_012dc"]
-[ext_resource type="PackedScene" path="res://Enemies/Beetle.tscn" id="14_tmmem"]
+[ext_resource type="PackedScene" uid="uid://cvwkhlljkg06j" path="res://Enemies/Beetle.tscn" id="14_tmmem"]
 [ext_resource type="PackedScene" path="res://Environment/flowers/flower_patch.tscn" id="15_jqya0"]
+[ext_resource type="PackedScene" uid="uid://cgghgxxbpb703" path="res://DemoPage/DemoPage.tscn" id="16_qr75n"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_h3p2h"]
 rayleigh_color = Color(0.952941, 0.952941, 0.980392, 1)
@@ -1655,6 +1656,8 @@ skeleton = NodePath("../..")
 [node name="FlowerPatch5" parent="Flowers" instance=ExtResource("15_jqya0")]
 transform = Transform3D(2.05346, 0, 0.789485, 0, 2.2, 0, -0.789485, 0, 2.05346, -0.0362195, 0.499586, -15.3836)
 skeleton = NodePath("../..")
+
+[node name="DemoPage" parent="." instance=ExtResource("16_qr75n")]
 
 [connection signal="weapon_switched" from="Player" to="weapon_switch_ui" method="switch_to"]
 

@@ -6,3 +6,4 @@
 process_mode = 3
 visible = false
 script = ExtResource("1_iqqgo")
+mouse_sensitivity = 0.001

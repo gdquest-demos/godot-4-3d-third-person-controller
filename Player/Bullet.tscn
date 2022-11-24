@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bguebyvtegnv8"]
 
 [ext_resource type="Script" path="res://Player/Bullet.gd" id="1_8b555"]
-[ext_resource type="PackedScene" path="res://Player/BulletVisuals/BulletModel.tscn" id="2_68e7a"]
+[ext_resource type="PackedScene" uid="uid://5ttf446nggra" path="res://Player/BulletVisuals/BulletModel.tscn" id="2_68e7a"]
 
 [sub_resource type="Curve" id="Curve_a1s10"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.907143, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -14.9899, 0.0, 0, 0]
@@ -22,3 +22,6 @@ shape = SubResource("SphereShape3D_pr1dk")
 
 [node name="Bullet" parent="." instance=ExtResource("2_68e7a")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.15617, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.835184, 0.549971, 0, -0.549971, 0.835184, -2.38419e-07, 2.55037, 2.78181)

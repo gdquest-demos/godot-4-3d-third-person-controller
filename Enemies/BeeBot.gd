@@ -67,6 +67,9 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_target = null
 	_death_mesh_collider.set_deferred("disabled", false)
 	
+	set_deferred("collision_layer", 2)
+	set_deferred("collision_mask", 2)
+	
 	gravity_scale = 1.0
 	
 	_bee_root.play_poweroff()
