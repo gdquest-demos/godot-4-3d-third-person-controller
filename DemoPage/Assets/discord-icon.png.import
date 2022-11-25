@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fxtm3u8im2"
-path="res://.godot/imported/gdquest_logo_white.svg-0f2d01e9c4a3aa1c704271587099a6a2.ctex"
+uid="uid://u8dgw2xh1ofy"
+path="res://.godot/imported/discord-icon.png-7e73321edb194b96633ef69202113ec3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DemoPage/gdquest_logo_white.svg"
-dest_files=["res://.godot/imported/gdquest_logo_white.svg-0f2d01e9c4a3aa1c704271587099a6a2.ctex"]
+source_file="res://DemoPage/Assets/discord-icon.png"
+dest_files=["res://.godot/imported/discord-icon.png-7e73321edb194b96633ef69202113ec3.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

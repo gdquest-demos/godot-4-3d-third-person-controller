@@ -1,21 +1,17 @@
-[gd_scene load_steps=34 format=3 uid="uid://cgghgxxbpb703"]
+[gd_scene load_steps=33 format=3 uid="uid://cnj0t3ad178q6"]
 
 [ext_resource type="Script" path="res://DemoPage/DemoPage.gd" id="1_4brsx"]
-[ext_resource type="Shader" path="res://DemoPage/BlurShader.gdshader" id="2_07raf"]
-[ext_resource type="Texture2D" uid="uid://dyhby2b841caa" path="res://DemoPage/DemoPageScreenshot.png" id="2_80g6m"]
-[ext_resource type="Texture2D" uid="uid://bisdpbdirkat6" path="res://DemoPage/DemoPageBackground.png" id="3_l4dkr"]
-[ext_resource type="Texture2D" uid="uid://3fxtm3u8im2" path="res://DemoPage/gdquest_logo_white.svg" id="5_rarkl"]
-[ext_resource type="Texture2D" uid="uid://c1h5gk8rsf3va" path="res://DemoPage/RoundedRectangle.png" id="5_rwrwx"]
-[ext_resource type="FontFile" uid="uid://ch2aef1jex81f" path="res://DemoPage/Montserrat-Bold.ttf" id="6_n4crn"]
-[ext_resource type="FontFile" uid="uid://t50djx4didf7" path="res://DemoPage/Montserrat-Medium.ttf" id="7_0i8mq"]
+[ext_resource type="Shader" path="res://DemoPage/Assets/BlurShader.gdshader" id="2_07raf"]
+[ext_resource type="Texture2D" uid="uid://3fxtm3u8im2" path="res://DemoPage/Assets/gdquest_logo_white.svg" id="3_n7elw"]
+[ext_resource type="Texture2D" uid="uid://c1h5gk8rsf3va" path="res://DemoPage/Assets/RoundedRectangle.png" id="4_paxwi"]
+[ext_resource type="Texture2D" uid="uid://bisdpbdirkat6" path="res://DemoPage/Assets/DemoPageBackground.png" id="5_3cf56"]
+[ext_resource type="FontFile" uid="uid://ch2aef1jex81f" path="res://DemoPage/Fonts/Montserrat-Bold.ttf" id="6_r37av"]
+[ext_resource type="FontFile" uid="uid://t50djx4didf7" path="res://DemoPage/Fonts/Montserrat-Medium.ttf" id="7_8vsh6"]
 [ext_resource type="Texture2D" uid="uid://xhe0n1psocjo" path="res://DemoPage/ControllerIcons/wasd.png" id="8_ftfx8"]
-[ext_resource type="Texture2D" uid="uid://u8dgw2xh1ofy" path="res://DemoPage/discord-icon.png" id="8_m0jek"]
 [ext_resource type="Texture2D" uid="uid://078sfj6nla2e" path="res://DemoPage/ControllerIcons/spacebar2.png" id="9_0yun6"]
-[ext_resource type="Texture2D" uid="uid://4028ms3tu0f0" path="res://DemoPage/twitter-icon.png" id="9_3fsre"]
 [ext_resource type="Texture2D" uid="uid://dr3g38uhvcdhd" path="res://DemoPage/ControllerIcons/joystickL_side.png" id="9_16jmy"]
 [ext_resource type="Script" path="res://DemoPage/LinkButton.gd" id="9_scsih"]
 [ext_resource type="Texture2D" uid="uid://cgkvjl80iqkeg" path="res://DemoPage/ControllerIcons/tab.png" id="10_6dsjm"]
-[ext_resource type="Texture2D" uid="uid://bu5fw8vbrfsmm" path="res://DemoPage/itch-icon.png" id="10_gm1uy"]
 [ext_resource type="Texture2D" uid="uid://tfus7d2ysvap" path="res://DemoPage/ControllerIcons/keyboard.png" id="10_uxdfh"]
 [ext_resource type="Texture2D" uid="uid://drxg34lsicm31" path="res://DemoPage/ControllerIcons/mouse.png" id="10_y1v2l"]
 [ext_resource type="Texture2D" uid="uid://cwnhk6pv52ilv" path="res://DemoPage/ControllerIcons/gamepad.png" id="11_eh4lo"]
@@ -28,6 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://bm4i5limc5q4h" path="res://DemoPage/ControllerIcons/r2_button.png" id="18_64dkh"]
 [ext_resource type="Texture2D" uid="uid://cwxudh6hj0dx" path="res://DemoPage/ControllerIcons/l2_button.png" id="19_ymr5x"]
 [ext_resource type="Texture2D" uid="uid://dnk6rxv8ejgny" path="res://DemoPage/ControllerIcons/buttonStart.png" id="21_hfiqr"]
+[ext_resource type="Texture2D" uid="uid://u8dgw2xh1ofy" path="res://DemoPage/Assets/discord-icon.png" id="24_2yjb0"]
+[ext_resource type="Texture2D" uid="uid://4028ms3tu0f0" path="res://DemoPage/Assets/twitter-icon.png" id="26_jj2ra"]
+[ext_resource type="Texture2D" uid="uid://bu5fw8vbrfsmm" path="res://DemoPage/Assets/itch-icon.png" id="27_mjmj1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq2x4"]
 shader = ExtResource("2_07raf")
@@ -39,16 +38,16 @@ font_size = 20
 
 [sub_resource type="LabelSettings" id="LabelSettings_y4f87"]
 line_spacing = 16.0
-font = ExtResource("6_n4crn")
+font = ExtResource("6_r37av")
 font_size = 56
 
 [sub_resource type="LabelSettings" id="LabelSettings_g5g84"]
 line_spacing = 0.0
-font = ExtResource("7_0i8mq")
+font = ExtResource("7_8vsh6")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_f30p8"]
-font = ExtResource("7_0i8mq")
+font = ExtResource("7_8vsh6")
 font_size = 26
 
 [node name="DemoPage" type="Node"]
@@ -102,7 +101,7 @@ offset_top = -50.0
 offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_rarkl")
+texture = ExtResource("3_n7elw")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Title"]
@@ -144,7 +143,7 @@ offset_right = -0.0800781
 offset_bottom = 0.274963
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("5_rwrwx")
+texture = ExtResource("4_paxwi")
 region_rect = Rect2(0, 0, 64, 64)
 patch_margin_left = 8
 patch_margin_top = 8
@@ -157,7 +156,7 @@ offset_left = -844.0
 offset_top = -216.0
 offset_right = 1076.0
 offset_bottom = 864.0
-texture = ExtResource("3_l4dkr")
+texture = ExtResource("5_3cf56")
 
 [node name="GameDescription" type="Control" parent="CanvasLayer/DemoPageRoot/Content/Content"]
 layout_mode = 2
@@ -200,7 +199,7 @@ layout_mode = 2
 offset_top = 90.0
 offset_right = 946.0
 offset_bottom = 150.0
-theme_override_fonts/normal_font = ExtResource("6_n4crn")
+theme_override_fonts/normal_font = ExtResource("6_r37av")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[color=#daeaf6]Ratchet & Clank[/color] · [color=#f0c1aa]Banjo Kazooie[/color]"
@@ -664,10 +663,10 @@ anchor_left = 0.368
 anchor_top = 0.5
 anchor_right = 0.632
 anchor_bottom = 0.5
-offset_left = -0.560059
-offset_top = -58.5
+offset_left = -0.559998
+offset_top = -44.5
 offset_right = 0.559937
-offset_bottom = 34.5
+offset_bottom = 20.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -677,37 +676,25 @@ alignment = 1
 
 [node name="Resume" type="Button" parent="CanvasLayer/DemoPageRoot/Content/MarginContainer/Buttons"]
 layout_mode = 2
-offset_left = 55.0
+offset_left = 27.0
 offset_right = 258.0
-offset_bottom = 93.0
+offset_bottom = 65.0
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("6_n4crn")
+theme_override_fonts/font = ExtResource("6_r37av")
 theme_override_font_sizes/font_size = 26
 action_mode = 0
-text = "Resume demo"
-flat = true
+text = "  Resume demo  "
 
 [node name="Exit" type="Button" parent="CanvasLayer/DemoPageRoot/Content/MarginContainer/Buttons"]
 layout_mode = 2
 offset_left = 308.0
-offset_right = 452.0
-offset_bottom = 93.0
+offset_right = 480.0
+offset_bottom = 65.0
 mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("6_n4crn")
+theme_override_fonts/font = ExtResource("6_r37av")
 theme_override_font_sizes/font_size = 26
 action_mode = 0
-text = "Exit demo"
-flat = true
-
-[node name="Example" type="TextureRect" parent="CanvasLayer/DemoPageRoot"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_80g6m")
+text = "  Exit demo  "
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot"]
 layout_mode = 1
@@ -729,7 +716,7 @@ offset_right = 94.0
 offset_bottom = 54.0
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("8_m0jek")
+texture_normal = ExtResource("24_2yjb0")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_scsih")
@@ -742,7 +729,7 @@ offset_right = 193.0
 offset_bottom = 54.0
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("9_3fsre")
+texture_normal = ExtResource("26_jj2ra")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_scsih")
@@ -755,7 +742,7 @@ offset_right = 292.0
 offset_bottom = 54.0
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-texture_normal = ExtResource("10_gm1uy")
+texture_normal = ExtResource("27_mjmj1")
 ignore_texture_size = true
 stretch_mode = 5
 script = ExtResource("9_scsih")

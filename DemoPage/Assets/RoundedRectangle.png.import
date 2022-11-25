@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu5fw8vbrfsmm"
-path="res://.godot/imported/itch-icon.png-47db9c2193828855b39193efdc86767c.ctex"
+uid="uid://c1h5gk8rsf3va"
+path="res://.godot/imported/RoundedRectangle.png-367c8fe3793a3b7b239ed567e708e341.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://DemoPage/itch-icon.png"
-dest_files=["res://.godot/imported/itch-icon.png-47db9c2193828855b39193efdc86767c.ctex"]
+source_file="res://DemoPage/Assets/RoundedRectangle.png"
+dest_files=["res://.godot/imported/RoundedRectangle.png-367c8fe3793a3b7b239ed567e708e341.ctex"]
 
 [params]
 
