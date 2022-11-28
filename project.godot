@@ -22,7 +22,7 @@ _global_script_classes=[{
 "base": "RigidBody3D",
 "class": &"Coin",
 "language": &"GDScript",
-"path": "res://Coin/Coin.gd"
+"path": "res://Player/Coin/Coin.gd"
 }, {
 "base": "Node3D",
 "class": &"GrenadeAimController",

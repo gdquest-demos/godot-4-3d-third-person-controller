@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const COIN_SCENE := preload("res://Coin/Coin.tscn")
+const COIN_SCENE := preload("res://Player/Coin/Coin.tscn")
 
 @export var coins_count := 5
 @export var stopping_distance := 0.0

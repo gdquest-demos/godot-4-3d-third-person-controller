@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-const COIN_SCENE := preload("res://Coin/Coin.tscn")
+const COIN_SCENE := preload("res://Player/Coin/Coin.tscn")
 # For some reason, Godot complains if we don't specifically say this is a PackedScene.
 const BULLET_SCENE: PackedScene = preload("res://Player/Bullet.tscn")
 

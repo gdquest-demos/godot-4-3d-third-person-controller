@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://vo6wpw0tvtpr"]
+[gd_scene load_steps=22 format=3 uid="uid://ciqrpd5675boy"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://dus6jtbfyqwj8" path="res://Player/GrenadeVisuals/aim_material.tres" id="4_qvla4"]
 [ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Player/GrenadeVisuals/trajectory_material.tres" id="5_0gw1q"]
 [ext_resource type="Script" path="res://Player/CoinsContainer.gd" id="7_8eehq"]
-[ext_resource type="PackedScene" path="res://Coin/CoinVisuals/CoinModel.tscn" id="8_6qxxt"]
+[ext_resource type="PackedScene" path="res://Player/Coin/CoinVisuals/CoinModel.tscn" id="8_6qxxt"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8x2xm"]
 
@@ -234,6 +234,7 @@ mouse_filter = 2
 
 [node name="AimRecticle" type="ColorRect" parent="PlayerUI"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -250,6 +251,7 @@ color = Color(0, 0, 0, 0.290196)
 
 [node name="CoinsContainer" type="HBoxContainer" parent="PlayerUI"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -265,6 +267,7 @@ script = ExtResource("7_8eehq")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer"]
 custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
 offset_right = 96.0
 offset_bottom = 96.0
 size_flags_horizontal = 2
@@ -282,7 +285,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(-0.975276, 0, -0.220996, 0, 1, 0, 0.220996, 0, -0.975276, 0, 0, 0)
+transform = Transform3D(0.786441, 0, -0.617667, 0, 1, 0, 0.617667, 0, 0.786441, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
@@ -292,6 +295,7 @@ fov = 18.238
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
 
 [node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer"]
+layout_mode = 2
 offset_left = 143.0
 offset_top = 2.0
 offset_right = 256.0
