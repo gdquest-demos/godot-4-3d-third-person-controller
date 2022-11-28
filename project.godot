@@ -44,10 +44,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="3DCharacterDemo"
+config/name="TPS Demo"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
