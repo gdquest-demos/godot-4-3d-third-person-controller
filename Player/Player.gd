@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody3D
 
-const BULLET_SCENE := preload("res://Player/Bullet.tscn")
+const BULLET_SCENE := preload("Bullet.tscn")
 const COIN_SCENE := preload("Coin/Coin.tscn")
 
 enum WEAPON_TYPE { DEFAULT, GRENADE }
@@ -34,6 +34,8 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _coin_magnet_area: Area3D = $CoinMagnetArea
 @onready var _ui_aim_recticle: ColorRect = %AimRecticle
 @onready var _ui_coins_container: HBoxContainer = %CoinsContainer
+@onready var _step_sound: AudioStreamPlayer3D = $StepSound
+@onready var _landing_sound: AudioStreamPlayer3D = $LandingSound
 
 @onready var _equipped_weapon: WEAPON_TYPE = WEAPON_TYPE.DEFAULT
 @onready var _move_direction := Vector3.ZERO
@@ -42,6 +44,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _ground_height: float = 0.0
 @onready var _start_position := global_transform.origin
 @onready var _coins := 0
+@onready var _is_on_floor_buffer := false
 
 signal weapon_switched(weapon_name: String)
 
@@ -73,7 +76,9 @@ func _physics_process(delta: float) -> void:
 	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
 	var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
 	var is_air_boosting := Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
-
+	var is_just_on_floor := is_on_floor() and not _is_on_floor_buffer
+	
+	_is_on_floor_buffer = is_on_floor()
 	_move_direction = _get_camera_oriented_input()
 
 	# To not orient quickly to the last input, we save a last strong direction,
@@ -141,6 +146,9 @@ func _physics_process(delta: float) -> void:
 			_character_skin.set_moving_speed(inverse_lerp(0.0, move_speed, xz_velocity.length()))
 		else:
 			_character_skin.set_moving(false)
+	
+	if is_just_on_floor:
+		_landing_sound.play()
 	
 	var position_before := global_position
 	move_and_slide()
@@ -214,6 +222,11 @@ func _get_camera_oriented_input() -> Vector3:
 	input = _camera_controller.global_transform.basis * input
 	input.y = 0.0
 	return input
+
+
+func play_foot_step_sound() -> void:
+	_step_sound.pitch_scale = randfn(1.2, 0.2)
+	_step_sound.play()
 
 
 func damage(_impact_point: Vector3, force: Vector3) -> void:

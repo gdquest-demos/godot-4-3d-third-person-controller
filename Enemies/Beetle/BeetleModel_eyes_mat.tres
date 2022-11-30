@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c01o76xe4ki35"]
 
 [ext_resource type="Shader" path="res://shared/shaders/face_mat.gdshader" id="1_3wkwq"]
-[ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://Enemies/Beetle/eye_mask.png" id="2_gw7xv"]
+[ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://shared/eye_mask.png" id="2_gw7xv"]
 
 [resource]
 resource_local_to_scene = true

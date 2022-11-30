@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3]
+[gd_scene load_steps=16 format=3 uid="uid://rn45gytkk6tv"]
 
 [ext_resource type="Script" path="res://Enemies/BeeBot.gd" id="1_eehkx"]
 [ext_resource type="PackedScene" uid="uid://d28tem7s0fqin" path="res://Enemies/BeeBot/bee_root.tscn" id="2_btoc7"]
+[ext_resource type="AudioStream" uid="uid://c66nnoqtanfw2" path="res://Enemies/Sounds/robot_defeat.wav" id="3_1gs12"]
 
 [sub_resource type="Animation" id="Animation_5pcps"]
 length = 0.001
@@ -219,3 +220,6 @@ transform = Transform3D(0.999781, 0.0209424, 0, -0.0164124, 0.783522, 0.621148, 
 transform = Transform3D(-1, -5.37025e-08, -6.89839e-08, 0, 0.789084, -0.614285, 8.74228e-08, -0.614285, -0.789084, 0, 0.244858, 0.372593)
 shape = SubResource("BoxShape3D_pl7mw")
 disabled = true
+
+[node name="DefeatSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_1gs12")

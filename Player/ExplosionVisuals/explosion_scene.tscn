@@ -6,11 +6,11 @@
 [ext_resource type="ArrayMesh" uid="uid://bw14c1iaac2sq" path="res://Player/ExplosionVisuals/objects/disk.obj" id="4_5ir1b"]
 [ext_resource type="Material" uid="uid://ben1qjmc14yjq" path="res://Player/ExplosionVisuals/materials/particles_mat.tres" id="5_id1fu"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_kmasr"]
+[sub_resource type="SphereMesh" id="SphereMesh_gknd5"]
 radial_segments = 32
 rings = 16
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h6m5b"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hvm5h"]
 direction = Vector3(0, 1, 0)
 spread = 180.0
 gravity = Vector3(0, -4, 0)
@@ -21,18 +21,18 @@ damping_max = 4.0
 scale_min = 0.8
 scale_max = 2.0
 
-[sub_resource type="Curve" id="Curve_5fn50"]
+[sub_resource type="Curve" id="Curve_w01gm"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.409091), -0.661433, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_dm022"]
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7as6v"]
 material = ExtResource("5_id1fu")
 shape = 0
 size = 0.02
 section_length = 0.8
-curve = SubResource("Curve_5fn50")
+curve = SubResource("Curve_w01gm")
 
-[sub_resource type="Animation" id="Animation_j8v7e"]
+[sub_resource type="Animation" id="Animation_hffc2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -155,7 +155,7 @@ tracks/9/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_1b8p6"]
+[sub_resource type="Animation" id="Animation_l6le0"]
 resource_name = "explosion"
 length = 1.5
 tracks/0/type = "value"
@@ -279,10 +279,10 @@ tracks/9/keys = {
 "values": [true, false]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ibfdm"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxf6t"]
 _data = {
-"RESET": SubResource("Animation_j8v7e"),
-"explosion": SubResource("Animation_1b8p6")
+"RESET": SubResource("Animation_hffc2"),
+"explosion": SubResource("Animation_l6le0")
 }
 
 [node name="Explosion" type="Node3D"]
@@ -293,7 +293,7 @@ script = ExtResource("1_llcun")
 [node name="Shell" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = ExtResource("2_0w2wd")
-mesh = SubResource("SphereMesh_kmasr")
+mesh = SubResource("SphereMesh_gknd5")
 
 [node name="Blast" type="MeshInstance3D" parent="."]
 material_override = ExtResource("3_buqr0")
@@ -308,10 +308,10 @@ explosiveness = 1.0
 local_coords = true
 transform_align = 1
 trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_h6m5b")
-draw_pass_1 = SubResource("RibbonTrailMesh_dm022")
+process_material = SubResource("ParticleProcessMaterial_hvm5h")
+draw_pass_1 = SubResource("RibbonTrailMesh_7as6v")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ibfdm")
+"": SubResource("AnimationLibrary_rxf6t")
 }

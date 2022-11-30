@@ -1,11 +1,14 @@
-[gd_scene load_steps=41 format=3]
+[gd_scene load_steps=47 format=3 uid="uid://cq4m2udfv5lfg"]
 
 [ext_resource type="Script" path="res://Enemies/Beetle/BeetleModel.gd" id="1_3o2d1"]
 [ext_resource type="PackedScene" uid="uid://2tiippcas1yn" path="res://Enemies/Beetle/BeetleModel.glb" id="2_sn0u1"]
 [ext_resource type="Material" uid="uid://c01o76xe4ki35" path="res://Enemies/Beetle/BeetleModel_eyes_mat.tres" id="3_bftt3"]
 [ext_resource type="Animation" uid="uid://c8nt4qdap5h01" path="res://Enemies/Beetle/custom_animation/BeetleModel_power_off_lights.res" id="4_x2t4j"]
+[ext_resource type="AudioStream" uid="uid://b6npjky1rks7r" path="res://Enemies/Sounds/mechanical_1.wav" id="5_634fy"]
+[ext_resource type="AudioStream" uid="uid://d4xqhatidj5f" path="res://Enemies/Sounds/mechanical_2.wav" id="6_74mpf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ygfx"]
+resource_local_to_scene = true
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
 emission = Color(0.647059, 1, 0.411765, 1)
@@ -1995,9 +1998,33 @@ _data = {
 "walk": SubResource("Animation_m1c8q")
 }
 
+[sub_resource type="Animation" id="Animation_256wp"]
+resource_name = "walk_step"
+length = 0.5
+loop_mode = 1
+step = 0.25
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [&"footstep"],
+"method": &"emit_signal"
+}, {
+"args": [&"footstep"],
+"method": &"emit_signal"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_adlhr"]
 _data = {
-"power_off_lights": ExtResource("4_x2t4j")
+"power_off_lights": ExtResource("4_x2t4j"),
+"walk_step": SubResource("Animation_256wp")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycuh0"]
@@ -2025,26 +2052,41 @@ states/bob/position = Vector2(400, 120)
 "states/head move/position" = Vector2(576, 120)
 transitions = ["bob", "head move", SubResource("AnimationNodeStateMachineTransition_o5ltu"), "head move", "bob", SubResource("AnimationNodeStateMachineTransition_fnm42"), "Start", "bob", SubResource("AnimationNodeStateMachineTransition_xqt8r")]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f668h"]
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_e31eo"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vaij3"]
+animation = &"custom animations/walk_step"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vded2"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cs0f1"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lptln"]
-xfade_time = 0.1
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qtlgn"]
+graph_offset = Vector2(-697, -19)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_e31eo")
+nodes/Add2/position = Vector2(100, 80)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_vded2")
+nodes/Animation/position = Vector2(-240, 40)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_vaij3")
+"nodes/Animation 2/position" = Vector2(-240, 200)
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_roctp"]
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkuu8"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fphty"]
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qv4m"]
 states/End/position = Vector2(660, 134)
 states/IDLE/node = SubResource("AnimationNodeStateMachine_2g3h1")
 states/IDLE/position = Vector2(504, 100)
 states/Start/position = Vector2(504, 28)
-states/WALK/node = SubResource("AnimationNodeAnimation_f668h")
-states/WALK/position = Vector2(504, 182)
-transitions = ["IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_cs0f1"), "WALK", "IDLE", SubResource("AnimationNodeStateMachineTransition_lptln"), "Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_roctp")]
+states/WALK/node = SubResource("AnimationNodeBlendTree_qtlgn")
+states/WALK/position = Vector2(504, 185)
+transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_roctp"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_hkuu8"), "WALK", "IDLE", SubResource("AnimationNodeStateMachineTransition_fphty")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g3aib"]
 animation = &"RESET"
@@ -2083,6 +2125,7 @@ switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j8f3o"]
+xfade_time = 0.1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_crsb7"]
 
@@ -2133,21 +2176,21 @@ bones/12/position = Vector3(-4.30854e-06, 3.20733e-05, -1.70988e-05)
 bones/12/rotation = Quaternion(-0.707107, 3.44213e-07, -2.54651e-07, 0.707107)
 bones/13/rotation = Quaternion(0.560985, 0.560986, 0.430459, 0.430459)
 bones/14/rotation = Quaternion(0.430459, 0.430459, 0.560986, 0.560985)
-bones/16/position = Vector3(-0.0159686, -0.02, 0.352813)
-bones/17/rotation = Quaternion(0.164747, 0.174926, 0.618169, 0.748416)
-bones/18/rotation = Quaternion(-0.66314, -0.0120423, -0.0215427, 0.748089)
-bones/19/rotation = Quaternion(0.0964794, 0.283244, 0.859942, 0.413478)
-bones/20/rotation = Quaternion(-0.802489, -0.0102699, -0.0260829, 0.596008)
+bones/16/position = Vector3(-0.0140273, -0.02, 0.34693)
+bones/17/rotation = Quaternion(0.17006, 0.178818, 0.617836, 0.74658)
+bones/18/rotation = Quaternion(-0.662575, -0.0120504, -0.0215243, 0.74859)
+bones/19/rotation = Quaternion(0.101097, 0.292005, 0.856346, 0.413744)
+bones/20/rotation = Quaternion(-0.802977, -0.0102585, -0.0260988, 0.59535)
 bones/21/position = Vector3(-0.0239784, 0.285311, -0.245566)
-bones/21/rotation = Quaternion(0.218348, 0.083744, 0.466526, 0.853033)
-bones/22/rotation = Quaternion(-0.672497, -0.0124786, -0.021753, 0.739675)
-bones/24/rotation = Quaternion(0.138973, -0.15201, -0.629266, 0.749402)
-bones/25/rotation = Quaternion(-0.596194, 0.0129183, 0.0193679, 0.802503)
-bones/26/rotation = Quaternion(0.0874328, -0.270731, -0.84706, 0.448943)
-bones/27/rotation = Quaternion(-0.765926, 0.0110684, 0.0248945, 0.642352)
+bones/21/rotation = Quaternion(0.225128, 0.0869987, 0.466947, 0.850711)
+bones/22/rotation = Quaternion(-0.672462, -0.0124791, -0.0217518, 0.739707)
+bones/24/rotation = Quaternion(0.147169, -0.158601, -0.627744, 0.747747)
+bones/25/rotation = Quaternion(-0.603792, 0.0128265, 0.0196147, 0.796798)
+bones/26/rotation = Quaternion(0.0932212, -0.280406, -0.845429, 0.444895)
+bones/27/rotation = Quaternion(-0.771143, 0.0109603, 0.0250641, 0.636074)
 bones/28/position = Vector3(0.0239784, 0.285311, -0.245566)
-bones/28/rotation = Quaternion(0.189426, -0.0656468, -0.480291, 0.853891)
-bones/29/rotation = Quaternion(-0.603136, 0.0134505, 0.0195095, 0.797286)
+bones/28/rotation = Quaternion(0.198639, -0.0708728, -0.477987, 0.852671)
+bones/29/rotation = Quaternion(-0.610363, 0.0133573, 0.0197432, 0.791763)
 bones/30/position = Vector3(0.4584, 0.1718, 0.00443449)
 bones/30/rotation = Quaternion(0, 0, -0.689081, 0.724685)
 bones/31/position = Vector3(-1.63913e-06, 1.20485e-05, -5.83427e-06)
@@ -2184,11 +2227,23 @@ active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_l42fi")
 parameters/Cycle/playback = SubResource("AnimationNodeStateMachinePlayback_ivcpn")
 parameters/Cycle/IDLE/playback = SubResource("AnimationNodeStateMachinePlayback_xwg3f")
+parameters/Cycle/WALK/Add2/add_amount = 1.0
 parameters/poweroff/Add2/add_amount = 1.0
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="StepSounds" type="Node3D" parent="."]
+
+[node name="StepSound1" type="AudioStreamPlayer3D" parent="StepSounds"]
+stream = ExtResource("5_634fy")
+volume_db = 1.0
+
+[node name="StepSound2" type="AudioStreamPlayer3D" parent="StepSounds"]
+stream = ExtResource("6_74mpf")
+volume_db = 1.0
+
 [connection signal="change_state" from="." to="." method="check_idle_second_action_loop"]
+[connection signal="footstep" from="." to="." method="play_random_step_sound"]
 [connection signal="timeout" from="Timer" to="." method="on_timer_second_action"]
 
 [editable path="beetle_bot_fused"]

@@ -5,6 +5,7 @@ const EXPLOSION_TIMER := 0.2
 
 #@onready var _collision_area: CollisionShape3D = $CollisionShape3d
 @onready var _explosion_area: Area3D = $ExplosionArea
+@onready var _explosion_sound: AudioStreamPlayer3D = $ExplosionSound
 @onready var _player: Node3D = null
 @onready var _curve: Curve3D = null
 @onready var _curve_offset: Vector3
@@ -45,6 +46,9 @@ func _explode() -> void:
 	body_entered.disconnect(_explode)
 	await get_tree().create_timer(EXPLOSION_TIMER).timeout
 	
+	_explosion_sound.pitch_scale = randfn(2.0, 0.1)
+	_explosion_sound.play()
+	
 	var bodies := _explosion_area.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("damageables") and not body.is_in_group("player"):
@@ -57,4 +61,7 @@ func _explode() -> void:
 	var explosion: Node3D = EXPLOSION_SCENE.instantiate()
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
+	
+	hide()
+	await _explosion_sound.finished
 	queue_free()

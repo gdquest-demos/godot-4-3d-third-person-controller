@@ -13,6 +13,7 @@ const BULLET_SCENE: PackedScene = preload("res://Player/Bullet.tscn")
 @onready var _detection_area: Area3D = $PlayerDetectionArea
 @onready var _death_mesh_collider: CollisionShape3D = $DeathMeshCollider
 @onready var _bee_root: Node3D = $MeshRoot/bee_root
+@onready var _defeat_sound: AudioStreamPlayer3D = $DefeatSound
 
 @onready var _shoot_count := 0.0
 @onready var _target: Node3D = null
@@ -53,6 +54,7 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	if not _alive:
 		return
 	
+	_defeat_sound.play()
 	_alive = false
 	
 	for i in range(coins_count):
