@@ -9,7 +9,7 @@ extends Node3D
 
 
 func _ready() -> void:
-	if Engine.is_editor_hint():
+	if OS.is_debug_build():
 		_enabled = true
 	set_process(_enabled)
 	set_process_input(_enabled)
