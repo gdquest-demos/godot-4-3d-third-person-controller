@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=22 format=3 uid="uid://ctycm6blx4sw4"]
+[gd_resource type="AnimationNodeBlendTree" load_steps=24 format=3 uid="uid://ctycm6blx4sw4"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_dpb3n"]
 
@@ -7,8 +7,18 @@
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_080es"]
 animation = &"Godot Custom Animations/simple_blink"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cakye"]
+animation = &"simple_punch"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u6r87"]
 animation = &"Godot Custom Animations/default_heartbeat"
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_rfqjk"]
+filter_enabled = true
+filters = ["Armature/Skeleton3D:finger_1_1.L", "Armature/Skeleton3D:finger_1_2.L", "Armature/Skeleton3D:finger_2_1.L", "Armature/Skeleton3D:finger_2_2.L", "Armature/Skeleton3D:finger_3_1.L", "Armature/Skeleton3D:finger_3_2.L", "Armature/Skeleton3D:finger_4_1.L", "Armature/Skeleton3D:finger_4_2.L", "Armature/Skeleton3D:lowerarm.L", "Armature/Skeleton3D:thumb_1.L", "Armature/Skeleton3D:thumb_2.L", "Armature/Skeleton3D:torso", "Armature/Skeleton3D:upperarm.L"]
+sync = true
+fadein_time = 0.1
+fadeout_time = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pi646"]
 animation = &"fall"
@@ -69,27 +79,31 @@ states/Start/position = Vector2(212, 90)
 states/fall/node = SubResource("AnimationNodeAnimation_pi646")
 states/fall/position = Vector2(342, 207)
 states/ground_impact/node = SubResource("AnimationNodeAnimation_53liu")
-states/ground_impact/position = Vector2(520, 207)
+states/ground_impact/position = Vector2(521, 207)
 states/idle/node = SubResource("AnimationNodeAnimation_nan6l")
-states/idle/position = Vector2(329, 90)
+states/idle/position = Vector2(328, 90)
 states/jump/node = SubResource("AnimationNodeAnimation_fy3xa")
 states/jump/position = Vector2(179, 207)
 states/move/node = SubResource("AnimationNodeBlendSpace1D_cfy75")
 states/move/position = Vector2(531, 90)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_5sbif"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_sawiy"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_xu61x"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_2yld2"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_ad878"), "fall", "ground_impact", SubResource("AnimationNodeStateMachineTransition_63es0"), "ground_impact", "idle", SubResource("AnimationNodeStateMachineTransition_bsdcg"), "ground_impact", "move", SubResource("AnimationNodeStateMachineTransition_rbpx6"), "move", "jump", SubResource("AnimationNodeStateMachineTransition_42lpg")]
-graph_offset = Vector2(22, 3)
+graph_offset = Vector2(4, -47)
 
 [resource]
-graph_offset = Vector2(-313.118, 0)
+graph_offset = Vector2(-339.736, 98.5509)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_766tv")
-nodes/Add2/position = Vector2(220, 80)
+nodes/Add2/position = Vector2(260, 80)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_dpb3n")
-"nodes/Add2 2/position" = Vector2(420, 80)
+"nodes/Add2 2/position" = Vector2(540, 80)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_u6r87")
-nodes/Animation/position = Vector2(-200, 80)
+nodes/Animation/position = Vector2(-160, 80)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_080es")
-"nodes/Animation 2/position" = Vector2(-200, 200)
+"nodes/Animation 2/position" = Vector2(-160, 200)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_cakye")
+"nodes/Animation 3/position" = Vector2(20, 520)
+nodes/PunchOneShot/node = SubResource("AnimationNodeOneShot_rfqjk")
+nodes/PunchOneShot/position = Vector2(300, 380)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_k7175")
-nodes/StateMachine/position = Vector2(200, 320)
-nodes/output/position = Vector2(600, 180)
-node_connections = [&"output", 0, &"Add2 2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"StateMachine"]
+nodes/StateMachine/position = Vector2(20, 380)
+nodes/output/position = Vector2(780, 80)
+node_connections = [&"output", 0, &"Add2 2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"PunchOneShot", &"PunchOneShot", 0, &"StateMachine", &"PunchOneShot", 1, &"Animation 3"]

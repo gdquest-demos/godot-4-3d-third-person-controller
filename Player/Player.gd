@@ -164,6 +164,7 @@ func _physics_process(delta: float) -> void:
 
 func attack() -> void:
 	_attack_animation_player.play("Attack")
+	_character_skin.punch()
 	velocity = _rotation_root.transform.basis * Vector3.BACK * attack_impulse
 
 
