@@ -3,13 +3,13 @@ extends RigidBody3D
 const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.tscn")
 const EXPLOSION_TIMER := 0.2
 
-#@onready var _collision_area: CollisionShape3D = $CollisionShape3d
 @onready var _explosion_area: Area3D = $ExplosionArea
 @onready var _explosion_sound: AudioStreamPlayer3D = $ExplosionSound
 @onready var _player: Node3D = null
 @onready var _curve: Curve3D = null
 @onready var _curve_offset: Vector3
 @onready var _collided: bool = false
+
 
 func _physics_process(_delta) -> void:
 	# The throw velocity is not accurate, so we need to fix it using the closest point in the 3D 

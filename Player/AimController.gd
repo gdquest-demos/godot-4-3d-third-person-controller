@@ -11,11 +11,11 @@ const SHADER_PARAM_FILL_COLOR := "shader_parameter/fill_color"
 @export var max_throw_radius := 10.0
 @export var min_throw_strength := 4.0
 @export var max_throw_strength := 14.0
+@export var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var _aim_sprite: MeshInstance3D = $AimSprite
 @onready var _grenade_path: Path3D = $Path3D
 @onready var _csg_polygon: CSGPolygon3D = $Path3D/CSGPolygon3D
-@onready var _gravity_length: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var _cached_grenade_velocity: Vector3
 
 
@@ -60,59 +60,55 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	distance = distance.limit_length(max_throw_radius)
 	target = origin + distance
 	
-	var trans := transform
+	# Calculate target sprite position and orientation
+	var sprite_transform := transform
+	sprite_transform.origin = origin + distance + (normal * 0.1)
 	
-	# Set target sprite position
-	trans.origin = origin + distance + (normal * 0.1)
-	
-	# Set target sprite orientation
-	trans.basis.y = normal
-	trans.basis.z = -camera_basis.y
-	trans.basis.x = trans.basis.z.cross(trans.basis.y).normalized()
-	trans.basis.z = trans.basis.y.cross(trans.basis.x).normalized()
-	trans.basis = trans.basis.orthonormalized()
-	transform = trans
+	sprite_transform.basis.y = normal
+	sprite_transform.basis.z = -camera_basis.y
+	sprite_transform.basis.x = sprite_transform.basis.z.cross(sprite_transform.basis.y).normalized()
+	sprite_transform.basis.z = sprite_transform.basis.y.cross(sprite_transform.basis.x).normalized()
+	sprite_transform.basis = sprite_transform.basis.orthonormalized()
+
+	transform = sprite_transform
 	
 	# Set grenade path by predicting its bullet motion
-
 	_grenade_path.global_position = origin
 	
 	# First, calculate target position and distance. Origin is the player position
-	var r1 := transform.origin - origin
-	var r1_l := r1.length()
-	var r1_g_dot := r1.dot(Vector3.DOWN * _gravity_length)
+	var target_position := transform.origin - origin
+	var distance_to_target := target_position.length()
+	var r1_g_dot := target_position.dot(Vector3.DOWN * gravity)
 	
-	# v0 is the initial velocity vector we want. We know its
-	# minimum length using the following formulae, and we clamp
+	# initial_velocity is the initial velocity vector we want. We know its
+	# minimum length using the following formula, and we clamp
 	# it to make better trajectories
-	var v0_l := sqrt((r1_l * _gravity_length) - r1_g_dot)
+	var v0_l := sqrt((distance_to_target * gravity) - r1_g_dot)
 	v0_l = clamp(v0_l, min_throw_strength, max_throw_strength)
 	
-	# Now we calculate the necessary factors to discover v0
-	var g := Vector3.DOWN * _gravity_length
-	var g_squared := _gravity_length * _gravity_length
+	# Now we calculate the necessary factors to discover initial_velocity
+	var gravity_squared := gravity * gravity
 	
-	var f1 := 2.0/(g_squared)
+	var f1 := 2.0 / gravity_squared
 	var f2 := v0_l * v0_l
 	var f3 := r1_g_dot
 	var f4_0 := (v0_l * v0_l) + r1_g_dot
-	var f4_1 := f4_0 * f4_0 - (g_squared * r1_l * r1_l)
+	var f4_1 := f4_0 * f4_0 - (gravity_squared * distance_to_target * distance_to_target)
 	
-	# Is f4_1 is less then 0, then this is an impossible trajectory. But
+	# If f4_1 is less then 0, then this is an impossible trajectory. But
 	# to be sure, we return before using sqrt() in it because Godot crashes
 	# when calculating a sqrt() of a negative number.
-	if f4_1 < 0:
+	if f4_1 < 0.0:
 		return
 	
 	var f4 := sqrt(f4_1)
 	
 	# Now we calculate the times in which the bullet can hit the target position.
-	# t1 is when the bullet is going up, t2 is when the bullet is going down.
-	var t1 := f1 * (f2 + f3 + f4) # Downwards movement
-	var t2 := f1 * (f2 + f3 - f4) # Upwards movement
+	# time_going_up is when the bullet is going up, time_going_down is when the bullet is going down.
+	var time_going_up := f1 * (f2 + f3 + f4)
+	var time_going_down := f1 * (f2 + f3 - f4)
 	
-	# We finally have v0! We'll use t2 because it makes a more interesting trajectory
-	var v0 := (r1/t1) - (g*t1*0.5)
+	var initial_velocity := (target_position / time_going_up) - (Vector3.DOWN * gravity * time_going_up * 0.5)
 	
 	# We get the Curve3D resource from _grenade_path and update it iterating on the
 	# predicted trajectory path for the new points
@@ -120,10 +116,9 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	curve.clear_points()
 
 	for i in range(POINTS_IN_CURVE3D + 1):
-		var t: float = lerp(0.0, t2, float(i)/float(POINTS_IN_CURVE3D))
-		var point := (v0 * t) + (Vector3.DOWN * _gravity_length * 0.5 * t * t)
+		var t: float = lerp(0.0, time_going_down, float(i)/float(POINTS_IN_CURVE3D))
+		var point := (initial_velocity * t) + (Vector3.DOWN * gravity * 0.5 * t * t)
 		curve.add_point(point)
 	
-	# Caching the found v0 vector so we can use it on the throw() function
-	_cached_grenade_velocity = v0
-
+	# Caching the found initial_velocity vector so we can use it on the throw() function
+	_cached_grenade_velocity = initial_velocity
