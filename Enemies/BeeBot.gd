@@ -1,8 +1,8 @@
 extends RigidBody3D
 
 const COIN_SCENE := preload("res://Player/Coin/Coin.tscn")
-# For some reason, Godot complains if we don't specifically say this is a PackedScene.
-const BULLET_SCENE: PackedScene = preload("res://Player/Bullet.tscn")
+const BULLET_SCENE := preload("res://Player/Bullet.tscn")
+const PUFF_SCENE := preload("smoke_puff/smoke_puff.tscn")
 
 @export var shoot_timer := 1.5
 @export var bullet_speed := 6.0
@@ -57,11 +57,6 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_defeat_sound.play()
 	_alive = false
 	
-	for i in range(coins_count):
-		var coin := COIN_SCENE.instantiate()
-		get_parent().add_child(coin)
-		coin.global_position = global_position
-		coin.spawn()
 	_flying_animation_player.stop(true)
 	_flying_animation_player.seek(0.0, true)
 	_detection_area.body_entered.disconnect(_on_body_entered)
@@ -73,8 +68,20 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	set_deferred("collision_mask", 2)
 	
 	gravity_scale = 1.0
-	
 	_bee_root.play_poweroff()
+	
+	await get_tree().create_timer(2).timeout
+	
+	var puff := PUFF_SCENE.instantiate()
+	get_parent().add_child(puff)
+	puff.global_position = global_position
+	await puff.full
+	for i in range(coins_count):
+		var coin := COIN_SCENE.instantiate()
+		get_parent().add_child(coin)
+		coin.global_position = global_position
+		coin.spawn()
+	queue_free()
 
 
 func _on_body_entered(body: Node3D) -> void:
