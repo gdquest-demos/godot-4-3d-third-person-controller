@@ -28,7 +28,10 @@ func _physics_process(delta: float) -> void:
 	
 	if _target != null:
 		_beetle_skin.play_walk()
-		look_at(Vector3(_target.global_position.x, global_position.y, _target.global_position.z))
+		var target_look_position := _target.global_position
+		target_look_position.y = global_position.y
+		if target_look_position != Vector3.ZERO:
+			look_at(target_look_position)
 		
 		_navigation_agent.set_target_location(_target.global_position)
 		
