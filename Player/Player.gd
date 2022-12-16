@@ -1,16 +1,18 @@
 class_name Player
 extends CharacterBody3D
 
+signal weapon_switched(weapon_name: String)
+
 const BULLET_SCENE := preload("Bullet.tscn")
 const COIN_SCENE := preload("Coin/Coin.tscn")
 
 enum WEAPON_TYPE { DEFAULT, GRENADE }
 
-## Character maximum movement speed
+## Character maximum run speed on the ground.
 @export var move_speed := 8.0
-## Bullet maximum speed
-@export var bullet_speed := 8.0
-## Forward impulse after a melee attack
+## Speed of shot bullets.
+@export var bullet_speed := 10.0
+## Forward impulse after a melee attack.
 @export var attack_impulse := 10.0
 ## Movement acceleration (how fast character achieve maximum speed)
 @export var acceleration := 4.0
@@ -20,7 +22,8 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var jump_additional_force := 4.5
 ## Player model rotaion speed
 @export var rotation_speed := 12.0
-## Character minimum speed
+## Minimum horizontal speed on the ground. This controls when the character's animation tree changes 
+## between the idle and running states.
 @export var stopping_speed := 1.0
 ## Max throwback force after player takes a hit
 @export var max_throwback_force := 15.0
@@ -46,7 +49,6 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _coins := 0
 @onready var _is_on_floor_buffer := false
 
-signal weapon_switched(weapon_name: String)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -54,6 +56,7 @@ func _ready() -> void:
 	_grenade_aim_controller.set_active(false)
 	_coin_magnet_area.body_entered.connect(_on_coin_body_entered)
 	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
+
 
 func _physics_process(delta: float) -> void:
 	# Calculate ground height for camera controller
@@ -175,7 +178,7 @@ func shoot() -> void:
 	var aim_target := _camera_controller.get_aim_target()
 	var aim_direction := (aim_target - origin).normalized()
 	bullet.velocity = aim_direction * bullet_speed
-	bullet.distance_limit = 10.0
+	bullet.distance_limit = 14.0
 	get_parent().add_child(bullet)
 	bullet.global_position = origin
 

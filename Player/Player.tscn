@@ -48,7 +48,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("MeleeAnchor/MeleeSphere:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -121,6 +121,8 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_rvo1c")
+bullet_speed = 14.0
+acceleration = 6.0
 
 [node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -236,6 +238,7 @@ mouse_filter = 2
 
 [node name="AimRecticle" type="ColorRect" parent="PlayerUI"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -252,6 +255,7 @@ color = Color(0, 0, 0, 0.290196)
 
 [node name="CoinsContainer" type="HBoxContainer" parent="PlayerUI"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -267,8 +271,7 @@ script = ExtResource("7_8eehq")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer"]
 custom_minimum_size = Vector2(96, 96)
-offset_right = 96.0
-offset_bottom = 96.0
+layout_mode = 2
 size_flags_horizontal = 2
 stretch = true
 
@@ -284,7 +287,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(0.99715, 0, 0.0754535, 0, 1, 0, -0.0754535, 0, 0.99715, 0, 0, 0)
+transform = Transform3D(0.873808, 0, -0.486272, 0, 1, 0, 0.486272, 0, 0.873808, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
@@ -294,10 +297,7 @@ fov = 18.238
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
 
 [node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer"]
-offset_left = 143.0
-offset_top = 2.0
-offset_right = 256.0
-offset_bottom = 93.0
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "0"

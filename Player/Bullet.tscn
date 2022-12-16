@@ -4,22 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://5ttf446nggra" path="res://Player/BulletVisuals/BulletModel.tscn" id="2_68e7a"]
 [ext_resource type="AudioStream" uid="uid://c7w6ecthdjbuk" path="res://Player/Sounds/lasershot-102078.wav" id="3_3vyow"]
 
-[sub_resource type="Curve" id="Curve_i6dr6"]
+[sub_resource type="Curve" id="Curve_xkrkt"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.907143, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -14.9899, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_87s6y"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_agrei"]
 radius = 0.1
 
 [node name="Bullet" type="Node3D"]
 script = ExtResource("1_8b555")
-scale_decay = SubResource("Curve_i6dr6")
+scale_decay = SubResource("Curve_xkrkt")
 distance_limit = 6.0
 
 [node name="Area3d" type="Area3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="Area3d"]
-shape = SubResource("SphereShape3D_87s6y")
+shape = SubResource("SphereShape3D_agrei")
 
 [node name="Bullet" parent="." instance=ExtResource("2_68e7a")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.15617, 0, 0)
