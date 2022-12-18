@@ -47,6 +47,7 @@ _global_script_class_icons={
 config/name="TPS Demo"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.png"
 
 [autoload]
