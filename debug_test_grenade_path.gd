@@ -16,13 +16,6 @@ const POINTS_IN_CURVE3D := 40
 @onready var target: MeshInstance3D = $Target
 
 
-func _ready() -> void:
-	var timer := Timer.new()
-	add_child(timer)
-	timer.timeout.connect(recalculate_and_redraw)
-	recalculate_and_redraw()
-
-
 func recalculate_and_redraw() -> void:
 	velocity_start = calculate_start_velocity()
 	redraw()

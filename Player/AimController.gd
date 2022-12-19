@@ -17,6 +17,7 @@ const SHADER_PARAM_FILL_COLOR := "shader_parameter/fill_color"
 @onready var _grenade_path: Path3D = $Path3D
 @onready var _csg_polygon: CSGPolygon3D = $Path3D/CSGPolygon3D
 @onready var _cached_grenade_velocity: Vector3
+@onready var _ray_cast: RayCast3D = $RayCast3D
 
 
 func _physics_process(delta: float) -> void:
@@ -61,22 +62,21 @@ func set_aim_position(origin: Vector3, target: Vector3, normal: Vector3, camera_
 	target = origin + distance
 	
 	# Calculate target sprite position and orientation
-	var sprite_transform := transform
-	sprite_transform.origin = origin + distance + (normal * 0.1)
-	
-	sprite_transform.basis.y = normal
-	sprite_transform.basis.z = -camera_basis.y
-	sprite_transform.basis.x = sprite_transform.basis.z.cross(sprite_transform.basis.y).normalized()
-	sprite_transform.basis.z = sprite_transform.basis.y.cross(sprite_transform.basis.x).normalized()
-	sprite_transform.basis = sprite_transform.basis.orthonormalized()
+	_ray_cast.target_position = distance
+	var ray_is_colliding := _ray_cast.is_colliding()
+	_aim_sprite.visible = ray_is_colliding
+	if ray_is_colliding:
+		var collision_point := _ray_cast.get_collision_point()
+		var collision_normal := _ray_cast.get_collision_normal()
+		_aim_sprite.global_transform.origin = collision_point + collision_normal * 0.01
+		_aim_sprite.look_at(collision_point - collision_normal, _aim_sprite.global_transform.basis.y.normalized())
 
-	transform = sprite_transform
 	
 	# Set grenade path by predicting its bullet motion
 	_grenade_path.global_position = origin
 	
 	# First, calculate target position and distance. Origin is the player position
-	var target_position := transform.origin - origin
+	var target_position := target - origin
 	var distance_to_target := target_position.length()
 	var r1_g_dot := target_position.dot(Vector3.DOWN * gravity)
 	

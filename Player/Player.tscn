@@ -160,15 +160,17 @@ collision_mask = 2
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="GrenadeAimController" type="Node3D" parent="."]
-top_level = true
 script = ExtResource("4_asavx")
+
+[node name="RayCast3D" type="RayCast3D" parent="GrenadeAimController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23542, 0)
+target_position = Vector3(0, 0, 10)
 
 [node name="AimSprite" type="MeshInstance3D" parent="GrenadeAimController"]
 material_override = ExtResource("4_qvla4")
 mesh = SubResource("PlaneMesh_we0uy")
 
 [node name="Path3D" type="Path3D" parent="GrenadeAimController"]
-top_level = true
 curve = SubResource("Curve3D_srweg")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="GrenadeAimController/Path3D"]
@@ -287,7 +289,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(0.873808, 0, -0.486272, 0, 1, 0, 0.486272, 0, 0.873808, 0, 0, 0)
+transform = Transform3D(-0.327807, 0, 0.944745, 0, 1, 0, -0.944745, 0, -0.327807, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
