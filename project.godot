@@ -141,3 +141,8 @@ pause={
 3d_physics/layer_1="Entities"
 3d_physics/layer_2="Level"
 3d_physics/layer_3="Coins"
+
+[rendering]
+
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=4
+textures/default_filters/anisotropic_filtering_level=3
