@@ -1,7 +1,7 @@
 @tool
 extends Node3D
 
-const POINTS_IN_CURVE3D := 40
+const POINTS_IN_CURVE3D := 8
 
 @export var gravity := 10.0 : 
 	set(value):
@@ -12,14 +12,13 @@ const POINTS_IN_CURVE3D := 40
 @onready var path_3d: Path3D = $Path3D
 
 @onready var start: MeshInstance3D = $Start
-@onready var peak: MeshInstance3D = $Peak
 @onready var target: MeshInstance3D = $Target
 
 var count := 0
 
 
 func _physics_process(delta: float) -> void:
-	count = wrapi(count + 1, 0, 10)
+	count = wrapi(count + 1, 0, 2)
 	if count == 0:
 		recalculate_and_redraw()
 
@@ -29,10 +28,12 @@ func recalculate_and_redraw() -> void:
 
 
 func calculate_start_velocity() -> Vector3:
-	var motion_up := peak.global_position.y - start.global_position.y
+	var peak_height: float = max(target.global_position.y + 0.25, start.global_position.y + 0.25)
+	
+	var motion_up := peak_height - start.global_position.y
 	var time_going_up := sqrt(2.0 * motion_up / gravity)
 	
-	var motion_down := target.global_position.y - peak.global_position.y
+	var motion_down := target.global_position.y - peak_height
 	var time_going_down := sqrt(-2.0 * motion_down / gravity)
 	
 	var time := time_going_up + time_going_down
