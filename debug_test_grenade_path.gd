@@ -15,6 +15,13 @@ const POINTS_IN_CURVE3D := 40
 @onready var peak: MeshInstance3D = $Peak
 @onready var target: MeshInstance3D = $Target
 
+var count := 0
+
+
+func _physics_process(delta: float) -> void:
+	count = wrapi(count + 1, 0, 10)
+	if count == 0:
+		recalculate_and_redraw()
 
 func recalculate_and_redraw() -> void:
 	velocity_start = calculate_start_velocity()
@@ -29,9 +36,13 @@ func calculate_start_velocity() -> Vector3:
 	var time_going_down := sqrt(-2.0 * motion_down / gravity)
 	
 	var time := time_going_up + time_going_down
-	var forward_speed: float = abs(target.global_position.z - start.global_position.z) / time
+
+	var target_position_xz_plane := Vector3(target.global_position.x, 0.0, target.global_position.z)
+	var start_position_xz_plane := Vector3(start.global_position.x, 0.0, start.global_position.z)
+
+	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / time
 	var velocity_up := sqrt(2.0 * gravity * motion_up)
-	return Vector3(0.0, velocity_up, -forward_speed)
+	return Vector3.UP * velocity_up + forward_velocity
 
 
 func redraw() -> void:
