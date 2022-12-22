@@ -22,7 +22,7 @@
 
 [sub_resource type="Curve3D" id="Curve3D_srweg"]
 _data = {
-"points": PackedVector3Array(-0.157908, -2.12082, -0.578894, 0, 2.121, 0.579, 0, 1, 0, 0, 1.627, -0.773, 0.309031, -1.627, 0.773314, 0, 0, 3),
+"points": PackedVector3Array(0, -1.40668, -0.385703, 0, 1.40668, 0.385703, 0, 0.00851202, 0.00594258, 0, 1.44436, -0.627982, 0, -1.44436, 0.627982, 0, 0, 3),
 "tilts": PackedFloat32Array(0, 0)
 }
 point_count = 2
@@ -167,13 +167,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23542, 0)
 target_position = Vector3(0, 0, 10)
 
 [node name="AimSprite" type="MeshInstance3D" parent="GrenadeAimController"]
+top_level = true
 material_override = ExtResource("4_qvla4")
 mesh = SubResource("PlaneMesh_we0uy")
 
-[node name="Path3D" type="Path3D" parent="GrenadeAimController"]
+[node name="LaunchPoint" type="Marker3D" parent="GrenadeAimController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.305, 0)
+gizmo_extents = 0.5
+
+[node name="Path3D" type="Path3D" parent="GrenadeAimController/LaunchPoint"]
 curve = SubResource("Curve3D_srweg")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="GrenadeAimController/Path3D"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="GrenadeAimController/LaunchPoint/Path3D"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.2, 0.05, 0.2, 0)
 mode = 2
 path_node = NodePath("..")
@@ -289,7 +294,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(-0.327807, 0, 0.944745, 0, 1, 0, -0.944745, 0, -0.327807, 0, 0, 0)
+transform = Transform3D(0.803015, 0, -0.595959, 0, 1, 0, 0.595959, 0, 0.803015, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]

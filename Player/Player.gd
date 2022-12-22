@@ -53,7 +53,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
-	_grenade_aim_controller.set_active(false)
+	_grenade_aim_controller.visible = false
 	_coin_magnet_area.body_entered.connect(_on_coin_body_entered)
 	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
 
@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	# Swap weapons
 	if Input.is_action_just_pressed("swap_weapons"):
 		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE
-		_grenade_aim_controller.set_active(_equipped_weapon == WEAPON_TYPE.GRENADE)
+		_grenade_aim_controller.visible = _equipped_weapon == WEAPON_TYPE.GRENADE
 		emit_signal("weapon_switched", WEAPON_TYPE.keys()[_equipped_weapon])
 		
 	# Get input and movement state
@@ -112,12 +112,11 @@ func _physics_process(delta: float) -> void:
 	# Update grenade aim controller
 	var origin := global_position
 	var aim_target := _camera_controller.get_aim_target()
-	var aim_normal := _camera_controller.get_aim_target_normal()
 	var camera_basis := _camera_controller.get_camera_basis()
 	var aim_collider := _camera_controller.get_aim_collider()
 	
 	if _equipped_weapon == WEAPON_TYPE.GRENADE:
-		_grenade_aim_controller.set_aim_position(origin, aim_target, aim_normal, camera_basis, aim_collider)
+		_grenade_aim_controller.set_aim_position(origin, aim_target, camera_basis, aim_collider)
 	
 	# Update attack state and position
 	if is_just_attacking:
