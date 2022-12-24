@@ -17,7 +17,6 @@ enum CAMERA_PIVOT { OVER_SHOULDER, THIRD_PERSON }
 
 
 var _aim_target : Vector3
-var _aim_target_normal : Vector3
 var _aim_collider: Node
 var _pivot: Node3D
 var _current_pivot_type: CAMERA_PIVOT
@@ -48,11 +47,9 @@ func _physics_process(delta: float) -> void:
 	
 	if _camera_raycast.is_colliding():
 		_aim_target = _camera_raycast.get_collision_point()
-		_aim_target_normal = _camera_raycast.get_collision_normal()
 		_aim_collider = _camera_raycast.get_collider()
 	else:
 		_aim_target = _camera_raycast.global_transform * _camera_raycast.target_position
-		_aim_target_normal = (global_position - _aim_target).normalized()
 		_aim_collider = null
 	
 	# Set camera controller to current ground level for the character
@@ -97,10 +94,6 @@ func set_pivot(pivot_type: CAMERA_PIVOT) -> void:
 
 func get_aim_target() -> Vector3:
 	return _aim_target
-
-
-func get_aim_target_normal() -> Vector3:
-	return _aim_target_normal
 
 
 func get_aim_collider() -> Node:

@@ -109,14 +109,8 @@ func _physics_process(delta: float) -> void:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
 		_ui_aim_recticle.visible = false
 	
-	# Update grenade aim controller
-	var origin := global_position
-	var aim_target := _camera_controller.get_aim_target()
-	var camera_basis := _camera_controller.get_camera_basis()
-	var aim_collider := _camera_controller.get_aim_collider()
-	
 	if _equipped_weapon == WEAPON_TYPE.GRENADE:
-		_grenade_aim_controller.set_aim_position(origin, aim_target, camera_basis, aim_collider)
+		_grenade_aim_controller.set_aim_position()
 	
 	# Update attack state and position
 	if is_just_attacking:

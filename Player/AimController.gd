@@ -1,3 +1,4 @@
+@tool
 class_name GrenadeAimController
 extends Node3D
 
@@ -8,6 +9,7 @@ const ENEMY_AIM_COLOR := Color(1, 0, 0, 0.5)
 const POINTS_IN_CURVE3D := 15
 const SHADER_PARAM_FILL_COLOR := "shader_parameter/fill_color"
 
+@export var camera: Camera3D = null
 @export var max_throw_radius := 10.0
 @export var min_throw_strength := 4.0
 @export var max_throw_strength := 14.0
@@ -18,8 +20,22 @@ var _throw_velocity := Vector3.ZERO
 @onready var _aim_sprite: MeshInstance3D = $AimSprite
 @onready var _grenade_path: Path3D = $LaunchPoint/Path3D
 @onready var _csg_polygon: CSGPolygon3D = $LaunchPoint/Path3D/CSGPolygon3D
-@onready var _ray_cast: RayCast3D = $RayCast3D
+@onready var _raycast: RayCast3D = $RayCast3D
 @onready var _launch_point: Marker3D = $LaunchPoint
+
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		set_physics_process(false)
+
+	_aim_sprite.material_override.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
+	_csg_polygon.material.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
+
+
+func _get_configuration_warnings() -> PackedStringArray:
+	if camera == null:
+		return PackedStringArray(["This node must have a valid reference to a Camera3D node to orient itself with the camera."])
+	return PackedStringArray()
 
 
 func _physics_process(delta: float) -> void:
@@ -40,33 +56,24 @@ func throw_grenade(_origin: Vector3, player: Node3D) -> bool:
 
 
 # TODO: move input code to make this a component?
-# TODO: make arguments properties instead?
-func set_aim_position(global_start_position: Vector3, global_target_position: Vector3, camera_basis: Basis, collider: Object) -> void:
-	# Snap global_target_position to enemies
-	# TODO: simplify with raycast?
-	if collider and collider.is_in_group("targeteables") and global_start_position.distance_to(global_target_position) < max_throw_radius:
-		global_target_position = collider.global_position
-	
-	# Turn the line red if the global_target_position can't be reached
-	if global_start_position.distance_to(global_target_position) > max_throw_radius:
-		_aim_sprite.material_override.set(SHADER_PARAM_FILL_COLOR, OUT_OF_RANGE_COLOR)
-		_csg_polygon.material.set(SHADER_PARAM_FILL_COLOR, OUT_OF_RANGE_COLOR)
-	else:
-		_aim_sprite.material_override.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
-		_csg_polygon.material.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
-	
-	var to_target := (global_target_position - _launch_point.global_position).limit_length(max_throw_radius)
-	
-	# Calculate global_target_position sprite position and orientation
-	_ray_cast.target_position = to_target
-	var ray_is_colliding := _ray_cast.is_colliding()
-	_aim_sprite.visible = ray_is_colliding
-	if ray_is_colliding:
-		var collision_point := _ray_cast.get_collision_point()
-		var collision_normal := _ray_cast.get_collision_normal()
-		_aim_sprite.global_position = collision_point + collision_normal * 0.01
-		_aim_sprite.look_at(collision_point - collision_normal, _aim_sprite.global_transform.basis.y.normalized())
+func set_aim_position() -> void:
+	_raycast.global_position = camera.global_position
+	_raycast.target_position = camera.basis * Vector3.FORWARD * max_throw_radius
+	_raycast.force_raycast_update()
 
+	var collider := _raycast.get_collider()
+	_aim_sprite.visible = collider != null
+	if collider:
+		var collision_point := _raycast.get_collision_point()
+		var collision_normal := _raycast.get_collision_normal()
+		_aim_sprite.global_position = collision_point + collision_normal * 0.01
+		_aim_sprite.look_at(global_position)
+
+	var to_target := _raycast.target_position
+	# Snap global_target_position to enemies
+	if collider and collider.is_in_group("targeteables"):
+		to_target = collider.global_position - _launch_point.global_position
+	
 	# Set grenade path by predicting its bullet motion
 	var peak_height: float = max(to_target.y + 1.0, _launch_point.position.y + 1.0)
 	
