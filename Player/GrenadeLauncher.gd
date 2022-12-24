@@ -6,7 +6,6 @@ const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
 const IN_RANGE_COLOR := Color(1.0, 0.64, 0.18)
 const OUT_OF_RANGE_COLOR := Color(0.95, 0.0, 0.17)
 const ENEMY_AIM_COLOR := Color(1, 0, 0, 0.5)
-const POINTS_IN_CURVE3D := 15
 const SHADER_PARAM_FILL_COLOR := "shader_parameter/fill_color"
 
 @export var camera: Camera3D = null
@@ -57,7 +56,6 @@ func throw_grenade() -> bool:
 
 
 func update_aim() -> void:
-	
 	var global_camera_look_position := camera.global_position + camera.basis * Vector3.FORWARD * max_throw_radius
 	
 	_raycast.global_position = _launch_point.global_position
@@ -66,18 +64,18 @@ func update_aim() -> void:
 	
 	# TODO: Placing aim reticle on ground: ray aiming down from target position
 
+	# Snap grenade land position to an enemy the player's aiming at, if applicable
 	var to_target := _raycast.target_position
 	var collider := _raycast.get_collider()
 	_aim_sprite.visible = collider != null
 	if collider:
 		if collider.is_in_group("targeteables"):
 			to_target = collider.global_position - _launch_point.global_position
-		_aim_sprite.global_position = _raycast.get_collision_point() + _raycast.get_collision_normal() * 0.01
-		_aim_sprite.look_at(_aim_sprite.global_position + _raycast.get_collision_normal() * 10)
+		_aim_sprite.global_position = _launch_point.global_position + to_target
+		_aim_sprite.look_at(_launch_point.global_position)
 
-	# Snap global_target_position to enemies
-	
-	# Set grenade path by predicting its bullet motion
+	# Calculate the initial velocity the grenade needs based on where we want it to land and how
+	# high the curve should go.
 	var peak_height: float = max(to_target.y + 1.0, _launch_point.position.y + 1.0)
 	
 	var motion_up := peak_height - _launch_point.position.y
@@ -86,20 +84,22 @@ func update_aim() -> void:
 	var motion_down := to_target.y - peak_height
 	var time_going_down := sqrt(-2.0 * motion_down / gravity)
 	
-	var time := time_going_up + time_going_down
+	var time_to_land := time_going_up + time_going_down
 
 	var target_position_xz_plane := Vector3(to_target.x, 0.0, to_target.z)
 	var start_position_xz_plane := Vector3(_launch_point.position.x, 0.0, _launch_point.position.z)
 
-	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / time
+	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / time_to_land
 	var velocity_up := sqrt(2.0 * gravity * motion_up)
 	
 	# Caching the found initial_velocity vector so we can use it on the throw() function
 	_throw_velocity = Vector3.UP * velocity_up + forward_velocity
-	# We get the Curve3D resource from _grenade_path and update it iterating on the
-	# predicted trajectory path for the new points
+
+	# Redraw the grenade's motion preview
 	_grenade_path.curve.clear_points()
-	for i in range(POINTS_IN_CURVE3D + 1):
-		var time_current := 1.6 * float(i) / float(POINTS_IN_CURVE3D)
+	const TIME_STEP := 0.2
+	var time_current := 0.0
+	while time_current < time_to_land:
 		var point := _throw_velocity * time_current + Vector3.DOWN * gravity * 0.5 * time_current * time_current
 		_grenade_path.curve.add_point(point)
+		time_current += TIME_STEP
