@@ -57,22 +57,25 @@ func throw_grenade() -> bool:
 
 
 func update_aim() -> void:
-	_raycast.global_position = camera.global_position
-	_raycast.target_position = camera.basis * Vector3.FORWARD * max_throw_radius
+	
+	var global_camera_look_position := camera.global_position + camera.basis * Vector3.FORWARD * max_throw_radius
+	
+	_raycast.global_position = _launch_point.global_position
+	_raycast.target_position = global_camera_look_position - _raycast.global_position
 	_raycast.force_raycast_update()
+	
+	# TODO: Placing aim reticle on ground: ray aiming down from target position
 
+	var to_target := _raycast.target_position
 	var collider := _raycast.get_collider()
 	_aim_sprite.visible = collider != null
 	if collider:
-		var collision_point := _raycast.get_collision_point()
-		var collision_normal := _raycast.get_collision_normal()
-		_aim_sprite.global_position = collision_point + collision_normal * 0.01
-		_aim_sprite.look_at(global_position)
+		if collider.is_in_group("targeteables"):
+			to_target = collider.global_position - _launch_point.global_position
+		_aim_sprite.global_position = _raycast.get_collision_point() + _raycast.get_collision_normal() * 0.01
+		_aim_sprite.look_at(_aim_sprite.global_position + _raycast.get_collision_normal() * 10)
 
-	var to_target := _raycast.target_position
 	# Snap global_target_position to enemies
-	if collider and collider.is_in_group("targeteables"):
-		to_target = collider.global_position - _launch_point.global_position
 	
 	# Set grenade path by predicting its bullet motion
 	var peak_height: float = max(to_target.y + 1.0, _launch_point.position.y + 1.0)
