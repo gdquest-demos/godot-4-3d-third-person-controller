@@ -7,9 +7,8 @@ const OUT_OF_RANGE_COLOR := Color(0.95, 0.0, 0.17)
 const ENEMY_AIM_COLOR := Color(1, 0, 0, 0.5)
 const SHADER_PARAM_FILL_COLOR := "shader_parameter/fill_color"
 
-@export var max_throw_radius := 10.0
-@export var min_throw_strength := 4.0
-@export var max_throw_strength := 14.0
+@export var min_throw_distance := 7.0
+@export var max_throw_distance := 16.0
 @export var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var _throw_velocity := Vector3.ZERO
@@ -49,7 +48,9 @@ func throw_grenade() -> bool:
 
 func update_aim() -> void:
 	var camera := get_viewport().get_camera_3d()
-	var global_camera_look_position := camera.global_position + camera.basis * Vector3.FORWARD * max_throw_radius
+	var up_ratio: float = clamp(max(camera.rotation.x + 0.5, -0.4) * 2, 0.0, 1.0)
+	var throw_distance: float = lerp(min_throw_distance, max_throw_distance, up_ratio)
+	var global_camera_look_position := camera.global_position + camera.quaternion * Vector3.FORWARD * throw_distance
 	
 	_raycast.target_position = global_camera_look_position - _raycast.global_position
 	
@@ -93,7 +94,8 @@ func update_aim() -> void:
 	_grenade_path.curve.clear_points()
 	const TIME_STEP := 0.1
 	var time_current := 0.0
-	while time_current < time_to_land:
+	var end_time := time_to_land + 0.5
+	while time_current < end_time:
 		var point := _throw_velocity * time_current + Vector3.DOWN * gravity * 0.5 * time_current * time_current
 		_grenade_path.curve.add_point(point)
 		time_current += TIME_STEP
