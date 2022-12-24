@@ -40,10 +40,11 @@ func _get_configuration_warnings() -> PackedStringArray:
 
 func _physics_process(delta: float) -> void:
 	if visible:
-		_aim_sprite.rotate_y(PI * delta)
+#		_aim_sprite.rotate_y(PI * delta)
+		update_aim()
 
 
-func throw_grenade(_origin: Vector3, player: Node3D) -> bool:
+func throw_grenade() -> bool:
 	if not visible:
 		return false
 	
@@ -51,12 +52,11 @@ func throw_grenade(_origin: Vector3, player: Node3D) -> bool:
 	get_parent().add_child(grenade)
 	# Add small vertical correction to avoid spawning the grenade under the floor
 	grenade.global_position = _grenade_path.global_position + Vector3.UP * 0.1
-	grenade.throw(_throw_velocity, player, _grenade_path.curve)
+	grenade.throw(_throw_velocity)
 	return true
 
 
-# TODO: move input code to make this a component?
-func set_aim_position() -> void:
+func update_aim() -> void:
 	_raycast.global_position = camera.global_position
 	_raycast.target_position = camera.basis * Vector3.FORWARD * max_throw_radius
 	_raycast.force_raycast_update()

@@ -109,9 +109,6 @@ func _physics_process(delta: float) -> void:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
 		_ui_aim_recticle.visible = false
 	
-	if _equipped_weapon == WEAPON_TYPE.GRENADE:
-		_grenade_aim_controller.set_aim_position()
-	
 	# Update attack state and position
 	if is_just_attacking:
 		match _equipped_weapon:
@@ -121,7 +118,7 @@ func _physics_process(delta: float) -> void:
 				else:
 					attack()
 			WEAPON_TYPE.GRENADE:
-				throw_grenade()
+				_grenade_aim_controller.throw_grenade()
 	else:
 		velocity.y += _gravity * delta
 
@@ -174,10 +171,6 @@ func shoot() -> void:
 	bullet.distance_limit = 14.0
 	get_parent().add_child(bullet)
 	bullet.global_position = origin
-
-
-func throw_grenade() -> void:
-	_grenade_aim_controller.throw_grenade(global_position + Vector3.UP, self)
 
 
 func reset_position() -> void:

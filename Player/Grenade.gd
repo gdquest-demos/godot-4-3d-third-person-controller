@@ -26,9 +26,8 @@ func _physics_process(delta) -> void:
 			_explosion_start_timer.start()
 
 
-func throw(throw_velocity: Vector3, player: Node3D, curve: Curve3D) -> void:
+func throw(throw_velocity: Vector3) -> void:
 	_velocity = throw_velocity
-	_player = player
 
 
 func _explode() -> void:
