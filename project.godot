@@ -25,9 +25,9 @@ _global_script_classes=[{
 "path": "res://Player/Coin/Coin.gd"
 }, {
 "base": "Node3D",
-"class": &"GrenadeAimController",
+"class": &"GrenadeLauncher",
 "language": &"GDScript",
-"path": "res://Player/AimController.gd"
+"path": "res://Player/GrenadeLauncher.gd"
 }, {
 "base": "CharacterBody3D",
 "class": &"Player",
@@ -38,7 +38,7 @@ _global_script_class_icons={
 "CameraController": "",
 "CharacterSkin": "",
 "Coin": "",
-"GrenadeAimController": "",
+"GrenadeLauncher": "",
 "Player": ""
 }
 

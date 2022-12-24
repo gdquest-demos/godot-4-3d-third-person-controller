@@ -32,7 +32,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _camera_controller: CameraController = $CameraController
 @onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
-@onready var _grenade_aim_controller: GrenadeAimController = $GrenadeAimController
+@onready var _grenade_aim_controller: GrenadeLauncher = $GrenadeLauncher
 @onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
 @onready var _coin_magnet_area: Area3D = $CoinMagnetArea
 @onready var _ui_aim_recticle: ColorRect = %AimRecticle

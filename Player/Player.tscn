@@ -1,9 +1,9 @@
 [gd_scene load_steps=24 format=3 uid="uid://ciqrpd5675boy"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
+[ext_resource type="Script" path="res://Player/GrenadeLauncher.gd" id="3_orwl6"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
 [ext_resource type="Script" path="res://Player/MeleeAttackArea.gd" id="3_v1vve"]
-[ext_resource type="Script" path="res://Player/AimController.gd" id="4_asavx"]
 [ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
 [ext_resource type="Material" uid="uid://dus6jtbfyqwj8" path="res://Player/GrenadeVisuals/aim_material.tres" id="4_qvla4"]
 [ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Player/GrenadeVisuals/trajectory_material.tres" id="5_0gw1q"]
@@ -122,8 +122,15 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_rvo1c")
+move_speed = null
 bullet_speed = 14.0
+attack_impulse = null
 acceleration = 6.0
+jump_initial_impulse = null
+jump_additional_force = null
+rotation_speed = null
+stopping_speed = null
+max_throwback_force = null
 
 [node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -160,30 +167,30 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 2
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
-[node name="GrenadeAimController" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
-script = ExtResource("4_asavx")
+[node name="GrenadeLauncher" type="Node3D" parent="." node_paths=PackedStringArray("camera")]
+script = ExtResource("3_orwl6")
 camera = NodePath("../CameraController/PlayerCamera")
 gravity = 16.0
 
-[node name="RayCast3D" type="RayCast3D" parent="GrenadeAimController"]
+[node name="RayCast3D" type="RayCast3D" parent="GrenadeLauncher"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23542, 0)
 visible = false
 target_position = Vector3(0, 0, 10)
 collision_mask = 3
 
-[node name="AimSprite" type="MeshInstance3D" parent="GrenadeAimController"]
+[node name="AimSprite" type="MeshInstance3D" parent="GrenadeLauncher"]
 top_level = true
 material_override = ExtResource("4_qvla4")
 mesh = SubResource("PlaneMesh_we0uy")
 
-[node name="LaunchPoint" type="Marker3D" parent="GrenadeAimController"]
+[node name="LaunchPoint" type="Marker3D" parent="GrenadeLauncher"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.305, 0)
 gizmo_extents = 0.5
 
-[node name="Path3D" type="Path3D" parent="GrenadeAimController/LaunchPoint"]
+[node name="Path3D" type="Path3D" parent="GrenadeLauncher/LaunchPoint"]
 curve = SubResource("Curve3D_srweg")
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="GrenadeAimController/LaunchPoint/Path3D"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="GrenadeLauncher/LaunchPoint/Path3D"]
 polygon = PackedVector2Array(0, 0, 0, 0.05, 0.2, 0.05, 0.2, 0)
 mode = 2
 path_node = NodePath("..")
@@ -250,6 +257,7 @@ mouse_filter = 2
 
 [node name="AimRecticle" type="ColorRect" parent="PlayerUI"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -266,6 +274,7 @@ color = Color(0, 0, 0, 0.290196)
 
 [node name="CoinsContainer" type="HBoxContainer" parent="PlayerUI"]
 unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -281,8 +290,7 @@ script = ExtResource("7_8eehq")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer"]
 custom_minimum_size = Vector2(96, 96)
-offset_right = 96.0
-offset_bottom = 96.0
+layout_mode = 2
 size_flags_horizontal = 2
 stretch = true
 
@@ -298,7 +306,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(0.899124, 0, -0.437695, 0, 1, 0, 0.437695, 0, 0.899124, 0, 0, 0)
+transform = Transform3D(0.464424, 0, 0.885613, 0, 1, 0, -0.885613, 0, 0.464424, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
@@ -308,10 +316,7 @@ fov = 18.238
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
 
 [node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer"]
-offset_left = 143.0
-offset_top = 2.0
-offset_right = 256.0
-offset_bottom = 93.0
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "0"

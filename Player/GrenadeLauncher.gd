@@ -1,5 +1,5 @@
 @tool
-class_name GrenadeAimController
+class_name GrenadeLauncher
 extends Node3D
 
 const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
