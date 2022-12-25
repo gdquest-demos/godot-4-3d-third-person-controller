@@ -21,11 +21,21 @@ up_vector_enabled = false
 script = ExtResource("1_n50mh")
 gravity = 16.0
 
-[node name="AimSprite" type="MeshInstance3D" parent="."]
+[node name="SnapMesh" type="Node3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 top_level = true
+
+[node name="AimSprite" type="MeshInstance3D" parent="SnapMesh"]
 material_override = ExtResource("2_qr0pg")
 mesh = SubResource("PlaneMesh_we0uy")
+skeleton = NodePath("../..")
+
+[node name="AimSprite2" type="MeshInstance3D" parent="SnapMesh"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("2_qr0pg")
+mesh = SubResource("PlaneMesh_we0uy")
+skeleton = NodePath("../..")
 
 [node name="LaunchPoint" type="Marker3D" parent="."]
 unique_name_in_owner = true

@@ -9,7 +9,7 @@ const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
 
 var _throw_velocity := Vector3.ZERO
 
-@onready var _aim_sprite: MeshInstance3D = %AimSprite
+@onready var _snap_mesh: Node3D = %SnapMesh
 @onready var _grenade_path: Path3D = %Path3D
 @onready var _raycast: ShapeCast3D = %ShapeCast3D
 @onready var _launch_point: Marker3D = %LaunchPoint
@@ -55,12 +55,12 @@ func update_aim() -> void:
 	var collider := _raycast.get_collider(0)
 	if collider:
 		if collider.is_in_group("targeteables"):
-			_aim_sprite.visible = true
+			_snap_mesh.visible = true
 			to_target = collider.global_position - _launch_point.global_position
-		_aim_sprite.global_position = _launch_point.global_position + to_target
-		_aim_sprite.look_at(_launch_point.global_position)
+		_snap_mesh.global_position = _launch_point.global_position + to_target
+		_snap_mesh.look_at(_launch_point.global_position)
 	else:
-		_aim_sprite.visible = false
+		_snap_mesh.visible = false
 
 	# Calculate the initial velocity the grenade needs based on where we want it to land and how
 	# high the curve should go.
