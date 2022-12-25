@@ -141,6 +141,7 @@ pause={
 3d_physics/layer_1="Entities"
 3d_physics/layer_2="Level"
 3d_physics/layer_3="Coins"
+3d_physics/layer_4="Player"
 
 [physics]
 

@@ -9,10 +9,10 @@ const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
 
 var _throw_velocity := Vector3.ZERO
 
-@onready var _aim_sprite: MeshInstance3D = $AimSprite
-@onready var _grenade_path: Path3D = $LaunchPoint/Path3D
-@onready var _raycast: RayCast3D = $LaunchPoint/RayCast3D
-@onready var _launch_point: Marker3D = $LaunchPoint
+@onready var _aim_sprite: MeshInstance3D = %AimSprite
+@onready var _grenade_path: Path3D = %Path3D
+@onready var _raycast: ShapeCast3D = %ShapeCast3D
+@onready var _launch_point: Marker3D = %LaunchPoint
 
 
 func _ready() -> void:
@@ -52,7 +52,7 @@ func update_aim() -> void:
 
 	# Snap grenade land position to an enemy the player's arriming at, if applicable
 	var to_target := _raycast.target_position
-	var collider := _raycast.get_collider()
+	var collider := _raycast.get_collider(0)
 	if collider:
 		if collider.is_in_group("targeteables"):
 			_aim_sprite.visible = true

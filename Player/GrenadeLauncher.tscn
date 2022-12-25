@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://bndbhw3bvvijb"]
+
+[ext_resource type="Script" path="res://Player/GrenadeLauncher.gd" id="1_n50mh"]
+[ext_resource type="Material" uid="uid://dus6jtbfyqwj8" path="res://Player/GrenadeVisuals/aim_material.tres" id="2_qr0pg"]
+[ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Player/GrenadeVisuals/trajectory_material.tres" id="3_s7dm5"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_we0uy"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_22ctb"]
+radius = 0.25
+
+[sub_resource type="Curve3D" id="Curve3D_srweg"]
+_data = {
+"points": PackedVector3Array(0, -1.40668, -0.385703, 0, 1.40668, 0.385703, 0, 0.00851202, 0.00594258, 0, 1.44436, -0.627982, 0, -1.44436, 0.627982, 0, 0, 3),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+up_vector_enabled = false
+
+[node name="GrenadeLauncher" type="Node3D"]
+script = ExtResource("1_n50mh")
+gravity = 16.0
+
+[node name="AimSprite" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+top_level = true
+material_override = ExtResource("2_qr0pg")
+mesh = SubResource("PlaneMesh_we0uy")
+
+[node name="LaunchPoint" type="Marker3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.305, 0)
+gizmo_extents = 0.5
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="LaunchPoint"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06958, 0)
+shape = SubResource("SphereShape3D_22ctb")
+max_results = 1
+collision_mask = 3
+debug_shape_custom_color = Color(0.839216, 0.619608, 0.207843, 1)
+
+[node name="Path3D" type="Path3D" parent="LaunchPoint"]
+unique_name_in_owner = true
+curve = SubResource("Curve3D_srweg")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LaunchPoint/Path3D"]
+polygon = PackedVector2Array(0, 0, 0, 0.05, 0.2, 0.05, 0.2, 0)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 1
+path_interval = 0.2
+path_simplify_angle = 1.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 50.0
+path_joined = false
+smooth_faces = true
+material = ExtResource("3_s7dm5")
