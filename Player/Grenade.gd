@@ -1,7 +1,6 @@
 extends CharacterBody3D
 
 const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.tscn")
-const EXPLOSION_TIMER := 0.2
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
