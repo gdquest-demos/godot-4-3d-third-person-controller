@@ -7,6 +7,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_uga5q")
-shader_parameter/fill_color = Color(0.94902, 0, 0.172549, 1)
+shader_parameter/fill_color = Color(1, 0.64, 0.18, 1)
 shader_parameter/target_frame_mask_sampler = ExtResource("2_s8r32")
 shader_parameter/target_mask_sampler = ExtResource("3_tgeou")

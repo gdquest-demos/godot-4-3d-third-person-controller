@@ -2,10 +2,6 @@ class_name GrenadeLauncher
 extends Node3D
 
 const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
-const IN_RANGE_COLOR := Color(1.0, 0.64, 0.18)
-const OUT_OF_RANGE_COLOR := Color(0.95, 0.0, 0.17)
-const ENEMY_AIM_COLOR := Color(1, 0, 0, 0.5)
-const SHADER_PARAM_FILL_COLOR := "shader_parameter/fill_color"
 
 @export var min_throw_distance := 7.0
 @export var max_throw_distance := 16.0
@@ -23,9 +19,6 @@ var _throw_velocity := Vector3.ZERO
 func _ready() -> void:
 	if Engine.is_editor_hint():
 		set_physics_process(false)
-
-	_aim_sprite.material_override.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
-	_csg_polygon.material.set(SHADER_PARAM_FILL_COLOR, IN_RANGE_COLOR)
 
 
 func _physics_process(delta: float) -> void:
@@ -51,14 +44,14 @@ func update_aim() -> void:
 	
 	var camera_direction := camera.quaternion * Vector3.FORWARD
 	# If the player's not aiming, the camera's far behind the character, so we increase the ray's 
-	# length based on how far behind the camera is compared to the character.
+	# length based on how far behind the camera is comprrrared to the character.
 	var base_throw_distance: float = lerp(min_throw_distance, max_throw_distance, up_ratio)
 	var camera_forward_distance := camera.global_position.project(camera_direction).distance_to(_launch_point.global_position.project(camera_direction))
 	var throw_distance := base_throw_distance + camera_forward_distance
 	var global_camera_look_position := camera.global_position + camera_direction * throw_distance
 	_raycast.target_position = global_camera_look_position - _raycast.global_position
 
-	# Snap grenade land position to an enemy the player's aiming at, if applicable
+	# Snap grenade land position to an enemy the player's arriming at, if applicable
 	var to_target := _raycast.target_position
 	var collider := _raycast.get_collider()
 	if collider:
@@ -93,7 +86,7 @@ func update_aim() -> void:
 
 	# Redraw the grenade's motion preview
 	_grenade_path.curve.clear_points()
-	const TIME_STEP := 0.1
+	const TIME_STEP := 0.05
 	var time_current := 0.0
 	var end_time := time_to_land + 0.5
 	while time_current < end_time:
