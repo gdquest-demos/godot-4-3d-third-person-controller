@@ -8,7 +8,6 @@ var _velocity := Vector3.ZERO
 
 @onready var _explosion_area: Area3D = $ExplosionArea
 @onready var _explosion_sound: AudioStreamPlayer3D = $ExplosionSound
-@onready var _player: Node3D = null
 @onready var _explosion_start_timer: Timer = $ExplosionStartTimer
 
 

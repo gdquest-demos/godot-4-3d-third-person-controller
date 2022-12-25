@@ -11,7 +11,6 @@ var _throw_velocity := Vector3.ZERO
 
 @onready var _aim_sprite: MeshInstance3D = $AimSprite
 @onready var _grenade_path: Path3D = $LaunchPoint/Path3D
-@onready var _csg_polygon: CSGPolygon3D = $LaunchPoint/Path3D/CSGPolygon3D
 @onready var _raycast: RayCast3D = $LaunchPoint/RayCast3D
 @onready var _launch_point: Marker3D = $LaunchPoint
 
