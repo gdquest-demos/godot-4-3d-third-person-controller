@@ -53,14 +53,12 @@ func update_aim() -> void:
 	# Snap grenade land position to an enemy the player's arriming at, if applicable
 	var to_target := _raycast.target_position
 	var collider := _raycast.get_collider(0)
-	if collider:
-		if collider.is_in_group("targeteables"):
-			_snap_mesh.visible = true
-			to_target = collider.global_position - _launch_point.global_position
+	var has_target: bool = collider and collider.is_in_group("targeteables")
+	_snap_mesh.visible = has_target
+	if has_target:
+		to_target = collider.global_position - _launch_point.global_position
 		_snap_mesh.global_position = _launch_point.global_position + to_target
 		_snap_mesh.look_at(_launch_point.global_position)
-	else:
-		_snap_mesh.visible = false
 
 	# Calculate the initial velocity the grenade needs based on where we want it to land and how
 	# high the curve should go.
@@ -75,6 +73,7 @@ func update_aim() -> void:
 	var time_to_land := time_going_up + time_going_down
 
 	var target_position_xz_plane := Vector3(to_target.x, 0.0, to_target.z)
+	target_position_xz_plane = target_position_xz_plane.normalized() * 2 + target_position_xz_plane
 	var start_position_xz_plane := Vector3(_launch_point.position.x, 0.0, _launch_point.position.z)
 
 	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / time_to_land
