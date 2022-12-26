@@ -52,6 +52,7 @@ func change_instruction(type: int) -> void:
 
 
 func pause_demo() -> void:
+	_demo_mouse_mode = Input.mouse_mode
 	get_tree().paused = true
 	demo_page_root.show()
 	var tween := create_tween()
