@@ -1,16 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://e7p4xvo51lbl"]
+[gd_scene load_steps=12 format=3 uid="uid://e7p4xvo51lbl"]
 
-[ext_resource type="Script" path="res://Player/ExplosionVisuals/explosion_scene.gd" id="1_llcun"]
 [ext_resource type="Material" uid="uid://b68u2dl4qlooi" path="res://Player/ExplosionVisuals/materials/shell_mat.tres" id="2_0w2wd"]
 [ext_resource type="Material" uid="uid://8qp4bf0yp6ry" path="res://Player/ExplosionVisuals/materials/blast_mat.tres" id="3_buqr0"]
 [ext_resource type="ArrayMesh" uid="uid://bw14c1iaac2sq" path="res://Player/ExplosionVisuals/objects/disk.obj" id="4_5ir1b"]
 [ext_resource type="Material" uid="uid://ben1qjmc14yjq" path="res://Player/ExplosionVisuals/materials/particles_mat.tres" id="5_id1fu"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_gknd5"]
+[sub_resource type="SphereMesh" id="SphereMesh_vfl0d"]
 radial_segments = 32
 rings = 16
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hvm5h"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3yxx8"]
 direction = Vector3(0, 1, 0)
 spread = 180.0
 gravity = Vector3(0, -4, 0)
@@ -21,18 +20,18 @@ damping_max = 4.0
 scale_min = 0.8
 scale_max = 2.0
 
-[sub_resource type="Curve" id="Curve_w01gm"]
+[sub_resource type="Curve" id="Curve_7o7pp"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.409091), -0.661433, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_7as6v"]
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_cl4kc"]
 material = ExtResource("5_id1fu")
 shape = 0
 size = 0.02
 section_length = 0.8
-curve = SubResource("Curve_w01gm")
+curve = SubResource("Curve_7o7pp")
 
-[sub_resource type="Animation" id="Animation_hffc2"]
+[sub_resource type="Animation" id="Animation_lg5hv"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -155,7 +154,7 @@ tracks/9/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_l6le0"]
+[sub_resource type="Animation" id="Animation_8xfee"]
 resource_name = "explosion"
 length = 1.5
 tracks/0/type = "value"
@@ -278,22 +277,35 @@ tracks/9/keys = {
 "update": 0,
 "values": [true, false]
 }
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxf6t"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ystop"]
 _data = {
-"RESET": SubResource("Animation_hffc2"),
-"explosion": SubResource("Animation_l6le0")
+"RESET": SubResource("Animation_lg5hv"),
+"explosion": SubResource("Animation_8xfee")
 }
 
 [node name="Explosion" type="Node3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 top_level = true
-script = ExtResource("1_llcun")
 
 [node name="Shell" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = ExtResource("2_0w2wd")
-mesh = SubResource("SphereMesh_gknd5")
+mesh = SubResource("SphereMesh_vfl0d")
 
 [node name="Blast" type="MeshInstance3D" parent="."]
 material_override = ExtResource("3_buqr0")
@@ -308,10 +320,11 @@ explosiveness = 1.0
 local_coords = true
 transform_align = 1
 trail_enabled = true
-process_material = SubResource("ParticleProcessMaterial_hvm5h")
-draw_pass_1 = SubResource("RibbonTrailMesh_7as6v")
+process_material = SubResource("ParticleProcessMaterial_3yxx8")
+draw_pass_1 = SubResource("RibbonTrailMesh_cl4kc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "explosion"
 libraries = {
-"": SubResource("AnimationLibrary_rxf6t")
+"": SubResource("AnimationLibrary_ystop")
 }

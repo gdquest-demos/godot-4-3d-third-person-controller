@@ -1,50 +1,35 @@
-extends RigidBody3D
+extends CharacterBody3D
 
 const EXPLOSION_SCENE := preload("res://Player/ExplosionVisuals/explosion_scene.tscn")
-const EXPLOSION_TIMER := 0.2
+
+var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+var _velocity := Vector3.ZERO
 
 @onready var _explosion_area: Area3D = $ExplosionArea
 @onready var _explosion_sound: AudioStreamPlayer3D = $ExplosionSound
-@onready var _player: Node3D = null
-@onready var _curve: Curve3D = null
-@onready var _curve_offset: Vector3
-@onready var _collided: bool = false
+@onready var _explosion_start_timer: Timer = $ExplosionStartTimer
 
 
-func _physics_process(_delta) -> void:
-	# The throw velocity is not accurate, so we need to fix it using the closest point in the 3D 
-	# curve given to the grenade. This method preserves the physical aspect of the trajectory while
-	# respecting the curve the player expects to see
-	if not _collided:
-		var closest_curve_point := _curve.get_closest_point(global_position - _curve_offset)
-		var fixed_position := _curve_offset + closest_curve_point
-		global_position = lerp(global_position, fixed_position, 0.7)
-		
-		# If it's close to last point in the curve, we just explode the grenade
-		if closest_curve_point.distance_to(_curve.get_baked_points()[-1]) < 0.1:
-			_collided = true
-			_explode()
+func _ready() -> void:
+	_explosion_start_timer.timeout.connect(_explode)
 
 
-func throw(throw_velocity: Vector3, player: Node3D, curve: Curve3D) -> void:
-	_curve_offset = global_position
-	linear_velocity = throw_velocity
-	_player = player
-	_curve = curve.duplicate()
-	
-	await get_tree().physics_frame
-	body_entered.connect(_on_body_entered)
+func _physics_process(delta) -> void:
+	_velocity += Vector3.DOWN * gravity * delta
+	var collision := move_and_collide(_velocity * delta)
+	if collision:
+		_velocity = _velocity.bounce(collision.get_normal(0)) * 0.7
+		if _explosion_start_timer.is_stopped():
+			_explosion_start_timer.start()
 
 
-func _on_body_entered(body: Node) -> void:
-	if body != _player and not _collided:
-		_collided = true
-		_explode()
+func throw(throw_velocity: Vector3) -> void:
+	_velocity = throw_velocity
 
 
 func _explode() -> void:
-	body_entered.disconnect(_explode)
-	await get_tree().create_timer(EXPLOSION_TIMER).timeout
+	set_physics_process(false)
 	
 	_explosion_sound.pitch_scale = randfn(2.0, 0.1)
 	_explosion_sound.play()

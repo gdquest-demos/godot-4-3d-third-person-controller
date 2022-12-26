@@ -32,7 +32,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _camera_controller: CameraController = $CameraController
 @onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
-@onready var _grenade_aim_controller: GrenadeAimController = $GrenadeAimController
+@onready var _grenade_aim_controller: GrenadeLauncher = $GrenadeLauncher
 @onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
 @onready var _coin_magnet_area: Area3D = $CoinMagnetArea
 @onready var _ui_aim_recticle: ColorRect = %AimRecticle
@@ -53,7 +53,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
-	_grenade_aim_controller.set_active(false)
+	_grenade_aim_controller.visible = false
 	_coin_magnet_area.body_entered.connect(_on_coin_body_entered)
 	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
 
@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	# Swap weapons
 	if Input.is_action_just_pressed("swap_weapons"):
 		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE
-		_grenade_aim_controller.set_active(_equipped_weapon == WEAPON_TYPE.GRENADE)
+		_grenade_aim_controller.visible = _equipped_weapon == WEAPON_TYPE.GRENADE
 		emit_signal("weapon_switched", WEAPON_TYPE.keys()[_equipped_weapon])
 		
 	# Get input and movement state
@@ -109,16 +109,6 @@ func _physics_process(delta: float) -> void:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
 		_ui_aim_recticle.visible = false
 	
-	# Update grenade aim controller
-	var origin := global_position
-	var aim_target := _camera_controller.get_aim_target()
-	var aim_normal := _camera_controller.get_aim_target_normal()
-	var camera_basis := _camera_controller.get_camera_basis()
-	var aim_collider := _camera_controller.get_aim_collider()
-	
-	if _equipped_weapon == WEAPON_TYPE.GRENADE:
-		_grenade_aim_controller.set_aim_position(origin, aim_target, aim_normal, camera_basis, aim_collider)
-	
 	# Update attack state and position
 	if is_just_attacking:
 		match _equipped_weapon:
@@ -128,7 +118,7 @@ func _physics_process(delta: float) -> void:
 				else:
 					attack()
 			WEAPON_TYPE.GRENADE:
-				throw_grenade()
+				_grenade_aim_controller.throw_grenade()
 	else:
 		velocity.y += _gravity * delta
 
@@ -181,10 +171,6 @@ func shoot() -> void:
 	bullet.distance_limit = 14.0
 	get_parent().add_child(bullet)
 	bullet.global_position = origin
-
-
-func throw_grenade() -> void:
-	_grenade_aim_controller.throw_grenade(global_position + Vector3.UP, self)
 
 
 func reset_position() -> void:

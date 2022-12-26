@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjqkuqgaqwc1k"]
+
+[ext_resource type="Script" path="res://debug_test_grenade_path.gd" id="1_dxgoe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ofblm"]
+albedo_color = Color(0.227451, 0.87451, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fxfgs"]
+material = SubResource("StandardMaterial3D_ofblm")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="Curve3D" id="Curve3D_68ngu"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.765025, 1.07768, 0.287421, 0, 0, 0, 0, 0, 0, -1.53005, 1.75535, 0.574842, 0, 0, 0, 0, 0, 0, -2.29508, 2.03303, 0.862263, 0, 0, 0, 0, 0, 0, -3.0601, 1.9107, 1.14968, 0, 0, 0, 0, 0, 0, -3.82513, 1.38838, 1.43711, 0, 0, 0, 0, 0, 0, -4.59015, 0.466057, 1.72453, 0, 0, 0, 0, 0, 0, -5.35518, -0.856268, 2.01195, 0, 0, 0, 0, 0, 0, -6.1202, -2.57859, 2.29937),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_dxgoe")
+velocity_start = Vector3(-3.82513, 6.38838, 1.43711)
+
+[node name="Start" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_fxfgs")
+
+[node name="Target" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29896, 1.79057, 1.23942)
+mesh = SubResource("SphereMesh_fxfgs")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_68ngu")
