@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=12 format=3 uid="uid://dg0wykgc07csg"]
 
+[ext_resource type="Script" path="res://Playground.gd" id="1_3faj4"]
 [ext_resource type="Texture2D" uid="uid://boexk81is8yhq" path="res://Level/gridbox_texture.png" id="1_dxgkr"]
-[ext_resource type="PackedScene" path="res://Player/Player.tscn" id="1_stlen"]
-[ext_resource type="PackedScene" path="res://Box/Box.tscn" id="3_od2wg"]
-[ext_resource type="PackedScene" path="res://Enemies/BeeBot.tscn" id="4_n8dao"]
+[ext_resource type="PackedScene" uid="uid://ciqrpd5675boy" path="res://Player/Player.tscn" id="1_stlen"]
+[ext_resource type="PackedScene" uid="uid://cmwyiep10m4u4" path="res://Box/Box.tscn" id="3_od2wg"]
+[ext_resource type="PackedScene" uid="uid://rn45gytkk6tv" path="res://Enemies/BeeBot.tscn" id="4_n8dao"]
 [ext_resource type="PackedScene" path="res://JumpingPad/JumpingPad.tscn" id="5_mqpld"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v8uq4"]
@@ -30,6 +31,7 @@ albedo_texture = ExtResource("1_dxgkr")
 uv1_triplanar = true
 
 [node name="Playground" type="Node3D"]
+script = ExtResource("1_3faj4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_allox")
