@@ -1,6 +1,6 @@
 ---
-cover: static/third-person-shooter-demo.webp
-description: "A short and sweet Godot project that does things"
+cover: static/cover.png
+description: "A 3D Third Person Shooter Controller Demo"
 ---
 
 # RoboBlast: Third-Person Shooter demo (Godot 4, 3D)
