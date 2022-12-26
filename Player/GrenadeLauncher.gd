@@ -62,9 +62,9 @@ func update_aim() -> void:
 
 	# Calculate the initial velocity the grenade needs based on where we want it to land and how
 	# high the curve should go.
-	var peak_height: float = max(to_target.y + 1.0, _launch_point.position.y + 1.0)
+	var peak_height: float = max(to_target.y + 0.25, _launch_point.position.y + 0.25)
 	
-	var motion_up := peak_height - _launch_point.position.y
+	var motion_up := peak_height
 	var time_going_up := sqrt(2.0 * motion_up / gravity)
 	
 	var motion_down := to_target.y - peak_height
@@ -73,7 +73,6 @@ func update_aim() -> void:
 	var time_to_land := time_going_up + time_going_down
 
 	var target_position_xz_plane := Vector3(to_target.x, 0.0, to_target.z)
-	target_position_xz_plane = target_position_xz_plane.normalized() * 2 + target_position_xz_plane
 	var start_position_xz_plane := Vector3(_launch_point.position.x, 0.0, _launch_point.position.z)
 
 	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / time_to_land
