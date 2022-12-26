@@ -40,17 +40,17 @@ func throw_grenade() -> bool:
 func update_aim() -> void:
 	var camera := get_viewport().get_camera_3d()
 	var up_ratio: float = clamp(max(camera.rotation.x + 0.5, -0.4) * 2, 0.0, 1.0)
-	
+
 	var camera_direction := camera.quaternion * Vector3.FORWARD
-	# If the player's not aiming, the camera's far behind the character, so we increase the ray's 
-	# length based on how far behind the camera is comprrrared to the character.
+	# If the player's not aiming, the camera's far behind the character, so we increase the ray's
+	# length based on how far behind the camera is compared to the character.
 	var base_throw_distance: float = lerp(min_throw_distance, max_throw_distance, up_ratio)
 	var camera_forward_distance := camera.global_position.project(camera_direction).distance_to(_launch_point.global_position.project(camera_direction))
 	var throw_distance := base_throw_distance + camera_forward_distance
 	var global_camera_look_position := camera.global_position + camera_direction * throw_distance
 	_raycast.target_position = global_camera_look_position - _raycast.global_position
 
-	# Snap grenade land position to an enemy the player's arriming at, if applicable
+	# Snap grenade land position to an enemy the player's aiming at, if applicable
 	var to_target := _raycast.target_position
 	var collider := _raycast.get_collider(0)
 	var has_target: bool = collider and collider.is_in_group("targeteables")
