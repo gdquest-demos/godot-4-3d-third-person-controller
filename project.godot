@@ -52,7 +52,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-CameraMode="*res://CameraMode/CameraMode.tscn"
+PhotoMode="*res://PhotoMode/PhotoMode.tscn"
 
 [display]
 

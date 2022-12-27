@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgbsqo65v7aof"]
+
+[ext_resource type="Script" path="res://PhotoMode/PhotoMode.gd" id="1_2h2of"]
+
+[node name="PhotoMode" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_2h2of")
