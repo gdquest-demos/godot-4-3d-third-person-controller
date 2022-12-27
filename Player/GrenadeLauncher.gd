@@ -2,6 +2,7 @@ class_name GrenadeLauncher
 extends Node3D
 
 const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
+const TRAIL_SIZE := 0.25
 
 @export var min_throw_distance := 7.0
 @export var max_throw_distance := 16.0
@@ -10,9 +11,10 @@ const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
 var _throw_velocity := Vector3.ZERO
 
 @onready var _snap_mesh: Node3D = %SnapMesh
-@onready var _grenade_path: Path3D = %Path3D
 @onready var _raycast: ShapeCast3D = %ShapeCast3D
 @onready var _launch_point: Marker3D = %LaunchPoint
+@onready var _trail_mesh_instance: MeshInstance3D = %TrailMeshInstance
+@onready var _trail_points: Array[Vector3] = []
 
 
 func _ready() -> void:
@@ -82,11 +84,72 @@ func update_aim() -> void:
 	_throw_velocity = Vector3.UP * velocity_up + forward_velocity
 
 	# Redraw the grenade's motion preview
-	_grenade_path.curve.clear_points()
+#	_grenade_path.curve.clear_points()
+	_trail_points.clear()
 	const TIME_STEP := 0.05
 	var time_current := 0.0
 	var end_time := time_to_land + 0.5
 	while time_current < end_time:
 		var point := _throw_velocity * time_current + Vector3.DOWN * gravity * 0.5 * time_current * time_current
-		_grenade_path.curve.add_point(point)
+		_trail_points.append(point)
 		time_current += TIME_STEP
+	_generate_mesh()
+
+
+func _generate_mesh() -> void:
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+	
+	# We'll use trail_direction to get the left and right points difference from
+	# the _trail_points 
+	var trail_direction = (_trail_points[-1] - _trail_points[0]).normalized()
+	trail_direction.y = 0.0
+	var cross_dir := Vector3.UP.cross(trail_direction)
+	var mesh_left_diff = cross_dir * TRAIL_SIZE/2.0
+	var mesh_right_diff = -cross_dir * TRAIL_SIZE/2.0
+
+	for i in range(_trail_points.size()-1):
+		# We'll create 2 triangles on each iteration, representing the quad of
+		# one section of the path (between two points of _trail_points)
+		
+		# _trail_points represents the points in the "center" of the path, so
+		# we'll derive the two points in the left and the two points in the right
+		var trail_point_left_1 = _trail_points[i] + mesh_left_diff
+		var trail_point_right_1 = _trail_points[i] + mesh_right_diff
+		var trail_point_left_2 = _trail_points[i+1] + mesh_left_diff
+		var trail_point_right_2 = _trail_points[i+1] + mesh_right_diff
+		
+		# UV position goes from 0 to 1, so we normalize the current iteration
+		# to get the progress in the UV texture
+		var uv_progress_1 = (float(i)/(_trail_points.size()-1.0))
+		var uv_progress_2 = (float(i+1.0)/(_trail_points.size()-1.0))
+		
+		# Left side on the UV texture is at the top of the texture
+		# (Vector2(0,1), or Vector2.DOWN). Right side on the UV texture is at 
+		# the bottom.
+		var uv_value_left_1 = Vector2.DOWN + (Vector2.RIGHT * uv_progress_1)
+		var uv_value_left_2 = Vector2.DOWN + (Vector2.RIGHT * uv_progress_2)
+		var uv_value_right_1 = (Vector2.RIGHT * uv_progress_1)
+		var uv_value_right_2 = (Vector2.RIGHT * uv_progress_2)
+		
+		# Both triangles need to be set in the same orientation (Godot
+		# uses clockwise orientation to determine the face normal)
+
+		# Set first triangle
+		st.set_uv(uv_value_left_1)
+		st.add_vertex(trail_point_left_1)
+		st.set_uv(uv_value_left_2)
+		st.add_vertex(trail_point_left_2)
+		st.set_uv(uv_value_right_1)
+		st.add_vertex(trail_point_right_1)
+		
+		# Set second triangle
+		st.set_uv(uv_value_right_1)
+		st.add_vertex(trail_point_right_1)
+		st.set_uv(uv_value_left_2)
+		st.add_vertex(trail_point_left_2)
+		st.set_uv(uv_value_right_2)
+		st.add_vertex(trail_point_right_2)
+	
+	st.generate_normals()
+	_trail_mesh_instance.mesh = st.commit()
