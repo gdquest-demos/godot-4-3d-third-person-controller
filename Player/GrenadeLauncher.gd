@@ -106,23 +106,23 @@ func _draw_throw_path() -> void:
 		var point_current := _throw_velocity * time_current + Vector3.DOWN * gravity * 0.5 * time_current * time_current
 
 		# Our point coordinates are at the center of the path, so we need to calculate vertices
-		var trail_point_left_1 = point_current + offset_left
-		var trail_point_right_1 = point_current + offset_right
-		var trail_point_left_2 = point_previous + offset_left
-		var trail_point_right_2 = point_previous + offset_right
+		var trail_point_left_end = point_current + offset_left
+		var trail_point_right_end = point_current + offset_right
+		var trail_point_left_start = point_previous + offset_left
+		var trail_point_right_start = point_previous + offset_right
 		
 		# UV position goes from 0 to 1, so we normalize the current iteration
 		# to get the progress in the UV texture
-		var uv_progress_1 = time_current * uv_progress_factor
-		var uv_progress_2 = uv_progress_1 - uv_progress_factor
+		var uv_progress_end = time_current * uv_progress_factor
+		var uv_progress_start = uv_progress_end - uv_progress_factor
 		
 		# Left side on the UV texture is at the top of the texture
 		# (Vector2(0,1), or Vector2.DOWN). Right side on the UV texture is at 
 		# the bottom.
-		var uv_value_right_1 = (Vector2.RIGHT * uv_progress_1)
-		var uv_value_right_2 = (Vector2.RIGHT * uv_progress_2)
-		var uv_value_left_1 = Vector2.DOWN + uv_value_right_1
-		var uv_value_left_2 = Vector2.DOWN + uv_value_right_2
+		var uv_value_right_start = (Vector2.RIGHT * uv_progress_end)
+		var uv_value_right_end = (Vector2.RIGHT * uv_progress_start)
+		var uv_value_left_start = Vector2.DOWN + uv_value_right_start
+		var uv_value_left_end = Vector2.DOWN + uv_value_right_end
 		
 		point_previous = point_current
 
@@ -130,20 +130,20 @@ func _draw_throw_path() -> void:
 		# clockwise orientation to determine the face normal)
 
 		# Draw first triangle
-		st.set_uv(uv_value_left_1)
-		st.add_vertex(trail_point_left_1)
-		st.set_uv(uv_value_left_2)
-		st.add_vertex(trail_point_left_2)
-		st.set_uv(uv_value_right_1)
-		st.add_vertex(trail_point_right_1)
+		st.set_uv(uv_value_right_start)
+		st.add_vertex(trail_point_right_end)
+		st.set_uv(uv_value_left_end)
+		st.add_vertex(trail_point_left_start)
+		st.set_uv(uv_value_left_start)
+		st.add_vertex(trail_point_left_end)
 		
 		# Draw second triangle
-		st.set_uv(uv_value_right_1)
-		st.add_vertex(trail_point_right_1)
-		st.set_uv(uv_value_left_2)
-		st.add_vertex(trail_point_left_2)
-		st.set_uv(uv_value_right_2)
-		st.add_vertex(trail_point_right_2)
+		st.set_uv(uv_value_right_end)
+		st.add_vertex(trail_point_right_start)
+		st.set_uv(uv_value_left_end)
+		st.add_vertex(trail_point_left_start)
+		st.set_uv(uv_value_right_start)
+		st.add_vertex(trail_point_right_end)
 	
 	st.generate_normals()
 	_trail_mesh_instance.mesh = st.commit()
