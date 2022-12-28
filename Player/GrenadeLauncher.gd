@@ -98,7 +98,6 @@ func _draw_throw_path() -> void:
 	var end_time := _time_to_land + 0.5
 	var point_previous = Vector3.ZERO
 	var time_current := 0.0
-	var uv_progress_factor := TIME_STEP / end_time
 	# We'll create 2 triangles on each iteration, representing the quad of one
 	# section of the path
 	while time_current < end_time:
@@ -113,14 +112,14 @@ func _draw_throw_path() -> void:
 		
 		# UV position goes from 0 to 1, so we normalize the current iteration
 		# to get the progress in the UV texture
-		var uv_progress_end = time_current * uv_progress_factor
-		var uv_progress_start = uv_progress_end - uv_progress_factor
+		var uv_progress_end = time_current/end_time
+		var uv_progress_start = uv_progress_end - (TIME_STEP/end_time)
 		
 		# Left side on the UV texture is at the top of the texture
 		# (Vector2(0,1), or Vector2.DOWN). Right side on the UV texture is at 
 		# the bottom.
-		var uv_value_right_start = (Vector2.RIGHT * uv_progress_end)
-		var uv_value_right_end = (Vector2.RIGHT * uv_progress_start)
+		var uv_value_right_start = (Vector2.RIGHT * uv_progress_start)
+		var uv_value_right_end = (Vector2.RIGHT * uv_progress_end)
 		var uv_value_left_start = Vector2.DOWN + uv_value_right_start
 		var uv_value_left_end = Vector2.DOWN + uv_value_right_end
 		
@@ -130,19 +129,19 @@ func _draw_throw_path() -> void:
 		# clockwise orientation to determine the face normal)
 
 		# Draw first triangle
-		st.set_uv(uv_value_right_start)
+		st.set_uv(uv_value_right_end)
 		st.add_vertex(trail_point_right_end)
-		st.set_uv(uv_value_left_end)
-		st.add_vertex(trail_point_left_start)
 		st.set_uv(uv_value_left_start)
+		st.add_vertex(trail_point_left_start)
+		st.set_uv(uv_value_left_end)
 		st.add_vertex(trail_point_left_end)
 		
 		# Draw second triangle
-		st.set_uv(uv_value_right_end)
-		st.add_vertex(trail_point_right_start)
-		st.set_uv(uv_value_left_end)
-		st.add_vertex(trail_point_left_start)
 		st.set_uv(uv_value_right_start)
+		st.add_vertex(trail_point_right_start)
+		st.set_uv(uv_value_left_start)
+		st.add_vertex(trail_point_left_start)
+		st.set_uv(uv_value_right_end)
 		st.add_vertex(trail_point_right_end)
 	
 	st.generate_normals()

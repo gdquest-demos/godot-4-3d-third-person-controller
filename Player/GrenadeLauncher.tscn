@@ -1,21 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2ew46dlu7u7x"]
+[gd_scene load_steps=6 format=3 uid="uid://b2ew46dlu7u7x"]
 
 [ext_resource type="Script" path="res://Player/GrenadeLauncher.gd" id="1_n50mh"]
 [ext_resource type="Material" uid="uid://dus6jtbfyqwj8" path="res://Player/GrenadeVisuals/aim_material.tres" id="2_qr0pg"]
 [ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Player/GrenadeVisuals/trajectory_material.tres" id="3_s7dm5"]
-[ext_resource type="Shader" path="res://shared/shaders/wireframe.gdshader" id="4_hsg2p"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_we0uy"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_22ctb"]
 radius = 0.25
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wylir"]
-render_priority = 0
-shader = ExtResource("4_hsg2p")
-shader_parameter/flat_shading = true
-shader_parameter/wire_smoothness = null
-shader_parameter/wire_width = 2.0
 
 [node name="GrenadeLauncher" type="Node3D"]
 script = ExtResource("1_n50mh")
@@ -52,4 +44,3 @@ debug_shape_custom_color = Color(0.839216, 0.619608, 0.207843, 1)
 [node name="TrailMeshInstance" type="MeshInstance3D" parent="LaunchPoint"]
 unique_name_in_owner = true
 material_override = ExtResource("3_s7dm5")
-material_overlay = SubResource("ShaderMaterial_wylir")
