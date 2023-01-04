@@ -1,5 +1,7 @@
 ---
 cover: static/cover.png
+itchio: https://gdquest-demos.itch.io/Godot-4-Character-3D-Demo
+tags: 3D third-person-shooter shooter controller
 description: "A 3D Third Person Shooter Controller Demo"
 ---
 
@@ -22,8 +24,8 @@ There are two kinds of enemies: flying wasps that fire bullets and beetles that 
 
 ## Controls:
 
-- <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or *left stick* to move.
-- *mouse* or *right stick* to move the camera around.
+- <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>left stick</kbd> to move.
+- <kbd>mouse</kbd> or <kbd>right stick</kbd> to move the camera around.
 - <kbd>Space</kbd> or <kbd>Xbox Ⓐ</kbd> to jump.
 - <kbd>Left mouse</kbd> or <kbd>Xbox Ⓑ</kbd> to shoot.
 - <kbd>Right mouse</kbd> or <kbd>Xbox RT</kbd>to aim.
@@ -40,9 +42,9 @@ Copy the following folders into the root of your project:
 
 The following `Input Map` actions are needed for the `Player.tscn` to work:
 
-- `move_left, move_right, move_up, move_down`: move the character according to the camera's orientation.
-- `camera_right, camera_left, camera_up, camera_down`: rotate the camera around the character.
-- `jump, attack, aim, swap_weapons`: Action buttons for the character.
+- `move_left`, `move_right`, `move_up`, `move_down`: move the character according to the camera's orientation.
+- `camera_right`, `camera_left`, `camera_up`, `camera_down`: rotate the camera around the character.
+- `jump`, `attack`, `aim`, `swap_weapons`: Action buttons for the character.
 
 The `Player.tscn` scene works as a standalone scene and doesn't need other cameras to work. You can change the player UI by changing the `Control` node inside `Player.tscn`.
 

@@ -2,3 +2,5 @@
 .godot/
 exports/
 bin/
+
+.env
