@@ -30,8 +30,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq2x4"]
 shader = ExtResource("2_07raf")
-shader_parameter/blur_amount = 1.496
 shader_parameter/modulate = Color(0.576471, 0.556863, 1, 1)
+shader_parameter/blur_amount = 1.496
 
 [sub_resource type="LabelSettings" id="LabelSettings_swl1q"]
 font_size = 20
@@ -113,8 +113,6 @@ label_settings = SubResource("LabelSettings_swl1q")
 offset_top = 246.0
 offset_right = 1920.0
 offset_bottom = 937.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_vertical = 3
 
 [node name="SampleImageContainer" type="Control" parent="CanvasLayer/DemoPageRoot/Content/Content"]
@@ -173,8 +171,6 @@ offset_left = 12.0
 offset_top = 52.0
 offset_right = 958.0
 offset_bottom = 691.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Title" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer"]
 offset_right = 946.0
@@ -229,169 +225,99 @@ theme_override_constants/margin_right = 80
 offset_top = 20.0
 offset_right = 866.0
 offset_bottom = 321.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/separation = 20
 
 [node name="GridContainerKeyboard" type="GridContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
-offset_right = 866.0
-offset_bottom = 204.0
-grow_horizontal = 2
-grow_vertical = 2
 columns = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard"]
-offset_right = 431.0
-offset_bottom = 48.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer"]
-offset_right = 95.0
-offset_bottom = 48.0
 texture = ExtResource("8_ftfx8")
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer"]
-offset_left = 99.0
-offset_top = 6.0
-offset_right = 431.0
-offset_bottom = 42.0
 size_flags_horizontal = 3
 text = ": Movement"
 label_settings = SubResource("LabelSettings_f30p8")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard"]
-offset_left = 435.0
-offset_right = 866.0
-offset_bottom = 48.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer2"]
 custom_minimum_size = Vector2(48, 48)
-offset_right = 200.0
-offset_bottom = 48.0
 texture = ExtResource("9_0yun6")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer2"]
-offset_left = 204.0
-offset_top = 6.0
-offset_right = 431.0
-offset_bottom = 42.0
 size_flags_horizontal = 3
 text = ": Jump"
 label_settings = SubResource("LabelSettings_f30p8")
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard"]
-offset_top = 52.0
-offset_right = 431.0
-offset_bottom = 100.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer6"]
 custom_minimum_size = Vector2(48, 48)
-offset_right = 70.0
-offset_bottom = 48.0
 texture = ExtResource("10_6dsjm")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer6"]
-offset_left = 74.0
-offset_top = 6.0
-offset_right = 431.0
-offset_bottom = 42.0
 size_flags_horizontal = 3
 text = ": Change Weapon"
 label_settings = SubResource("LabelSettings_f30p8")
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard"]
-offset_left = 435.0
-offset_top = 52.0
-offset_right = 866.0
-offset_bottom = 100.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer7"]
 custom_minimum_size = Vector2(48, 48)
-offset_right = 62.0
-offset_bottom = 48.0
 texture = ExtResource("11_ittqo")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer7"]
-offset_left = 66.0
-offset_top = 6.0
-offset_right = 431.0
-offset_bottom = 42.0
 size_flags_horizontal = 3
 text = ": Pause"
 label_settings = SubResource("LabelSettings_f30p8")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard"]
-offset_top = 104.0
-offset_right = 431.0
-offset_bottom = 152.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer3"]
 custom_minimum_size = Vector2(48, 48)
-offset_right = 48.0
-offset_bottom = 48.0
 texture = ExtResource("10_y1v2l")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer3"]
-offset_left = 52.0
-offset_top = 6.0
-offset_right = 431.0
-offset_bottom = 42.0
 size_flags_horizontal = 3
 text = ": Camera"
 label_settings = SubResource("LabelSettings_f30p8")
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard"]
-offset_left = 435.0
-offset_top = 104.0
-offset_right = 866.0
-offset_bottom = 152.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer4"]
 custom_minimum_size = Vector2(48, 48)
-offset_right = 48.0
-offset_bottom = 48.0
 texture = ExtResource("11_pk6rw")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer4"]
-offset_left = 52.0
-offset_top = 6.0
-offset_right = 431.0
-offset_bottom = 42.0
 size_flags_horizontal = 3
 text = ": Attack"
 label_settings = SubResource("LabelSettings_f30p8")
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard"]
-offset_top = 156.0
-offset_right = 431.0
-offset_bottom = 204.0
 size_flags_horizontal = 3
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer5"]
 custom_minimum_size = Vector2(48, 48)
-offset_right = 48.0
-offset_bottom = 48.0
 texture = ExtResource("12_baaxu")
 stretch_mode = 5
 
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerKeyboard/HBoxContainer5"]
-offset_left = 52.0
-offset_top = 6.0
-offset_right = 431.0
-offset_bottom = 42.0
 size_flags_horizontal = 3
 text = ": Aim"
 label_settings = SubResource("LabelSettings_f30p8")
@@ -400,8 +326,6 @@ label_settings = SubResource("LabelSettings_f30p8")
 unique_name_in_owner = true
 offset_right = 866.0
 offset_bottom = 204.0
-grow_horizontal = 2
-grow_vertical = 2
 columns = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerJoypad"]

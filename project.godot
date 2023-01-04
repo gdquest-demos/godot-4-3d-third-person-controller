@@ -53,12 +53,13 @@ config/icon="res://icon.png"
 [autoload]
 
 CameraMode="*res://CameraMode/CameraMode.tscn"
+FullScreenHandler="*res://FullScreenHandler.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 
 [input]

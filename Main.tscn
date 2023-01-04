@@ -1,7 +1,6 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccjru1onq2k2c"]
+[gd_scene load_steps=33 format=3 uid="uid://ccjru1onq2k2c"]
 
 [ext_resource type="PackedScene" uid="uid://mb58xbunfaep" path="res://icons/weapon_ui.tscn" id="1_3u7h6"]
-[ext_resource type="Script" path="res://Playground.gd" id="1_qd7sw"]
 [ext_resource type="PackedScene" uid="uid://ciqrpd5675boy" path="res://Player/Player.tscn" id="2_q87gh"]
 [ext_resource type="PackedScene" path="res://JumpingPad/JumpingPad.tscn" id="3_w2mh2"]
 [ext_resource type="PackedScene" uid="uid://eo4fnnqorgja" path="res://Level/Terrain.glb" id="4_vprlf"]
@@ -80,7 +79,6 @@ size = Vector2(300, 300)
 size = Vector3(130, 6, 130)
 
 [node name="Playground" type="Node3D"]
-script = ExtResource("1_qd7sw")
 
 [node name="weapon_switch_ui" parent="." instance=ExtResource("1_3u7h6")]
 anchors_preset = 2
