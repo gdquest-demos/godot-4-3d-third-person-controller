@@ -8,11 +8,12 @@ const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
 @export var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 var _throw_velocity := Vector3.ZERO
+var _time_to_land := 0.0
 
 @onready var _snap_mesh: Node3D = %SnapMesh
-@onready var _grenade_path: Path3D = %Path3D
 @onready var _raycast: ShapeCast3D = %ShapeCast3D
 @onready var _launch_point: Marker3D = %LaunchPoint
+@onready var _trail_mesh_instance: MeshInstance3D = %TrailMeshInstance
 
 
 func _ready() -> void:
@@ -22,7 +23,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if visible:
-		update_aim()
+		_update_throw_velocity()
+		_draw_throw_path()
 
 
 func throw_grenade() -> bool:
@@ -31,13 +33,12 @@ func throw_grenade() -> bool:
 	
 	var grenade := GRENADE_SCENE.instantiate()
 	get_parent().add_child(grenade)
-	# Add small vertical correction to avoid spawning the grenade under the floor
 	grenade.global_position = _launch_point.global_position
 	grenade.throw(_throw_velocity)
 	return true
 
 
-func update_aim() -> void:
+func _update_throw_velocity() -> void:
 	var camera := get_viewport().get_camera_3d()
 	var up_ratio: float = clamp(max(camera.rotation.x + 0.5, -0.4) * 2, 0.0, 1.0)
 
@@ -70,23 +71,78 @@ func update_aim() -> void:
 	var motion_down := to_target.y - peak_height
 	var time_going_down := sqrt(-2.0 * motion_down / gravity)
 	
-	var time_to_land := time_going_up + time_going_down
+	_time_to_land = time_going_up + time_going_down
 
 	var target_position_xz_plane := Vector3(to_target.x, 0.0, to_target.z)
 	var start_position_xz_plane := Vector3(_launch_point.position.x, 0.0, _launch_point.position.z)
 
-	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / time_to_land
+	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / _time_to_land
 	var velocity_up := sqrt(2.0 * gravity * motion_up)
 	
 	# Caching the found initial_velocity vector so we can use it on the throw() function
 	_throw_velocity = Vector3.UP * velocity_up + forward_velocity
 
-	# Redraw the grenade's motion preview
-	_grenade_path.curve.clear_points()
+
+func _draw_throw_path() -> void:
 	const TIME_STEP := 0.05
+	const TRAIL_WIDTH := 0.25
+
+	var forward_direction = Vector3(_throw_velocity.x, 0.0, _throw_velocity.z).normalized()
+	var left_direction := Vector3.UP.cross(forward_direction)
+	var offset_left = left_direction * TRAIL_WIDTH / 2.0
+	var offset_right = -left_direction * TRAIL_WIDTH / 2.0
+
+	var st := SurfaceTool.new()
+	st.begin(Mesh.PRIMITIVE_TRIANGLES)
+
+	var end_time := _time_to_land + 0.5
+	var point_previous = Vector3.ZERO
 	var time_current := 0.0
-	var end_time := time_to_land + 0.5
+	# We'll create 2 triangles on each iteration, representing the quad of one
+	# section of the path
 	while time_current < end_time:
-		var point := _throw_velocity * time_current + Vector3.DOWN * gravity * 0.5 * time_current * time_current
-		_grenade_path.curve.add_point(point)
 		time_current += TIME_STEP
+		var point_current := _throw_velocity * time_current + Vector3.DOWN * gravity * 0.5 * time_current * time_current
+
+		# Our point coordinates are at the center of the path, so we need to calculate vertices
+		var trail_point_left_end = point_current + offset_left
+		var trail_point_right_end = point_current + offset_right
+		var trail_point_left_start = point_previous + offset_left
+		var trail_point_right_start = point_previous + offset_right
+		
+		# UV position goes from 0 to 1, so we normalize the current iteration
+		# to get the progress in the UV texture
+		var uv_progress_end = time_current/end_time
+		var uv_progress_start = uv_progress_end - (TIME_STEP/end_time)
+		
+		# Left side on the UV texture is at the top of the texture
+		# (Vector2(0,1), or Vector2.DOWN). Right side on the UV texture is at 
+		# the bottom.
+		var uv_value_right_start = (Vector2.RIGHT * uv_progress_start)
+		var uv_value_right_end = (Vector2.RIGHT * uv_progress_end)
+		var uv_value_left_start = Vector2.DOWN + uv_value_right_start
+		var uv_value_left_end = Vector2.DOWN + uv_value_right_end
+		
+		point_previous = point_current
+
+		# Both triangles need to be drawn in the same orientation (Godot uses
+		# clockwise orientation to determine the face normal)
+
+		# Draw first triangle
+		st.set_uv(uv_value_right_end)
+		st.add_vertex(trail_point_right_end)
+		st.set_uv(uv_value_left_start)
+		st.add_vertex(trail_point_left_start)
+		st.set_uv(uv_value_left_end)
+		st.add_vertex(trail_point_left_end)
+		
+		# Draw second triangle
+		st.set_uv(uv_value_right_start)
+		st.add_vertex(trail_point_right_start)
+		st.set_uv(uv_value_left_start)
+		st.add_vertex(trail_point_left_start)
+		st.set_uv(uv_value_right_end)
+		st.add_vertex(trail_point_right_end)
+	
+	st.generate_normals()
+	_trail_mesh_instance.mesh = st.commit()
