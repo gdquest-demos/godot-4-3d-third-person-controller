@@ -1,0 +1,93 @@
+{
+  "windowSize": [
+    1920,
+    1080
+  ],
+  "data": {},
+  "date": {
+    "date": "2023-01-04",
+    "unix": 1672855699758
+  },
+  "git": {
+    "remote": "https://github.com/GDQuest/Godot-4-Character-3D-Demo",
+    "commit": "c9fdef4bf11c3e955bd51f251d9f14fe0e25b049",
+    "commitShort": "c9fdef4",
+    "branch": "main",
+    "lastMessage": "changed settings to make the game web-playable",
+    "version": "1.0.0",
+    "submodules": []
+  },
+  "zipDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/exports/builds",
+  "doZipResults": true,
+  "useTempDirs": false,
+  "frontmatter": {
+    "firstHeader": "RoboBlast: Third-Person Shooter demo (Godot 4, 3D)",
+    "cover": "static/cover.png",
+    "itchio": "https://gdquest-demos.itch.io/Godot-4-Character-3D-Demo",
+    "tags": [
+      "3D",
+      "third-person-shooter",
+      "shooter",
+      "controller"
+    ],
+    "description": "A 3D Third Person Shooter Controller Demo"
+  },
+  "readme": "<h1>RoboBlast: Third-Person Shooter demo (Godot 4, 3D)</h1>\n<img src=\"static/third-person-shooter-demo.webp\" alt=\"\">\n<p>This open-source Godot 4 demo shows how to create a 3D character controller inspired by games like Ratchet and Clank or Jak and Daxter. You can copy the character to your project as a plug-and-play asset to prototype 3D games with and build upon.</p>\n<p>It features a character that can run, jump, make a melee attack, aim, shoot, and throw grenades.</p>\n<img src=\"static/third-person-character-aiming-grenade.webp\" alt=\"\">\n<p>There are two kinds of enemies: flying wasps that fire bullets and beetles that attack you on the ground. The environment comes with breakable crates, jumping pads, and coins that move to the player's character.</p>\n<h2>How to run:</h2>\n<ol>\n<li>Download or clone the GitHub repository.</li>\n<li>Press <kbd>F5</kbd> or <code>Run Project</code>.</li>\n</ol>\n<h2>Controls:</h2>\n<ul>\n<li><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>left stick</kbd> to move.</li>\n<li><kbd>mouse</kbd> or <kbd>right stick</kbd> to move the camera around.</li>\n<li><kbd>Space</kbd> or <kbd>Xbox Ⓐ</kbd> to jump.</li>\n<li><kbd>Left mouse</kbd> or <kbd>Xbox Ⓑ</kbd> to shoot.</li>\n<li><kbd>Right mouse</kbd> or <kbd>Xbox RT</kbd>to aim.</li>\n<li><kbd>Tab</kbd> or <kbd>Xbox Ⓧ</kbd> to cycle between bullets and grenades.</li>\n</ul>\n<h2>FAQ:</h2>\n<h3>How do I use the player character in my game?</h3>\n<p>Copy the following folders into the root of your project:</p>\n<ul>\n<li><code>Player</code>: contains the main Player assets and scenes.</li>\n<li><code>shared</code>: contains shaders used by the player asset.</li>\n</ul>\n<p>The following <code>Input Map</code> actions are needed for the <code>Player.tscn</code> to work:</p>\n<ul>\n<li><code>move_left</code>, <code>move_right</code>, <code>move_up</code>, <code>move_down</code>: move the character according to the camera's orientation.</li>\n<li><code>camera_right</code>, <code>camera_left</code>, <code>camera_up</code>, <code>camera_down</code>: rotate the camera around the character.</li>\n<li><code>jump</code>, <code>attack</code>, <code>aim</code>, <code>swap_weapons</code>: Action buttons for the character.</li>\n</ul>\n<p>The <code>Player.tscn</code> scene works as a standalone scene and doesn't need other cameras to work. You can change the player UI by changing the <code>Control</code> node inside <code>Player.tscn</code>.</p>\n<h2>License:</h2>\n<p>All code is MIT-licensed, and assets are CC-By 4.0 <a href=\"https://www.gdquest.com/\">GDQuest</a>.</p>",
+  "debug": false,
+  "verbose": true,
+  "isGodot4": true,
+  "projectDir": ".",
+  "executable": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta9/Godot_v4.0-beta9_linux.x86_64",
+  "templatesDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta9/templates",
+  "godot_version": [
+    4
+  ],
+  "name": "TPS Demo",
+  "icon": "icon.png",
+  "exports": [
+    {
+      "type": "web",
+      "index": 0,
+      "isGodot3": false,
+      "name": "Web",
+      "platform": "Web",
+      "runnable": true,
+      "custom_features": "",
+      "export_filter": "all_resources",
+      "include_filter": "",
+      "exclude_filter": "",
+      "export_path": "",
+      "encryption_include_filters": "",
+      "encryption_exclude_filters": "",
+      "encrypt_pck": false,
+      "encrypt_directory": false,
+      "script_export_mode": "1",
+      "script_encryption_key": "",
+      "options": {
+        "custom_template/debug": "",
+        "custom_template/release": "",
+        "variant/extensions_support": false,
+        "vram_texture_compression/for_desktop": true,
+        "vram_texture_compression/for_mobile": false,
+        "html/export_icon": true,
+        "html/custom_html_shell": "",
+        "html/head_include": "",
+        "html/canvas_resize_policy": "2",
+        "html/focus_canvas_on_start": true,
+        "html/experimental_virtual_keyboard": false,
+        "progressive_web_app/enabled": false,
+        "progressive_web_app/offline_page": "",
+        "progressive_web_app/display": "1",
+        "progressive_web_app/orientation": "0",
+        "progressive_web_app/icon_144x144": "",
+        "progressive_web_app/icon_180x180": "",
+        "progressive_web_app/icon_512x512": "",
+        "progressive_web_app/background_color": "Color(0, 0, 0, 1)"
+      }
+    }
+  ],
+  "skipHeadless": true,
+  "cacheDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin",
+  "exportsDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/exports",
+  "variant": "beta9"
+}
