@@ -192,6 +192,7 @@ libraries = {
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
 collision_layer = 0
+collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource("SphereShape3D_h03f6")

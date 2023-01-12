@@ -4,10 +4,10 @@
 [ext_resource type="PackedScene" path="res://Player/GrenadeVisuals/grenade/grenade.tscn" id="2_6f7t1"]
 [ext_resource type="AudioStream" uid="uid://csou1m38pk3m4" path="res://Player/Sounds/musket-explosion-6383.wav" id="3_7x8ud"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_rejks"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_lfubt"]
 radius = 3.0
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_8624p"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_15o3g"]
 radius = 0.1
 
 [node name="Grenade" type="CharacterBody3D"]
@@ -19,12 +19,12 @@ script = ExtResource("1_ak024")
 [node name="ExplosionArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="ExplosionArea"]
-shape = SubResource("SphereShape3D_rejks")
+shape = SubResource("SphereShape3D_lfubt")
 
 [node name="grenade" parent="." instance=ExtResource("2_6f7t1")]
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_8624p")
+shape = SubResource("SphereShape3D_15o3g")
 
 [node name="ExplosionSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_7x8ud")

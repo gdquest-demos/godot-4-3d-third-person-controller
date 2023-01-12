@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://ciqrpd5675boy"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
-[ext_resource type="PackedScene" uid="uid://bndbhw3bvvijb" path="res://Player/GrenadeLauncher.tscn" id="3_54qc4"]
+[ext_resource type="PackedScene" uid="uid://b2ew46dlu7u7x" path="res://Player/GrenadeLauncher.tscn" id="3_54qc4"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="3_qrkly"]
 [ext_resource type="Script" path="res://Player/MeleeAttackArea.gd" id="3_v1vve"]
 [ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
@@ -212,7 +212,7 @@ mouse_filter = 2
 
 [node name="AimRecticle" type="ColorRect" parent="PlayerUI"]
 unique_name_in_owner = true
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -228,7 +228,7 @@ color = Color(0, 0, 0, 0.290196)
 
 [node name="CoinsContainer" type="HBoxContainer" parent="PlayerUI"]
 unique_name_in_owner = true
-anchors_preset = 1
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -336.0
@@ -243,8 +243,7 @@ script = ExtResource("7_8eehq")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer"]
 custom_minimum_size = Vector2(96, 96)
-offset_right = 96.0
-offset_bottom = 96.0
+layout_mode = 2
 size_flags_horizontal = 2
 stretch = true
 
@@ -260,7 +259,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(0.972851, 0, -0.231431, 0, 1, 0, 0.231431, 0, 0.972851, 0, 0, 0)
+transform = Transform3D(-0.999928, 0, -0.0120021, 0, 1, 0, 0.0120021, 0, -0.999928, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
@@ -270,10 +269,7 @@ fov = 18.238
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
 
 [node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer"]
-offset_left = 143.0
-offset_top = 2.0
-offset_right = 256.0
-offset_bottom = 93.0
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "0"
