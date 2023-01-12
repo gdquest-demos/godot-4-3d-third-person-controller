@@ -15,4 +15,4 @@ func _ready():
 
 
 func smoke_at_full_density():
-	var _err = full.emit()
+	full.emit()
