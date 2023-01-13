@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4kkg7bujwk1s"]
 
 [ext_resource type="Script" path="res://QualitySettings/BenchmarkStartingScene.gd" id="1_w43wn"]
-[ext_resource type="PackedScene" path="res://QualitySettings/QualitySettingsBenchmarker/Benchmark.tscn" id="2_r1kfc"]
+[ext_resource type="PackedScene" uid="uid://bajdb7s8k0ql8" path="res://QualitySettings/QualitySettingsBenchmarker/Benchmark.tscn" id="2_r1kfc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ebpu8"]
 font_size = 64

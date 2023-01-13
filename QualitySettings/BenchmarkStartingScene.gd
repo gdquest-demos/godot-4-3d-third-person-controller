@@ -6,7 +6,7 @@ extends Control
 func _ready() -> void:
 	QualitySettings.setup()
 	
-	if true: #QualitySettings.current_setting_path.is_empty():
+	if QualitySettings.current_setting_path.is_empty():
 		
 		# On a GTX960M, the following seconds-per-frame were obtained:
 		#   QUALITY SETTINGS  |   BENCHMARK   |   GAME   |
