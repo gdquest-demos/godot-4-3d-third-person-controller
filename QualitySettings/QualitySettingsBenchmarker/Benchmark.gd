@@ -13,7 +13,9 @@ extends Node
 @onready var _benchmark_results = []
 
 
-func get_optimal_result(target_seconds_per_frame: float) -> QualitySettingsResource:
+func get_optimal_result(target_seconds_per_frame: float, benchmark_difficulty: float) -> QualitySettingsResource:
+	var target_spf := target_seconds_per_frame / benchmark_difficulty
+	
 	if _benchmark_results.size() == 0 or quality_settings_resources.size() == 0:
 		printerr("No results or quality settings set!")
 		return QualitySettingsResource.new()
@@ -27,11 +29,13 @@ func get_optimal_result(target_seconds_per_frame: float) -> QualitySettingsResou
 		var i_dta: float = _benchmark_results[i][&"device_timestamp_avg"]
 		var _i_dta: float = _benchmark_results[_i][&"device_timestamp_avg"]
 		
-		if i_dta > target_seconds_per_frame and _i_dta < target_seconds_per_frame:
+		if i_dta > target_spf and _i_dta < target_spf:
 			i = _i
 			continue
+		elif i_dta < target_spf and _i_dta > target_spf:
+			continue
 		
-		if abs(i_dta - target_seconds_per_frame) > abs(_i_dta - target_seconds_per_frame):
+		if abs(i_dta - target_spf) > abs(_i_dta - target_spf):
 			i = _i
  
 	return quality_settings_resources[i]
@@ -41,15 +45,19 @@ func benchmark() -> void:
 	_benchmark_results.clear()
 	
 	var rendering_device := RenderingServer.get_rendering_device()
+	var window_viewport_rid = get_tree().root.get_viewport_rid()
 	
 	RenderingServer.viewport_set_measure_render_time(viewport.get_viewport_rid(), true)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
+	
+	# TODO: Does this helps getting better results?
+	await RenderingServer.frame_post_draw
 	
 	for settings in quality_settings_resources:
 		settings.apply_settings(viewport, world_environment.environment)
 
 		var last_device_timestamp := 0
-		var RENDER_TIME_THRESHOLD := 0.5 #target_render_time * 10.0
+		var RENDER_TIME_THRESHOLD := 0.5
 		var FRAME_DELAY := rendering_device.get_frame_delay()
 		
 		var benchmark_result := {
@@ -60,19 +68,11 @@ func benchmark() -> void:
 			&"device_timestamp_variance": 0.0,
 		}
 		
-		print("")
-		print("==== FRAME DELAY ====")
-		print("")
-		
 		for i in range(FRAME_DELAY + 1):
 			var frame := _capture_render_time(rendering_device, false)
 			if frame[&"unix_time_diff"] > RENDER_TIME_THRESHOLD:
 				benchmark_result[&"failed"] = true
 				break
-		
-		print("")
-		print("==== BENCHMARK ====")
-		print("")
 		
 		var frames := []
 		
@@ -123,7 +123,7 @@ func _capture_render_time(rendering_device: RenderingDevice, benchmark: bool) ->
 	if benchmark:
 		timestamp = Time.get_unix_time_from_system()
 	
-	RenderingServer.force_draw(false)
+	RenderingServer.force_draw(true)
 	
 	var unix_time_diff := 0.0
 	var device_timestamp_diff = 0.0
@@ -131,9 +131,6 @@ func _capture_render_time(rendering_device: RenderingDevice, benchmark: bool) ->
 	if benchmark:
 		unix_time_diff = Time.get_unix_time_from_system() - timestamp
 		device_timestamp_diff = RenderingServer.viewport_get_measured_render_time_gpu(viewport.get_viewport_rid())/1000.0
-	
-	print("device_timestamp_diff: %fs" % device_timestamp_diff)
-	print("unix_time_diff: %fs" % unix_time_diff)
 	
 	return {
 		&"device_timestamp_diff": device_timestamp_diff,
