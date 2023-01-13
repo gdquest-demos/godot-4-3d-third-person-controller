@@ -50,15 +50,15 @@ func benchmark() -> void:
 	RenderingServer.viewport_set_measure_render_time(viewport.get_viewport_rid(), true)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	
-	# TODO: Does this helps getting better results?
+	# TODO: This line helps getting more consistent results, but I'm not sure why.
 	await RenderingServer.frame_post_draw
 	
 	for settings in quality_settings_resources:
 		settings.apply_settings(viewport, world_environment.environment)
 
 		var last_device_timestamp := 0
-		var RENDER_TIME_THRESHOLD := 0.5
-		var FRAME_DELAY := rendering_device.get_frame_delay()
+		const RENDER_TIME_THRESHOLD := 0.5
+		var FRAME_DELAY := rendering_device.get_frame_delay() + 1
 		
 		var benchmark_result := {
 			&"failed": false,
@@ -68,7 +68,7 @@ func benchmark() -> void:
 			&"device_timestamp_variance": 0.0,
 		}
 		
-		for i in range(FRAME_DELAY + 1):
+		for i in range(FRAME_DELAY):
 			var frame := _capture_render_time(rendering_device, false)
 			if frame[&"unix_time_diff"] > RENDER_TIME_THRESHOLD:
 				benchmark_result[&"failed"] = true

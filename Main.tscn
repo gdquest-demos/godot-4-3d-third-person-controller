@@ -1666,6 +1666,19 @@ skeleton = NodePath("../..")
 stream = ExtResource("17_mil5a")
 autoplay = true
 
+[node name="MSPFLabel" type="Label" parent="."]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -66.0
+offset_top = 13.0
+offset_right = -26.0
+offset_bottom = 36.0
+grow_horizontal = 0
+text = "0.0 msfp"
+horizontal_alignment = 2
+
 [connection signal="weapon_switched" from="Player" to="weapon_switch_ui" method="switch_to"]
 
 [editable path="NavigationRegion3D/terrain_main_ground"]
