@@ -41,9 +41,7 @@ func benchmark() -> void:
 	_benchmark_results.clear()
 	
 	var rendering_device := RenderingServer.get_rendering_device()
-	var window_viewport_rid = get_tree().root.get_viewport_rid()
 	
-	RenderingServer.viewport_set_update_mode(window_viewport_rid,RenderingServer.VIEWPORT_UPDATE_DISABLED)
 	RenderingServer.viewport_set_measure_render_time(viewport.get_viewport_rid(), true)
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	
@@ -116,7 +114,6 @@ func benchmark() -> void:
 		
 		_benchmark_results.append(benchmark_result)
 	
-	RenderingServer.viewport_set_update_mode(window_viewport_rid, RenderingServer.VIEWPORT_UPDATE_ALWAYS)
 	viewport.render_target_update_mode = SubViewport.UPDATE_DISABLED
 
 
