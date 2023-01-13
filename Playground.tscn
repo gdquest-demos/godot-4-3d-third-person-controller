@@ -81,7 +81,7 @@ radius = 2.74026
 height = 13.6062
 
 [node name="CharacterBody3d" parent="." instance=ExtResource("1_stlen")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43125, -1.90735e-06, -14.066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43125, 1.00378, -14.066)
 
 [node name="Box" parent="." instance=ExtResource("3_od2wg")]
 

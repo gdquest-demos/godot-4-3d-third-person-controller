@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://QualitySettings/QualitySettingsBenchmarker/Benchmark.gd" id="1_qywv6"]
+[ext_resource type="Resource" path="res://QualitySettings/QualitySettingsResource/low_settings.tres" id="2_qqr57"]
+[ext_resource type="Resource" uid="uid://3kbxxfjunbb1" path="res://QualitySettings/QualitySettingsResource/medium_settings.tres" id="3_a6qte"]
+[ext_resource type="Resource" path="res://QualitySettings/QualitySettingsResource/high_settings.tres" id="4_7oti5"]
+[ext_resource type="PackedScene" uid="uid://lae7xv3pajgc" path="res://QualitySettings/QualitySettingsBenchmarker/Benchmark3DScene.tscn" id="5_tgvco"]
+
+[node name="Benchmark" type="SubViewport" node_paths=PackedStringArray("viewport", "world_environment")]
+own_world_3d = true
+size = Vector2i(1152, 648)
+render_target_update_mode = 0
+script = ExtResource("1_qywv6")
+quality_settings_resources = [ExtResource("2_qqr57"), ExtResource("3_a6qte"), ExtResource("4_7oti5")]
+viewport = NodePath(".")
+world_environment = NodePath("Benchmark3DScene/Playground/WorldEnvironment")
+
+[node name="Benchmark3DScene" parent="." instance=ExtResource("5_tgvco")]
+
+[editable path="Benchmark3DScene"]
+[editable path="Benchmark3DScene/Playground/NavigationRegion3D/terrain_main_ground"]

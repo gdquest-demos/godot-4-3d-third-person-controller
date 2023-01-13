@@ -33,13 +33,31 @@ _global_script_classes=[{
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://Player/Player.gd"
+}, {
+"base": "Node",
+"class": &"QualitySettingsBenchmark",
+"language": &"GDScript",
+"path": "res://QualitySettings/QualitySettingsBenchmarker/Benchmark.gd"
+}, {
+"base": "Node",
+"class": &"QualitySettingsCache",
+"language": &"GDScript",
+"path": "res://QualitySettings/QualitySettingsCache.gd"
+}, {
+"base": "Resource",
+"class": &"QualitySettingsResource",
+"language": &"GDScript",
+"path": "res://QualitySettings/QualitySettingsResource/quality_settings_resource.gd"
 }]
 _global_script_class_icons={
 "CameraController": "",
 "CharacterSkin": "",
 "Coin": "",
 "GrenadeLauncher": "",
-"Player": ""
+"Player": "",
+"QualitySettingsBenchmark": "",
+"QualitySettingsCache": "",
+"QualitySettingsResource": ""
 }
 
 [application]
@@ -54,6 +72,7 @@ config/icon="res://icon.png"
 
 CameraMode="*res://CameraMode/CameraMode.tscn"
 FullScreenHandler="*res://FullScreenHandler.gd"
+QualitySettings="*res://QualitySettings/QualitySettingsCache.gd"
 
 [display]
 

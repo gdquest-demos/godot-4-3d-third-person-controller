@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://QualitySettings/QualitySettingsResource/quality_settings_resource.gd" id="1_pvkpo"]
+
+[resource]
+script = ExtResource("1_pvkpo")
+ui_scale = 2
+scaling_3d_value = 1.0
+scaling_3d_mode = 0
+vsync_mode = 0
+msaa_3d_mode = 0
+fxaa_enabled = false
+fullscreen_enabled = false
+ss_reflection_quality = 0
+ssao_quality = 0
+ssil_quality = 0
+sdfgi_quality = 0
+glow_quality = 0
+volumetric_fog_quality = 0
+brightness_value = 1.0
+contrast_value = 1.0
+saturation_value = 1.0

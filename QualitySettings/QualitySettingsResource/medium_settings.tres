@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://QualitySettings/QualitySettingsResource/quality_settings_resource.gd" id="1_wlplh"]
+
+[resource]
+script = ExtResource("1_wlplh")
+viewport_start_size = Vector2(1152, 648)
+scaling_3d_value = 1.0
+scaling_3d_mode = 1
+vsync_mode = 2
+msaa_3d_mode = 2
+fxaa_enabled = true
+ss_reflection_quality = 2
+ssao_quality = 3
+ssil_quality = 3
+sdfgi_quality = 1
+glow_quality = 1
+volumetric_fog_quality = 1
+brightness_value = 1.0
+contrast_value = 1.0
+saturation_value = 1.0

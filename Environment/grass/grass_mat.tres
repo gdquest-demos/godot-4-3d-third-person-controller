@@ -12,5 +12,5 @@ gradient = SubResource("Gradient_og0wy")
 [resource]
 render_priority = 0
 shader = ExtResource("1_s3778")
-shader_parameter/gradient = SubResource("GradientTexture1D_deq1y")
 shader_parameter/grass_mask_sampler = ExtResource("2_o5go6")
+shader_parameter/gradient = SubResource("GradientTexture1D_deq1y")

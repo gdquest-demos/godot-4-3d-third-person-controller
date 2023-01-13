@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://QualitySettings/QualitySettingsResource/quality_settings_resource.gd" id="1_wlplh"]
+
+[resource]
+script = ExtResource("1_wlplh")
+ui_scale = 2
+scaling_3d_value = 1.0
+scaling_3d_mode = 1
+vsync_mode = 2
+msaa_3d_mode = 3
+fxaa_enabled = true
+fullscreen_enabled = false
+ss_reflection_quality = 3
+ssao_quality = 4
+ssil_quality = 4
+sdfgi_quality = 2
+glow_quality = 2
+volumetric_fog_quality = 2
+brightness_value = 1.0
+contrast_value = 1.0
+saturation_value = 1.0

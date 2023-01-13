@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4kkg7bujwk1s"]
+
+[ext_resource type="Script" path="res://QualitySettings/BenchmarkStartingScene.gd" id="1_w43wn"]
+[ext_resource type="PackedScene" uid="uid://bajdb7s8k0ql8" path="res://QualitySettings/QualitySettingsBenchmarker/Benchmark.tscn" id="2_r1kfc"]
+
+[node name="BenchmarkStartingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_w43wn")
+
+[node name="Benchmark" parent="." instance=ExtResource("2_r1kfc")]
