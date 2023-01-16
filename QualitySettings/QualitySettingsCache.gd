@@ -13,7 +13,6 @@ var current_quality_settings: QualitySettingsResource :
 
 
 func setup() -> void:
-	save_on_user()
 	if not FileAccess.file_exists(FILE_PATH):
 		save_on_user()
 	load_from_user()
