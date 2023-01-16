@@ -19,8 +19,7 @@ script = ExtResource("1_w43wn")
 size = Vector2i(1920, 1080)
 
 [node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

@@ -2,7 +2,6 @@ class_name QualitySettingsBenchmark
 extends Node
 
 @export_category("Configuration")
-@export var quality_settings_resources: Array[QualitySettingsResource] = []
 @export var viewport: SubViewport
 @export var world_environment: WorldEnvironment
 
@@ -13,12 +12,12 @@ extends Node
 @onready var _benchmark_results = []
 
 
-func get_optimal_result(target_seconds_per_frame: float, benchmark_difficulty: float) -> QualitySettingsResource:
+func get_optimal_result(target_seconds_per_frame: float, benchmark_difficulty: float) -> int:
 	var target_spf := target_seconds_per_frame / benchmark_difficulty
 	
-	if _benchmark_results.size() == 0 or quality_settings_resources.size() == 0:
+	if _benchmark_results.size() == 0:
 		printerr("No results or quality settings set!")
-		return QualitySettingsResource.new()
+		return -1
 	
 	var i := 0
 	for _i in range(_benchmark_results.size()):
@@ -38,10 +37,10 @@ func get_optimal_result(target_seconds_per_frame: float, benchmark_difficulty: f
 		if abs(i_dta - target_spf) > abs(_i_dta - target_spf):
 			i = _i
  
-	return quality_settings_resources[i]
+	return i
 
 
-func benchmark() -> void:
+func benchmark(quality_settings_resources: Array[QualitySettingsResource]) -> void:
 	_benchmark_results.clear()
 	
 	var rendering_device := RenderingServer.get_rendering_device()

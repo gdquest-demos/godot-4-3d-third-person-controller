@@ -1661,6 +1661,7 @@ transform = Transform3D(2.05346, 0, 0.789485, 0, 2.2, 0, -0.789485, 0, 2.05346, 
 skeleton = NodePath("../..")
 
 [node name="DemoPage" parent="." instance=ExtResource("16_qr75n")]
+unique_name_in_owner = true
 
 [node name="StageMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_mil5a")

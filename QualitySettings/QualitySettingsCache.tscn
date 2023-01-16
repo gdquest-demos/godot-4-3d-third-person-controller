@@ -1,0 +1,10 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwtcdfe4tb6lh"]
+
+[ext_resource type="Script" path="res://QualitySettings/QualitySettingsCache.gd" id="1_6j1qb"]
+[ext_resource type="Resource" path="res://QualitySettings/QualitySettingsResource/low_settings.tres" id="2_1t2ut"]
+[ext_resource type="Resource" path="res://QualitySettings/QualitySettingsResource/medium_settings.tres" id="3_mo3pn"]
+[ext_resource type="Resource" path="res://QualitySettings/QualitySettingsResource/high_settings.tres" id="4_aegm7"]
+
+[node name="QualitySettingsCache" type="Node"]
+script = ExtResource("1_6j1qb")
+quality_settings_resources = [ExtResource("2_1t2ut"), ExtResource("3_mo3pn"), ExtResource("4_aegm7")]

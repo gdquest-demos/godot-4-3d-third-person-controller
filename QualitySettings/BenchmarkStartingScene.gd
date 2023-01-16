@@ -6,7 +6,7 @@ extends Control
 func _ready() -> void:
 	QualitySettings.setup()
 	
-	if QualitySettings.current_setting_path.is_empty():
+	if QualitySettings.current_setting_idx == -1:
 		
 		# On a GTX960M, the following seconds-per-frame were obtained:
 		#   QUALITY SETTINGS  |   GAME   |   BENCHMARK   |
@@ -21,9 +21,9 @@ func _ready() -> void:
 		const TARGET_SPF = 0.016
 		const BENCHMARK_DIFFICULTY = 0.5
 		
-		await benchmark.benchmark()
-		var optimal_setting: QualitySettingsResource = benchmark.get_optimal_result(TARGET_SPF, BENCHMARK_DIFFICULTY)
-		QualitySettings.current_setting_path = optimal_setting.resource_path
+		await benchmark.benchmark(QualitySettings.quality_settings_resources)
+		var optimal_setting_idx = benchmark.get_optimal_result(TARGET_SPF, BENCHMARK_DIFFICULTY)
+		QualitySettings.current_setting_idx = optimal_setting_idx
 		QualitySettings.save_on_user()
 	
 	get_tree().change_scene_to_file("res://Main.tscn")

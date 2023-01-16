@@ -1,6 +1,9 @@
+class_name DemoPage
 extends Node
 
 enum INSTRUCTION_TYPES {KEYBOARD, JOYPAD}
+
+signal quality_settings_applied(quality_setting_idx)
 
 @onready var demo_page_root: Control = $CanvasLayer/DemoPageRoot
 @onready var resume_button: Button = $CanvasLayer/DemoPageRoot/Content/MarginContainer/Buttons/Resume
@@ -9,6 +12,8 @@ enum INSTRUCTION_TYPES {KEYBOARD, JOYPAD}
 @onready var joypad_button: Button = %JoypadButton
 @onready var grid_container_keyboard: GridContainer = %GridContainerKeyboard
 @onready var grid_container_joypad: GridContainer = %GridContainerJoypad
+@onready var quality_settings_slider: HSlider = %QualitySettingsSlider
+@onready var apply_settings_button: Button = %ApplySettingsButton
 
 @onready var _demo_mouse_mode: int
 
@@ -22,6 +27,7 @@ func _ready() -> void:
 	exit_button.pressed.connect(get_tree().quit)
 	keyboard_button.pressed.connect(change_instruction.bind(INSTRUCTION_TYPES.KEYBOARD))
 	joypad_button.pressed.connect(change_instruction.bind(INSTRUCTION_TYPES.JOYPAD))
+	apply_settings_button.pressed.connect(_on_apply_settings_pressed)
 	
 	change_instruction(INSTRUCTION_TYPES.KEYBOARD)
 
@@ -32,6 +38,16 @@ func _input(event: InputEvent) -> void:
 			resume_demo()
 		else:
 			pause_demo()
+
+
+func _on_apply_settings_pressed() -> void:
+	quality_settings_applied.emit(quality_settings_slider.value)
+
+
+func setup_quality_settings(current_setting: int, number_of_settings: int) -> void:
+	assert(current_setting < number_of_settings)
+	quality_settings_slider.value = current_setting
+	quality_settings_slider.max_value = number_of_settings - 1
 
 
 func change_instruction(type: int) -> void:
