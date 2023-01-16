@@ -85,7 +85,7 @@ size = Vector3(130, 6, 130)
 [node name="Playground" type="Node3D"]
 
 [node name="weapon_switch_ui" parent="." instance=ExtResource("1_3u7h6")]
-anchors_preset = 0
+anchors_preset = 2
 anchor_left = 0.0
 anchor_top = 1.0
 anchor_right = 0.0
@@ -124,8 +124,6 @@ metadata/_edit_lock_ = true
 
 [node name="TerrainCollision" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-collision_layer = 3
-collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/TerrainCollision"]
 shape = SubResource("ConcavePolygonShape3D_1b8aq")
@@ -1418,6 +1416,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.821, 23.8633, -9.42108)
 
 [node name="GroundEnemy" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.425, 0.998134, -2.73277)
+collision_layer = 1
+collision_mask = 1
 
 [node name="GroundEnemy2" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 7.17666, -4.01509)

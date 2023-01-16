@@ -46,7 +46,6 @@ blend_point_1/pos = 0.0
 min_space = 0.0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5sbif"]
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sawiy"]
 xfade_time = 0.2

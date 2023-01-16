@@ -34,7 +34,6 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _grenade_aim_controller: GrenadeLauncher = $GrenadeLauncher
 @onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
-@onready var _coin_magnet_area: Area3D = $CoinMagnetArea
 @onready var _ui_aim_recticle: ColorRect = %AimRecticle
 @onready var _ui_coins_container: HBoxContainer = %CoinsContainer
 @onready var _step_sound: AudioStreamPlayer3D = $StepSound
@@ -54,7 +53,6 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
 	_grenade_aim_controller.visible = false
-	_coin_magnet_area.body_entered.connect(_on_coin_body_entered)
 	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
 
 
@@ -191,11 +189,6 @@ func lose_coins() -> void:
 		coin.global_position = global_position
 		coin.spawn(1.5)
 	_ui_coins_container.update_coins_amount(_coins)
-
-
-func _on_coin_body_entered(body: Node3D) -> void:
-	if body is Coin:
-		body.set_target(self)
 
 
 func _get_camera_oriented_input() -> Vector3:

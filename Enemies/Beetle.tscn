@@ -102,8 +102,6 @@ radius = 0.489449
 size = Vector3(1.4, 0.2, 1.4)
 
 [node name="GroundEnemy" type="RigidBody3D" groups=["damageables", "targeteables"]]
-collision_layer = 3
-collision_mask = 3
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -127,7 +125,6 @@ libraries = {
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource("SphereShape3D_h03f6")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ciqrpd5675boy"]
+[gd_scene load_steps=19 format=3 uid="uid://ciqrpd5675boy"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_rvo1c"]
 [ext_resource type="PackedScene" uid="uid://b2ew46dlu7u7x" path="res://Player/GrenadeLauncher.tscn" id="3_54qc4"]
@@ -102,25 +102,13 @@ _data = {
 radius = 0.721485
 height = 2.65424
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_nw843"]
-radius = 5.0
-
 [node name="Player" type="CharacterBody3D" groups=["damageables"]]
-collision_layer = 8
-collision_mask = 3
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_rvo1c")
-move_speed = null
 bullet_speed = 14.0
-attack_impulse = null
 acceleration = 6.0
-jump_initial_impulse = null
-jump_additional_force = null
-rotation_speed = null
-stopping_speed = null
-max_throwback_force = null
 
 [node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -138,7 +126,6 @@ transform = Transform3D(-0.994522, 0.0400013, -0.0965717, 0, 0.92388, 0.382683, 
 
 [node name="CameraSpringArm" type="SpringArm3D" parent="CameraController"]
 transform = Transform3D(-1, -5.15034e-15, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, 0, 2.33984, 0)
-collision_mask = 2
 shape = SubResource("SeparationRayShape3D_gqx4v")
 spring_length = 10.0
 
@@ -193,13 +180,6 @@ shape = SubResource("CapsuleShape3D_pcytg")
 disabled = true
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("4_ign62")]
-
-[node name="CoinMagnetArea" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CoinMagnetArea"]
-shape = SubResource("SphereShape3D_nw843")
 
 [node name="PlayerUI" type="Control" parent="." groups=["camera_mode_toggle"]]
 layout_mode = 3
@@ -259,7 +239,7 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(-0.999928, 0, -0.0120021, 0, 1, 0, 0.0120021, 0, -0.999928, 0, 0, 0)
+transform = Transform3D(0.975448, 0, 0.220229, 0, 1, 0, -0.220229, 0, 0.975448, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]

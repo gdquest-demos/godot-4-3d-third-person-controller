@@ -11,6 +11,7 @@ enum CAMERA_PIVOT { OVER_SHOULDER, THIRD_PERSON }
 @export var tilt_lower_limit := deg_to_rad(60.0)
 
 @onready var _over_shoulder_pivot: Node3D = $CameraOverShoulderPivot
+@onready var _camera_spring_arm: SpringArm3D = $CameraSpringArm
 @onready var _third_person_pivot: Node3D = $CameraSpringArm/CameraThirdPersonPivot
 @onready var _camera: Camera3D = $PlayerCamera
 @onready var _camera_raycast: RayCast3D = $PlayerCamera/CameraRayCast
@@ -24,7 +25,7 @@ var _rotation_input: float
 var _tilt_input: float
 var _mouse_input := false
 var _offset: Vector3
-var _anchor: Node3D
+var _anchor: CharacterBody3D
 var _euler_rotation: Vector3
 
 
@@ -71,11 +72,12 @@ func _physics_process(delta: float) -> void:
 	_tilt_input = 0.0
 
 
-func setup(anchor: Node3D) -> void:
+func setup(anchor: CharacterBody3D) -> void:
 	_anchor = anchor
 	_offset = global_transform.origin - anchor.global_transform.origin
 	set_pivot(CAMERA_PIVOT.THIRD_PERSON)
 	_camera.global_transform = _camera.global_transform.interpolate_with(_pivot.global_transform, 0.1)
+	_camera_spring_arm.add_excluded_object(_anchor.get_rid())
 
 
 func set_pivot(pivot_type: CAMERA_PIVOT) -> void:

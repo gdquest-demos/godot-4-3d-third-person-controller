@@ -170,8 +170,6 @@ _data = {
 size = Vector3(0.1, 0.5, 1)
 
 [node name="FlyingEnemy" type="RigidBody3D" groups=["damageables", "targeteables"]]
-collision_layer = 3
-collision_mask = 3
 gravity_scale = 0.0
 continuous_cd = true
 sleeping = true
@@ -192,7 +190,6 @@ libraries = {
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource("SphereShape3D_h03f6")

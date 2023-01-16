@@ -14,16 +14,16 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_tmq40")
-shader_parameter/cliff_albedo_sampler = ExtResource("2_oocmn")
-shader_parameter/cliff_normal_sampler = ExtResource("3_7ta3g")
-shader_parameter/cliff_orm_sampler = ExtResource("4_mexqi")
-shader_parameter/dirt_albedo_sampler = ExtResource("5_mlqge")
-shader_parameter/dirt_normal_sampler = ExtResource("6_f0qiq")
-shader_parameter/dirt_orm_sampler = ExtResource("7_7kb77")
-shader_parameter/grass_albedo_sampler = ExtResource("8_i8y51")
-shader_parameter/grass_normal_sampler = ExtResource("9_fafy5")
-shader_parameter/grass_orm_sampler = ExtResource("7_7kb77")
-shader_parameter/triplanar_offset = null
 shader_parameter/triplanar_scale = Vector3(0.3, 0.2, 0.3)
+shader_parameter/triplanar_offset = null
 shader_parameter/triplanar_sharpness = null
 shader_parameter/wall_mask_sampler = ExtResource("10_2oayh")
+shader_parameter/cliff_albedo_sampler = ExtResource("2_oocmn")
+shader_parameter/grass_albedo_sampler = ExtResource("8_i8y51")
+shader_parameter/dirt_albedo_sampler = ExtResource("5_mlqge")
+shader_parameter/cliff_orm_sampler = ExtResource("4_mexqi")
+shader_parameter/grass_orm_sampler = ExtResource("7_7kb77")
+shader_parameter/dirt_orm_sampler = ExtResource("7_7kb77")
+shader_parameter/cliff_normal_sampler = ExtResource("3_7ta3g")
+shader_parameter/grass_normal_sampler = ExtResource("9_fafy5")
+shader_parameter/dirt_normal_sampler = ExtResource("6_f0qiq")

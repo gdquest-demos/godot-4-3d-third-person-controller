@@ -6,10 +6,10 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_js7p0")
-shader_parameter/face_texture = ExtResource("2_0vuuo")
 shader_parameter/intensity = 4.0
-shader_parameter/pixel_size = 44.0
-shader_parameter/screen_blue_offset = Vector2(0, 0)
 shader_parameter/screen_color = Color(0.0784314, 0.556863, 1, 0.00784314)
-shader_parameter/screen_green_offset = Vector2(0, 0)
 shader_parameter/screen_red_offset = Vector2(0, 0)
+shader_parameter/screen_green_offset = Vector2(0, 0)
+shader_parameter/screen_blue_offset = Vector2(0, 0)
+shader_parameter/pixel_size = 44.0
+shader_parameter/face_texture = ExtResource("2_0vuuo")

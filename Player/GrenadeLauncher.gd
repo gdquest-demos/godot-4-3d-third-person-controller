@@ -30,11 +30,12 @@ func _physics_process(delta: float) -> void:
 func throw_grenade() -> bool:
 	if not visible:
 		return false
-	
-	var grenade := GRENADE_SCENE.instantiate()
+
+	var grenade: CharacterBody3D = GRENADE_SCENE.instantiate()
 	get_parent().add_child(grenade)
 	grenade.global_position = _launch_point.global_position
 	grenade.throw(_throw_velocity)
+	PhysicsServer3D.body_add_collision_exception(get_parent().get_rid(), grenade.get_rid())
 	return true
 
 
@@ -64,13 +65,13 @@ func _update_throw_velocity() -> void:
 	# Calculate the initial velocity the grenade needs based on where we want it to land and how
 	# high the curve should go.
 	var peak_height: float = max(to_target.y + 0.25, _launch_point.position.y + 0.25)
-	
+
 	var motion_up := peak_height
 	var time_going_up := sqrt(2.0 * motion_up / gravity)
-	
+
 	var motion_down := to_target.y - peak_height
 	var time_going_down := sqrt(-2.0 * motion_down / gravity)
-	
+
 	_time_to_land = time_going_up + time_going_down
 
 	var target_position_xz_plane := Vector3(to_target.x, 0.0, to_target.z)
@@ -78,7 +79,7 @@ func _update_throw_velocity() -> void:
 
 	var forward_velocity := (target_position_xz_plane - start_position_xz_plane) / _time_to_land
 	var velocity_up := sqrt(2.0 * gravity * motion_up)
-	
+
 	# Caching the found initial_velocity vector so we can use it on the throw() function
 	_throw_velocity = Vector3.UP * velocity_up + forward_velocity
 
@@ -109,20 +110,20 @@ func _draw_throw_path() -> void:
 		var trail_point_right_end = point_current + offset_right
 		var trail_point_left_start = point_previous + offset_left
 		var trail_point_right_start = point_previous + offset_right
-		
+
 		# UV position goes from 0 to 1, so we normalize the current iteration
 		# to get the progress in the UV texture
 		var uv_progress_end = time_current/end_time
 		var uv_progress_start = uv_progress_end - (TIME_STEP/end_time)
-		
+
 		# Left side on the UV texture is at the top of the texture
-		# (Vector2(0,1), or Vector2.DOWN). Right side on the UV texture is at 
+		# (Vector2(0,1), or Vector2.DOWN). Right side on the UV texture is at
 		# the bottom.
 		var uv_value_right_start = (Vector2.RIGHT * uv_progress_start)
 		var uv_value_right_end = (Vector2.RIGHT * uv_progress_end)
 		var uv_value_left_start = Vector2.DOWN + uv_value_right_start
 		var uv_value_left_end = Vector2.DOWN + uv_value_right_end
-		
+
 		point_previous = point_current
 
 		# Both triangles need to be drawn in the same orientation (Godot uses
@@ -135,7 +136,7 @@ func _draw_throw_path() -> void:
 		st.add_vertex(trail_point_left_start)
 		st.set_uv(uv_value_left_end)
 		st.add_vertex(trail_point_left_end)
-		
+
 		# Draw second triangle
 		st.set_uv(uv_value_right_start)
 		st.add_vertex(trail_point_right_start)
@@ -143,6 +144,6 @@ func _draw_throw_path() -> void:
 		st.add_vertex(trail_point_left_start)
 		st.set_uv(uv_value_right_end)
 		st.add_vertex(trail_point_right_end)
-	
+
 	st.generate_normals()
 	_trail_mesh_instance.mesh = st.commit()

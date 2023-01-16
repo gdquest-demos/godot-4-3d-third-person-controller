@@ -75,9 +75,6 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_target = null
 	_death_collision_shape.set_deferred("disabled", false)
 	
-	set_deferred("collision_layer", 2)
-	set_deferred("collision_mask", 2)
-	
 	axis_lock_angular_x = false
 	axis_lock_angular_y = false
 	axis_lock_angular_z = false
