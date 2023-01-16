@@ -57,7 +57,7 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_defeat_sound.play()
 	_alive = false
 	
-	_flying_animation_player.stop(true)
+	_flying_animation_player.stop()
 	_flying_animation_player.seek(0.0, true)
 	_detection_area.body_entered.disconnect(_on_body_entered)
 	_detection_area.body_exited.disconnect(_on_body_exited)
