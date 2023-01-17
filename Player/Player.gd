@@ -22,7 +22,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var jump_additional_force := 4.5
 ## Player model rotaion speed
 @export var rotation_speed := 12.0
-## Minimum horizontal speed on the ground. This controls when the character's animation tree changes 
+## Minimum horizontal speed on the ground. This controls when the character's animation tree changes
 ## between the idle and running states.
 @export var stopping_speed := 1.0
 ## Max throwback force after player takes a hit
@@ -71,14 +71,14 @@ func _physics_process(delta: float) -> void:
 		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE
 		_grenade_aim_controller.visible = _equipped_weapon == WEAPON_TYPE.GRENADE
 		emit_signal("weapon_switched", WEAPON_TYPE.keys()[_equipped_weapon])
-		
+
 	# Get input and movement state
 	var is_just_attacking := Input.is_action_just_pressed("attack") and not _attack_animation_player.is_playing()
 	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
 	var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
 	var is_air_boosting := Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
 	var is_just_on_floor := is_on_floor() and not _is_on_floor_buffer
-	
+
 	_is_on_floor_buffer = is_on_floor()
 	_move_direction = _get_camera_oriented_input()
 
@@ -88,7 +88,7 @@ func _physics_process(delta: float) -> void:
 		_last_strong_direction = _move_direction.normalized()
 	if is_aiming:
 		_last_strong_direction = _camera_controller.global_transform.basis * Vector3.BACK
-	
+
 	_orient_character_to_direction(_last_strong_direction, delta)
 
 	# We separate out the y velocity to not interpolate on the gravity
@@ -102,11 +102,15 @@ func _physics_process(delta: float) -> void:
 	# Set aiming camera and UI
 	if is_aiming:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.OVER_SHOULDER)
+		_grenade_aim_controller.throw_direction = _camera_controller.camera.quaternion * Vector3.FORWARD
+		_grenade_aim_controller.from_look_position = _camera_controller.camera.global_position
 		_ui_aim_recticle.visible = true
 	else:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
+		_grenade_aim_controller.throw_direction = _last_strong_direction.rotated(_last_strong_direction.cross(Vector3.UP), _camera_controller.camera.rotation.x)
+		_grenade_aim_controller.from_look_position = global_position
 		_ui_aim_recticle.visible = false
-	
+
 	# Update attack state and position
 	if is_just_attacking:
 		match _equipped_weapon:
@@ -124,7 +128,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += jump_initial_impulse
 	elif is_air_boosting:
 		velocity.y += jump_additional_force * delta
-	
+
 	# Set character animation
 	if is_just_jumping:
 		_character_skin.jump()
@@ -137,14 +141,14 @@ func _physics_process(delta: float) -> void:
 			_character_skin.set_moving_speed(inverse_lerp(0.0, move_speed, xz_velocity.length()))
 		else:
 			_character_skin.set_moving(false)
-	
+
 	if is_just_on_floor:
 		_landing_sound.play()
-	
+
 	var position_before := global_position
 	move_and_slide()
 	var position_after := global_position
-	
+
 	# If velocity is not 0 but the difference of positions after move_and_slide is,
 	# character might be stuck somewhere!
 	var delta_position := position_after - position_before

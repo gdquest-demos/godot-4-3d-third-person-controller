@@ -1416,8 +1416,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.821, 23.8633, -9.42108)
 
 [node name="GroundEnemy" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.425, 0.998134, -2.73277)
-collision_layer = 1
-collision_mask = 1
 
 [node name="GroundEnemy2" parent="Foes" instance=ExtResource("14_tmmem")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 7.17666, -4.01509)

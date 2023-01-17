@@ -10,10 +10,10 @@ enum CAMERA_PIVOT { OVER_SHOULDER, THIRD_PERSON }
 @export var tilt_upper_limit := deg_to_rad(-60.0)
 @export var tilt_lower_limit := deg_to_rad(60.0)
 
+@onready var camera: Camera3D = $PlayerCamera
 @onready var _over_shoulder_pivot: Node3D = $CameraOverShoulderPivot
 @onready var _camera_spring_arm: SpringArm3D = $CameraSpringArm
 @onready var _third_person_pivot: Node3D = $CameraSpringArm/CameraThirdPersonPivot
-@onready var _camera: Camera3D = $PlayerCamera
 @onready var _camera_raycast: RayCast3D = $PlayerCamera/CameraRayCast
 
 
@@ -39,34 +39,34 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	if not _anchor:
 		return
-	
+
 	_rotation_input += Input.get_action_raw_strength("camera_left") - Input.get_action_raw_strength("camera_right")
 	_tilt_input += Input.get_action_raw_strength("camera_up") - Input.get_action_raw_strength("camera_down")
-	
+
 	if invert_mouse_y:
 		_tilt_input *= -1
-	
+
 	if _camera_raycast.is_colliding():
 		_aim_target = _camera_raycast.get_collision_point()
 		_aim_collider = _camera_raycast.get_collider()
 	else:
 		_aim_target = _camera_raycast.global_transform * _camera_raycast.target_position
 		_aim_collider = null
-	
+
 	# Set camera controller to current ground level for the character
 	var target_position := _anchor.global_position + _offset
 	target_position.y = lerp(global_position.y, _anchor._ground_height, 0.1)
 	global_position = target_position
-	
+
 	# Rotates camera using euler rotation
 	_euler_rotation.x += _tilt_input * delta
 	_euler_rotation.x = clamp(_euler_rotation.x, tilt_lower_limit, tilt_upper_limit)
 	_euler_rotation.y += _rotation_input * delta
 
 	transform.basis = transform.basis.from_euler(_euler_rotation)
-	
-	_camera.global_transform = _pivot.global_transform
-	_camera.rotation.z = 0
+
+	camera.global_transform = _pivot.global_transform
+	camera.rotation.z = 0
 
 	_rotation_input = 0.0
 	_tilt_input = 0.0
@@ -76,14 +76,14 @@ func setup(anchor: CharacterBody3D) -> void:
 	_anchor = anchor
 	_offset = global_transform.origin - anchor.global_transform.origin
 	set_pivot(CAMERA_PIVOT.THIRD_PERSON)
-	_camera.global_transform = _camera.global_transform.interpolate_with(_pivot.global_transform, 0.1)
+	camera.global_transform = camera.global_transform.interpolate_with(_pivot.global_transform, 0.1)
 	_camera_spring_arm.add_excluded_object(_anchor.get_rid())
 
 
 func set_pivot(pivot_type: CAMERA_PIVOT) -> void:
 	if pivot_type == _current_pivot_type:
 		return
-	
+
 	match(pivot_type):
 		CAMERA_PIVOT.OVER_SHOULDER:
 			_over_shoulder_pivot.look_at(_aim_target)
@@ -103,7 +103,3 @@ func get_aim_collider() -> Node:
 		return _aim_collider
 	else:
 		return null
-
-
-func get_camera_basis() -> Basis:
-	return _camera.basis

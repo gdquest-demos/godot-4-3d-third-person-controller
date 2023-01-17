@@ -7,14 +7,16 @@ const GRENADE_SCENE := preload("res://Player/Grenade.tscn")
 @export var max_throw_distance := 16.0
 @export var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var _throw_velocity := Vector3.ZERO
-var _time_to_land := 0.0
+@onready var from_look_position := Vector3.ZERO
+@onready var throw_direction := Vector3.ZERO
 
 @onready var _snap_mesh: Node3D = %SnapMesh
 @onready var _raycast: ShapeCast3D = %ShapeCast3D
 @onready var _launch_point: Marker3D = %LaunchPoint
 @onready var _trail_mesh_instance: MeshInstance3D = %TrailMeshInstance
 
+var _throw_velocity := Vector3.ZERO
+var _time_to_land := 0.0
 
 func _ready() -> void:
 	if Engine.is_editor_hint():
@@ -43,13 +45,13 @@ func _update_throw_velocity() -> void:
 	var camera := get_viewport().get_camera_3d()
 	var up_ratio: float = clamp(max(camera.rotation.x + 0.5, -0.4) * 2, 0.0, 1.0)
 
-	var camera_direction := camera.quaternion * Vector3.FORWARD
+	# var throw_direction := camera.quaternion * Vector3.FORWARD
 	# If the player's not aiming, the camera's far behind the character, so we increase the ray's
 	# length based on how far behind the camera is compared to the character.
 	var base_throw_distance: float = lerp(min_throw_distance, max_throw_distance, up_ratio)
-	var camera_forward_distance := camera.global_position.project(camera_direction).distance_to(_launch_point.global_position.project(camera_direction))
-	var throw_distance := base_throw_distance + camera_forward_distance
-	var global_camera_look_position := camera.global_position + camera_direction * throw_distance
+	# var camera_forward_distance := camera.global_position.project(throw_direction).distance_to(_launch_point.global_position.project(throw_direction))
+	var throw_distance := base_throw_distance #+ camera_forward_distance
+	var global_camera_look_position := from_look_position + throw_direction * throw_distance
 	_raycast.target_position = global_camera_look_position - _raycast.global_position
 
 	# Snap grenade land position to an enemy the player's aiming at, if applicable
