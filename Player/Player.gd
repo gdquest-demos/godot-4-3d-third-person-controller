@@ -27,6 +27,10 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var stopping_speed := 1.0
 ## Max throwback force after player takes a hit
 @export var max_throwback_force := 15.0
+## Projectile cooldown
+@export var shoot_cooldown := 0.5
+## Grenade cooldown
+@export var grenade_cooldown := 0.5
 
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
@@ -47,6 +51,9 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @onready var _start_position := global_transform.origin
 @onready var _coins := 0
 @onready var _is_on_floor_buffer := false
+
+@onready var _shoot_cooldown_tick := shoot_cooldown
+@onready var _grenade_cooldown_tick := grenade_cooldown
 
 
 func _ready() -> void:
@@ -73,7 +80,8 @@ func _physics_process(delta: float) -> void:
 		emit_signal("weapon_switched", WEAPON_TYPE.keys()[_equipped_weapon])
 
 	# Get input and movement state
-	var is_just_attacking := Input.is_action_just_pressed("attack") and not _attack_animation_player.is_playing()
+	var is_attacking := Input.is_action_pressed("attack") and not _attack_animation_player.is_playing()
+	var is_just_attacking := Input.is_action_just_pressed("attack")
 	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
 	var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
 	var is_air_boosting := Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
@@ -112,17 +120,25 @@ func _physics_process(delta: float) -> void:
 		_ui_aim_recticle.visible = false
 
 	# Update attack state and position
-	if is_just_attacking:
+
+	_shoot_cooldown_tick += delta
+	_grenade_cooldown_tick += delta
+
+	if is_attacking:
 		match _equipped_weapon:
 			WEAPON_TYPE.DEFAULT:
 				if is_aiming and is_on_floor():
-					shoot()
-				else:
+					if _shoot_cooldown_tick > shoot_cooldown:
+						_shoot_cooldown_tick = 0.0
+						shoot()
+				elif is_just_attacking:
 					attack()
 			WEAPON_TYPE.GRENADE:
-				_grenade_aim_controller.throw_grenade()
-	else:
-		velocity.y += _gravity * delta
+				if _grenade_cooldown_tick > grenade_cooldown:
+					_grenade_cooldown_tick = 0.0
+					_grenade_aim_controller.throw_grenade()
+
+	velocity.y += _gravity * delta
 
 	if is_just_jumping:
 		velocity.y += jump_initial_impulse
