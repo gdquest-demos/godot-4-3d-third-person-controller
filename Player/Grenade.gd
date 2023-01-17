@@ -30,23 +30,23 @@ func throw(throw_velocity: Vector3) -> void:
 
 func _explode() -> void:
 	set_physics_process(false)
-	
+
 	_explosion_sound.pitch_scale = randfn(2.0, 0.1)
 	_explosion_sound.play()
-	
+
 	var bodies := _explosion_area.get_overlapping_bodies()
 	for body in bodies:
-		if body.is_in_group("damageables") and not body.is_in_group("player"):
+		if body.is_in_group("damageables") and not body is Player:
 			# add some variance to the impact point
 			var impact_point := (global_position - body.global_position).normalized()
 			impact_point = (impact_point + Vector3.DOWN).normalized() * 0.5
 			var force := -impact_point * 10.0
 			body.damage(impact_point, force)
-	
+
 	var explosion: Node3D = EXPLOSION_SCENE.instantiate()
 	get_parent().add_child(explosion)
 	explosion.global_position = global_position
-	
+
 	hide()
 	await _explosion_sound.finished
 	queue_free()
