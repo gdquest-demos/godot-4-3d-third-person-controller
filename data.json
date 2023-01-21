@@ -5,15 +5,15 @@
   ],
   "data": {},
   "date": {
-    "date": "2023-01-04",
-    "unix": 1672855699758
+    "date": "2023-01-21",
+    "unix": 1674326975806
   },
   "git": {
     "remote": "https://github.com/GDQuest/Godot-4-Character-3D-Demo",
-    "commit": "c9fdef4bf11c3e955bd51f251d9f14fe0e25b049",
-    "commitShort": "c9fdef4",
+    "commit": "e99f0172a102d634f7d2c18583dd8afa89399169",
+    "commitShort": "e99f017",
     "branch": "main",
-    "lastMessage": "changed settings to make the game web-playable",
+    "lastMessage": "chore: add info for web exporter",
     "version": "1.0.0",
     "submodules": []
   },
@@ -37,8 +37,8 @@
   "verbose": true,
   "isGodot4": true,
   "projectDir": ".",
-  "executable": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta9/Godot_v4.0-beta9_linux.x86_64",
-  "templatesDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta9/templates",
+  "executable": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta13/Godot_v4.0-beta13_linux.x86_64",
+  "templatesDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta13/templates",
   "godot_version": [
     4
   ],
@@ -89,5 +89,5 @@
   "skipHeadless": true,
   "cacheDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin",
   "exportsDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/exports",
-  "variant": "beta9"
+  "variant": "beta13"
 }
