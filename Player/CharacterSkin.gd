@@ -25,9 +25,9 @@ func _ready():
 func set_moving(value : bool):
 	moving = value
 	if moving:
-		state_machine.travel("move", state_machine.get_current_node() != "move")
+		state_machine.travel("move")
 	else:
-		state_machine.travel("idle", state_machine.get_current_node() != "idle")
+		state_machine.travel("idle")
 
 
 func set_moving_speed(value : float):
@@ -36,12 +36,13 @@ func set_moving_speed(value : float):
 
 
 func jump():
-	state_machine.travel("jump", state_machine.get_current_node() != "jump")
+	state_machine.travel("jump")
 
 
 func fall():
-	state_machine.travel("fall", state_machine.get_current_node() != "fall")
+	state_machine.travel("fall")
 
 
 func punch():
 	animation_tree["parameters/PunchOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+
