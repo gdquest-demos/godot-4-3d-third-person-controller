@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dqbsd44l6f1xi"
+uid="uid://dta8u77j4ye4v"
 path="res://.godot/imported/CoinModel.glb-8979cd10b263ba5bb6aa0cf262c766bc.scn"
 
 [deps]
@@ -26,5 +26,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
+animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/embedded_image_handling=3

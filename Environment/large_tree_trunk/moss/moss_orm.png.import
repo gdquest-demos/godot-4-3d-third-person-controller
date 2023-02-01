@@ -4,23 +4,22 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cra3ujt6hgoq8"
 path.s3tc="res://.godot/imported/moss_orm.png-6e01273275e2bf6ac0a7b5237c3d2194.s3tc.ctex"
-path.etc2="res://.godot/imported/moss_orm.png-6e01273275e2bf6ac0a7b5237c3d2194.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc", "etc2"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Environment/large_tree_trunk/moss/moss_orm.png"
-dest_files=["res://.godot/imported/moss_orm.png-6e01273275e2bf6ac0a7b5237c3d2194.s3tc.ctex", "res://.godot/imported/moss_orm.png-6e01273275e2bf6ac0a7b5237c3d2194.etc2.ctex"]
+dest_files=["res://.godot/imported/moss_orm.png-6e01273275e2bf6ac0a7b5237c3d2194.s3tc.ctex"]
 
 [params]
 
 compress/mode=2
+compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

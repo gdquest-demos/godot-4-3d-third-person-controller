@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://eo4fnnqorgja"
+uid="uid://b602ttibxesgm"
 path="res://.godot/imported/Terrain.glb-ec9b3154f7a960982c39f596a01e4721.scn"
 
 [deps]
@@ -26,5 +26,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
+animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/embedded_image_handling=3
