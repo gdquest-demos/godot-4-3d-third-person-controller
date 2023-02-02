@@ -5,15 +5,15 @@
   ],
   "data": {},
   "date": {
-    "date": "2023-01-21",
-    "unix": 1674326975806
+    "date": "2023-02-02",
+    "unix": 1675365453651
   },
   "git": {
     "remote": "https://github.com/GDQuest/Godot-4-Character-3D-Demo",
-    "commit": "e99f0172a102d634f7d2c18583dd8afa89399169",
-    "commitShort": "e99f017",
+    "commit": "0571e900f6934def6e82f03fc9ad4120a4389dee",
+    "commitShort": "0571e90",
     "branch": "main",
-    "lastMessage": "chore: add info for web exporter",
+    "lastMessage": "Shooting is continuous while player is pressing attack",
     "version": "1.0.0",
     "submodules": []
   },
@@ -37,8 +37,8 @@
   "verbose": true,
   "isGodot4": true,
   "projectDir": ".",
-  "executable": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta13/Godot_v4.0-beta13_linux.x86_64",
-  "templatesDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta13/templates",
+  "executable": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta17/Godot_v4.0-beta17_linux.x86_64",
+  "templatesDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin/4.0-beta17/templates",
   "godot_version": [
     4
   ],
@@ -86,8 +86,8 @@
       }
     }
   ],
-  "skipHeadless": true,
+  "skipHeadless": false,
   "cacheDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/bin",
   "exportsDir": "/home/xananax/gdquest/Godot-4-Character-3D-Demo/exports",
-  "variant": "beta13"
+  "variant": "beta17"
 }
