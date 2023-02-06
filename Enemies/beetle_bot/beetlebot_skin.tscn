@@ -1,22 +1,25 @@
-[gd_scene load_steps=47 format=3 uid="uid://cq4m2udfv5lfg"]
+[gd_scene load_steps=42 format=3 uid="uid://bpjqcswabdtyb"]
 
-[ext_resource type="Script" path="res://Enemies/Beetle/BeetleModel.gd" id="1_3o2d1"]
-[ext_resource type="PackedScene" uid="uid://2tiippcas1yn" path="res://Enemies/Beetle/BeetleModel.glb" id="2_sn0u1"]
-[ext_resource type="Material" uid="uid://c01o76xe4ki35" path="res://Enemies/Beetle/BeetleModel_eyes_mat.tres" id="3_bftt3"]
-[ext_resource type="Animation" uid="uid://c8nt4qdap5h01" path="res://Enemies/Beetle/custom_animation/BeetleModel_power_off_lights.res" id="4_x2t4j"]
-[ext_resource type="AudioStream" uid="uid://b6npjky1rks7r" path="res://Enemies/Sounds/mechanical_1.wav" id="5_634fy"]
-[ext_resource type="AudioStream" uid="uid://d4xqhatidj5f" path="res://Enemies/Sounds/mechanical_2.wav" id="6_74mpf"]
+[ext_resource type="Script" path="res://Enemies/beetle_bot/beetlebot_skin.gd" id="1_1smde"]
+[ext_resource type="PackedScene" uid="uid://dbqoj8oam1dsg" path="res://Enemies/beetle_bot/beetle_bot_fused.glb" id="1_r7amh"]
+[ext_resource type="Shader" path="res://shared/shaders/face_mat.gdshader" id="3_p37mm"]
+[ext_resource type="Material" uid="uid://h2e57pyy6lu4" path="res://Enemies/beetle_bot/materials/beetlebot_lights_mat.tres" id="4_4158y"]
+[ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://shared/eye_mask.png" id="4_trpq3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ygfx"]
-resource_local_to_scene = true
-albedo_color = Color(0, 0, 0, 1)
-emission_enabled = true
-emission = Color(0.647059, 1, 0.411765, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_awqgi"]
+render_priority = 0
+shader = ExtResource("3_p37mm")
+shader_parameter/intensity = 2.0
+shader_parameter/screen_color = Color(0.619608, 0.862745, 0, 0.0196078)
+shader_parameter/screen_red_offset = Vector2(0, 0)
+shader_parameter/screen_green_offset = Vector2(0, 0)
+shader_parameter/screen_blue_offset = Vector2(0, 0)
+shader_parameter/pixel_size = 32.0
+shader_parameter/face_texture = ExtResource("4_trpq3")
 
-[sub_resource type="Animation" id="Animation_2861t"]
+[sub_resource type="Animation" id="Animation_ydh7v"]
 resource_name = "Bob"
 length = 3.33333
-loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -396,7 +399,7 @@ tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_w645p"]
+[sub_resource type="Animation" id="Animation_xu60d"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -408,7 +411,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [1.5]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -420,7 +423,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [4.0]
+"values": [2.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -446,20 +449,8 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Armature/Skeleton3D/Beetle:surface_material_override/1:shader_parameter/screen_blue_offset")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
-[sub_resource type="Animation" id="Animation_0ak7y"]
+[sub_resource type="Animation" id="Animation_v7fqn"]
 resource_name = "headbutt"
 length = 0.5
 tracks/0/type = "position_3d"
@@ -841,7 +832,7 @@ tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = PackedFloat32Array(0, 1, 0.430459, -0.43046, -0.560986, 0.560985)
 
-[sub_resource type="Animation" id="Animation_m52k7"]
+[sub_resource type="Animation" id="Animation_bah6u"]
 resource_name = "idle"
 length = 2.08333
 tracks/0/type = "position_3d"
@@ -1223,7 +1214,7 @@ tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = PackedFloat32Array(0, 1, 0.430459, -0.430459, -0.560986, 0.560985)
 
-[sub_resource type="Animation" id="Animation_y1xjx"]
+[sub_resource type="Animation" id="Animation_nkwa8"]
 resource_name = "poweroff"
 length = 1.33333
 tracks/0/type = "position_3d"
@@ -1605,10 +1596,9 @@ tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = PackedFloat32Array(0, 1, 0.430459, -0.430459, -0.560986, 0.560985)
 
-[sub_resource type="Animation" id="Animation_m1c8q"]
+[sub_resource type="Animation" id="Animation_t5abe"]
 resource_name = "walk"
 length = 0.5
-loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -1988,262 +1978,256 @@ tracks/53/interp = 1
 tracks/53/loop_wrap = true
 tracks/53/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xcbtl"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w0msd"]
 _data = {
-"Bob": SubResource("Animation_2861t"),
-"RESET": SubResource("Animation_w645p"),
-"headbutt": SubResource("Animation_0ak7y"),
-"idle": SubResource("Animation_m52k7"),
-"poweroff": SubResource("Animation_y1xjx"),
-"walk": SubResource("Animation_m1c8q")
+"Bob": SubResource("Animation_ydh7v"),
+"RESET": SubResource("Animation_xu60d"),
+"headbutt": SubResource("Animation_v7fqn"),
+"idle": SubResource("Animation_bah6u"),
+"poweroff": SubResource("Animation_nkwa8"),
+"walk": SubResource("Animation_t5abe")
 }
 
-[sub_resource type="Animation" id="Animation_256wp"]
-resource_name = "walk_step"
-length = 0.5
-loop_mode = 1
-step = 0.25
-tracks/0/type = "method"
+[sub_resource type="Animation" id="Animation_i3gya"]
+step = 0.05
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..")
+tracks/0/path = NodePath("Armature/Skeleton3D/Beetle:surface_material_override/2:emission_energy_multiplier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [&"footstep"],
-"method": &"emit_signal"
-}, {
-"args": [&"footstep"],
-"method": &"emit_signal"
-}]
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.5, 2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D/Beetle:surface_material_override/1:shader_parameter/intensity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.45, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [2.0, 0.0, 2.0, 0.0, 2.0, 0.0, 3.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D/Beetle:surface_material_override/1:shader_parameter/screen_red_offset")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.1, -0.1), Vector2(-0.2, 0.1), Vector2(0.1, 0.1), Vector2(-0.2, 0.1), Vector2(0.1, -0.1), Vector2(-0.2, 0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D/Beetle:surface_material_override/1:shader_parameter/screen_green_offset")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.05, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-0.2, 0.1), Vector2(0.15, -0.2), Vector2(0.1, 0.2), Vector2(0.15, -0.2), Vector2(-0.2, 0.1), Vector2(0.15, -0.2)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_adlhr"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5fu2"]
 _data = {
-"power_off_lights": ExtResource("4_x2t4j"),
-"walk_step": SubResource("Animation_256wp")
+"light_shutdown": SubResource("Animation_i3gya")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ycuh0"]
-animation = &"Bob"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2bg8o"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o5ltu"]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fnm42"]
-xfade_time = 0.1
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xqt8r"]
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2g3h1"]
-states/Start/position = Vector2(291, 120)
-states/bob/node = SubResource("AnimationNodeAnimation_ycuh0")
-states/bob/position = Vector2(400, 120)
-"states/head move/node" = SubResource("AnimationNodeAnimation_2bg8o")
-"states/head move/position" = Vector2(576, 120)
-transitions = ["bob", "head move", SubResource("AnimationNodeStateMachineTransition_o5ltu"), "head move", "bob", SubResource("AnimationNodeStateMachineTransition_fnm42"), "Start", "bob", SubResource("AnimationNodeStateMachineTransition_xqt8r")]
-
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_e31eo"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vaij3"]
-animation = &"custom animations/walk_step"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vded2"]
-animation = &"walk"
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qtlgn"]
-graph_offset = Vector2(-697, -19)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_e31eo")
-nodes/Add2/position = Vector2(100, 80)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_vded2")
-nodes/Animation/position = Vector2(-240, 40)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_vaij3")
-"nodes/Animation 2/position" = Vector2(-240, 200)
-node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_roctp"]
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hkuu8"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fphty"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_5qv4m"]
-states/End/position = Vector2(660, 134)
-states/IDLE/node = SubResource("AnimationNodeStateMachine_2g3h1")
-states/IDLE/position = Vector2(504, 100)
-states/Start/position = Vector2(504, 28)
-states/WALK/node = SubResource("AnimationNodeBlendTree_qtlgn")
-states/WALK/position = Vector2(504, 185)
-transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_roctp"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_hkuu8"), "WALK", "IDLE", SubResource("AnimationNodeStateMachineTransition_fphty")]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g3aib"]
-animation = &"RESET"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c6k2g"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tvll1"]
 animation = &"headbutt"
 
-[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_x3265"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g032c"]
+animation = &"Bob"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ephup"]
-animation = &"custom animations/power_off_lights"
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_p5iv8"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ih6k"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1kno4"]
+animation = &"custom_animations/light_shutdown"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qpdql"]
 animation = &"poweroff"
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1heyb"]
-graph_offset = Vector2(-206, 95)
-nodes/Add2/node = SubResource("AnimationNodeAdd2_x3265")
-nodes/Add2/position = Vector2(180, 140)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_ephup")
-nodes/Animation/position = Vector2(-180, 260)
-nodes/output/position = Vector2(340, 200)
-nodes/poweroff/node = SubResource("AnimationNodeAnimation_5ih6k")
-nodes/poweroff/position = Vector2(-20, 140)
-node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"poweroff", &"Add2", 1, &"Animation"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_5ggwp"]
+graph_offset = Vector2(-236, -40)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_p5iv8")
+nodes/Add2/position = Vector2(140, 0)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_qpdql")
+nodes/Animation/position = Vector2(-200, 0)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1kno4")
+"nodes/Animation 2/position" = Vector2(-200, 100)
+nodes/output/position = Vector2(360, 0)
+node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4pemh"]
-auto_advance = true
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x5pkv"]
+animation = &"idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1k1xh"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4vya8"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o8ubx"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vvrak"]
 xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yaqni"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_offbj"]
 xfade_time = 0.1
 switch_mode = 2
-auto_advance = true
+advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j8f3o"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8b75v"]
 xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_crsb7"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ih736"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_20jg6"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fkab0"]
+xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_i7wsl"]
-states/Cycle/node = SubResource("AnimationNodeStateMachine_5qv4m")
-states/Cycle/position = Vector2(504, 115)
-states/End/position = Vector2(504, 278)
-states/RESET/node = SubResource("AnimationNodeAnimation_g3aib")
-states/RESET/position = Vector2(370, 158)
-states/Start/position = Vector2(504, 37)
-states/headbutt/node = SubResource("AnimationNodeAnimation_c6k2g")
-states/headbutt/position = Vector2(653, 115)
-states/poweroff/node = SubResource("AnimationNodeBlendTree_1heyb")
-states/poweroff/position = Vector2(504, 203)
-transitions = ["Start", "Cycle", SubResource("AnimationNodeStateMachineTransition_4pemh"), "Cycle", "headbutt", SubResource("AnimationNodeStateMachineTransition_1k1xh"), "headbutt", "Cycle", SubResource("AnimationNodeStateMachineTransition_yaqni"), "Cycle", "poweroff", SubResource("AnimationNodeStateMachineTransition_j8f3o"), "poweroff", "RESET", SubResource("AnimationNodeStateMachineTransition_crsb7"), "RESET", "Cycle", SubResource("AnimationNodeStateMachineTransition_20jg6")]
-graph_offset = Vector2(-83, 22)
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lstkt"]
+xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_l42fi"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_67rqm"]
+xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_ivcpn"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_idlv2"]
+xfade_time = 0.1
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_xwg3f"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_echn7"]
+xfade_time = 0.1
 
-[node name="BeetleRoot" type="Node3D"]
-script = ExtResource("1_3o2d1")
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8w6un"]
+xfade_time = 0.1
 
-[node name="beetle_bot_fused" parent="." instance=ExtResource("2_sn0u1")]
-transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pngnc"]
+xfade_time = 0.1
 
-[node name="Skeleton3D" parent="beetle_bot_fused/Armature" index="0"]
-bones/1/position = Vector3(-0.4584, 0.1718, 0.00443449)
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e5dv3"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jkt8b"]
+xfade_time = 0.06
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b5goj"]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mavgj"]
+states/Attack/node = SubResource("AnimationNodeAnimation_tvll1")
+states/Attack/position = Vector2(563, 100)
+states/End/position = Vector2(722, 100)
+states/Idle/node = SubResource("AnimationNodeAnimation_g032c")
+states/Idle/position = Vector2(352, 100)
+states/PowerOff/node = SubResource("AnimationNodeBlendTree_5ggwp")
+states/PowerOff/position = Vector2(352, -4)
+states/Shake/node = SubResource("AnimationNodeAnimation_x5pkv")
+states/Shake/position = Vector2(352, 178)
+states/Walk/node = SubResource("AnimationNodeAnimation_4vya8")
+states/Walk/position = Vector2(453, 100)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_o8ubx"), "Idle", "Shake", SubResource("AnimationNodeStateMachineTransition_vvrak"), "Shake", "Idle", SubResource("AnimationNodeStateMachineTransition_offbj"), "Idle", "Attack", SubResource("AnimationNodeStateMachineTransition_8b75v"), "Attack", "Idle", SubResource("AnimationNodeStateMachineTransition_ih736"), "Shake", "Attack", SubResource("AnimationNodeStateMachineTransition_fkab0"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_lstkt"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_67rqm"), "Walk", "Attack", SubResource("AnimationNodeStateMachineTransition_idlv2"), "Attack", "Walk", SubResource("AnimationNodeStateMachineTransition_echn7"), "Shake", "Walk", SubResource("AnimationNodeStateMachineTransition_8w6un"), "Shake", "PowerOff", SubResource("AnimationNodeStateMachineTransition_pngnc"), "Idle", "PowerOff", SubResource("AnimationNodeStateMachineTransition_e5dv3"), "Walk", "PowerOff", SubResource("AnimationNodeStateMachineTransition_jkt8b"), "Attack", "PowerOff", SubResource("AnimationNodeStateMachineTransition_b5goj")]
+graph_offset = Vector2(-130, -175)
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_eteu8"]
+graph_offset = Vector2(-407.383, 19.9611)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_mavgj")
+nodes/StateMachine/position = Vector2(60, 140)
+node_connections = [&"output", 0, &"StateMachine"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_qj0j4"]
+
+[node name="BeetlebotSkin" type="Node3D"]
+script = ExtResource("1_1smde")
+_force_loop = PackedStringArray("Bob", "walk")
+
+[node name="beetle_bot" parent="." instance=ExtResource("1_r7amh")]
+
+[node name="Skeleton3D" parent="beetle_bot/Armature" index="0"]
+bones/1/position = Vector3(-0.56787, 0.177317, 0.00443449)
 bones/1/rotation = Quaternion(0, 0, 0.689081, 0.724685)
-bones/2/position = Vector3(1.92784e-06, 1.4035e-05, -6.77304e-06)
-bones/2/rotation = Quaternion(-0.707107, 1.05367e-08, -1.05367e-08, 0.707107)
+bones/2/position = Vector3(-0.0032875, -0.0180639, -0.00289629)
+bones/2/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/3/rotation = Quaternion(0.560986, 0.560986, 0.430459, 0.430459)
 bones/4/rotation = Quaternion(0.430459, 0.430459, 0.560986, 0.560986)
-bones/6/position = Vector3(-0.2685, -0.383726, 0.00443449)
+bones/6/position = Vector3(-0.341455, -0.46553, 0.00443449)
 bones/6/rotation = Quaternion(0, 0, 0.934429, 0.356148)
-bones/7/position = Vector3(5.54323e-06, 3.11732e-05, -2.6606e-05)
-bones/7/rotation = Quaternion(-0.707107, -3.74339e-23, -6.28037e-16, 0.707107)
+bones/7/position = Vector3(9.53674e-07, 9.46224e-06, -1.09896e-05)
+bones/7/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/8/rotation = Quaternion(0.560986, 0.560986, 0.430459, 0.430459)
 bones/9/rotation = Quaternion(0.430459, 0.430459, 0.560986, 0.560986)
 bones/11/position = Vector3(-0.34543, 0.4905, 0.00443466)
 bones/11/rotation = Quaternion(9.96793e-09, -2.4383e-08, 0.386951, 0.9221)
-bones/12/position = Vector3(-4.30854e-06, 3.20733e-05, -1.70988e-05)
-bones/12/rotation = Quaternion(-0.707107, 3.44213e-07, -2.54651e-07, 0.707107)
+bones/12/position = Vector3(-2.07338e-06, 1.90794e-05, -2.03374e-06)
+bones/12/rotation = Quaternion(-0.707107, 3.013e-07, -2.34345e-07, 0.707107)
 bones/13/rotation = Quaternion(0.560985, 0.560986, 0.430459, 0.430459)
 bones/14/rotation = Quaternion(0.430459, 0.430459, 0.560986, 0.560985)
-bones/16/position = Vector3(-0.0140273, -0.02, 0.34693)
-bones/17/rotation = Quaternion(0.17006, 0.178818, 0.617836, 0.74658)
-bones/18/rotation = Quaternion(-0.662575, -0.0120504, -0.0215243, 0.74859)
-bones/19/rotation = Quaternion(0.101097, 0.292005, 0.856346, 0.413744)
-bones/20/rotation = Quaternion(-0.802977, -0.0102585, -0.0260988, 0.59535)
-bones/21/position = Vector3(-0.0239784, 0.285311, -0.245566)
-bones/21/rotation = Quaternion(0.225128, 0.0869987, 0.466947, 0.850711)
-bones/22/rotation = Quaternion(-0.672462, -0.0124791, -0.0217518, 0.739707)
-bones/24/rotation = Quaternion(0.147169, -0.158601, -0.627744, 0.747747)
-bones/25/rotation = Quaternion(-0.603792, 0.0128265, 0.0196147, 0.796798)
-bones/26/rotation = Quaternion(0.0932212, -0.280406, -0.845429, 0.444895)
-bones/27/rotation = Quaternion(-0.771143, 0.0109603, 0.0250641, 0.636074)
-bones/28/position = Vector3(0.0239784, 0.285311, -0.245566)
-bones/28/rotation = Quaternion(0.198639, -0.0708728, -0.477987, 0.852671)
-bones/29/rotation = Quaternion(-0.610363, 0.0133573, 0.0197432, 0.791763)
-bones/30/position = Vector3(0.4584, 0.1718, 0.00443449)
+bones/16/position = Vector3(0.032, -0.0663337, 0.16)
+bones/16/rotation = Quaternion(0, 0, 4.03807e-17, 1)
+bones/17/rotation = Quaternion(0.0416477, 0.0754527, 0.620896, 0.779141)
+bones/18/rotation = Quaternion(-0.00224686, -0.0160954, -7.29905e-05, 0.999868)
+bones/19/rotation = Quaternion(0.156166, 0.382646, 0.799077, 0.436658)
+bones/20/rotation = Quaternion(-0.586313, -0.0139527, -0.0190566, 0.80974)
+bones/21/position = Vector3(-0.0227838, 0.286506, -0.174586)
+bones/21/rotation = Quaternion(0.280546, 0.114268, 0.440523, 0.845089)
+bones/22/rotation = Quaternion(-0.542679, -0.014165, -0.0175538, 0.839637)
+bones/24/rotation = Quaternion(0.20071, -0.201625, -0.588757, 0.75659)
+bones/25/rotation = Quaternion(-0.383542, 0.0148631, 0.0124597, 0.92332)
+bones/26/rotation = Quaternion(0.190199, -0.455262, -0.78442, 0.375827)
+bones/27/rotation = Quaternion(-0.702173, 0.0122605, 0.0228224, 0.711535)
+bones/28/position = Vector3(0.0227838, 0.286506, -0.174586)
+bones/28/rotation = Quaternion(0.136619, -0.0563563, -0.392018, 0.908009)
+bones/29/rotation = Quaternion(-0.257371, 0.0162991, 0.00832513, 0.966139)
+bones/30/position = Vector3(0.56787, 0.177317, 0.00443449)
 bones/30/rotation = Quaternion(0, 0, -0.689081, 0.724685)
-bones/31/position = Vector3(-1.63913e-06, 1.20485e-05, -5.83427e-06)
-bones/31/rotation = Quaternion(-0.707107, -1.05367e-08, 1.05367e-08, 0.707107)
+bones/31/position = Vector3(-2.76417e-06, 2.2891e-05, -8.7996e-06)
+bones/31/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/32/rotation = Quaternion(0.560986, -0.560986, -0.430459, 0.430459)
 bones/33/rotation = Quaternion(0.430459, -0.430459, -0.560986, 0.560986)
-bones/35/position = Vector3(0.2685, -0.383726, 0.00443449)
+bones/35/position = Vector3(0.341455, -0.46553, 0.00443449)
 bones/35/rotation = Quaternion(0, 0, -0.934429, 0.356148)
-bones/36/position = Vector3(-5.46873e-06, 3.0145e-05, -2.54139e-05)
-bones/36/rotation = Quaternion(-0.707107, 3.74339e-23, 6.28037e-16, 0.707107)
+bones/36/position = Vector3(-9.89437e-06, 3.99202e-05, -2.84091e-05)
+bones/36/rotation = Quaternion(-0.707107, 0, 0, 0.707107)
 bones/37/rotation = Quaternion(0.560986, -0.560986, -0.430459, 0.430459)
 bones/38/rotation = Quaternion(0.430459, -0.430459, -0.560986, 0.560986)
-bones/40/position = Vector3(0.345431, 0.500251, 0.00443466)
+bones/40/position = Vector3(0.42365, 0.577037, 0.00443466)
 bones/40/rotation = Quaternion(9.96793e-09, 2.4383e-08, -0.386951, 0.9221)
-bones/41/position = Vector3(3.27291e-06, 2.70814e-05, -1.34628e-05)
-bones/41/rotation = Quaternion(-0.707107, -3.44213e-07, 2.54651e-07, 0.707107)
+bones/41/position = Vector3(2.12215e-09, 9.08076e-06, -1.74787e-07)
+bones/41/rotation = Quaternion(-0.707107, -3.013e-07, 2.34345e-07, 0.707107)
 bones/42/rotation = Quaternion(-0.560985, 0.560986, 0.430459, -0.430459)
 bones/43/rotation = Quaternion(-0.430459, 0.430459, 0.560986, -0.560985)
 
-[node name="Beetle" parent="beetle_bot_fused/Armature/Skeleton3D" index="0"]
-surface_material_override/1 = ExtResource("3_bftt3")
-surface_material_override/2 = SubResource("StandardMaterial3D_5ygfx")
+[node name="Beetle" parent="beetle_bot/Armature/Skeleton3D" index="0"]
+surface_material_override/1 = SubResource("ShaderMaterial_awqgi")
+surface_material_override/2 = ExtResource("4_4158y")
 
-[node name="AnimationPlayer" parent="beetle_bot_fused" index="1"]
+[node name="AnimationPlayer" parent="beetle_bot" index="1"]
 libraries = {
-"": SubResource("AnimationLibrary_xcbtl"),
-"custom animations": SubResource("AnimationLibrary_adlhr")
+"": SubResource("AnimationLibrary_w0msd"),
+"custom_animations": SubResource("AnimationLibrary_h5fu2")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_i7wsl")
-anim_player = NodePath("../beetle_bot_fused/AnimationPlayer")
+tree_root = SubResource("AnimationNodeBlendTree_eteu8")
+anim_player = NodePath("../beetle_bot/AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_l42fi")
-parameters/Cycle/playback = SubResource("AnimationNodeStateMachinePlayback_ivcpn")
-parameters/Cycle/IDLE/playback = SubResource("AnimationNodeStateMachinePlayback_xwg3f")
-parameters/Cycle/WALK/Add2/add_amount = 1.0
-parameters/poweroff/Add2/add_amount = 1.0
+parameters/StateMachine/playback = SubResource("AnimationNodeStateMachinePlayback_qj0j4")
+parameters/StateMachine/PowerOff/Add2/add_amount = 1.0
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SecondaryActionTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
-[node name="StepSounds" type="Node3D" parent="."]
+[connection signal="timeout" from="SecondaryActionTimer" to="." method="_on_secondary_action_timer_timeout"]
 
-[node name="StepSound1" type="AudioStreamPlayer3D" parent="StepSounds"]
-stream = ExtResource("5_634fy")
-volume_db = 1.0
-
-[node name="StepSound2" type="AudioStreamPlayer3D" parent="StepSounds"]
-stream = ExtResource("6_74mpf")
-volume_db = 1.0
-
-[connection signal="change_state" from="." to="." method="check_idle_second_action_loop"]
-[connection signal="footstep" from="." to="." method="play_random_step_sound"]
-[connection signal="timeout" from="Timer" to="." method="on_timer_second_action"]
-
-[editable path="beetle_bot_fused"]
+[editable path="beetle_bot"]

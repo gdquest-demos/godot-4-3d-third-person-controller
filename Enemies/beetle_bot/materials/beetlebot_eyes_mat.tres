@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dg5h8p8fu3mhh"]
+
+[ext_resource type="Shader" path="res://models/shared/shaders/screen_shader.gdshader" id="1_n44cl"]
+[ext_resource type="Texture2D" uid="uid://bvxkh2pa1nqdq" path="res://models/shared/textures/eye_mask.png" id="2_hdljt"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_n44cl")
+shader_parameter/intensity = 2.0
+shader_parameter/screen_color = Color(0.619608, 0.862745, 0, 0.0784314)
+shader_parameter/screen_red_offset = Vector2(0, 0)
+shader_parameter/screen_green_offset = Vector2(0, 0)
+shader_parameter/screen_blue_offset = Vector2(0, 0)
+shader_parameter/pixel_size = 32.0
+shader_parameter/face_texture = ExtResource("2_hdljt")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cvwkhlljkg06j"]
 
 [ext_resource type="Script" path="res://Enemies/Beetle.gd" id="1_mefon"]
-[ext_resource type="PackedScene" uid="uid://cq4m2udfv5lfg" path="res://Enemies/Beetle/BeetleModel.tscn" id="2_qcu3o"]
+[ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://Enemies/beetle_bot/beetlebot_skin.tscn" id="2_1wpkj"]
 [ext_resource type="AudioStream" uid="uid://c66nnoqtanfw2" path="res://Enemies/Sounds/robot_defeat.wav" id="3_w5eam"]
 
 [sub_resource type="Animation" id="Animation_5pcps"]
@@ -142,11 +142,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.336327, -0.250324)
 shape = SubResource("BoxShape3D_bm81s")
 disabled = true
 
+[node name="BeetlebotSkin" parent="." instance=ExtResource("2_1wpkj")]
+transform = Transform3D(-1.4, 0, -2.11394e-07, 0, 1.4, 0, 2.11394e-07, 0, -1.4, 0, -0.43203, -0.147412)
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 0.1
-
-[node name="BeetleRoot" parent="." instance=ExtResource("2_qcu3o")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.426, 0)
 
 [node name="DefeatSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_w5eam")
