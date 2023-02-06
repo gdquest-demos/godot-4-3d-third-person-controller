@@ -26,23 +26,23 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if not _alive:
 		return
-	
+
 	if _target != null:
 		_beetle_skin.play_walk()
 		var target_look_position := _target.global_position
 		target_look_position.y = global_position.y
 		if target_look_position != Vector3.ZERO:
 			look_at(target_look_position)
-		
-		_navigation_agent.set_target_location(_target.global_position)
-		
-		var next_location := _navigation_agent.get_next_location()
-		
+
+		_navigation_agent.target_position = _target.global_position
+
+		var next_location := _navigation_agent.get_next_path_position()
+
 		if not _navigation_agent.is_target_reached():
 			var direction := (next_location - global_position)
 			direction.y = 0
 			direction = direction.normalized()
-			
+
 			var collision := move_and_collide(direction * delta * 3)
 			if collision:
 				var collider := collision.get_collider()
@@ -65,7 +65,7 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 
 	if not _alive:
 		return
-	
+
 	_defeat_sound.play()
 	_alive = false
 	_beetle_skin.play_poweroff()
@@ -74,14 +74,14 @@ func damage(impact_point: Vector3, force: Vector3) -> void:
 	_detection_area.body_exited.disconnect(_on_body_exited)
 	_target = null
 	_death_collision_shape.set_deferred("disabled", false)
-	
+
 	axis_lock_angular_x = false
 	axis_lock_angular_y = false
 	axis_lock_angular_z = false
 	gravity_scale = 1.0
 
 	await get_tree().create_timer(2).timeout
-	
+
 	var puff := PUFF_SCENE.instantiate()
 	get_parent().add_child(puff)
 	puff.global_position = global_position

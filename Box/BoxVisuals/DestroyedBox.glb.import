@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c57hyrm4d3n3o"
+uid="uid://ciohp0157xfv3"
 path="res://.godot/imported/DestroyedBox.glb-b8c8ecac1aae2fab01445422a4d452cf.scn"
 
 [deps]
@@ -26,5 +26,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
+animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/embedded_image_handling=3

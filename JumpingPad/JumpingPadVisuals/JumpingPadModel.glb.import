@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://n4c3p8bt5sb1"
+uid="uid://octunbukmgdx"
 path="res://.godot/imported/JumpingPadModel.glb-3e6c30d14a0560af68bd0cada394ca5a.scn"
 
 [deps]
@@ -26,5 +26,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
+animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/embedded_image_handling=3

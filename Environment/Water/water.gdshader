@@ -10,6 +10,8 @@ uniform sampler2D small_waves_sampler : hint_normal;
 
 uniform sampler2D foam_noise : hint_normal;
 
+uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_linear_mipmap;
+uniform sampler2D depth_texture : hint_depth_texture, filter_linear_mipmap;
 
 float fresnel(vec3 normal, vec3 view, float intensity){
 	return pow(1.0 - clamp(dot(normal, view), 0.0, 1.0), intensity);
@@ -22,7 +24,7 @@ void fragment() {
 	float scaled_time = TIME / time_scale;
 	
 	
-	float _log_depth = textureLod(DEPTH_TEXTURE, SCREEN_UV, 0.0).x;
+	float _log_depth = textureLod(depth_texture, SCREEN_UV, 0.0).x;
 	vec3 _depth_ndc = vec3(SCREEN_UV * 2.0 - 1.0, _log_depth);
 	vec4 _depth_view = INV_PROJECTION_MATRIX * vec4(_depth_ndc, 1.0);
 	_depth_view.xyz /= _depth_view.w;
@@ -36,7 +38,7 @@ void fragment() {
 	
 	float foam_mask = smoothstep(0.0, 0.5 * foam_n, depth);
 	
-	vec3 screen_color = texture(SCREEN_TEXTURE, SCREEN_UV).rgb;
+	vec3 screen_color = texture(screen_texture, SCREEN_UV).rgb;
 	
 	vec3 screen_color_depth = mix(screen_color * shallow_color, deep_color, depth);
 	

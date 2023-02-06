@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cdtq6fyl7hhgm"
+uid="uid://cqekaooy1ktfl"
 path="res://.godot/imported/BoxModel.glb-89778339d2ef0e8a7be350006bb3d63b.scn"
 
 [deps]
@@ -26,5 +26,7 @@ skins/use_named_skins=true
 animation/import=true
 animation/fps=30
 animation/trimming=false
+animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={}
+gltf/embedded_image_handling=3

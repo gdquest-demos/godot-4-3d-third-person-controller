@@ -6,7 +6,7 @@ func _ready():
 	play_idle()
 
 func play_idle():
-	state_machine.travel("play_idle")
+	state_machine.travel("idle")
 
 func play_spit_attack():
 	state_machine.travel("spit_attack")
