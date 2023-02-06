@@ -22,6 +22,14 @@ There are two kinds of enemies: flying wasps that fire bullets and beetles that 
 1. Download or clone the GitHub repository.
 2. Press <kbd>F5</kbd> or `Run Project`.
 
+## Known issues:
+
+There are some known issues with Godot beta releases. Currently, the project is known to run on Godot 4 beta 17 with some minor issues.
+
+You can find the list of known issues here: https://github.com/gdquest-demos/godot-4-3d-third-person-controller/issues?q=is%3Aissue+is%3Aopen+label%3Abug
+
+Feel free to open a pull request with a fix!
+
 ## Controls:
 
 - <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>left stick</kbd> to move.
