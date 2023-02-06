@@ -1,0 +1,13 @@
+[gd_resource type="Sky" load_steps=3 format=3 uid="uid://jonn5eom7asv"]
+
+[ext_resource type="Shader" path="res://Environment/sky/sky.gdshader" id="1_nntdr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gu028"]
+shader = ExtResource("1_nntdr")
+shader_parameter/top_color = Color(0.184314, 0.529412, 0.823529, 1)
+shader_parameter/bottom_color = Color(0.180392, 0.215686, 0.447059, 1)
+shader_parameter/sun_scatter = Color(0.913725, 0.8, 0.737255, 1)
+shader_parameter/star_stength = 0.0
+
+[resource]
+sky_material = SubResource("ShaderMaterial_gu028")

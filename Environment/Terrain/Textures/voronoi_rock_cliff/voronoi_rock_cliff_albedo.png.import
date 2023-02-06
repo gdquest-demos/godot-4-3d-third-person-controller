@@ -2,26 +2,25 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf3y6p1higppx"
-path.s3tc="res://.godot/imported/grass_blade_mask.png-98df57c114f32d682a5655b29476678f.s3tc.ctex"
+uid="uid://ccle3gd0lgtig"
+path="res://.godot/imported/voronoi_rock_cliff_albedo.png-59ba13c1d5104503d111e7a9d04af1c6.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Environment/grass/grass_blade_mask.png"
-dest_files=["res://.godot/imported/grass_blade_mask.png-98df57c114f32d682a5655b29476678f.s3tc.ctex"]
+source_file="res://Environment/Terrain/Textures/voronoi_rock_cliff/voronoi_rock_cliff_albedo.png"
+dest_files=["res://.godot/imported/voronoi_rock_cliff_albedo.png-59ba13c1d5104503d111e7a9d04af1c6.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
-compress/channel_pack=1
+compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0

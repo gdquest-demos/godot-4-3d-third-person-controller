@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://d28tem7s0fqin"]
 
 [ext_resource type="Script" path="res://Enemies/BeeBot/bee_root.gd" id="1_eu6t5"]
-[ext_resource type="PackedScene" uid="uid://bk3d0okgrcn35" path="res://Enemies/BeeBot/bee_bot.glb" id="1_icaj7"]
+[ext_resource type="PackedScene" uid="uid://f0vfmhexafmx" path="res://Enemies/BeeBot/bee_bot.glb" id="1_icaj7"]
 [ext_resource type="Shader" path="res://shared/shaders/face_mat.gdshader" id="2_7vdnh"]
 [ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://shared/eye_mask.png" id="3_qgh3u"]
 [ext_resource type="Shader" path="res://Enemies/BeeBot/bee_wings_shader.gdshader" id="4_hnl3k"]
@@ -17,13 +17,13 @@ emission = Color(0.737255, 1, 0.505882, 1)
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_7vdnh")
-shader_parameter/face_texture = ExtResource("3_qgh3u")
 shader_parameter/intensity = 4.0
-shader_parameter/pixel_size = 32.0
-shader_parameter/screen_blue_offset = Vector2(0, 0)
 shader_parameter/screen_color = Color(0.737255, 1, 0.505882, 0.00784314)
-shader_parameter/screen_green_offset = Vector2(0, 0)
 shader_parameter/screen_red_offset = Vector2(0, 0)
+shader_parameter/screen_green_offset = Vector2(0, 0)
+shader_parameter/screen_blue_offset = Vector2(0, 0)
+shader_parameter/pixel_size = 32.0
+shader_parameter/face_texture = ExtResource("3_qgh3u")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hnyo1"]
 resource_local_to_scene = true
@@ -1333,7 +1333,6 @@ nodes/output/position = Vector2(580, 160)
 node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation 2 2"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_73fwm"]
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dvovt"]
 xfade_time = 0.2
@@ -1341,7 +1340,6 @@ xfade_time = 0.2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tbmkv"]
 xfade_time = 0.4
 switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q85ht"]
 xfade_time = 0.2
@@ -1371,45 +1369,39 @@ script = ExtResource("1_eu6t5")
 [node name="bee_bot" parent="." instance=ExtResource("1_icaj7")]
 
 [node name="Skeleton3D" parent="bee_bot/Armature" index="0"]
-bones/1/position = Vector3(-3.34694e-10, 0.231858, 0.211069)
-bones/2/rotation = Quaternion(2.3909e-08, 0.852809, 0.522224, 3.72774e-08)
 bones/3/rotation = Quaternion(0.374547, 4.07077e-08, -1.74392e-08, 0.927208)
-bones/4/rotation = Quaternion(-0.495485, 0.157873, -0.135289, 0.843367)
-bones/5/rotation = Quaternion(0.813426, -1.42206e-08, 1.02629e-08, 0.581669)
-bones/6/rotation = Quaternion(0.485844, 4.87666e-08, 4.86565e-08, 0.874045)
-bones/7/rotation = Quaternion(-0.495485, -0.157873, 0.135289, 0.843367)
-bones/8/rotation = Quaternion(0.813426, 5.23295e-09, -9.82711e-09, 0.581669)
+bones/5/rotation = Quaternion(0.750098, 1.02458e-13, 9.03326e-14, 0.661327)
+bones/6/rotation = Quaternion(0.485844, 4.87665e-08, 4.86565e-08, 0.874045)
+bones/8/rotation = Quaternion(0.750098, 1.02458e-13, 9.03326e-14, 0.661327)
 bones/9/rotation = Quaternion(0.485844, -4.87664e-08, -4.86564e-08, 0.874045)
-bones/10/rotation = Quaternion(-0.997452, 5.28279e-09, 4.63259e-08, 0.071336)
-bones/11/rotation = Quaternion(-0.15287, 5.30633e-10, -7.08125e-09, 0.988246)
-bones/12/rotation = Quaternion(0.465327, 0.495208, 0.733614, -0.0071176)
-bones/13/rotation = Quaternion(-0.388458, 1.84605e-07, 7.00511e-08, 0.921467)
-bones/14/rotation = Quaternion(0.362997, -0.0291881, -0.127221, 0.922603)
-bones/15/rotation = Quaternion(0.362997, 0.0291876, 0.12722, 0.922603)
-bones/16/rotation = Quaternion(-0.010529, 0.592403, 0.805214, 0.0240526)
-bones/17/rotation = Quaternion(-0.506709, 0.00998436, 0.00651352, 0.862035)
-bones/18/rotation = Quaternion(0.299583, -0.0346247, -0.124858, 0.945231)
-bones/19/rotation = Quaternion(0.296521, 0.0120795, 0.131964, 0.945788)
-bones/20/rotation = Quaternion(0.764635, 0.413849, 0.398137, -0.292489)
-bones/21/rotation = Quaternion(-0.351683, 0.0333176, 0.0140016, 0.935421)
-bones/22/rotation = Quaternion(0.246056, -0.0359522, -0.124681, 0.96053)
-bones/23/rotation = Quaternion(0.24117, -0.000365212, 0.133888, 0.961203)
-bones/24/rotation = Quaternion(0.463347, 0.0327841, 0.541227, -0.700934)
-bones/25/rotation = Quaternion(3.64734e-08, 6.60565e-09, 0.0692863, 0.997597)
-bones/26/rotation = Quaternion(0.465378, -0.481222, -0.742863, 0.00169918)
-bones/27/rotation = Quaternion(-0.491017, -1.53284e-07, -8.06797e-08, 0.87115)
-bones/28/rotation = Quaternion(0.206329, 0.00786878, 0.130289, 0.969738)
-bones/29/rotation = Quaternion(0.206329, -0.00786829, -0.130289, 0.969738)
-bones/30/rotation = Quaternion(-0.0105291, -0.592403, -0.805214, 0.0240526)
-bones/31/rotation = Quaternion(-0.528138, -0.00981814, -0.00676153, 0.849075)
-bones/32/rotation = Quaternion(0.251879, 0.0283296, 0.126435, 0.959046)
-bones/33/rotation = Quaternion(0.248792, -0.00545683, -0.132404, 0.959449)
-bones/34/rotation = Quaternion(0.764635, -0.413849, -0.398137, -0.292489)
-bones/35/rotation = Quaternion(-0.464592, -0.0313319, -0.0180119, 0.884787)
-bones/36/rotation = Quaternion(0.293842, 0.0421499, 0.122724, 0.947005)
-bones/37/rotation = Quaternion(0.288995, -0.00633916, -0.133738, 0.947922)
-bones/38/rotation = Quaternion(0.463347, -0.0327841, -0.541227, -0.700934)
-bones/39/rotation = Quaternion(-1.31581e-08, 3.8952e-09, -0.068378, 0.99766)
+bones/10/rotation = Quaternion(-0.826842, 2.78253e-08, 3.74132e-08, 0.562435)
+bones/11/rotation = Quaternion(-0.0478532, -2.18719e-10, -7.09773e-09, 0.998854)
+bones/12/rotation = Quaternion(0.62955, 0.572958, 0.414391, -0.321974)
+bones/13/rotation = Quaternion(0.00204147, 2.01131e-07, -1.64139e-08, 0.999998)
+bones/14/rotation = Quaternion(0.0745919, -2.42969e-07, 1.0562e-08, 0.997214)
+bones/15/rotation = Quaternion(0.0745919, -2.42969e-07, 1.0562e-08, 0.997214)
+bones/16/rotation = Quaternion(0.63253, 0.569062, 0.419725, -0.316079)
+bones/17/rotation = Quaternion(0.0233004, 0.0119179, 0.000278118, 0.999657)
+bones/18/rotation = Quaternion(0.0626944, -0.0118978, 0.000747142, 0.997962)
+bones/19/rotation = Quaternion(0.0626944, -0.0118978, 0.000747138, 0.997962)
+bones/20/rotation = Quaternion(0.641721, 0.571721, 0.412266, -0.302268)
+bones/21/rotation = Quaternion(0.0365516, 0.0361402, 5.92996e-05, 0.998678)
+bones/22/rotation = Quaternion(0.0557267, -0.0188655, 0.0010531, 0.998267)
+bones/23/rotation = Quaternion(0.0557267, -0.0188655, 0.0010531, 0.998267)
+bones/24/rotation = Quaternion(0.894672, -8.07353e-08, -7.60767e-08, -0.446723)
+bones/26/rotation = Quaternion(0.62955, -0.572958, -0.414391, -0.321974)
+bones/27/rotation = Quaternion(0.00204146, -1.56447e-07, 7.00948e-09, 0.999998)
+bones/28/rotation = Quaternion(0.0745919, 2.42969e-07, -1.0562e-08, 0.997214)
+bones/29/rotation = Quaternion(0.0745919, 2.42969e-07, -1.0562e-08, 0.997214)
+bones/30/rotation = Quaternion(0.63253, -0.569062, -0.419725, -0.316079)
+bones/31/rotation = Quaternion(0.0233004, -0.0119179, -0.000278118, 0.999657)
+bones/32/rotation = Quaternion(0.0626944, 0.0118978, -0.000747142, 0.997962)
+bones/33/rotation = Quaternion(0.0626944, 0.0118978, -0.000747137, 0.997962)
+bones/34/rotation = Quaternion(0.641721, -0.571721, -0.412266, -0.302268)
+bones/35/rotation = Quaternion(0.0365516, -0.0361402, -5.92814e-05, 0.998678)
+bones/36/rotation = Quaternion(0.0557267, 0.0188655, -0.00105309, 0.998267)
+bones/37/rotation = Quaternion(0.0557267, 0.0188655, -0.0010531, 0.998267)
+bones/38/rotation = Quaternion(0.894672, 4.04933e-08, -1.84153e-09, -0.446723)
 
 [node name="bee_bot2" parent="bee_bot/Armature/Skeleton3D" index="0"]
 surface_material_override/1 = SubResource("StandardMaterial3D_pylk6")

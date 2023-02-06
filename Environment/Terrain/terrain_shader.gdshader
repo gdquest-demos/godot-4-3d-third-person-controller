@@ -1,18 +1,37 @@
 shader_type spatial;
 
-uniform sampler2D wall_mask_sampler : source_color;
+group_uniforms Textures;
 
-uniform sampler2D cliff_albedo_sampler : source_color;
-uniform sampler2D grass_albedo_sampler : source_color;
-uniform sampler2D dirt_albedo_sampler : source_color;
+uniform sampler2D grass_patch_pattern_sampler : filter_linear_mipmap, repeat_enable;
 
-uniform sampler2D cliff_orm_sampler;
-uniform sampler2D grass_orm_sampler;
-uniform sampler2D dirt_orm_sampler;
 
-uniform sampler2D cliff_normal_sampler : hint_normal;
-uniform sampler2D grass_normal_sampler : hint_normal;
-uniform sampler2D dirt_normal_sampler : hint_normal;
+uniform sampler2D wall_mask_sampler : filter_linear_mipmap, source_color, repeat_enable;
+
+uniform sampler2D cliff_albedo_sampler : filter_linear_mipmap, source_color, repeat_enable;
+uniform sampler2D grass_albedo_sampler : filter_linear_mipmap, source_color, repeat_enable;
+uniform sampler2D dirt_albedo_sampler : filter_linear_mipmap, source_color, repeat_enable;
+
+uniform sampler2D cliff_orm_sampler : filter_linear_mipmap, hint_roughness_g, repeat_enable;
+uniform sampler2D grass_orm_sampler : filter_linear_mipmap, hint_roughness_g, repeat_enable;
+uniform sampler2D dirt_orm_sampler : filter_linear_mipmap, hint_roughness_g, repeat_enable;
+
+uniform sampler2D cliff_normal_sampler : filter_linear_mipmap, hint_normal, repeat_enable;
+uniform sampler2D grass_normal_sampler : filter_linear_mipmap, hint_normal, repeat_enable;
+uniform sampler2D dirt_normal_sampler : filter_linear_mipmap, hint_normal, repeat_enable;
+
+uniform float wall_edge_offset = 1.0;
+uniform float cliff_scale = 1.0;
+
+group_uniforms Triplanar;
+
+uniform vec3 triplanar_scale = vec3(1.0, 1.0, 1.0);
+uniform vec3 triplanar_offset = vec3(0.0);
+uniform float triplanar_sharpness = 0.5;
+
+varying vec3 triplanar_power_normal;
+varying vec3 triplanar_pos;
+
+varying vec3 object_normal;
 
 // TextureUniformTriplanar
 vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos) {
@@ -23,16 +42,16 @@ vec4 triplanar_texture(sampler2D p_sampler, vec3 p_weights, vec3 p_triplanar_pos
 	return samp;
 }
 
-uniform vec3 triplanar_scale = vec3(1.0, 1.0, 1.0);
-uniform vec3 triplanar_offset;
-uniform float triplanar_sharpness = 0.5;
-
-varying vec3 triplanar_power_normal;
-varying vec3 triplanar_pos;
-
-varying vec3 object_normal;
-
 void vertex() {
+	
+	TANGENT = vec3(0.0,0.0,-1.0) * abs(NORMAL.x);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.y);
+	TANGENT+= vec3(1.0,0.0,0.0) * abs(NORMAL.z);
+	TANGENT = normalize(TANGENT);
+	BINORMAL = vec3(0.0,1.0,0.0) * abs(NORMAL.x);
+	BINORMAL+= vec3(0.0,0.0,-1.0) * abs(NORMAL.y);
+	BINORMAL+= vec3(0.0,1.0,0.0) * abs(NORMAL.z);
+	BINORMAL = normalize(BINORMAL);
 	
 	object_normal = NORMAL;
 	
@@ -50,32 +69,31 @@ float motif_mask(float edge, float motif){
 }
 
 void fragment(){
-	vec3 cliff_albedo = triplanar_texture(cliff_albedo_sampler, triplanar_power_normal, triplanar_pos).rgb;
+	vec3 cliff_albedo = triplanar_texture(cliff_albedo_sampler, triplanar_power_normal, triplanar_pos * cliff_scale).rgb;
 	vec3 grass_albedo = triplanar_texture(grass_albedo_sampler, triplanar_power_normal, triplanar_pos).rgb;
 	vec3 dirt_albedo = triplanar_texture(dirt_albedo_sampler, triplanar_power_normal, triplanar_pos).rgb;
 	
-	float cliff_roughness = triplanar_texture(cliff_orm_sampler, triplanar_power_normal, triplanar_pos).g;
+	float cliff_roughness = triplanar_texture(cliff_orm_sampler, triplanar_power_normal, triplanar_pos * cliff_scale).g;
 	float grass_roughnes = triplanar_texture(grass_orm_sampler, triplanar_power_normal, triplanar_pos).g;
 	float dirt_roughnes = triplanar_texture(dirt_orm_sampler, triplanar_power_normal, triplanar_pos).g;
 	
-	vec3 cliff_normal = triplanar_texture(cliff_normal_sampler, triplanar_power_normal, triplanar_pos).rgb;
+	vec3 cliff_normal = triplanar_texture(cliff_normal_sampler, triplanar_power_normal, triplanar_pos * cliff_scale).rgb;
 	vec3 grass_normal = triplanar_texture(grass_normal_sampler, triplanar_power_normal, triplanar_pos).rgb;
 	vec3 dirt_normal = triplanar_texture(dirt_normal_sampler, triplanar_power_normal, triplanar_pos).rgb;
 	
-	float wall_motif = triplanar_texture(wall_mask_sampler, triplanar_power_normal, triplanar_pos).x;
+	float wall_motif = triplanar_texture(wall_mask_sampler, triplanar_power_normal, triplanar_pos * cliff_scale).x;
 	
-	float wall_edge = object_normal.y * 1.5;
+	float wall_edge = object_normal.y * wall_edge_offset;
 	float wall_mask = motif_mask(wall_edge, wall_motif);
 	
-	float path_edge = COLOR.x;
-	float path_mask = motif_mask(path_edge, grass_roughnes);
+	float path_edge = triplanar_texture(grass_patch_pattern_sampler, triplanar_power_normal, triplanar_pos * 0.05).x;
+	float path_mask = motif_mask(smoothstep(0.5, 0.6, path_edge), grass_roughnes);
 	
-	vec3 ground_albedo = mix(grass_albedo, dirt_albedo, path_mask);
+	vec3 ground_albedo = mix(grass_albedo * vec3(0.85), grass_albedo * vec3(0.5), path_mask);
 	float ground_roughness = mix(grass_roughnes, dirt_roughnes, path_mask);
 	vec3 ground_normal = mix(grass_normal, dirt_normal, path_mask);
 	
 	ALBEDO = mix(cliff_albedo, ground_albedo, wall_mask);
-	ROUGHNESS = mix(cliff_roughness, ground_roughness, wall_mask);
-	NORMAL_MAP = mix(cliff_normal, ground_normal, wall_mask);
-	
+	ROUGHNESS = mix(cliff_roughness, grass_roughnes, wall_mask);
+	NORMAL_MAP = mix(cliff_normal, grass_normal, wall_mask);
 }

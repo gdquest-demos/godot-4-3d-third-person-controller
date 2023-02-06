@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://dx8qkjcbt8emp"]
 
-[ext_resource type="Material" uid="uid://ctfphybt4ar4e" path="res://Environment/grass/grass_mat.tres" id="1_7g28l"]
-[ext_resource type="ArrayMesh" uid="uid://dbeiaffqjay74" path="res://Environment/grass/grass.obj" id="2_6vbeq"]
+[ext_resource type="Material" uid="uid://ovciasxou830" path="res://Environment/grass/grass_mat.tres" id="1_t5arf"]
+[ext_resource type="ArrayMesh" uid="uid://bmveegrtd4yaa" path="res://Environment/grass/grass_1_geo.obj" id="2_0hpms"]
 
 [node name="grass_chunk_scene" type="MeshInstance3D"]
-material_override = ExtResource("1_7g28l")
+material_override = ExtResource("1_t5arf")
 cast_shadow = 0
-mesh = ExtResource("2_6vbeq")
+mesh = ExtResource("2_0hpms")
