@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://7j15r0ej4fwx"]
 
 [ext_resource type="Script" path="res://JumpingPad/JumpingPad.gd" id="1_w7mtj"]
+[ext_resource type="PackedScene" uid="uid://d3jgve1g030hy" path="res://Environment/mushroom/mushroom.glb" id="2_3e4pb"]
 [ext_resource type="PackedScene" path="res://JumpingPad/JumpingPadVisuals/JumpingPadModel.tscn" id="2_otx0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dspj3"]
@@ -9,7 +10,10 @@ size = Vector3(1, 0.2158, 1)
 [node name="JumpingPad" type="Area3D"]
 script = ExtResource("1_w7mtj")
 
+[node name="mushroom" parent="." instance=ExtResource("2_3e4pb")]
+
 [node name="jump_pad" parent="." instance=ExtResource("2_otx0r")]
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_dspj3")
