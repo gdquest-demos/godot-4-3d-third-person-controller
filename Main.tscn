@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://mb58xbunfaep" path="res://icons/weapon_ui.tscn" id="1_3u7h6"]
 [ext_resource type="Sky" uid="uid://jonn5eom7asv" path="res://Environment/sky/blue_sky.tres" id="2_4bjxn"]
 [ext_resource type="PackedScene" uid="uid://ciqrpd5675boy" path="res://Player/Player.tscn" id="2_q87gh"]
-[ext_resource type="PackedScene" path="res://JumpingPad/JumpingPad.tscn" id="3_w2mh2"]
+[ext_resource type="PackedScene" uid="uid://7j15r0ej4fwx" path="res://JumpingPad/JumpingPad.tscn" id="3_w2mh2"]
 [ext_resource type="PackedScene" uid="uid://b602ttibxesgm" path="res://Level/Terrain.glb" id="4_vprlf"]
 [ext_resource type="Material" uid="uid://c5trc4hy86utg" path="res://Environment/Terrain/terrain_mat.tres" id="5_xal68"]
 [ext_resource type="Material" uid="uid://con3572kpt8a3" path="res://Environment/large_tree_trunk/large_tree_trunk_mat.tres" id="6_q3y6j"]
