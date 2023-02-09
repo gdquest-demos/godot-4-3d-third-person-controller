@@ -1,13 +1,21 @@
-[gd_resource type="Sky" load_steps=3 format=3 uid="uid://jonn5eom7asv"]
+[gd_resource type="Sky" load_steps=5 format=3 uid="uid://jonn5eom7asv"]
 
 [ext_resource type="Shader" path="res://Environment/sky/sky.gdshader" id="1_nntdr"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_p7i03"]
+noise_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bkjhb"]
+seamless = true
+noise = SubResource("FastNoiseLite_p7i03")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gu028"]
 shader = ExtResource("1_nntdr")
-shader_parameter/top_color = Color(0.184314, 0.529412, 0.823529, 1)
-shader_parameter/bottom_color = Color(0.196078, 0.0588235, 0.027451, 1)
-shader_parameter/sun_scatter = Color(0.894118, 0.866667, 0.803922, 1)
+shader_parameter/top_color = Color(0.164706, 0.541176, 0.823529, 1)
+shader_parameter/bottom_color = Color(0.215686, 0.109804, 0.0196078, 1)
+shader_parameter/sun_scatter = Color(0.529412, 0.8, 1, 1)
 shader_parameter/star_stength = 0.0
+shader_parameter/clouds_sampler = SubResource("NoiseTexture2D_bkjhb")
 
 [resource]
 sky_material = SubResource("ShaderMaterial_gu028")
