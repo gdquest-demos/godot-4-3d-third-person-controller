@@ -18,8 +18,14 @@ func _ready():
 	
 	for i in range(mdt.get_face_count()):
 		var normal = mdt.get_face_normal(i)
-		if normal.dot(Vector3.UP) > 0.99:
-			triangles.append(i)
+		if normal.dot(Vector3.UP) < 0.99: continue
+		
+		var v1 = mdt.get_vertex_color(mdt.get_face_vertex(i, 0))
+		var v2 = mdt.get_vertex_color(mdt.get_face_vertex(i, 1))
+		var v3 = mdt.get_vertex_color(mdt.get_face_vertex(i, 2))
+		var redness = (v1.r + v2.r + v3.r) / 3.0
+		if redness > 0.25: continue
+		triangles.append(i)
 	
 	var triangle_count = triangles.size()
 	

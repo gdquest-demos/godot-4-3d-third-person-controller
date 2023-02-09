@@ -86,14 +86,22 @@ void fragment(){
 	float wall_edge = object_normal.y * wall_edge_offset;
 	float wall_mask = motif_mask(wall_edge, wall_motif);
 	
-	float path_edge = triplanar_texture(grass_patch_pattern_sampler, triplanar_power_normal, triplanar_pos * 0.05).x;
-	float path_mask = motif_mask(smoothstep(0.5, 0.6, path_edge), grass_roughnes);
+	float path_edge = COLOR.x;
+	float path_mask = motif_mask(path_edge + 0.5, grass_roughnes * 2.0);
 	
-	vec3 ground_albedo = mix(grass_albedo * vec3(0.85), grass_albedo * vec3(0.5), path_mask);
+	float grass_mix_noise_edge = triplanar_texture(grass_patch_pattern_sampler, triplanar_power_normal, triplanar_pos * 0.05).x;
+	float grass_mix_mask = motif_mask(smoothstep(0.5, 0.6, grass_mix_noise_edge), grass_roughnes);
+	
+	vec3 grass_mixed_albedo = 
+	mix(grass_albedo * vec3(0.85),
+	grass_albedo * vec3(0.5),
+	grass_mix_mask);
+	
+	vec3 ground_albedo = mix(grass_mixed_albedo, dirt_albedo, path_mask);
 	float ground_roughness = mix(grass_roughnes, dirt_roughnes, path_mask);
 	vec3 ground_normal = mix(grass_normal, dirt_normal, path_mask);
 	
 	ALBEDO = mix(cliff_albedo, ground_albedo, wall_mask);
-	ROUGHNESS = mix(cliff_roughness, grass_roughnes, wall_mask);
-	NORMAL_MAP = mix(cliff_normal, grass_normal, wall_mask);
+	ROUGHNESS = mix(cliff_roughness, ground_roughness, wall_mask);
+	NORMAL_MAP = mix(cliff_normal, ground_normal, wall_mask);
 }
