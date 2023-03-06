@@ -5,15 +5,17 @@
 [ext_resource type="PackedScene" path="res://JumpingPad/JumpingPadVisuals/JumpingPadModel.tscn" id="2_otx0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dspj3"]
-size = Vector3(1, 0.2158, 1)
+size = Vector3(1, 1.4, 1)
 
 [node name="JumpingPad" type="Area3D"]
 script = ExtResource("1_w7mtj")
 
 [node name="mushroom" parent="." instance=ExtResource("2_3e4pb")]
+unique_name_in_owner = true
 
 [node name="jump_pad" parent="." instance=ExtResource("2_otx0r")]
 visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.694488, 0)
 shape = SubResource("BoxShape3D_dspj3")
