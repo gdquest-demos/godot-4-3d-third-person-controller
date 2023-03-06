@@ -30,8 +30,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq2x4"]
 shader = ExtResource("2_07raf")
-shader_parameter/modulate = Color(0.576471, 0.556863, 1, 1)
-shader_parameter/blur_amount = 1.496
+shader_parameter/blur_scale = Vector2(4, 4)
+shader_parameter/color_modulate = Color(0.780392, 0.717647, 0.968627, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_swl1q"]
 font_size = 20
@@ -172,7 +172,6 @@ theme_override_fonts/normal_font = ExtResource("6_r37av")
 theme_override_font_sizes/normal_font_size = 36
 bbcode_enabled = true
 text = "[color=#daeaf6]Ratchet & Clank[/color] · [color=#f0c1aa]Banjo Kazooie[/color]"
-fit_content_height = true
 
 [node name="DescriptionMargin" type="MarginContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer"]
 layout_mode = 2
