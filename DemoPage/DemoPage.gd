@@ -65,4 +65,4 @@ func resume_demo() -> void:
 	var tween := create_tween()
 	tween.tween_property(demo_page_root, "modulate", Color.TRANSPARENT, 0.3)
 	tween.tween_callback(demo_page_root.hide)
-	Input.mouse_mode = _demo_mouse_mode
+	Input.mouse_mode = _demo_mouse_mode as Input.MouseMode
