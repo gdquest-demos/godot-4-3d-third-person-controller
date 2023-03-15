@@ -95,7 +95,7 @@ func _physics_process(delta: float) -> void:
 	if _move_direction.length() > 0.2:
 		_last_strong_direction = _move_direction.normalized()
 	if is_aiming:
-		_last_strong_direction = _camera_controller.global_transform.basis * Vector3.BACK
+		_last_strong_direction = (_camera_controller.global_transform.basis * Vector3.BACK).normalized()
 
 	_orient_character_to_direction(_last_strong_direction, delta)
 
@@ -115,7 +115,7 @@ func _physics_process(delta: float) -> void:
 		_ui_aim_recticle.visible = true
 	else:
 		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
-		_grenade_aim_controller.throw_direction = _last_strong_direction.rotated(_last_strong_direction.cross(Vector3.UP), _camera_controller.camera.rotation.x)
+		_grenade_aim_controller.throw_direction = _last_strong_direction
 		_grenade_aim_controller.from_look_position = global_position
 		_ui_aim_recticle.visible = false
 
