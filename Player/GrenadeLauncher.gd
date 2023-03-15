@@ -23,7 +23,7 @@ func _ready() -> void:
 		set_physics_process(false)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if visible:
 		_update_throw_velocity()
 		_draw_throw_path()
@@ -56,13 +56,18 @@ func _update_throw_velocity() -> void:
 
 	# Snap grenade land position to an enemy the player's aiming at, if applicable
 	var to_target := _raycast.target_position
-	var collider := _raycast.get_collider(0)
-	var has_target: bool = collider and collider.is_in_group("targeteables")
-	_snap_mesh.visible = has_target
-	if has_target:
-		to_target = collider.global_position - _launch_point.global_position
-		_snap_mesh.global_position = _launch_point.global_position + to_target
-		_snap_mesh.look_at(_launch_point.global_position)
+	
+	if _raycast.get_collision_count() != 0 :
+		var collider := _raycast.get_collider(0)
+		var has_target: bool = collider and collider.is_in_group("targeteables")
+		_snap_mesh.visible = has_target
+		if has_target:
+			to_target = collider.global_position - _launch_point.global_position
+			_snap_mesh.global_position = _launch_point.global_position + to_target
+			_snap_mesh.look_at(_launch_point.global_position)
+	else:
+		_snap_mesh.visible = false
+		
 
 	# Calculate the initial velocity the grenade needs based on where we want it to land and how
 	# high the curve should go.
