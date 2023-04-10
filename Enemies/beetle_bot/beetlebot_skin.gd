@@ -12,16 +12,18 @@ func _ready():
 		anim.loop_mode = Animation.LOOP_LINEAR
 
 func _on_secondary_action_timer_timeout():
-	if _main_state_machine.get_current_node() != "Idle": return
-	_main_state_machine.travel("Shake")
+	if _main_state_machine.get_current_node() == "Idle":
+		shake()
 	_secondary_action_timer.start(randf_range(3.0, 8.0))
 
 func idle():
 	_main_state_machine.travel("Idle")
-	_secondary_action_timer.start()
 	
 func walk():
 	_main_state_machine.travel("Walk")
+	
+func shake():
+	_main_state_machine.travel("Shake")
 	
 func attack():
 	_main_state_machine.travel("Attack")
