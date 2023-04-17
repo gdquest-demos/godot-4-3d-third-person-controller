@@ -143,7 +143,6 @@ fov = 50.0
 [node name="CameraRayCast" type="RayCast3D" parent="CameraController/PlayerCamera"]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, 0, -100)
-collision_mask = 2
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
 [node name="GrenadeLauncher" parent="." instance=ExtResource("3_54qc4")]
@@ -241,10 +240,11 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
-transform = Transform3D(0.998735, 0, 0.0502874, 0, 1, 0, -0.0502874, 0, 0.998735, 0, 0, 0)
+transform = Transform3D(0.278847, 0, 0.960336, 0, 1, 0, -0.960336, 0, 0.278847, 0, 0, 0)
 y_amplitude = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.604131)
 current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]

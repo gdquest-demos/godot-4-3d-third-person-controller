@@ -78,6 +78,7 @@ func setup(anchor: CharacterBody3D) -> void:
 	set_pivot(CAMERA_PIVOT.THIRD_PERSON)
 	camera.global_transform = camera.global_transform.interpolate_with(_pivot.global_transform, 0.1)
 	_camera_spring_arm.add_excluded_object(_anchor.get_rid())
+	_camera_raycast.add_exception_rid(_anchor.get_rid())
 
 
 func set_pivot(pivot_type: CAMERA_PIVOT) -> void:
