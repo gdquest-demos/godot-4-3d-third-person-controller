@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cvwkhlljkg06j"]
+[gd_scene load_steps=11 format=3 uid="uid://oxyn25v5khuk"]
 
 [ext_resource type="Script" path="res://Enemies/Beetle.gd" id="1_mefon"]
-[ext_resource type="PackedScene" uid="uid://bpjqcswabdtyb" path="res://Enemies/beetle_bot/beetlebot_skin.tscn" id="2_1wpkj"]
+[ext_resource type="PackedScene" path="res://Enemies/beetle_bot/beetlebot_skin.tscn" id="2_1wpkj"]
 [ext_resource type="AudioStream" uid="uid://c66nnoqtanfw2" path="res://Enemies/Sounds/robot_defeat.wav" id="3_w5eam"]
 
 [sub_resource type="Animation" id="Animation_5pcps"]
@@ -111,7 +111,7 @@ lock_rotation = true
 script = ExtResource("1_mefon")
 
 [node name="ReactionLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23854, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8034, 0)
 visible = false
 billboard = 2
 text = "!"
@@ -130,24 +130,25 @@ collision_layer = 0
 shape = SubResource("SphereShape3D_h03f6")
 
 [node name="CollisionShapeBody" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0858798, -0.189352)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.397976, -0.189352)
 shape = SubResource("CapsuleShape3D_g3iuo")
 
 [node name="CollisionShapeHead" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.460848, -0.382635)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.561604, -0.382635)
 shape = SubResource("BoxShape3D_bm81s")
 
 [node name="DeathCollisionShape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.336327, -0.250324)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0344099, -0.250324)
 shape = SubResource("BoxShape3D_bm81s")
 disabled = true
 
-[node name="BeetlebotSkin" parent="." instance=ExtResource("2_1wpkj")]
-transform = Transform3D(-1.4, 0, -2.11394e-07, 0, 1.4, 0, 2.11394e-07, 0, -1.4, 0, -0.43203, -0.147412)
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 target_desired_distance = 0.1
+agent_height_offset = 1.0
 
 [node name="DefeatSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_w5eam")
 volume_db = 1.0
+
+[node name="BeetlebotSkin" parent="." instance=ExtResource("2_1wpkj")]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)

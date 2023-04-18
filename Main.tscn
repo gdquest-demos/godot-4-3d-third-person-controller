@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" path="res://Environment/bushes/bush.tscn" id="11_f8df7"]
 [ext_resource type="PackedScene" uid="uid://cmwyiep10m4u4" path="res://Box/Box.tscn" id="12_xvr0j"]
 [ext_resource type="PackedScene" uid="uid://rn45gytkk6tv" path="res://Enemies/BeeBot.tscn" id="13_012dc"]
-[ext_resource type="PackedScene" uid="uid://cvwkhlljkg06j" path="res://Enemies/Beetle.tscn" id="14_tmmem"]
+[ext_resource type="PackedScene" uid="uid://oxyn25v5khuk" path="res://Enemies/Beetle.tscn" id="14_tmmem"]
 [ext_resource type="PackedScene" path="res://Environment/flowers/flower_patch.tscn" id="15_jqya0"]
 [ext_resource type="PackedScene" uid="uid://cnj0t3ad178q6" path="res://DemoPage/DemoPage.tscn" id="16_qr75n"]
 [ext_resource type="AudioStream" uid="uid://bveh08m6w5ryf" path="res://Level/Music/mountain.mp3" id="17_mil5a"]
@@ -1430,16 +1430,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.01846, 4.04934, -1.01587)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.821, 23.8633, -9.42108)
 
 [node name="GroundEnemy" parent="Foes" instance=ExtResource("14_tmmem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.425, 0.998134, -2.73277)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.425, 0.565421, -2.73277)
 
 [node name="GroundEnemy2" parent="Foes" instance=ExtResource("14_tmmem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 7.17666, -4.01509)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.0059, 6.72432, -4.01509)
 
 [node name="GroundEnemy3" parent="Foes" instance=ExtResource("14_tmmem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3509, 7.20429, 7.79975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3509, 6.75317, 7.79975)
 
 [node name="GroundEnemy4" parent="Foes" instance=ExtResource("14_tmmem")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7016, 13.9473, 12.3918)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.7016, 13.4851, 12.3918)
 
 [node name="Flowers" type="Node3D" parent="."]
 

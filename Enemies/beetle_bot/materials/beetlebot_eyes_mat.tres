@@ -1,7 +1,7 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://dg5h8p8fu3mhh"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cnqdakqjse13v"]
 
-[ext_resource type="Shader" path="res://models/shared/shaders/screen_shader.gdshader" id="1_n44cl"]
-[ext_resource type="Texture2D" uid="uid://bvxkh2pa1nqdq" path="res://models/shared/textures/eye_mask.png" id="2_hdljt"]
+[ext_resource type="Shader" path="res://shared/shaders/screen_shader.gdshader" id="1_n44cl"]
+[ext_resource type="Texture2D" uid="uid://bvxkh2pa1nqdq" path="res://shared/textures/eye_mask.png" id="2_hdljt"]
 
 [resource]
 render_priority = 0
