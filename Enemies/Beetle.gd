@@ -54,8 +54,6 @@ func _physics_process(delta: float) -> void:
 					force *= 10.0
 					collider.damage(impact_point, force)
 					_beetle_skin.attack()
-	else:
-		_beetle_skin.idle()
 
 
 func damage(impact_point: Vector3, force: Vector3) -> void:
@@ -104,3 +102,4 @@ func _on_body_exited(body: Node3D) -> void:
 	if body is Player:
 		_target = null
 		_reaction_animation_player.play("lost_player")
+		_beetle_skin.idle()
