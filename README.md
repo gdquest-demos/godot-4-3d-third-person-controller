@@ -1,5 +1,5 @@
 ---
-cover: static/cover.png
+cover: static/cover.webp
 itchio: https://gdquest-demos.itch.io/Godot-4-Character-3D-Demo
 tags: 3D third-person-shooter shooter controller
 description: "A 3D Third Person Shooter Controller Demo"
