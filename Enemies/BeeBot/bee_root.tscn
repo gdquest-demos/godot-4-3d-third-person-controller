@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://d28tem7s0fqin"]
+[gd_scene load_steps=34 format=3 uid="uid://4nwp6xgihjc7"]
 
 [ext_resource type="Script" path="res://Enemies/BeeBot/bee_root.gd" id="1_eu6t5"]
 [ext_resource type="PackedScene" uid="uid://f0vfmhexafmx" path="res://Enemies/BeeBot/bee_bot.glb" id="1_icaj7"]

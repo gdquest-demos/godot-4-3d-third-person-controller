@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Enemies/beetle_bot/beetlebot_skin.gd" id="1_1smde"]
 [ext_resource type="PackedScene" uid="uid://dbqoj8oam1dsg" path="res://Enemies/beetle_bot/beetle_bot_fused.glb" id="1_r7amh"]
-[ext_resource type="Shader" path="res://shared/shaders/face_mat.gdshader" id="3_p37mm"]
+[ext_resource type="Shader" path="res://Player/face_mat.gdshader" id="3_p37mm"]
 [ext_resource type="Material" uid="uid://h2e57pyy6lu4" path="res://Enemies/beetle_bot/materials/beetlebot_lights_mat.tres" id="4_4158y"]
 [ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://shared/eye_mask.png" id="4_trpq3"]
 

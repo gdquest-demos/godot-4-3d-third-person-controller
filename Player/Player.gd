@@ -61,6 +61,11 @@ func _ready() -> void:
 	_camera_controller.setup(self)
 	_grenade_aim_controller.visible = false
 	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
+	
+	# When copying this character to a new project, the project may lack required input actions.
+	# In that case, we register input actions for the user at runtime.
+	if not InputMap.has_action("move_left"):
+		_register_input_actions()
 
 
 func _physics_process(delta: float) -> void:
@@ -246,3 +251,27 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
 		model_scale
 	)
+
+
+## Used to register required input actions when copying this character to a different project.
+func _register_input_actions() -> void:
+	const INPUT_ACTIONS := {
+		"move_left": KEY_A,
+		"move_right": KEY_D,
+		"move_up": KEY_W,
+		"move_down": KEY_S,
+		"jump": KEY_SPACE,
+		"attack": MOUSE_BUTTON_LEFT,
+		"aim": MOUSE_BUTTON_RIGHT,
+		"swap_weapons": KEY_TAB,
+		"pause": KEY_ESCAPE,
+		"camera_left": KEY_Q,
+		"camera_right": KEY_E,
+		"camera_up": KEY_R,
+		"camera_down": KEY_F,
+	}
+	for action in INPUT_ACTIONS:
+		if InputMap.has_action(action):
+			continue
+		InputMap.add_action(action)
+		InputMap.action_add_event(action, INPUT_ACTIONS[action])
