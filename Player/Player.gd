@@ -274,4 +274,6 @@ func _register_input_actions() -> void:
 		if InputMap.has_action(action):
 			continue
 		InputMap.add_action(action)
-		InputMap.action_add_event(action, INPUT_ACTIONS[action])
+		var input_key = InputEventKey.new()
+		input_key.keycode = INPUT_ACTIONS[action]
+		InputMap.action_add_event(action, input_key)
