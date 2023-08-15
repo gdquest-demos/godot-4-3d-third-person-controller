@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3]
+[gd_scene load_steps=42 format=3 uid="uid://8uxv7k5qoukk"]
 
 [ext_resource type="Script" path="res://Enemies/beetle_bot/beetlebot_skin.gd" id="1_1smde"]
 [ext_resource type="PackedScene" uid="uid://dbqoj8oam1dsg" path="res://Enemies/beetle_bot/beetle_bot_fused.glb" id="1_r7amh"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://oxyn25v5khuk"]
 
 [ext_resource type="Script" path="res://Enemies/Beetle.gd" id="1_mefon"]
-[ext_resource type="PackedScene" path="res://Enemies/beetle_bot/beetlebot_skin.tscn" id="2_1wpkj"]
+[ext_resource type="PackedScene" uid="uid://8uxv7k5qoukk" path="res://Enemies/beetle_bot/beetlebot_skin.tscn" id="2_1wpkj"]
 [ext_resource type="AudioStream" uid="uid://c66nnoqtanfw2" path="res://Enemies/Sounds/robot_defeat.wav" id="3_w5eam"]
 
 [sub_resource type="Animation" id="Animation_5pcps"]

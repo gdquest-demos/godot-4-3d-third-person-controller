@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://dadjv3y2wv74n"]
 
 [ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://Environment/trees/tree.obj" id="1_1cwwe"]
 [ext_resource type="Shader" path="res://Environment/bushes/bush_wind.gdshader" id="2_7fdjv"]

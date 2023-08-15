@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://c3gkxxhos4ny"]
 
 [ext_resource type="Shader" path="res://Environment/flowers/flower_patch.gdshader" id="1_jw7pd"]
 [ext_resource type="Texture2D" uid="uid://c8f84qeseq2rk" path="res://Environment/flowers/textures/flower_head_albedo.png" id="2_j64bn"]

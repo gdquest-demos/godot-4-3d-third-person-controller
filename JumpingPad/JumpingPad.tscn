@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://JumpingPad/JumpingPad.gd" id="1_w7mtj"]
 [ext_resource type="PackedScene" uid="uid://d3jgve1g030hy" path="res://Environment/mushroom/mushroom.glb" id="2_3e4pb"]
-[ext_resource type="PackedScene" path="res://JumpingPad/JumpingPadVisuals/JumpingPadModel.tscn" id="2_otx0r"]
+[ext_resource type="PackedScene" uid="uid://7nm8s7k2qi8g" path="res://JumpingPad/JumpingPadVisuals/JumpingPadModel.tscn" id="2_otx0r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dspj3"]
 size = Vector3(1, 1.4, 1)

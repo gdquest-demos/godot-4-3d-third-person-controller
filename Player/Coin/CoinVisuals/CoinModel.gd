@@ -1,4 +1,3 @@
-@tool
 extends Node3D
 
 @export var y_amplitude := 0.04

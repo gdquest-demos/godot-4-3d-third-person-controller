@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Player/MeleeAttackArea.gd" id="3_v1vve"]
 [ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://Player/CharacterSkin.tscn" id="4_ign62"]
 [ext_resource type="Script" path="res://Player/CoinsContainer.gd" id="7_8eehq"]
-[ext_resource type="PackedScene" path="res://Player/Coin/CoinVisuals/CoinModel.tscn" id="8_6qxxt"]
+[ext_resource type="PackedScene" uid="uid://ddvfxxmtjhsp2" path="res://Player/Coin/CoinVisuals/CoinModel.tscn" id="8_6qxxt"]
 [ext_resource type="AudioStream" uid="uid://bx0t7f2nuk2lr" path="res://Player/Sounds/03_Step_grass_03.wav" id="10_wx4h4"]
 [ext_resource type="AudioStream" uid="uid://cbcb2d63weegs" path="res://Player/Sounds/45_Landing_01.wav" id="11_3s4i7"]
 

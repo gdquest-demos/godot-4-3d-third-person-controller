@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/CharacterSkin.gd" id="2_cp6td"]
 [ext_resource type="PackedScene" uid="uid://db7wkegkjmixy" path="res://Player/model/gdbot.glb" id="2_v8h3f"]
-[ext_resource type="Material" uid="uid://bbishx00t2kip" path="res://Player/model/materials/face_mat.tres" id="3_fvn82"]
+[ext_resource type="Material" uid="uid://dh42cdejchkr3" path="res://Player/model/materials/face_mat.tres" id="3_fvn82"]
 [ext_resource type="AnimationNodeBlendTree" uid="uid://ctycm6blx4sw4" path="res://Player/model/character_blend_tree.tres" id="3_hscum"]
 [ext_resource type="Material" uid="uid://cq6bdna8ieu87" path="res://Player/model/materials/heart_core_mat.tres" id="3_oijnk"]
 [ext_resource type="Animation" uid="uid://b627b68jhaqwt" path="res://Player/model/custom_animations/default_heartbeat.tres" id="3_xjurk"]
