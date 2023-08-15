@@ -432,7 +432,7 @@ stretch_mode = 5
 [node name="Label" type="Label" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer/GridContainerJoypad/HBoxContainer7"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = ": Pause"
+text = ": Pause / Resume"
 label_settings = SubResource("LabelSettings_f30p8")
 
 [node name="ButtonContainer" type="HBoxContainer" parent="CanvasLayer/DemoPageRoot/Content/Content/GameDescription/MarginContainer/ContentContainer/ControlsDescription/MarginContainer/VBoxContainer"]
