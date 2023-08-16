@@ -23,7 +23,10 @@ func _ready() -> void:
 	keyboard_button.pressed.connect(change_instruction.bind(INSTRUCTION_TYPES.KEYBOARD))
 	joypad_button.pressed.connect(change_instruction.bind(INSTRUCTION_TYPES.JOYPAD))
 	
-	change_instruction(INSTRUCTION_TYPES.KEYBOARD)
+	if Input.get_connected_joypads().size() > 0:
+		change_instruction(INSTRUCTION_TYPES.JOYPAD)
+	else:
+		change_instruction(INSTRUCTION_TYPES.KEYBOARD)
 
 
 func _input(event: InputEvent) -> void:
