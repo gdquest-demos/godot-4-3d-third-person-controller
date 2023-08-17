@@ -28,5 +28,38 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:crate_001": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:crate_002": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:crate_003": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:crate_004": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:crate_005": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:crate_006": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+}
+}
+}
 gltf/embedded_image_handling=3
