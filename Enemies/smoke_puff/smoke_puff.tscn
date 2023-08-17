@@ -19,11 +19,11 @@ noise = SubResource("FastNoiseLite_sxisx")
 resource_local_to_scene = true
 render_priority = 10
 shader = ExtResource("4_bh8q1")
-shader_parameter/base_scale = 0.1
-shader_parameter/deformation_scale = 1.0
-shader_parameter/ease = 3.0
 shader_parameter/progress = 1.0
 shader_parameter/smoothness = 0.2
+shader_parameter/ease = 3.0
+shader_parameter/base_scale = 0.1
+shader_parameter/deformation_scale = 1.0
 shader_parameter/texture_offset = 0.0
 shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_a2w6x")
 

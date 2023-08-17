@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmwyiep10m4u4"]
 
 [ext_resource type="Script" path="res://Box/Box.gd" id="1_oklwc"]
-[ext_resource type="PackedScene" uid="uid://cdtq6fyl7hhgm" path="res://Box/BoxVisuals/BoxModel.glb" id="2_ggurh"]
+[ext_resource type="PackedScene" uid="uid://cqekaooy1ktfl" path="res://Box/BoxVisuals/BoxModel.glb" id="2_ggurh"]
 [ext_resource type="AudioStream" uid="uid://dd7nemvkapogt" path="res://Box/Sounds/crate-break-1-93926.wav" id="3_71fsr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rxelo"]

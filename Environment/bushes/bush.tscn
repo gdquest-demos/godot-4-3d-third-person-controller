@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene load_steps=9 format=3 uid="uid://cn8o7sv1osssk"]
 
 [ext_resource type="ArrayMesh" uid="uid://dbvyvmrfv7b41" path="res://Environment/bushes/bush.obj" id="1_s7d1x"]
 [ext_resource type="Shader" path="res://Environment/bushes/bush_wind.gdshader" id="2_p862b"]
@@ -16,10 +16,10 @@ noise = SubResource("FastNoiseLite_rfln0")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5ghrf"]
 render_priority = 0
 shader = ExtResource("2_p862b")
-shader_parameter/albedo_sampler = ExtResource("2_tqhpl")
-shader_parameter/normal_sampler = ExtResource("3_w64c0")
-shader_parameter/orm_sampler = ExtResource("4_ug63l")
 shader_parameter/wind_noise_sampler = SubResource("NoiseTexture2D_p2vx3")
+shader_parameter/albedo_sampler = ExtResource("2_tqhpl")
+shader_parameter/orm_sampler = ExtResource("4_ug63l")
+shader_parameter/normal_sampler = ExtResource("3_w64c0")
 
 [node name="Bush1" type="MeshInstance3D"]
 material_override = SubResource("ShaderMaterial_5ghrf")
