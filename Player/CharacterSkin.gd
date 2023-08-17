@@ -19,6 +19,7 @@ var moving_blend_path := "parameters/StateMachine/move/blend_position"
 
 
 func _ready():
+	animation_tree.active = true
 	main_animation_player["playback_default_blend_time"] = 0.1
 
 

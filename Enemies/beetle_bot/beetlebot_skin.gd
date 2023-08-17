@@ -7,6 +7,7 @@ extends Node3D
 @onready var _secondary_action_timer : Timer = $SecondaryActionTimer
 
 func _ready():
+	_animation_tree.active = true
 	for animation_name in _force_loop:
 		var anim : Animation = $beetle_bot/AnimationPlayer.get_animation(animation_name)
 		anim.loop_mode = Animation.LOOP_LINEAR

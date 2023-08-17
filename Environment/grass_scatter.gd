@@ -1,4 +1,3 @@
-@tool
 extends MultiMeshInstance3D
 
 @export_node_path var target_mesh_path
