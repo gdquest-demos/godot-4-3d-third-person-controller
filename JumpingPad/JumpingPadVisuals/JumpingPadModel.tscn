@@ -11,8 +11,8 @@ emission_energy_multiplier = 2.0
 
 [node name="jump_pad" instance=ExtResource("1_b8bry")]
 
-[node name="Circle002" parent="." index="1"]
+[node name="Circle_002" parent="." index="1"]
 material_override = ExtResource("2_54yml")
 
-[node name="Circle003" parent="." index="2"]
+[node name="Circle_003" parent="." index="2"]
 material_override = SubResource("StandardMaterial3D_v7h2g")

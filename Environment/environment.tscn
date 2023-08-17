@@ -195,12 +195,12 @@ shape = SubResource("ConcavePolygonShape3D_ldvl5")
 transform = Transform3D(0.960463, 0, -0.278405, 0, 0.999999, 0, 0.278405, 0, 0.960463, -5.44334, 10.4939, -6.47274)
 material_override = SubResource("ShaderMaterial_62f0f")
 
-[node name="bridge001" parent="World/NavigationRegion3D/Terrain" index="2"]
+[node name="bridge_001" parent="World/NavigationRegion3D/Terrain" index="2"]
 transform = Transform3D(0.932257, -0.0312045, -0.360447, -0.00821529, 0.994191, -0.107317, 0.361702, 0.103008, 0.926586, 9.35909, 3.69171, -1.97126)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Terrain/bridge001" index="1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="World/NavigationRegion3D/Terrain/bridge_001" index="1"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Terrain/bridge001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/NavigationRegion3D/Terrain/bridge_001/StaticBody3D"]
 shape = SubResource("BoxShape3D_k8ukc")
 
 [node name="Water" type="MeshInstance3D" parent="World"]

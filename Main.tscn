@@ -158,34 +158,34 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_xbb7l")
 
-[node name="large_trunk001" parent="NavigationRegion3D/terrain_main_ground" index="2"]
+[node name="large_trunk_001" parent="NavigationRegion3D/terrain_main_ground" index="2"]
 material_override = ExtResource("6_q3y6j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk001" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_001" index="0"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk001/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_001/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_qwtds")
 
-[node name="large_trunk002" parent="NavigationRegion3D/terrain_main_ground" index="3"]
+[node name="large_trunk_002" parent="NavigationRegion3D/terrain_main_ground" index="3"]
 material_override = ExtResource("6_q3y6j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk002" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_002" index="0"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk002/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_002/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_v4wc0")
 
-[node name="large_trunk003" parent="NavigationRegion3D/terrain_main_ground" index="4"]
+[node name="large_trunk_003" parent="NavigationRegion3D/terrain_main_ground" index="4"]
 material_override = ExtResource("6_q3y6j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk003" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_003" index="0"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk003/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_003/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_1dpny")
 
 [node name="terrain" parent="NavigationRegion3D/terrain_main_ground" index="5"]
@@ -198,44 +198,44 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/terrain/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0qnox")
 
-[node name="large_trunk004" parent="NavigationRegion3D/terrain_main_ground" index="6"]
+[node name="large_trunk_004" parent="NavigationRegion3D/terrain_main_ground" index="6"]
 material_override = ExtResource("6_q3y6j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk004" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_004" index="0"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk004/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_004/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_15y4f")
 
-[node name="large_trunk005" parent="NavigationRegion3D/terrain_main_ground" index="7"]
+[node name="large_trunk_005" parent="NavigationRegion3D/terrain_main_ground" index="7"]
 material_override = ExtResource("6_q3y6j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk005" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_005" index="0"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk005/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_005/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_8bth8")
 
-[node name="large_trunk006" parent="NavigationRegion3D/terrain_main_ground" index="8"]
+[node name="large_trunk_006" parent="NavigationRegion3D/terrain_main_ground" index="8"]
 material_override = ExtResource("6_q3y6j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk006" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_006" index="0"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk006/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_006/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_05e45")
 
-[node name="large_trunk007" parent="NavigationRegion3D/terrain_main_ground" index="9"]
+[node name="large_trunk_007" parent="NavigationRegion3D/terrain_main_ground" index="9"]
 material_override = ExtResource("6_q3y6j")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk007" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_007" index="0"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk007/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/terrain_main_ground/large_trunk_007/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_h4t6m")
 
 [node name="Trees" type="Node3D" parent="NavigationRegion3D"]
