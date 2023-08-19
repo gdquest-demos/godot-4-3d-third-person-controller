@@ -3,6 +3,7 @@ extends Node3D
 @onready var state_machine: AnimationNodeStateMachinePlayback = $AnimationTree["parameters/StateMachine/playback"]
 
 func _ready():
+	$AnimationTree.active = true
 	play_idle()
 
 func play_idle():

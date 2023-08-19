@@ -89,7 +89,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(4, -47)
 
 [resource]
-graph_offset = Vector2(-339.736, 98.5509)
+graph_offset = Vector2(-200.223, -25.6146)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_766tv")
 nodes/Add2/position = Vector2(260, 80)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_dpb3n")

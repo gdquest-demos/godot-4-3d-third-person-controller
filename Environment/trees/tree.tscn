@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=11 format=3 uid="uid://dr8slkof1nc8r"]
 
 [ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://Environment/trees/tree.obj" id="1_1cwwe"]
 [ext_resource type="Shader" path="res://Environment/bushes/bush_wind.gdshader" id="2_7fdjv"]
@@ -17,10 +17,10 @@ noise = SubResource("FastNoiseLite_sn0gq")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ry36w"]
 render_priority = 0
 shader = ExtResource("2_7fdjv")
-shader_parameter/albedo_sampler = ExtResource("3_81cnu")
-shader_parameter/normal_sampler = ExtResource("4_ntsjs")
-shader_parameter/orm_sampler = ExtResource("5_ewwuc")
 shader_parameter/wind_noise_sampler = SubResource("NoiseTexture2D_p7o41")
+shader_parameter/albedo_sampler = ExtResource("3_81cnu")
+shader_parameter/orm_sampler = ExtResource("5_ewwuc")
+shader_parameter/normal_sampler = ExtResource("4_ntsjs")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q8r3i"]
 height = 2.96072

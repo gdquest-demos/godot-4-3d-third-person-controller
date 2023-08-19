@@ -28,5 +28,36 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:large_trunk": {
+"generate/physics": true
+},
+"PATH:large_trunk_001": {
+"generate/physics": true
+},
+"PATH:large_trunk_002": {
+"generate/physics": true
+},
+"PATH:large_trunk_003": {
+"generate/physics": true
+},
+"PATH:large_trunk_004": {
+"generate/physics": true
+},
+"PATH:large_trunk_005": {
+"generate/physics": true
+},
+"PATH:large_trunk_006": {
+"generate/physics": true
+},
+"PATH:large_trunk_007": {
+"generate/physics": true
+},
+"PATH:terrain": {
+"generate/physics": true,
+"physics/shape_type": 2
+}
+}
+}
 gltf/embedded_image_handling=3

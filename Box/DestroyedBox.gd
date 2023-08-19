@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends Node3D
 
 const FLYING_PIECES := 3
 const THROW_STRENGTH := 500
