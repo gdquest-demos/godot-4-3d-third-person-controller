@@ -1,6 +1,5 @@
 # Blender 3.3.1
 # www.blender.org
-mtllib grass_1_geo.mtl
 o Plane.032
 v 0.643635 0.379150 -0.155953
 v 0.553739 0.379150 -0.029316
