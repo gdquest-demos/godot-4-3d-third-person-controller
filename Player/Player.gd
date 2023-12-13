@@ -20,7 +20,7 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 @export var jump_initial_impulse := 12.0
 ## Jump impulse when player keeps pressing jump
 @export var jump_additional_force := 4.5
-## Player model rotaion speed
+## Player model rotation speed
 @export var rotation_speed := 12.0
 ## Minimum horizontal speed on the ground. This controls when the character's animation tree changes
 ## between the idle and running states.

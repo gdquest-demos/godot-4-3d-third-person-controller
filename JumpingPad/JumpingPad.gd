@@ -1,12 +1,12 @@
 extends Area3D
 
-@export var impulse_strenght := 10.0
+@export var impulse_strength := 10.0
 @onready var mushroom : Node3D = %mushroom
 
 func _ready() -> void:
 	body_entered.connect(func(body):
 		if body is Player:
-			body.velocity = (Vector3.UP * body.jump_initial_impulse) + (transform.basis * Vector3.UP * impulse_strenght)
+			body.velocity = (Vector3.UP * body.jump_initial_impulse) + (transform.basis * Vector3.UP * impulse_strength)
 			
 			var tween := create_tween()
 			mushroom.scale.y = 0.4

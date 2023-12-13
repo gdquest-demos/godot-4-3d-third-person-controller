@@ -321,7 +321,7 @@ surface_material_override/1 = ExtResource("10_junlj")
 
 [node name="JumpingPad2" parent="World" instance=ExtResource("12_xdbct")]
 transform = Transform3D(0.740741, 0, 0, 0, 0.740741, 0, 0, 0, 0.740741, 7.03352, 11.074, -20.9878)
-impulse_strenght = 16.0
+impulse_strength = 16.0
 
 [node name="Bush1" parent="World" instance=ExtResource("16_fjapj")]
 transform = Transform3D(1.23146, 0, 0, 0, 1.23146, 0, 0, 0, 1.23146, -1.65903, 3.26113, 5.08388)
