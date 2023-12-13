@@ -1,6 +1,6 @@
 extends Node3D
 
-# Emit when smoke density is at maxium
+# Emit when smoke density is at maximum
 signal full
 
 @onready var smoke_sounds := $SmokeSounds.get_children()
