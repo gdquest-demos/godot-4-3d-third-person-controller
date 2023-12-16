@@ -2067,7 +2067,7 @@ nodes/Animation/position = Vector2(-200, 0)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1kno4")
 "nodes/Animation 2/position" = Vector2(-200, 100)
 nodes/output/position = Vector2(360, 0)
-node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x5pkv"]
 animation = &"idle"

@@ -7,7 +7,6 @@ noise_type = 2
 seed = 2
 fractal_type = 0
 fractal_octaves = 1
-cellular_jitter = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q4shp"]
 seamless = true

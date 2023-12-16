@@ -105,4 +105,4 @@ nodes/PunchOneShot/position = Vector2(300, 380)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_k7175")
 nodes/StateMachine/position = Vector2(20, 380)
 nodes/output/position = Vector2(780, 80)
-node_connections = [&"output", 0, &"Add2 2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"PunchOneShot", &"PunchOneShot", 0, &"StateMachine", &"PunchOneShot", 1, &"Animation 3"]
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"PunchOneShot", &"PunchOneShot", 0, &"StateMachine", &"PunchOneShot", 1, &"Animation 3", &"output", 0, &"Add2 2"]

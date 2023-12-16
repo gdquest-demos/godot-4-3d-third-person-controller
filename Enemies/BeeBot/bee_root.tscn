@@ -1309,7 +1309,7 @@ nodes/Animation/position = Vector2(100, 140)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_1g36q")
 "nodes/Animation 2/position" = Vector2(-80, 260)
 nodes/output/position = Vector2(420, 160)
-node_connections = [&"output", 0, &"Add2", &"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2"]
+node_connections = [&"Add2", 0, &"Animation", &"Add2", 1, &"Animation 2", &"output", 0, &"Add2"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xk6y0"]
 animation = &"Idle"
@@ -1330,7 +1330,7 @@ graph_offset = Vector2(-22.88, 95.7467)
 nodes/Blend2/node = SubResource("AnimationNodeBlend2_dfaaq")
 nodes/Blend2/position = Vector2(387.04, 132.467)
 nodes/output/position = Vector2(580, 160)
-node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation 2 2"]
+node_connections = [&"Blend2", 0, &"Animation 2", &"Blend2", 1, &"Animation 2 2", &"output", 0, &"Blend2"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_73fwm"]
 
