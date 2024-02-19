@@ -74,6 +74,7 @@ func _physics_process(delta: float) -> void:
 
 func setup(anchor: CharacterBody3D) -> void:
 	_anchor = anchor
+	global_transform = _anchor.global_transform
 	_offset = global_transform.origin - anchor.global_transform.origin
 	set_pivot(CAMERA_PIVOT.THIRD_PERSON)
 	camera.global_transform = camera.global_transform.interpolate_with(_pivot.global_transform, 0.1)
