@@ -273,6 +273,10 @@ skeleton = NodePath("../../..")
 transform = Transform3D(0.350357, 0, 2.30465, 0, 2.23926, 0, -2.30465, 0, 0.350357, -10.3752, 0.5, -8.97505)
 skeleton = NodePath("../../..")
 
+[node name="Tree1Geo51" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
+transform = Transform3D(0.350357, 0, 2.30465, 0, 2.23926, 0, -2.30465, 0, 0.350357, -4.51305, 0.5, -16.205)
+skeleton = NodePath("../../..")
+
 [node name="Tree1Geo31" parent="NavigationRegion3D/Trees" instance=ExtResource("7_rvx5i")]
 transform = Transform3D(0.350357, 0, 2.30465, 0, 2.23926, 0, -2.30465, 0, 0.350357, -16.3411, -0.105803, -47.1024)
 skeleton = NodePath("../../..")
