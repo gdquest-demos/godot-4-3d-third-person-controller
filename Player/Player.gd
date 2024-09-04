@@ -60,7 +60,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
 	_grenade_aim_controller.visible = false
-	emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
+	weapon_switched.emit(WEAPON_TYPE.keys()[0])
 	
 	# When copying this character to a new project, the project may lack required input actions.
 	# In that case, we register input actions for the user at runtime.
@@ -82,7 +82,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("swap_weapons"):
 		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE
 		_grenade_aim_controller.visible = _equipped_weapon == WEAPON_TYPE.GRENADE
-		emit_signal("weapon_switched", WEAPON_TYPE.keys()[_equipped_weapon])
+		weapon_switched.emit(WEAPON_TYPE.keys()[_equipped_weapon])
 
 	# Get input and movement state
 	var is_attacking := Input.is_action_pressed("attack") and not _attack_animation_player.is_playing()
