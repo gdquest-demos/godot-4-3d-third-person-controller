@@ -30,8 +30,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oq2x4"]
 shader = ExtResource("2_07raf")
-shader_parameter/blur_scale = Vector2(4, 4)
-shader_parameter/color_modulate = Color(0.780392, 0.717647, 0.968627, 1)
+shader_parameter/blur_size = 2.0
+shader_parameter/color_modulate = Color(0.522997, 0.612903, 0.846875, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_swl1q"]
 font_size = 20
