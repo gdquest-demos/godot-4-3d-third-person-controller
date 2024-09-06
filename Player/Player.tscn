@@ -267,6 +267,4 @@ volume_db = 1.0
 stream = ExtResource("11_3s4i7")
 volume_db = 1.0
 
-[connection signal="foot_step" from="CharacterRotationRoot/CharacterSkin" to="." method="play_foot_step_sound"]
-
 [editable path="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin"]

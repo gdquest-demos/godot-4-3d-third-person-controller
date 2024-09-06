@@ -66,6 +66,8 @@ func _ready() -> void:
 	# In that case, we register input actions for the user at runtime.
 	if not InputMap.has_action("move_left"):
 		_register_input_actions()
+	
+	_character_skin.stepped.connect(play_foot_step_sound)
 
 
 func _physics_process(delta: float) -> void:
