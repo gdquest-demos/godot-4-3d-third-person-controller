@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://bii1msr5lsqwb"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bii1msr5lsqwb"]
 
 [ext_resource type="Shader" uid="uid://bnku5nqpkv56n" path="res://player/bullet_visuals/bullet_trail_shader.gdshader" id="1_g6a2q"]
 

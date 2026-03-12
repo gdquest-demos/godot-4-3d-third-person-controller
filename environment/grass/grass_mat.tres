@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ovciasxou830"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ovciasxou830"]
 
 [ext_resource type="Shader" uid="uid://dhqtsmbs07rp7" path="res://environment/grass/grass.gdshader" id="1_21fji"]
 

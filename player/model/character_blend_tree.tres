@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeBlendTree" load_steps=24 format=3 uid="uid://ctycm6blx4sw4"]
+[gd_resource type="AnimationNodeBlendTree" format=3 uid="uid://ctycm6blx4sw4"]
 
 [sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_dpb3n"]
 
@@ -89,7 +89,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(4, -47)
 
 [resource]
-graph_offset = Vector2(-200.223, -25.6146)
+graph_offset = Vector2(-458.41855, 0)
 nodes/output/position = Vector2(780, 80)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_766tv")
 nodes/Add2/position = Vector2(260, 80)

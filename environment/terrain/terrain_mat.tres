@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=13 format=3 uid="uid://c5trc4hy86utg"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c5trc4hy86utg"]
 
 [ext_resource type="Shader" uid="uid://jogembmwldg6" path="res://environment/terrain/terrain_shader.gdshader" id="1_tmq40"]
 [ext_resource type="Texture2D" uid="uid://ccle3gd0lgtig" path="res://environment/terrain/textures/voronoi_rock_cliff/voronoi_rock_cliff_albedo.png" id="2_ais5s"]

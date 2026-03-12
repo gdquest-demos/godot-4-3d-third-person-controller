@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ben1qjmc14yjq"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ben1qjmc14yjq"]
 
 [ext_resource type="Shader" uid="uid://c6o5d2hvm6uj5" path="res://player/explosion_visuals/shaders/explosion_trails_shader.gdshader" id="1_ucjx1"]
 
