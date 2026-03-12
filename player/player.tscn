@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ciqrpd5675boy"]
+[gd_scene format=3 uid="uid://ciqrpd5675boy"]
 
 [ext_resource type="Script" uid="uid://gofa4kyvcacj" path="res://player/player.gd" id="1_rvo1c"]
 [ext_resource type="PackedScene" uid="uid://b2ew46dlu7u7x" path="res://player/grenade_launcher.tscn" id="3_54qc4"]
@@ -22,7 +22,7 @@ dof_blur_far_distance = 45.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_uex0s"]
 
-[sub_resource type="Animation" id="Animation_nl12d"]
+[sub_resource type="Animation" id="Animation_hg6s5"]
 resource_name = "Attack"
 length = 0.3
 tracks/0/type = "value"
@@ -37,25 +37,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 3.14159, 0)]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("MeleeAnchor/MeleeSphere:visible")
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeAttackArea")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeleeAttackArea")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -67,7 +55,7 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_pts2o"]
+[sub_resource type="Animation" id="Animation_8t03j"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -81,30 +69,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("MeleeAnchor/MeleeSphere:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xvsui"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8t03j"]
 _data = {
-"Attack": SubResource("Animation_nl12d"),
-"RESET": SubResource("Animation_pts2o")
+&"Attack": SubResource("Animation_hg6s5"),
+&"RESET": SubResource("Animation_8t03j")
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcytg"]
 radius = 0.721485
 height = 2.65424
 
-[node name="Player" type="CharacterBody3D" groups=["damageables"]]
+[node name="Player" type="CharacterBody3D" unique_id=126940387 groups=["damageables"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -112,42 +88,42 @@ script = ExtResource("1_rvo1c")
 bullet_speed = 14.0
 acceleration = 6.0
 
-[node name="CharacterCollisionShape" type="CollisionShape3D" parent="."]
+[node name="CharacterCollisionShape" type="CollisionShape3D" parent="." unique_id=2112685367]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_8x2xm")
 
-[node name="CameraController" type="Node3D" parent="."]
+[node name="CameraController" type="Node3D" parent="." unique_id=456957049]
 top_level = true
 script = ExtResource("3_qrkly")
 invert_mouse_y = true
 tilt_upper_limit = 0.48
 tilt_lower_limit = -0.8
 
-[node name="CameraOverShoulderPivot" type="Marker3D" parent="CameraController"]
+[node name="CameraOverShoulderPivot" type="Marker3D" parent="CameraController" unique_id=2010202668]
 transform = Transform3D(-0.994522, 0.0400013, -0.0965717, 0, 0.92388, 0.382683, 0.104528, 0.380587, -0.918818, -0.848491, 3.48765, -2.32639)
 
-[node name="CameraSpringArm" type="SpringArm3D" parent="CameraController"]
+[node name="CameraSpringArm" type="SpringArm3D" parent="CameraController" unique_id=880047906]
 transform = Transform3D(-1, -5.15034e-15, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, 0, 2.33984, 0)
 shape = SubResource("SeparationRayShape3D_gqx4v")
 spring_length = 10.0
 
-[node name="CameraThirdPersonPivot" type="Marker3D" parent="CameraController/CameraSpringArm"]
+[node name="CameraThirdPersonPivot" type="Marker3D" parent="CameraController/CameraSpringArm" unique_id=2081525754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
-[node name="PlayerCamera" type="Camera3D" parent="CameraController"]
+[node name="PlayerCamera" type="Camera3D" parent="CameraController" unique_id=1460225452]
 transform = Transform3D(-1, -3.71248e-14, -8.74228e-08, -3.23484e-08, 0.929023, 0.370022, 8.12178e-08, 0.370022, -0.929023, -8.74228e-07, 6.04006, -9.29023)
 top_level = true
 attributes = SubResource("CameraAttributesPractical_2ooex")
 fov = 50.0
 
-[node name="CameraRayCast" type="RayCast3D" parent="CameraController/PlayerCamera"]
+[node name="CameraRayCast" type="RayCast3D" parent="CameraController/PlayerCamera" unique_id=1063302130]
 transform = Transform3D(1, 0, -7.10543e-15, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, 0, -100)
 debug_shape_custom_color = Color(0, 0, 0, 0)
 
-[node name="GrenadeLauncher" parent="." instance=ExtResource("3_54qc4")]
+[node name="GrenadeLauncher" parent="." unique_id=1056604266 instance=ExtResource("3_54qc4")]
 
-[node name="GroundShapeCast" type="ShapeCast3D" parent="."]
+[node name="GroundShapeCast" type="ShapeCast3D" parent="." unique_id=1807857851]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("CylinderShape3D_s5n07")
 target_position = Vector3(0, -2.6, 0)
@@ -155,34 +131,32 @@ margin = 0.5
 max_results = 1
 debug_shape_custom_color = Color(0.658824, 1, 0, 1)
 
-[node name="CharacterRotationRoot" type="Node3D" parent="."]
+[node name="CharacterRotationRoot" type="Node3D" parent="." unique_id=1616488823]
 
-[node name="MeleeAnchor" type="Node3D" parent="CharacterRotationRoot"]
+[node name="MeleeAnchor" type="Node3D" parent="CharacterRotationRoot" unique_id=668325107]
 
-[node name="MeleeSphere" type="MeshInstance3D" parent="CharacterRotationRoot/MeleeAnchor"]
+[node name="MeleeSphere" type="MeshInstance3D" parent="CharacterRotationRoot/MeleeAnchor" unique_id=888331690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25195, 1.075, 0)
 visible = false
 mesh = SubResource("SphereMesh_uex0s")
 skeleton = NodePath("../../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterRotationRoot/MeleeAnchor"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterRotationRoot/MeleeAnchor" unique_id=574056989]
 root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_xvsui")
-}
+libraries/ = SubResource("AnimationLibrary_8t03j")
 
-[node name="MeleeAttackArea" type="Area3D" parent="CharacterRotationRoot"]
+[node name="MeleeAttackArea" type="Area3D" parent="CharacterRotationRoot" unique_id=166313747]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.959482, 1.0525)
 script = ExtResource("3_v1vve")
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterRotationRoot/MeleeAttackArea"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterRotationRoot/MeleeAttackArea" unique_id=2052814824]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246944)
 shape = SubResource("CapsuleShape3D_pcytg")
 disabled = true
 
-[node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("4_ign62")]
+[node name="CharacterSkin" parent="CharacterRotationRoot" unique_id=84269285 instance=ExtResource("4_ign62")]
 
-[node name="PlayerUI" type="Control" parent="." groups=["camera_mode_toggle"]]
+[node name="PlayerUI" type="Control" parent="." unique_id=875027664 groups=["camera_mode_toggle"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -191,7 +165,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AimRecticle" type="ColorRect" parent="PlayerUI"]
+[node name="AimRecticle" type="ColorRect" parent="PlayerUI" unique_id=1261313606]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_left = 0.5
@@ -207,7 +181,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.290196)
 
-[node name="CoinsContainer" type="HBoxContainer" parent="PlayerUI"]
+[node name="CoinsContainer" type="HBoxContainer" parent="PlayerUI" unique_id=1774114733]
 unique_name_in_owner = true
 layout_mode = 0
 anchor_left = 1.0
@@ -222,13 +196,13 @@ theme_override_constants/separation = 30
 alignment = 2
 script = ExtResource("7_8eehq")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PlayerUI/CoinsContainer" unique_id=1685255978]
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
 size_flags_horizontal = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="PlayerUI/CoinsContainer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="PlayerUI/CoinsContainer/SubViewportContainer" unique_id=1728643708]
 own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
@@ -236,34 +210,34 @@ gui_disable_input = true
 size = Vector2i(96, 96)
 render_target_update_mode = 4
 
-[node name="Coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport" instance=ExtResource("8_6qxxt")]
+[node name="Coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport" unique_id=1210448026 instance=ExtResource("8_6qxxt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.812403)
 
 [node name="godot_coin" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin" index="0"]
 transform = Transform3D(0.278847, 0, 0.960336, 0, 1, 0, -0.960336, 0, 0.278847, 0, 0, 0)
 y_amplitude = 0.0
 
-[node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
+[node name="Camera3D" type="Camera3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport" unique_id=2131838704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.604131)
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport"]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport" unique_id=1122932426]
 
-[node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer"]
+[node name="CoinsLabel" type="Label" parent="PlayerUI/CoinsContainer" unique_id=1906044772]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 text = "0"
 
-[node name="Timer" type="Timer" parent="PlayerUI/CoinsContainer"]
+[node name="Timer" type="Timer" parent="PlayerUI/CoinsContainer" unique_id=591638833]
 wait_time = 3.0
 one_shot = true
 
-[node name="StepSound" type="AudioStreamPlayer3D" parent="."]
+[node name="StepSound" type="AudioStreamPlayer3D" parent="." unique_id=514297165]
 stream = ExtResource("10_wx4h4")
 volume_db = 1.0
 
-[node name="LandingSound" type="AudioStreamPlayer3D" parent="."]
+[node name="LandingSound" type="AudioStreamPlayer3D" parent="." unique_id=1817795993]
 stream = ExtResource("11_3s4i7")
 volume_db = 1.0
 

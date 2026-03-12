@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://okmv1cbta83x"]
+[gd_scene format=3 uid="uid://okmv1cbta83x"]
 
 [ext_resource type="Script" uid="uid://cqm1nv17wkc6a" path="res://enemies/smoke_puff/smoke_puff.gd" id="1_3ltu4"]
 [ext_resource type="PackedScene" uid="uid://n5v4vlr80bj8" path="res://enemies/smoke_puff/smoke_ball.glb" id="3_gsgkx"]
-[ext_resource type="Material" uid="uid://cnvmsr64tkgyn" path="res://enemies/smoke_puff/smoke_ball_middle_mat.tres" id="3_wa5gb"]
+[ext_resource type="Shader" uid="uid://c2ku3tyf6vhdc" path="res://enemies/smoke_puff/smoke_ball_middle.gdshader" id="4_6i08x"]
 [ext_resource type="Shader" uid="uid://bp40q8ga3f2f7" path="res://enemies/smoke_puff/smoke_ball.gdshader" id="4_bh8q1"]
 [ext_resource type="AudioStream" uid="uid://ddhimfnmpxlrp" path="res://enemies/smoke_puff/Sounds/poof_1.wav" id="5_qiexl"]
 [ext_resource type="AudioStream" uid="uid://cgv0ngrh5ofe" path="res://enemies/smoke_puff/Sounds/poof_2.wav" id="6_1l2bk"]
@@ -15,19 +15,41 @@ fractal_octaves = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a2w6x"]
 noise = SubResource("FastNoiseLite_sxisx")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ahlep"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6i08x"]
 resource_local_to_scene = true
 render_priority = 10
 shader = ExtResource("4_bh8q1")
+shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_a2w6x")
 shader_parameter/progress = 1.0
 shader_parameter/smoothness = 0.2
 shader_parameter/ease = 3.0
 shader_parameter/base_scale = 0.1
 shader_parameter/deformation_scale = 1.0
 shader_parameter/texture_offset = 0.0
-shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_a2w6x")
 
-[sub_resource type="Animation" id="Animation_6j1ps"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6jv1k"]
+noise_type = 2
+fractal_type = 0
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s56rg"]
+noise = SubResource("FastNoiseLite_6jv1k")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yverx"]
+resource_local_to_scene = true
+render_priority = 10
+shader = ExtResource("4_6i08x")
+shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_s56rg")
+shader_parameter/progress = 0.0
+shader_parameter/smoothness = 0.01
+shader_parameter/ease = 2.0
+shader_parameter/base_scale = 0.0
+shader_parameter/deformation_scale = 1.0
+shader_parameter/texture_offset = 0.0
+shader_parameter/fresnel_offset = 0.1
+shader_parameter/global_alpha = 1.0
+
+[sub_resource type="Animation" id="Animation_w6st2"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -162,7 +184,7 @@ tracks/10/keys = {
 "values": [0.1]
 }
 
-[sub_resource type="Animation" id="Animation_2s7xh"]
+[sub_resource type="Animation" id="Animation_sswqf"]
 resource_name = "poof"
 length = 2.0
 tracks/0/type = "value"
@@ -312,39 +334,37 @@ tracks/11/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pbed2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_22gwt"]
 _data = {
-"RESET": SubResource("Animation_6j1ps"),
-"poof": SubResource("Animation_2s7xh")
+&"RESET": SubResource("Animation_w6st2"),
+&"poof": SubResource("Animation_sswqf")
 }
 
-[node name="smoke_puff" type="Node3D"]
+[node name="smoke_puff" type="Node3D" unique_id=1464888597]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 script = ExtResource("1_3ltu4")
 
-[node name="smoke_ball" parent="." instance=ExtResource("3_gsgkx")]
+[node name="smoke_ball" parent="." unique_id=1652704592 instance=ExtResource("3_gsgkx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
-[node name="Cube" parent="smoke_ball" index="0"]
-material_override = SubResource("ShaderMaterial_ahlep")
+[node name="Cube" parent="smoke_ball" index="0" unique_id=661139975]
+material_override = SubResource("ShaderMaterial_6i08x")
 
-[node name="smoke_ball2" parent="." instance=ExtResource("3_gsgkx")]
+[node name="smoke_ball2" parent="." unique_id=1778003220 instance=ExtResource("3_gsgkx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
-[node name="Cube" parent="smoke_ball2" index="0"]
-material_override = ExtResource("3_wa5gb")
+[node name="Cube" parent="smoke_ball2" index="0" unique_id=661139975]
+material_override = SubResource("ShaderMaterial_yverx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_pbed2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=406682373]
+libraries/ = SubResource("AnimationLibrary_22gwt")
 
-[node name="SmokeSounds" type="Node3D" parent="."]
+[node name="SmokeSounds" type="Node3D" parent="." unique_id=1882137100]
 
-[node name="SoundPuff1" type="AudioStreamPlayer3D" parent="SmokeSounds"]
+[node name="SoundPuff1" type="AudioStreamPlayer3D" parent="SmokeSounds" unique_id=2094621129]
 stream = ExtResource("5_qiexl")
 
-[node name="SoundPuff2" type="AudioStreamPlayer3D" parent="SmokeSounds"]
+[node name="SoundPuff2" type="AudioStreamPlayer3D" parent="SmokeSounds" unique_id=1432222683]
 stream = ExtResource("6_1l2bk")
 
 [editable path="smoke_ball"]

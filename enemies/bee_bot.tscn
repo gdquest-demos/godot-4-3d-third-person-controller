@@ -1,10 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://rn45gytkk6tv"]
+[gd_scene format=3 uid="uid://rn45gytkk6tv"]
 
 [ext_resource type="Script" uid="uid://cek4nujsmemif" path="res://enemies/bee_bot.gd" id="1_eehkx"]
 [ext_resource type="PackedScene" uid="uid://4nwp6xgihjc7" path="res://enemies/bee_bot/bee_root.tscn" id="2_btoc7"]
 [ext_resource type="AudioStream" uid="uid://c66nnoqtanfw2" path="res://enemies/sounds/robot_defeat.wav" id="3_1gs12"]
 
-[sub_resource type="Animation" id="Animation_5pcps"]
+[sub_resource type="Animation" id="Animation_3qg81"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "values": ["!"]
 }
 
-[sub_resource type="Animation" id="Animation_6k5ul"]
+[sub_resource type="Animation" id="Animation_j2osy"]
 resource_name = "found_player"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,7 +58,7 @@ tracks/1/keys = {
 "values": ["!"]
 }
 
-[sub_resource type="Animation" id="Animation_iekf1"]
+[sub_resource type="Animation" id="Animation_j7o4b"]
 resource_name = "lost_player"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,11 +85,11 @@ tracks/1/keys = {
 "values": ["?"]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqtu2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j7o4b"]
 _data = {
-"RESET": SubResource("Animation_5pcps"),
-"found_player": SubResource("Animation_6k5ul"),
-"lost_player": SubResource("Animation_iekf1")
+&"RESET": SubResource("Animation_3qg81"),
+&"found_player": SubResource("Animation_j2osy"),
+&"lost_player": SubResource("Animation_j7o4b")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h03f6"]
@@ -104,7 +104,7 @@ albedo_color = Color(0.647059, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_qjgky"]
 
-[sub_resource type="Animation" id="Animation_aj4yq"]
+[sub_resource type="Animation" id="Animation_7j8ec"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -131,7 +131,7 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0.0872665)]
 }
 
-[sub_resource type="Animation" id="Animation_7sj1l"]
+[sub_resource type="Animation" id="Animation_l0mao"]
 resource_name = "default"
 length = 2.0
 loop_mode = 1
@@ -160,22 +160,22 @@ tracks/1/keys = {
 "values": [Vector3(0.66148, 3.14159, 0), Vector3(0.66148, 3.14159, 0.0872665), Vector3(0.66148, 3.14159, 0), Vector3(0.66148, 3.14159, -0.0872665)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wnpkd"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7j8ec"]
 _data = {
-"RESET": SubResource("Animation_aj4yq"),
-"default": SubResource("Animation_7sj1l")
+&"RESET": SubResource("Animation_7j8ec"),
+&"default": SubResource("Animation_l0mao")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pl7mw"]
 size = Vector3(0.1, 0.5, 1)
 
-[node name="FlyingEnemy" type="RigidBody3D" groups=["damageables", "targeteables"]]
+[node name="FlyingEnemy" type="RigidBody3D" unique_id=2019485036 groups=["damageables", "targeteables"]]
 gravity_scale = 0.0
-continuous_cd = true
 sleeping = true
+continuous_cd = true
 script = ExtResource("1_eehkx")
 
-[node name="ReactionLabel" type="Label3D" parent="."]
+[node name="ReactionLabel" type="Label3D" parent="." unique_id=992890129]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23854, 0)
 visible = false
 billboard = 2
@@ -183,41 +183,37 @@ text = "!"
 font_size = 192
 outline_size = 32
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ReactionLabel"]
-libraries = {
-"": SubResource("AnimationLibrary_sqtu2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ReactionLabel" unique_id=1503236728]
+libraries/ = SubResource("AnimationLibrary_j7o4b")
 
-[node name="PlayerDetectionArea" type="Area3D" parent="."]
+[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=1616517252]
 collision_layer = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=855201356]
 shape = SubResource("SphereShape3D_h03f6")
 
-[node name="MeshRoot" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.996195, -0.0871558, 0, 0.0871558, 0.996195, 0, 0, 0, 1, 0, 0, 0)
+[node name="MeshRoot" type="CollisionShape3D" parent="." unique_id=606459732]
+transform = Transform3D(-1.0000002, 1.5573253e-06, 2.000471e-06, 0, 0.78908414, -0.61428535, -2.5351824e-06, -0.61428547, -0.78908396, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_r3occ")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshRoot"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshRoot" unique_id=1799383795]
 transform = Transform3D(0.998455, -0.0183011, 0.0524617, -0.0183011, 0.783185, 0.621519, -0.0524617, -0.621519, 0.78164, 0.00407339, 0.0482579, -0.211458)
 visible = false
 material_override = SubResource("StandardMaterial3D_mt8a8")
 mesh = SubResource("BoxMesh_qjgky")
 skeleton = NodePath("../..")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshRoot"]
-autoplay = "default"
-libraries = {
-"": SubResource("AnimationLibrary_wnpkd")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshRoot" unique_id=1880263596]
+libraries/ = SubResource("AnimationLibrary_7j8ec")
+autoplay = &"default"
 
-[node name="bee_root" parent="MeshRoot" instance=ExtResource("2_btoc7")]
+[node name="bee_root" parent="MeshRoot" unique_id=551027300 instance=ExtResource("2_btoc7")]
 transform = Transform3D(0.999781, 0.0209424, 0, -0.0164124, 0.783522, 0.621148, 0.0130083, -0.621012, 0.783694, -0.0294347, -0.348716, 0.106444)
 
-[node name="DeathMeshCollider" type="CollisionShape3D" parent="."]
+[node name="DeathMeshCollider" type="CollisionShape3D" parent="." unique_id=2107340870]
 transform = Transform3D(-1, -5.37025e-08, -6.89839e-08, 0, 0.789084, -0.614285, 8.74228e-08, -0.614285, -0.789084, 0, 0.244858, 0.372593)
 shape = SubResource("BoxShape3D_pl7mw")
 disabled = true
 
-[node name="DefeatSound" type="AudioStreamPlayer3D" parent="."]
+[node name="DefeatSound" type="AudioStreamPlayer3D" parent="." unique_id=57992345]
 stream = ExtResource("3_1gs12")

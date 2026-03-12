@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://oxyn25v5khuk"]
+[gd_scene format=3 uid="uid://oxyn25v5khuk"]
 
 [ext_resource type="Script" uid="uid://cqc5pcgf243iw" path="res://enemies/beetle_bot.gd" id="1_mefon"]
 [ext_resource type="PackedScene" uid="uid://cxt8d0d4ift6" path="res://enemies/beetle_bot/beetlebot_skin.tscn" id="2_1wpkj"]
 [ext_resource type="AudioStream" uid="uid://c66nnoqtanfw2" path="res://enemies/sounds/robot_defeat.wav" id="3_w5eam"]
 
-[sub_resource type="Animation" id="Animation_5pcps"]
+[sub_resource type="Animation" id="Animation_aq46q"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "values": ["!"]
 }
 
-[sub_resource type="Animation" id="Animation_6k5ul"]
+[sub_resource type="Animation" id="Animation_jv58b"]
 resource_name = "found_player"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -58,7 +58,7 @@ tracks/1/keys = {
 "values": ["!"]
 }
 
-[sub_resource type="Animation" id="Animation_iekf1"]
+[sub_resource type="Animation" id="Animation_gbkdk"]
 resource_name = "lost_player"
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,11 +85,11 @@ tracks/1/keys = {
 "values": ["?"]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sqtu2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbkdk"]
 _data = {
-"RESET": SubResource("Animation_5pcps"),
-"found_player": SubResource("Animation_6k5ul"),
-"lost_player": SubResource("Animation_iekf1")
+&"RESET": SubResource("Animation_aq46q"),
+&"found_player": SubResource("Animation_jv58b"),
+&"lost_player": SubResource("Animation_gbkdk")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_h03f6"]
@@ -101,16 +101,16 @@ radius = 0.489449
 [sub_resource type="BoxShape3D" id="BoxShape3D_bm81s"]
 size = Vector3(1.4, 0.2, 1.4)
 
-[node name="GroundEnemy" type="RigidBody3D" groups=["damageables", "targeteables"]]
+[node name="GroundEnemy" type="RigidBody3D" unique_id=975349901 groups=["damageables", "targeteables"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 gravity_scale = 0.0
-continuous_cd = true
 lock_rotation = true
+continuous_cd = true
 script = ExtResource("1_mefon")
 
-[node name="ReactionLabel" type="Label3D" parent="."]
+[node name="ReactionLabel" type="Label3D" parent="." unique_id=209592691]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8034, 0)
 visible = false
 billboard = 2
@@ -118,37 +118,35 @@ text = "!"
 font_size = 192
 outline_size = 32
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ReactionLabel"]
-libraries = {
-"": SubResource("AnimationLibrary_sqtu2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ReactionLabel" unique_id=1089557004]
+libraries/ = SubResource("AnimationLibrary_gbkdk")
 
-[node name="PlayerDetectionArea" type="Area3D" parent="."]
+[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=90367802]
 collision_layer = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=388576875]
 shape = SubResource("SphereShape3D_h03f6")
 
-[node name="CollisionShapeBody" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeBody" type="CollisionShape3D" parent="." unique_id=1007667630]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.397976, -0.189352)
 shape = SubResource("CapsuleShape3D_g3iuo")
 
-[node name="CollisionShapeHead" type="CollisionShape3D" parent="."]
+[node name="CollisionShapeHead" type="CollisionShape3D" parent="." unique_id=170929781]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.561604, -0.382635)
 shape = SubResource("BoxShape3D_bm81s")
 
-[node name="DeathCollisionShape" type="CollisionShape3D" parent="."]
+[node name="DeathCollisionShape" type="CollisionShape3D" parent="." unique_id=1127010132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0344099, -0.250324)
 shape = SubResource("BoxShape3D_bm81s")
 disabled = true
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1795128100]
 target_desired_distance = 0.1
 path_height_offset = 1.0
 
-[node name="DefeatSound" type="AudioStreamPlayer3D" parent="."]
+[node name="DefeatSound" type="AudioStreamPlayer3D" parent="." unique_id=1752519346]
 stream = ExtResource("3_w5eam")
 volume_db = 1.0
 
-[node name="BeetlebotSkin" parent="." instance=ExtResource("2_1wpkj")]
+[node name="BeetlebotSkin" parent="." unique_id=657977993 instance=ExtResource("2_1wpkj")]
 transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0, 0, 0)
