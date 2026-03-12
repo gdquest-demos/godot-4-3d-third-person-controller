@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3765dge2xh0"]
+[gd_scene format=3 uid="uid://d3765dge2xh0"]
 
 [ext_resource type="PackedScene" uid="uid://bmg4l7oil4aeu" path="res://player/grenade_visuals/grenade/grenade.glb" id="1_2hras"]
 [ext_resource type="Script" uid="uid://v3y1wshis2ag" path="res://player/grenade_visuals/grenade/grenade.gd" id="2_ldjuw"]
 [ext_resource type="Material" uid="uid://bqiflyx3ow1ul" path="res://player/grenade_visuals/grenade/grenade.material" id="3_wctyh"]
 
-[sub_resource type="Animation" id="Animation_afydg"]
+[sub_resource type="Animation" id="Animation_tagd3"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [2.0]
 }
 
-[sub_resource type="Animation" id="Animation_cxnel"]
+[sub_resource type="Animation" id="Animation_t2cuy"]
 resource_name = "wave"
 length = 0.4
 loop_mode = 1
@@ -36,21 +36,19 @@ tracks/0/keys = {
 "values": [0.8, 1.5, 0.8]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_icflb"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tagd3"]
 _data = {
-"RESET": SubResource("Animation_afydg"),
-"wave": SubResource("Animation_cxnel")
+&"RESET": SubResource("Animation_tagd3"),
+&"wave": SubResource("Animation_t2cuy")
 }
 
-[node name="grenade" instance=ExtResource("1_2hras")]
+[node name="grenade" unique_id=1336957685 instance=ExtResource("1_2hras")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 script = ExtResource("2_ldjuw")
 
-[node name="grenade_mesh" parent="." index="0"]
+[node name="grenade_mesh" parent="." index="0" unique_id=834677860]
 surface_material_override/0 = ExtResource("3_wctyh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=252789780]
 reset_on_save = false
-libraries = {
-"": SubResource("AnimationLibrary_icflb")
-}
+libraries/ = SubResource("AnimationLibrary_tagd3")
