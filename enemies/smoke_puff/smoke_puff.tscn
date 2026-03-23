@@ -347,13 +347,13 @@ script = ExtResource("1_3ltu4")
 [node name="smoke_ball" parent="." unique_id=1652704592 instance=ExtResource("3_gsgkx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
-[node name="Cube" parent="smoke_ball" index="0" unique_id=661139975]
+[node name="Cube" parent="smoke_ball" index="0" unique_id=83276980]
 material_override = SubResource("ShaderMaterial_6i08x")
 
 [node name="smoke_ball2" parent="." unique_id=1778003220 instance=ExtResource("3_gsgkx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0)
 
-[node name="Cube" parent="smoke_ball2" index="0" unique_id=661139975]
+[node name="Cube" parent="smoke_ball2" index="0" unique_id=83276980]
 material_override = SubResource("ShaderMaterial_yverx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=406682373]

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://djb121la5t1r5"]
 
 [ext_resource type="Shader" uid="uid://bemlmx84iefk" path="res://jumping_pad/jumping_pad_visuals/jumping_pad_model_screen.gdshader" id="1_wo8iw"]
 [ext_resource type="Texture2D" uid="uid://byjn4swf18j3i" path="res://jumping_pad/jumping_pad_visuals/cross_sprite.png" id="2_f4kcc"]
@@ -6,5 +6,5 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_wo8iw")
-shader_parameter/cross_sprite = ExtResource("2_f4kcc")
 shader_parameter/screen_color = Color(0.376471, 0.615686, 1, 1)
+shader_parameter/cross_sprite = ExtResource("2_f4kcc")

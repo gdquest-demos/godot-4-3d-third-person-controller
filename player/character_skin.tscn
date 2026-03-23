@@ -22,12 +22,12 @@ main_animation_player = NodePath("gdbot/AnimationPlayer")
 
 [node name="gdbot" parent="." unique_id=1911532001 instance=ExtResource("2_v8h3f")]
 
-[node name="gdbot_mesh" parent="gdbot/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1911532001, 258894576) index="0" unique_id=1417685636]
+[node name="gdbot_mesh" parent="gdbot/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1911532001, 585086913) index="0" unique_id=335513662]
 surface_material_override/1 = ExtResource("3_fvn82")
 surface_material_override/2 = ExtResource("3_oijnk")
 surface_material_override/3 = ExtResource("4_5srhf")
 
-[node name="AnimationPlayer" parent="gdbot" index="1" unique_id=823465934]
+[node name="AnimationPlayer" parent="gdbot" index="1" unique_id=491919729]
 "libraries/Godot Custom Animations" = SubResource("AnimationLibrary_o4xm5")
 playback_default_blend_time = 0.1
 

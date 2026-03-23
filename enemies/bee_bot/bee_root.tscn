@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://4nwp6xgihjc7"]
+[gd_scene format=3 uid="uid://4nwp6xgihjc7"]
 
 [ext_resource type="Script" uid="uid://b2egwb081rf2j" path="res://enemies/bee_bot/bee_root.gd" id="1_eu6t5"]
 [ext_resource type="PackedScene" uid="uid://f0vfmhexafmx" path="res://enemies/bee_bot/bee_bot.glb" id="1_icaj7"]
@@ -7,13 +7,13 @@
 [ext_resource type="Shader" uid="uid://cgo6mtf3a5e65" path="res://enemies/bee_bot/bee_wings_shader.gdshader" id="4_hnl3k"]
 [ext_resource type="Texture2D" uid="uid://c4mdnjycm0yse" path="res://enemies/bee_bot/wing_pattern.png" id="5_expcp"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pylk6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kq0f"]
 resource_local_to_scene = true
 albedo_color = Color(0, 0, 0, 1)
 emission_enabled = true
 emission = Color(0.737255, 1, 0.505882, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r4nv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8les"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_7vdnh")
@@ -25,7 +25,7 @@ shader_parameter/screen_green_offset = Vector2(0, 0)
 shader_parameter/screen_blue_offset = Vector2(0, 0)
 shader_parameter/pixel_size = 32.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hnyo1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pi1a4"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_hnl3k")
@@ -1365,65 +1365,21 @@ nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_ylhqe")
 nodes/StateMachine/position = Vector2(200, 80)
 node_connections = [&"output", 0, &"StateMachine"]
 
-[node name="bee_root" type="Node3D"]
+[node name="bee_root" type="Node3D" unique_id=538768042]
 script = ExtResource("1_eu6t5")
 
-[node name="bee_bot" parent="." instance=ExtResource("1_icaj7")]
+[node name="bee_bot" parent="." unique_id=108030374 instance=ExtResource("1_icaj7")]
 
-[node name="Skeleton3D" parent="bee_bot/Armature" index="0"]
-bones/1/position = Vector3(-3.34694e-10, 0.128165, 0.288878)
-bones/1/rotation = Quaternion(0.18758103, 0, 0, 0.98224914)
-bones/2/rotation = Quaternion(2.0569091e-08, 0.8040486, 0.59456366, 3.921938e-08)
-bones/3/rotation = Quaternion(0.24693689, 4.2677282e-08, -1.1827595e-08, 0.9690315)
-bones/4/rotation = Quaternion(-0.4744359, 0.15447298, -0.13915998, 0.8553848)
-bones/5/rotation = Quaternion(0.80971014, -9.621312e-09, 1.5966503e-08, 0.5868301)
-bones/6/rotation = Quaternion(0.48584422, 4.8766623e-08, 4.8656524e-08, 0.87404543)
-bones/7/rotation = Quaternion(-0.4744359, -0.15447298, 0.13915998, 0.8553848)
-bones/8/rotation = Quaternion(0.80971014, 7.1466304e-09, -1.87735e-08, 0.5868301)
-bones/9/rotation = Quaternion(0.48584422, -4.8766424e-08, -4.865642e-08, 0.87404543)
-bones/10/rotation = Quaternion(-0.9878905, -5.2868883e-09, 4.6325376e-08, -0.15515295)
-bones/11/rotation = Quaternion(-0.38981307, 2.2455702e-09, -6.7367005e-09, 0.920894)
-bones/12/rotation = Quaternion(0.47934398, 0.59180087, 0.648075, -0.00016722082)
-bones/13/rotation = Quaternion(-0.580414, 0.19337498, -0.0761244, 0.7873568)
-bones/14/rotation = Quaternion(0.28563714, -0.018591808, -0.12919508, 0.94940746)
-bones/15/rotation = Quaternion(0.28563714, 0.01859141, 0.12919506, 0.94940746)
-bones/16/rotation = Quaternion(0.22926596, 0.7357717, 0.6321007, -0.0807834)
-bones/17/rotation = Quaternion(-0.65199906, 0.008666159, 0.00818606, 0.758126)
-bones/18/rotation = Quaternion(0.19175698, -0.0204129, -0.12795201, 0.97285193)
-bones/19/rotation = Quaternion(0.18865204, -0.0027866003, 0.13248602, 0.9730622)
-bones/20/rotation = Quaternion(0.59057814, 0.4836021, 0.58020914, -0.28408408)
-bones/21/rotation = Quaternion(-0.51707417, -0.16228902, -0.11959705, 0.83186126)
-bones/22/rotation = Quaternion(0.3521588, -0.049699377, -0.11986494, 0.92690164)
-bones/23/rotation = Quaternion(0.34737787, 0.014642799, 0.133085, 0.9281178)
-bones/24/rotation = Quaternion(0.39821094, -1.10747976e-07, -6.3824523e-09, -0.9172939)
-bones/25/rotation = Quaternion(5.0371597e-08, -1.0806099e-09, 0.026197696, 0.99965686)
-bones/26/rotation = Quaternion(0.47934395, -0.5918009, -0.6480749, -0.00016713141)
-bones/27/rotation = Quaternion(-0.580414, -0.19337498, 0.0761244, 0.7873568)
-bones/28/rotation = Quaternion(0.28563714, 0.018591808, 0.12919508, 0.94940746)
-bones/29/rotation = Quaternion(0.28563714, -0.018591411, -0.12919505, 0.94940746)
-bones/30/rotation = Quaternion(0.22926591, -0.73577166, -0.63210064, -0.08078327)
-bones/31/rotation = Quaternion(-0.65199906, -0.008666171, -0.008186061, 0.7581261)
-bones/32/rotation = Quaternion(0.35777795, 0.042321384, 0.12246298, 0.9247739)
-bones/33/rotation = Quaternion(0.35475698, -0.020261697, -0.13095699, 0.92551994)
-bones/34/rotation = Quaternion(0.5905782, -0.4836022, -0.5802092, -0.28408408)
-bones/35/rotation = Quaternion(-0.51707417, 0.16228902, 0.11959706, 0.83186126)
-bones/36/rotation = Quaternion(0.18585391, 0.028129885, 0.12667494, 0.9739715)
-bones/37/rotation = Quaternion(0.180935, 0.00868969, -0.13360597, 0.97433895)
-bones/38/rotation = Quaternion(0.39821094, 2.983599e-08, -2.7439295e-08, -0.9172939)
-bones/39/rotation = Quaternion(5.7077423e-09, 3.759841e-10, -0.025287606, 0.9996802)
+[node name="bee_bot2" parent="bee_bot/Armature/Skeleton3D" parent_id_path=PackedInt32Array(108030374, 543496505) index="0" unique_id=1465621296]
+surface_material_override/1 = SubResource("StandardMaterial3D_7kq0f")
+surface_material_override/2 = SubResource("ShaderMaterial_r8les")
+surface_material_override/3 = SubResource("ShaderMaterial_pi1a4")
 
-[node name="bee_bot2" parent="bee_bot/Armature/Skeleton3D" index="0"]
-surface_material_override/1 = SubResource("StandardMaterial3D_pylk6")
-surface_material_override/2 = SubResource("ShaderMaterial_6r4nv")
-surface_material_override/3 = SubResource("ShaderMaterial_hnyo1")
+[node name="AnimationPlayer" parent="bee_bot" index="1" unique_id=1316326022]
+libraries/ = SubResource("AnimationLibrary_nto2u")
+"libraries/custom animations" = SubResource("AnimationLibrary_eu2hu")
 
-[node name="AnimationPlayer" parent="bee_bot" index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_nto2u"),
-&"custom animations": SubResource("AnimationLibrary_eu2hu")
-}
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1924651128]
 root_node = NodePath("../bee_bot")
 tree_root = SubResource("AnimationNodeBlendTree_ifc16")
 anim_player = NodePath("../bee_bot/AnimationPlayer")

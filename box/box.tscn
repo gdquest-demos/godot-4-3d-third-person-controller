@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cmwyiep10m4u4"]
+[gd_scene format=3 uid="uid://cmwyiep10m4u4"]
 
 [ext_resource type="Script" uid="uid://in45yuu25p4m" path="res://box/box.gd" id="1_oklwc"]
 [ext_resource type="PackedScene" uid="uid://cqekaooy1ktfl" path="res://box/box_visuals/box.glb" id="2_ggurh"]
@@ -9,16 +9,16 @@ rough = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vcweg"]
 
-[node name="Box" type="RigidBody3D" groups=["damageables", "targeteables"]]
+[node name="Box" type="RigidBody3D" unique_id=1409916337 groups=["damageables", "targeteables"]]
 physics_material_override = SubResource("PhysicsMaterial_sjlkk")
 lock_rotation = true
 script = ExtResource("1_oklwc")
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="." unique_id=1155162683]
 shape = SubResource("BoxShape3D_vcweg")
 
-[node name="CrateVisual" parent="." instance=ExtResource("2_ggurh")]
+[node name="CrateVisual" parent="." unique_id=2011791990 instance=ExtResource("2_ggurh")]
 
-[node name="DestroySound" type="AudioStreamPlayer3D" parent="."]
+[node name="DestroySound" type="AudioStreamPlayer3D" parent="." unique_id=1680072358]
 stream = ExtResource("3_71fsr")
 volume_db = 1.0

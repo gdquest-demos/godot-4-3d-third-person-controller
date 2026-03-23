@@ -193,7 +193,7 @@ collision_layer = 0
 shape = SubResource("SphereShape3D_h03f6")
 
 [node name="MeshRoot" type="CollisionShape3D" parent="." unique_id=606459732]
-transform = Transform3D(-1.0000002, 1.5573253e-06, 2.000471e-06, 0, 0.78908414, -0.61428535, -2.5351824e-06, -0.61428547, -0.78908396, 0, 0, 0)
+transform = Transform3D(0.99619496, -0.0871558, 0, 0.0871558, 0.99619496, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_r3occ")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshRoot" unique_id=1799383795]

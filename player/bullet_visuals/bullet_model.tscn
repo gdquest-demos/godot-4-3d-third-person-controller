@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://5ttf446nggra"]
+[gd_scene format=3 uid="uid://5ttf446nggra"]
 
 [ext_resource type="Material" uid="uid://bii1msr5lsqwb" path="res://player/bullet_visuals/bullet_trail_mat.tres" id="1_eipo0"]
 [ext_resource type="ArrayMesh" uid="uid://ch30025kg24b1" path="res://player/bullet_visuals/bullet_model.obj" id="2_iugoo"]
@@ -44,14 +44,14 @@ shader_parameter/sparks_sampler = ExtResource("4_ia7or")
 material = SubResource("ShaderMaterial_5uj72")
 size = Vector2(0.5, 1)
 
-[node name="Bullet" type="Node3D"]
+[node name="Bullet" type="Node3D" unique_id=1610970328]
 
-[node name="Body" type="MeshInstance3D" parent="."]
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1617940989]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 material_override = ExtResource("1_eipo0")
 mesh = ExtResource("2_iugoo")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=553247776]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163605, 0, 0)
 amount = 12
 lifetime = 0.5

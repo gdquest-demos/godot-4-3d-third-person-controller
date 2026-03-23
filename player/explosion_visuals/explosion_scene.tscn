@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://e7p4xvo51lbl"]
+[gd_scene format=3 uid="uid://e7p4xvo51lbl"]
 
 [ext_resource type="Material" uid="uid://b68u2dl4qlooi" path="res://player/explosion_visuals/materials/shell_mat.tres" id="2_0w2wd"]
 [ext_resource type="Material" uid="uid://8qp4bf0yp6ry" path="res://player/explosion_visuals/materials/blast_mat.tres" id="3_buqr0"]
@@ -294,24 +294,24 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ystop"]
 _data = {
-"RESET": SubResource("Animation_lg5hv"),
-"explosion": SubResource("Animation_8xfee")
+&"RESET": SubResource("Animation_lg5hv"),
+&"explosion": SubResource("Animation_8xfee")
 }
 
-[node name="Explosion" type="Node3D"]
+[node name="Explosion" type="Node3D" unique_id=1124962162]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 top_level = true
 
-[node name="Shell" type="MeshInstance3D" parent="."]
+[node name="Shell" type="MeshInstance3D" parent="." unique_id=674671704]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 material_override = ExtResource("2_0w2wd")
 mesh = SubResource("SphereMesh_vfl0d")
 
-[node name="Blast" type="MeshInstance3D" parent="."]
+[node name="Blast" type="MeshInstance3D" parent="." unique_id=601050963]
 material_override = ExtResource("3_buqr0")
 mesh = ExtResource("4_5ir1b")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=284344488]
 emitting = false
 amount = 16
 lifetime = 2.0
@@ -323,8 +323,6 @@ trail_enabled = true
 process_material = SubResource("ParticleProcessMaterial_3yxx8")
 draw_pass_1 = SubResource("RibbonTrailMesh_cl4kc")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "explosion"
-libraries = {
-"": SubResource("AnimationLibrary_ystop")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=897536991]
+libraries/ = SubResource("AnimationLibrary_ystop")
+autoplay = &"explosion"

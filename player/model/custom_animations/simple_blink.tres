@@ -1,4 +1,4 @@
-[gd_resource type="Animation" load_steps=3 format=3 uid="uid://diuutac72yquv"]
+[gd_resource type="Animation" format=3 uid="uid://diuutac72yquv"]
 
 [ext_resource type="Texture2D" uid="uid://dbag7f8i27ub1" path="res://player/model/faces/open.png" id="1_vbky0"]
 [ext_resource type="Texture2D" uid="uid://ci7cn145ld3l5" path="res://player/model/faces/closed.png" id="2_xwfhj"]

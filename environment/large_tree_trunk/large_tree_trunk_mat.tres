@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=12 format=3 uid="uid://con3572kpt8a3"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://con3572kpt8a3"]
 
 [ext_resource type="Shader" uid="uid://kf5ye5yuiwtb" path="res://environment/large_tree_trunk/large_tree_trunk.gdshader" id="1_o0y6w"]
 [ext_resource type="Texture2D" uid="uid://puxw8ak4sfc3" path="res://environment/dark_bark/dark_bark_albedo.png" id="2_qmmat"]

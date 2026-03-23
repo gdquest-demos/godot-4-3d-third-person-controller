@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dr8slkof1nc8r"]
+[gd_scene format=3 uid="uid://dr8slkof1nc8r"]
 
 [ext_resource type="ArrayMesh" uid="uid://l52lbtnqjt5h" path="res://environment/trees/tree.obj" id="1_1cwwe"]
 [ext_resource type="Shader" uid="uid://xv8xlk8ea8p4" path="res://environment/bushes/bush_wind.gdshader" id="2_7fdjv"]
@@ -11,8 +11,8 @@
 fractal_octaves = 1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_p7o41"]
-seamless = true
 noise = SubResource("FastNoiseLite_sn0gq")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ry36w"]
 render_priority = 0
@@ -25,15 +25,15 @@ shader_parameter/normal_sampler = ExtResource("4_ntsjs")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q8r3i"]
 height = 2.96072
 
-[node name="Tree1Geo" type="MeshInstance3D"]
+[node name="Tree1Geo" type="MeshInstance3D" unique_id=507200337]
 mesh = ExtResource("1_1cwwe")
 surface_material_override/0 = SubResource("ShaderMaterial_ry36w")
 surface_material_override/1 = ExtResource("3_ptm8d")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=758014335]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=244843445]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4509, 0)
 shape = SubResource("CylinderShape3D_q8r3i")

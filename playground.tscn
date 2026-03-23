@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg0wykgc07csg"]
+[gd_scene format=3 uid="uid://dg0wykgc07csg"]
 
 [ext_resource type="Texture2D" uid="uid://boexk81is8yhq" path="res://level/gridbox_texture.png" id="1_dxgkr"]
 [ext_resource type="PackedScene" uid="uid://ciqrpd5675boy" path="res://player/player.tscn" id="1_stlen"]
@@ -29,85 +29,85 @@ albedo_color = Color(0.482353, 0.854902, 0.513726, 1)
 albedo_texture = ExtResource("1_dxgkr")
 uv1_triplanar = true
 
-[node name="Playground" type="Node3D"]
+[node name="Playground" type="Node3D" unique_id=734340702]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2017778689]
 environment = SubResource("Environment_allox")
 
-[node name="DirectionalLight3d" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="." unique_id=841914588]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="CSGFloor" type="CSGCombiner3D" parent="."]
+[node name="CSGFloor" type="CSGCombiner3D" parent="." unique_id=224892599]
 material_override = SubResource("StandardMaterial3D_8eocf")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
 
-[node name="CsgBox3d" type="CSGBox3D" parent="CSGFloor"]
+[node name="CsgBox3d" type="CSGBox3D" parent="CSGFloor" unique_id=2081959237]
 size = Vector3(50, 1, 50)
 
-[node name="CSGPlatforms" type="CSGCombiner3D" parent="."]
+[node name="CSGPlatforms" type="CSGCombiner3D" parent="." unique_id=396320805]
 material_override = SubResource("StandardMaterial3D_e7o2h")
 use_collision = true
 collision_layer = 3
 collision_mask = 3
 
-[node name="CsgBox3d2" type="CSGBox3D" parent="CSGPlatforms"]
+[node name="CsgBox3d2" type="CSGBox3D" parent="CSGPlatforms" unique_id=1228654910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, -7.98003)
 size = Vector3(5.98156, 4.57458, 9.39486)
 
-[node name="CsgBox3d3" type="CSGBox3D" parent="CSGPlatforms"]
+[node name="CsgBox3d3" type="CSGBox3D" parent="CSGPlatforms" unique_id=1650269514]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, 0.433207)
 size = Vector3(5.98156, 8.85843, 9.39486)
 
-[node name="CsgBox3d4" type="CSGBox3D" parent="CSGPlatforms"]
+[node name="CsgBox3d4" type="CSGBox3D" parent="CSGPlatforms" unique_id=130602953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5052, 0, 9.80336)
 size = Vector3(5.98156, 14.084, 9.39486)
 
-[node name="CsgBox3d5" type="CSGBox3D" parent="CSGPlatforms"]
+[node name="CsgBox3d5" type="CSGBox3D" parent="CSGPlatforms" unique_id=1911365928]
 transform = Transform3D(0.645098, -0.7641, 0, 0.7641, 0.645098, 0, 0, 0, 1, -6.70983, 0, -18.6326)
 size = Vector3(5.98156, 6.77204, 9.39486)
 
-[node name="CsgCylinder3d" type="CSGCylinder3D" parent="CSGPlatforms"]
+[node name="CsgCylinder3d" type="CSGCylinder3D" parent="CSGPlatforms" unique_id=68662272]
 transform = Transform3D(1, 0, 0, 0, -0.0142763, 0.999898, 0, -0.999898, -0.0142763, -13.4598, 1.81669, 0)
 radius = 3.08347
 height = 13.6062
 
-[node name="CsgCylinder3d2" type="CSGCylinder3D" parent="CSGPlatforms/CsgCylinder3d"]
+[node name="CsgCylinder3d2" type="CSGCylinder3D" parent="CSGPlatforms/CsgCylinder3d" unique_id=918994478]
 transform = Transform3D(1, 0, 0, 0, 1, -9.31323e-10, 0, 9.31323e-10, 1, 0, 0, 0)
 operation = 2
 radius = 2.74026
 height = 13.6062
 
-[node name="CharacterBody3d" parent="." instance=ExtResource("1_stlen")]
+[node name="CharacterBody3d" parent="." unique_id=1727951618 instance=ExtResource("1_stlen")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.43125, -1.90735e-06, -14.066)
 
-[node name="Box" parent="." instance=ExtResource("3_od2wg")]
+[node name="Box" parent="." unique_id=1529092565 instance=ExtResource("3_od2wg")]
 
-[node name="Box2" parent="." instance=ExtResource("3_od2wg")]
+[node name="Box2" parent="." unique_id=1189461990 instance=ExtResource("3_od2wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08221, 1.01478, 14.505)
 
-[node name="Box3" parent="." instance=ExtResource("3_od2wg")]
+[node name="Box3" parent="." unique_id=614845132 instance=ExtResource("3_od2wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.18871, 1.01478, 14.505)
 
-[node name="Box4" parent="." instance=ExtResource("3_od2wg")]
+[node name="Box4" parent="." unique_id=631916773 instance=ExtResource("3_od2wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61501, 2.04688, 14.505)
 
-[node name="Box5" parent="." instance=ExtResource("3_od2wg")]
+[node name="Box5" parent="." unique_id=199877893 instance=ExtResource("3_od2wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.562682, 2.04688, 14.505)
 
-[node name="Box6" parent="." instance=ExtResource("3_od2wg")]
+[node name="Box6" parent="." unique_id=826749786 instance=ExtResource("3_od2wg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07396, 4.58485, 14.505)
 
-[node name="FlyingEnemy" parent="." instance=ExtResource("4_n8dao")]
+[node name="FlyingEnemy" parent="." unique_id=545854203 instance=ExtResource("4_n8dao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6002, 3.11496, 5.62647)
 
-[node name="FlyingEnemy2" parent="." instance=ExtResource("4_n8dao")]
+[node name="FlyingEnemy2" parent="." unique_id=456190763 instance=ExtResource("4_n8dao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.46725, 3.11496, 10.1252)
 
-[node name="FlyingEnemy3" parent="." instance=ExtResource("4_n8dao")]
+[node name="FlyingEnemy3" parent="." unique_id=1159522819 instance=ExtResource("4_n8dao")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.89345, 3.11496, -4.45808)
 
-[node name="JumpingPad" parent="." instance=ExtResource("5_mqpld")]
+[node name="JumpingPad" parent="." unique_id=1575120567 instance=ExtResource("5_mqpld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.83804, 0.497432, 8.99548)

@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://q3osrwkgcbi0"]
+[gd_scene format=3 uid="uid://q3osrwkgcbi0"]
 
 [ext_resource type="Script" uid="uid://mrx8xip3m3rb" path="res://camera_mode/camera_mode.gd" id="1_iqqgo"]
 
-[node name="CameraMode" type="Node3D"]
+[node name="CameraMode" type="Node3D" unique_id=1506626699]
 process_mode = 3
 visible = false
 script = ExtResource("1_iqqgo")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bi31qtqv1sf2s"]
+[gd_scene format=3 uid="uid://bi31qtqv1sf2s"]
 
 [ext_resource type="Shader" uid="uid://dhbygamywi7rt" path="res://environment/flowers/flower_patch.gdshader" id="1_jw7pd"]
 [ext_resource type="Texture2D" uid="uid://c8f84qeseq2rk" path="res://environment/flowers/textures/flower_head_albedo.png" id="2_j64bn"]
@@ -11,7 +11,7 @@ shader = ExtResource("1_jw7pd")
 shader_parameter/flower_albedo_sampler = ExtResource("2_j64bn")
 shader_parameter/flower_normal_sampler = ExtResource("3_o8sff")
 
-[node name="FlowerPatch" type="MeshInstance3D"]
+[node name="FlowerPatch" type="MeshInstance3D" unique_id=260883850]
 transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 material_override = SubResource("ShaderMaterial_tyk6o")
 cast_shadow = 0

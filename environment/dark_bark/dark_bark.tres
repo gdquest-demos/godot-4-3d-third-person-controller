@@ -1,28 +1,20 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=2]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bcgrtmd7y2kab"]
 
-[ext_resource type="Texture" path="./dark_bark_albedo.png" id="1"]
-[ext_resource type="Texture" path="./dark_bark_orm.png" id="2"]
-[ext_resource type="Texture" path="./dark_bark_normal.png" id="3"]
-[ext_resource type="Texture" path="./dark_bark_heightmap.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://puxw8ak4sfc3" path="res://environment/dark_bark/dark_bark_albedo.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bcgrggue2d1ax" path="res://environment/dark_bark/dark_bark_orm.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://2fec5qn5vv22" path="res://environment/dark_bark/dark_bark_normal.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://xxp11wuuoht" path="res://environment/dark_bark/dark_bark_heightmap.png" id="4"]
+
 [resource]
-albedo_color = Color(1, 1, 1, 1)
-albedo_texture = ExtResource( 1 )
-metallic = 0
-roughness = 1
-roughness_texture = ExtResource( 2 )
+albedo_texture = ExtResource("1")
+roughness_texture = ExtResource("2")
 roughness_texture_channel = 1
 normal_enabled = true
-normal_scale = 1
-normal_texture = ExtResource( 3 )
+normal_texture = ExtResource("3")
 ao_enabled = true
-ao_texture = ExtResource( 2 )
-ao_texture_channel = 0
+ao_texture = ExtResource("2")
 heightmap_enabled = true
-heightmap_scale = 5
 heightmap_deep_parallax = true
 heightmap_min_layers = 8
 heightmap_max_layers = 32
-heightmap_texture = ExtResource( 4 )
-
-
-
+heightmap_texture = ExtResource("4")

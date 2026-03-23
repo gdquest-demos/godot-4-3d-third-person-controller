@@ -46,7 +46,7 @@ _data = {
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 script = ExtResource("2_ldjuw")
 
-[node name="grenade_mesh" parent="." index="0" unique_id=834677860]
+[node name="grenade_mesh" parent="." index="0" unique_id=2021551460]
 surface_material_override/0 = ExtResource("3_wctyh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=252789780]

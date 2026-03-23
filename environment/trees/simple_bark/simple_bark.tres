@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b5wxyxkrs33pc"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b5wxyxkrs33pc"]
 
 [ext_resource type="Texture2D" uid="uid://vqumgy47y65a" path="res://environment/trees/simple_bark/simple_bark_albedo.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://4rh8np1t3ks5" path="res://environment/trees/simple_bark/simple_bark_orm.png" id="2"]

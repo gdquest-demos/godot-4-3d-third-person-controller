@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://ueivw4w2t3rj"]
+[gd_scene format=3 uid="uid://ueivw4w2t3rj"]
 
 [ext_resource type="PackedScene" uid="uid://octunbukmgdx" path="res://jumping_pad/jumping_pad_visuals/jumping_pad_model.glb" id="1_b8bry"]
 [ext_resource type="Material" path="res://jumping_pad/jumping_pad_visuals/jumping_pad_model_screen_mat.tres" id="2_54yml"]
@@ -9,10 +9,10 @@ emission_enabled = true
 emission = Color(0.27451, 0.462745, 1, 1)
 emission_energy_multiplier = 2.0
 
-[node name="jump_pad" instance=ExtResource("1_b8bry")]
+[node name="jump_pad" unique_id=1321292080 instance=ExtResource("1_b8bry")]
 
-[node name="Circle_002" parent="." index="1"]
+[node name="Circle_002" parent="." index="1" unique_id=1224967528]
 material_override = ExtResource("2_54yml")
 
-[node name="Circle_003" parent="." index="2"]
+[node name="Circle_003" parent="." index="2" unique_id=920006955]
 material_override = SubResource("StandardMaterial3D_v7h2g")

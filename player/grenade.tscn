@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bq562nfq7puh"]
+[gd_scene format=3 uid="uid://bq562nfq7puh"]
 
 [ext_resource type="Script" uid="uid://bquj8c1s4yp7g" path="res://player/grenade.gd" id="1_ak024"]
 [ext_resource type="PackedScene" uid="uid://d3765dge2xh0" path="res://player/grenade_visuals/grenade/grenade.tscn" id="2_6f7t1"]
@@ -10,25 +10,25 @@ radius = 3.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_nac87"]
 radius = 0.1
 
-[node name="Grenade" type="CharacterBody3D"]
+[node name="Grenade" type="CharacterBody3D" unique_id=615295745]
 top_level = true
 collision_layer = 0
 script = ExtResource("1_ak024")
 
-[node name="ExplosionArea" type="Area3D" parent="."]
+[node name="ExplosionArea" type="Area3D" parent="." unique_id=403393285]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="ExplosionArea"]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="ExplosionArea" unique_id=1193283679]
 shape = SubResource("SphereShape3D_wbj5b")
 
-[node name="grenade" parent="." instance=ExtResource("2_6f7t1")]
+[node name="grenade" parent="." unique_id=1923784380 instance=ExtResource("2_6f7t1")]
 
-[node name="CollisionShape3d" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3d" type="CollisionShape3D" parent="." unique_id=523738860]
 shape = SubResource("SphereShape3D_nac87")
 
-[node name="ExplosionSound" type="AudioStreamPlayer3D" parent="."]
+[node name="ExplosionSound" type="AudioStreamPlayer3D" parent="." unique_id=1632812167]
 stream = ExtResource("3_7x8ud")
 pitch_scale = 2.0
 
-[node name="ExplosionStartTimer" type="Timer" parent="."]
+[node name="ExplosionStartTimer" type="Timer" parent="." unique_id=1635980686]
 wait_time = 0.35
 one_shot = true

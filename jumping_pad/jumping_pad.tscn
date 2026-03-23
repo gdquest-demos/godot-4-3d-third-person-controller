@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://7j15r0ej4fwx"]
+[gd_scene format=3 uid="uid://7j15r0ej4fwx"]
 
 [ext_resource type="Script" uid="uid://3l3b6jwotibg" path="res://jumping_pad/jumping_pad.gd" id="1_w7mtj"]
 [ext_resource type="PackedScene" uid="uid://d3jgve1g030hy" path="res://environment/mushroom/mushroom.glb" id="2_3e4pb"]
@@ -7,15 +7,15 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_dspj3"]
 size = Vector3(1, 1.4, 1)
 
-[node name="JumpingPad" type="Area3D"]
+[node name="JumpingPad" type="Area3D" unique_id=2095558454]
 script = ExtResource("1_w7mtj")
 
-[node name="mushroom" parent="." instance=ExtResource("2_3e4pb")]
+[node name="mushroom" parent="." unique_id=1243719881 instance=ExtResource("2_3e4pb")]
 unique_name_in_owner = true
 
-[node name="jump_pad" parent="." instance=ExtResource("2_otx0r")]
+[node name="jump_pad" parent="." unique_id=616171170 instance=ExtResource("2_otx0r")]
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1314805879]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.694488, 0)
 shape = SubResource("BoxShape3D_dspj3")

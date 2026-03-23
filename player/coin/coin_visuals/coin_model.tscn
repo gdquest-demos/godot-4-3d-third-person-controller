@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cqw64w6kb0fyg"]
+[gd_scene format=3 uid="uid://cqw64w6kb0fyg"]
 
 [ext_resource type="PackedScene" uid="uid://dta8u77j4ye4v" path="res://player/coin/coin_visuals/coin_model.glb" id="1_0qdgb"]
 [ext_resource type="Script" uid="uid://c3q655fuoyb17" path="res://player/coin/coin_visuals/coin_model.gd" id="2_eyhxj"]
 
-[node name="Coin" type="Node3D"]
+[node name="Coin" type="Node3D" unique_id=618111550]
 
-[node name="godot_coin" parent="." instance=ExtResource("1_0qdgb")]
+[node name="godot_coin" parent="." unique_id=1900794341 instance=ExtResource("1_0qdgb")]
 script = ExtResource("2_eyhxj")

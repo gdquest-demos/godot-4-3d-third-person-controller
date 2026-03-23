@@ -1,5 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://8o56ett8oups"]
+[gd_scene format=3 uid="uid://8o56ett8oups"]
 
 [ext_resource type="PackedScene" uid="uid://cndyqf8jamodj" path="res://environment/orange_flowers/orange_flower.glb" id="1_yjl25"]
 
-[node name="OrangeFlower" instance=ExtResource("1_yjl25")]
+[node name="OrangeFlower" unique_id=1107392626 instance=ExtResource("1_yjl25")]

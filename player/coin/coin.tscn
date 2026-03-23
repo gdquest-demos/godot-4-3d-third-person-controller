@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c54mpt43fs4wc"]
+[gd_scene format=3 uid="uid://c54mpt43fs4wc"]
 
 [ext_resource type="PackedScene" uid="uid://cqw64w6kb0fyg" path="res://player/coin/coin_visuals/coin_model.tscn" id="1_ajpkd"]
 [ext_resource type="Script" uid="uid://dltx4bc41etqs" path="res://player/coin/coin.gd" id="1_netfc"]
@@ -10,7 +10,7 @@ radius = 0.731329
 [sub_resource type="SphereShape3D" id="SphereShape3D_a0qvt"]
 radius = 5.0
 
-[node name="Coin" type="RigidBody3D"]
+[node name="Coin" type="RigidBody3D" unique_id=1505589733]
 collision_layer = 0
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -18,19 +18,19 @@ axis_lock_angular_z = true
 lock_rotation = true
 script = ExtResource("1_netfc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=430493035]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439197, 0)
 shape = SubResource("SphereShape3D_5al5l")
 
-[node name="Coin" parent="." instance=ExtResource("1_ajpkd")]
+[node name="Coin" parent="." unique_id=914047313 instance=ExtResource("1_ajpkd")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.679386, 0)
 
-[node name="CollectAudio" type="AudioStreamPlayer3D" parent="."]
+[node name="CollectAudio" type="AudioStreamPlayer3D" parent="." unique_id=97915017]
 stream = ExtResource("3_bn2wr")
 volume_db = 1.0
 
-[node name="PlayerDetectionArea" type="Area3D" parent="."]
+[node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=1623999518]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=213537764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697551, 0)
 shape = SubResource("SphereShape3D_a0qvt")

@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b6h7p7jogt6ep"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b6h7p7jogt6ep"]
 
 [ext_resource type="Shader" uid="uid://baxr1fmcj2rub" path="res://player/grenade_visuals/shaders/grenade_trajectory_shader.gdshader" id="1_kmqra"]
 [ext_resource type="Texture2D" uid="uid://bippf64bo5eeo" path="res://player/grenade_visuals/textures/direction_arrow.png" id="2_tlckp"]
@@ -6,6 +6,6 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_kmqra")
+shader_parameter/arrow_sampler = ExtResource("2_tlckp")
 shader_parameter/fill_color = Color(0, 0.725568, 1, 1)
 shader_parameter/arrow_scale = 60.0
-shader_parameter/arrow_sampler = ExtResource("2_tlckp")
