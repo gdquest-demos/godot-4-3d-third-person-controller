@@ -32,8 +32,8 @@ tonemap_white = 1.2
 ssao_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.005
+fog_light_energy = 2.99
+volumetric_fog_density = 0.001
 volumetric_fog_emission = Color(1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_le7wx"]
