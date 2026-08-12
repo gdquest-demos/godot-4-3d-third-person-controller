@@ -17,12 +17,12 @@ func _ready() -> void:
 	get_tree().paused = true
 	_demo_mouse_mode = Input.mouse_mode
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
+
 	resume_button.pressed.connect(resume_demo)
 	exit_button.pressed.connect(get_tree().quit)
 	keyboard_button.pressed.connect(change_instruction.bind(INSTRUCTION_TYPES.KEYBOARD))
 	joypad_button.pressed.connect(change_instruction.bind(INSTRUCTION_TYPES.JOYPAD))
-	
+
 	if Input.get_connected_joypads().size() > 0:
 		change_instruction(INSTRUCTION_TYPES.JOYPAD)
 	else:
@@ -49,7 +49,7 @@ func change_instruction(type: int) -> void:
 			joypad_button.modulate.a = 1.0
 			grid_container_keyboard.hide()
 			grid_container_joypad.show()
-	
+
 	keyboard_button.release_focus()
 	joypad_button.release_focus()
 

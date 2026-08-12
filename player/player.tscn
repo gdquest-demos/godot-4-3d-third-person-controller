@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b2ew46dlu7u7x" path="res://player/grenade_launcher.tscn" id="3_54qc4"]
 [ext_resource type="Script" uid="uid://dwd8k7raa2k87" path="res://player/camera_controller.gd" id="3_qrkly"]
 [ext_resource type="Script" uid="uid://0nwful4fsrh8" path="res://player/melee_attack_area.gd" id="3_v1vve"]
-[ext_resource type="PackedScene" uid="uid://c0mo8tek77du4" path="res://player/character_skin.tscn" id="4_ign62"]
+[ext_resource type="PackedScene" uid="uid://bdyptm7smjixm" path="res://player/gdbot/gdbot_skin.tscn" id="4_2ieo8"]
+[ext_resource type="Shader" uid="uid://jipjfl23614q" path="res://shared/shaders/screen_shader.gdshader" id="5_ebec5"]
 [ext_resource type="Script" uid="uid://dtf17612eybdg" path="res://player/coins_container.gd" id="7_8eehq"]
 [ext_resource type="PackedScene" uid="uid://cqw64w6kb0fyg" path="res://player/coin/coin_visuals/coin_model.tscn" id="8_6qxxt"]
 [ext_resource type="AudioStream" uid="uid://bx0t7f2nuk2lr" path="res://player/sounds/03_step_grass_03.wav" id="10_wx4h4"]
@@ -19,6 +20,25 @@ dof_blur_far_enabled = true
 dof_blur_far_distance = 45.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s5n07"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8t03j"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ieo8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("5_ebec5")
+shader_parameter/face_texture = SubResource("ViewportTexture_8t03j")
+shader_parameter/intensity = 2.0
+shader_parameter/screen_color = Color(0.101961, 0.662745, 1, 0.0196078)
+shader_parameter/screen_red_offset = Vector2(0, 0)
+shader_parameter/screen_green_offset = Vector2(0, 0)
+shader_parameter/screen_blue_offset = Vector2(0, 0)
+shader_parameter/pixel_size = 32.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcytg"]
+radius = 0.721485
+height = 2.65424
 
 [sub_resource type="SphereMesh" id="SphereMesh_uex0s"]
 
@@ -40,7 +60,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeleeAttackArea")
+tracks/1/path = NodePath("../CharacterSkin/MeleeAttackArea")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,10 +95,6 @@ _data = {
 &"Attack": SubResource("Animation_hg6s5"),
 &"RESET": SubResource("Animation_8t03j")
 }
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pcytg"]
-radius = 0.721485
-height = 2.65424
 
 [node name="Player" type="CharacterBody3D" unique_id=126940387 groups=["damageables"]]
 axis_lock_angular_x = true
@@ -131,7 +147,29 @@ margin = 0.5
 max_results = 1
 debug_shape_custom_color = Color(0.658824, 1, 0, 1)
 
+[node name="CharacterSkin" parent="." unique_id=1881891472 instance=ExtResource("4_2ieo8")]
+
+[node name="gdbot" parent="CharacterSkin" index="0" unique_id=657343024]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="gdbot_mesh" parent="CharacterSkin/gdbot/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1881891472, 657343024, 535238081) index="0" unique_id=366373507]
+surface_material_override/1 = SubResource("ShaderMaterial_2ieo8")
+
+[node name="GDbotFace" parent="CharacterSkin/SubViewport" parent_id_path=PackedInt32Array(1881891472, 1217186117) index="1" unique_id=836525780]
+script = null
+
+[node name="MeleeAttackArea" type="Area3D" parent="CharacterSkin" unique_id=166313747]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.959482, 1.0525)
+monitoring = false
+monitorable = false
+script = ExtResource("3_v1vve")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterSkin/MeleeAttackArea" unique_id=2052814824]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246944)
+shape = SubResource("CapsuleShape3D_pcytg")
+
 [node name="CharacterRotationRoot" type="Node3D" parent="." unique_id=1616488823]
+visible = false
 
 [node name="MeleeAnchor" type="Node3D" parent="CharacterRotationRoot" unique_id=668325107]
 
@@ -145,16 +183,7 @@ skeleton = NodePath("../../..")
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_8t03j")
 
-[node name="MeleeAttackArea" type="Area3D" parent="CharacterRotationRoot" unique_id=166313747]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.959482, 1.0525)
-script = ExtResource("3_v1vve")
-
-[node name="CollisionShape3d" type="CollisionShape3D" parent="CharacterRotationRoot/MeleeAttackArea" unique_id=2052814824]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.246944)
-shape = SubResource("CapsuleShape3D_pcytg")
-disabled = true
-
-[node name="CharacterSkin" parent="CharacterRotationRoot" unique_id=84269285 instance=ExtResource("4_ign62")]
+[node name="CharacterSkin" parent="CharacterRotationRoot" unique_id=84269285]
 
 [node name="PlayerUI" type="Control" parent="." unique_id=875027664 groups=["camera_mode_toggle"]]
 layout_mode = 3
@@ -241,4 +270,6 @@ volume_db = 1.0
 stream = ExtResource("11_3s4i7")
 volume_db = 1.0
 
+[editable path="CharacterSkin"]
+[editable path="CharacterSkin/gdbot"]
 [editable path="PlayerUI/CoinsContainer/SubViewportContainer/SubViewport/Coin"]

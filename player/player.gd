@@ -6,7 +6,10 @@ signal weapon_switched(weapon_name: String)
 const BULLET_SCENE := preload("bullet.tscn")
 const COIN_SCENE := preload("coin/coin.tscn")
 
-enum WEAPON_TYPE { DEFAULT, GRENADE }
+enum WEAPON_TYPE {
+	DEFAULT,
+	GRENADE,
+}
 
 ## Character maximum run speed on the ground.
 @export var move_speed := 8.0
@@ -32,12 +35,12 @@ enum WEAPON_TYPE { DEFAULT, GRENADE }
 ## Grenade cooldown
 @export var grenade_cooldown := 0.5
 
-@onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
-@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _grenade_aim_controller: GrenadeLauncher = $GrenadeLauncher
-@onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
+@onready var _character_skin: CharacterSkin = $CharacterSkin
+@onready var _character_animation_tree: AnimationTree = $CharacterSkin/AnimationTree
+@onready var _character_melee_area: Area3D = $CharacterSkin/MeleeAttackArea
 @onready var _ui_aim_reticle: ColorRect = %AimReticle
 @onready var _ui_coins_container: HBoxContainer = %CoinsContainer
 @onready var _step_sound: AudioStreamPlayer3D = $StepSound
@@ -87,11 +90,13 @@ func _physics_process(delta: float) -> void:
 		weapon_switched.emit(WEAPON_TYPE.keys()[_equipped_weapon])
 
 	# Get input and movement state
-	var is_attacking := Input.is_action_pressed("attack") and not _attack_animation_player.is_playing()
+	var is_attacking := (Input.is_action_pressed("attack") and not _character_melee_area.monitoring)
 	var is_just_attacking := Input.is_action_just_pressed("attack")
 	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
 	var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
-	var is_air_boosting := Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
+	var is_air_boosting := (
+		Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
+	)
 	var is_just_on_floor := is_on_floor() and not _is_on_floor_buffer
 
 	_is_on_floor_buffer = is_on_floor()
@@ -102,7 +107,7 @@ func _physics_process(delta: float) -> void:
 	if _move_direction.length() > 0.2:
 		_last_strong_direction = _move_direction.normalized()
 	if is_aiming:
-		_last_strong_direction = (_camera_controller.global_transform.basis * Vector3.BACK).normalized()
+		_last_strong_direction = (_camera_controller.global_transform.basis * Vector3.MODEL_FRONT).normalized()
 
 	_orient_character_to_direction(_last_strong_direction, delta)
 
@@ -127,7 +132,6 @@ func _physics_process(delta: float) -> void:
 		_ui_aim_reticle.visible = false
 
 	# Update attack state and position
-
 	_shoot_cooldown_tick += delta
 	_grenade_cooldown_tick += delta
 
@@ -160,10 +164,10 @@ func _physics_process(delta: float) -> void:
 	elif is_on_floor():
 		var xz_velocity := Vector3(velocity.x, 0, velocity.z)
 		if xz_velocity.length() > stopping_speed:
-			_character_skin.set_moving(true)
-			_character_skin.set_moving_speed(inverse_lerp(0.0, move_speed, xz_velocity.length()))
+			_character_skin.move()
+			_character_skin.walk_run_blending = inverse_lerp(0.0, move_speed, xz_velocity.length())
 		else:
-			_character_skin.set_moving(false)
+			_character_skin.idle()
 
 	if is_just_on_floor:
 		_landing_sound.play()
@@ -181,9 +185,12 @@ func _physics_process(delta: float) -> void:
 
 
 func attack() -> void:
-	_attack_animation_player.play("Attack")
-	_character_skin.punch()
-	velocity = _rotation_root.transform.basis * Vector3.BACK * attack_impulse
+	velocity = _character_skin.transform.basis * Vector3.MODEL_FRONT * attack_impulse
+
+	_character_skin.attack()
+	_character_melee_area.activate()
+	await _character_animation_tree.animation_finished
+	_character_melee_area.deactivate()
 
 
 func shoot() -> void:
@@ -219,7 +226,7 @@ func lose_coins() -> void:
 
 
 func _get_camera_oriented_input() -> Vector3:
-	if _attack_animation_player.is_playing():
+	if _character_melee_area.monitoring:
 		return Vector3.ZERO
 
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -249,10 +256,13 @@ func damage(_impact_point: Vector3, force: Vector3) -> void:
 func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 	var left_axis := Vector3.UP.cross(direction)
 	var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quaternion()
-	var model_scale := _rotation_root.transform.basis.get_scale()
-	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
-		model_scale,
-	)
+	var model_scale := _character_skin.transform.basis.get_scale()
+	_character_skin.transform.basis = Basis(
+		_character_skin.transform.basis.get_rotation_quaternion().slerp(
+			rotation_basis,
+			delta * rotation_speed,
+		)
+	).scaled(model_scale)
 
 
 ## Used to register required input actions when copying this character to a different project.

@@ -16,7 +16,7 @@ func _ready() -> void:
 		piece.freeze = false
 		piece.sleeping = false
 		piece.set_collision_mask_value(1, true)
-		
+
 		var rand_vector := (Vector3.ONE * 0.5) - Vector3(randf(), randf(), randf())
-		
+
 		piece.apply_force(rand_vector * THROW_STRENGTH, rand_vector)

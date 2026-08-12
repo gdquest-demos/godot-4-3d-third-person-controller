@@ -43,7 +43,7 @@ ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 glow_enabled = true
-fog_light_energy = 2.99
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.001
 volumetric_fog_emission = Color(1, 1, 1, 1)
 
@@ -83,7 +83,7 @@ fractal_octaves = 1
 noise = SubResource("FastNoiseLite_4kwk8")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_facbu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xuqvo"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_seu75")
@@ -116,7 +116,7 @@ fractal_octaves = 2
 noise = SubResource("FastNoiseLite_wnnmc")
 seamless = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_b1qrp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp4k"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("24_htxhm")
@@ -136,7 +136,7 @@ fractal_octaves = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_a2w6x"]
 noise = SubResource("FastNoiseLite_sxisx")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_come4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kq58d"]
 resource_local_to_scene = true
 render_priority = 10
 shader = ExtResource("27_0rl1p")
@@ -156,7 +156,7 @@ fractal_octaves = 1
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s56rg"]
 noise = SubResource("FastNoiseLite_6jv1k")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_h8e4i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_seu75"]
 resource_local_to_scene = true
 render_priority = 10
 shader = ExtResource("28_ok6jj")
@@ -1690,10 +1690,13 @@ script = null
 visible = false
 
 [node name="Shell" parent="StutterFixes/Explosion" index="0" unique_id=674671704]
-material_override = SubResource("ShaderMaterial_facbu")
+material_override = SubResource("ShaderMaterial_xuqvo")
 
 [node name="Blast" parent="StutterFixes/Explosion" index="1" unique_id=601050963]
-material_override = SubResource("ShaderMaterial_b1qrp")
+material_override = SubResource("ShaderMaterial_qsp4k")
+
+[node name="GPUParticles3D" parent="StutterFixes/Explosion" index="2" unique_id=284344488]
+transform_align_channel_filter = 1
 
 [node name="Coin" parent="StutterFixes" unique_id=1505589733 instance=ExtResource("25_jq2sk")]
 visible = false
@@ -1704,10 +1707,10 @@ visible = false
 script = null
 
 [node name="Cube" parent="StutterFixes/smoke_puff/smoke_ball" parent_id_path=PackedInt32Array(1464888597, 1652704592) index="0"]
-material_override = SubResource("ShaderMaterial_come4")
+material_override = SubResource("ShaderMaterial_kq58d")
 
 [node name="Cube" parent="StutterFixes/smoke_puff/smoke_ball2" parent_id_path=PackedInt32Array(1464888597, 1778003220) index="0"]
-material_override = SubResource("ShaderMaterial_h8e4i")
+material_override = SubResource("ShaderMaterial_seu75")
 
 [connection signal="weapon_switched" from="Player" to="weapon_switch_ui" method="switch_to"]
 

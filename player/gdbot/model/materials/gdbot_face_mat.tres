@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cdqqp1tvfod18"]
+
+[ext_resource type="Shader" uid="uid://jipjfl23614q" path="res://shared/shaders/screen_shader.gdshader" id="1_kkp3k"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_o2hoc"]
+viewport_path = NodePath("../SubViewport")
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_kkp3k")
+shader_parameter/face_texture = SubResource("ViewportTexture_o2hoc")
+shader_parameter/intensity = 2.0
+shader_parameter/screen_color = Color(0.101961, 0.662745, 1, 0.0196078)
+shader_parameter/screen_red_offset = Vector2(0, 0)
+shader_parameter/screen_green_offset = Vector2(0, 0)
+shader_parameter/screen_blue_offset = Vector2(0, 0)
+shader_parameter/pixel_size = 32.0

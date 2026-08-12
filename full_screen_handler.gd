@@ -8,7 +8,7 @@ func _input(event: InputEvent) -> void:
 	if OS.has_feature("HTML5"):
 		if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	else: 
+	else:
 		if event is InputEventKey \
 		and  event.is_pressed() \
 		and (

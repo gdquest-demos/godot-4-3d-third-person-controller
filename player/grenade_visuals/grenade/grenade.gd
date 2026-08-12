@@ -7,4 +7,3 @@ func _ready():
 
 func _process(delta):
 	rotate_object_local(rotation_axis, 10.0 * delta)
-	
