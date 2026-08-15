@@ -1,21 +1,21 @@
 extends Area3D
 
-@onready var collision_shape: CollisionShape3D = $CollisionShape3D
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 
-func activate():
+func is_active() -> bool:
+	return monitoring
+
+
+func activate() -> void:
 	monitoring = true
-	# collision_shape.set_deferred("disabled", false)
 
 
-func deactivate():
+func deactivate() -> void:
 	monitoring = false
-	# collision_shape.set_deferred("disabled", true)
 
 
 func _on_body_entered(body: Node3D) -> void:

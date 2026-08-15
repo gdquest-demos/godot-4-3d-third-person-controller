@@ -14,11 +14,11 @@ enum WEAPON_TYPE {
 ## Character maximum run speed on the ground.
 @export var move_speed := 8.0
 ## Speed of shot bullets.
-@export var bullet_speed := 10.0
+@export var bullet_speed := 14.0
 ## Forward impulse after a melee attack.
 @export var attack_impulse := 10.0
 ## Movement acceleration (how fast character achieve maximum speed)
-@export var acceleration := 4.0
+@export var acceleration := 6.0
 ## Jump impulse
 @export var jump_initial_impulse := 12.0
 ## Jump impulse when player keeps pressing jump
@@ -35,6 +35,17 @@ enum WEAPON_TYPE {
 ## Grenade cooldown
 @export var grenade_cooldown := 0.5
 
+var _equipped_weapon: WEAPON_TYPE = WEAPON_TYPE.DEFAULT
+var _move_direction := Vector3.ZERO
+var _last_strong_direction := Vector3.FORWARD
+var _gravity: float = -30.0
+var _ground_height: float = 0.0
+var _coins := 0
+var _is_on_floor_buffer := false
+
+var _shoot_cooldown_tick := shoot_cooldown
+var _grenade_cooldown_tick := grenade_cooldown
+
 @onready var _camera_controller: CameraController = $CameraController
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _grenade_aim_controller: GrenadeLauncher = $GrenadeLauncher
@@ -43,23 +54,17 @@ enum WEAPON_TYPE {
 @onready var _character_melee_area: Area3D = $CharacterSkin/MeleeAttackArea
 @onready var _ui_aim_reticle: ColorRect = %AimReticle
 @onready var _ui_coins_container: HBoxContainer = %CoinsContainer
+@onready var _weapons_ui: PanelContainer = %WeaponsUI
 @onready var _step_sound: AudioStreamPlayer3D = $StepSound
 @onready var _landing_sound: AudioStreamPlayer3D = $LandingSound
 
-@onready var _equipped_weapon: WEAPON_TYPE = WEAPON_TYPE.DEFAULT
-@onready var _move_direction := Vector3.ZERO
-@onready var _last_strong_direction := Vector3.FORWARD
-@onready var _gravity: float = -30.0
-@onready var _ground_height: float = 0.0
 @onready var _start_position := global_transform.origin
-@onready var _coins := 0
-@onready var _is_on_floor_buffer := false
-
-@onready var _shoot_cooldown_tick := shoot_cooldown
-@onready var _grenade_cooldown_tick := grenade_cooldown
 
 
 func _ready() -> void:
+	_character_skin.stepped.connect(play_foot_step_sound)
+	weapon_switched.connect(_weapons_ui.switch_to)
+
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
 	_grenade_aim_controller.visible = false
@@ -69,8 +74,6 @@ func _ready() -> void:
 	# In that case, we register input actions for the user at runtime.
 	if not InputMap.has_action("move_left"):
 		_register_input_actions()
-
-	_character_skin.stepped.connect(play_foot_step_sound)
 
 
 func _physics_process(delta: float) -> void:
@@ -90,7 +93,9 @@ func _physics_process(delta: float) -> void:
 		weapon_switched.emit(WEAPON_TYPE.keys()[_equipped_weapon])
 
 	# Get input and movement state
-	var is_attacking := (Input.is_action_pressed("attack") and not _character_melee_area.monitoring)
+	var is_attacking: bool = (
+		Input.is_action_pressed("attack") and not _character_melee_area.is_active()
+	)
 	var is_just_attacking := Input.is_action_just_pressed("attack")
 	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
 	var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
@@ -164,8 +169,8 @@ func _physics_process(delta: float) -> void:
 	elif is_on_floor():
 		var xz_velocity := Vector3(velocity.x, 0, velocity.z)
 		if xz_velocity.length() > stopping_speed:
+			_character_skin.walk_run_blending = xz_velocity.length() / move_speed
 			_character_skin.move()
-			_character_skin.walk_run_blending = inverse_lerp(0.0, move_speed, xz_velocity.length())
 		else:
 			_character_skin.idle()
 
@@ -182,6 +187,60 @@ func _physics_process(delta: float) -> void:
 	var epsilon := 0.001
 	if delta_position.length() < epsilon and velocity.length() > epsilon:
 		global_position += get_wall_normal() * 0.1
+
+
+func _get_camera_oriented_input() -> Vector3:
+	if _character_melee_area.is_active():
+		return Vector3.ZERO
+
+	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
+	var input := Vector3.ZERO
+	# This is to ensure that diagonal input isn't stronger than axis aligned input
+	input.x = -raw_input.x * sqrt(1.0 - raw_input.y * raw_input.y / 2.0)
+	input.z = -raw_input.y * sqrt(1.0 - raw_input.x * raw_input.x / 2.0)
+
+	input = _camera_controller.global_transform.basis * input
+	input.y = 0.0
+	return input
+
+
+func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
+	var left_axis := Vector3.UP.cross(direction)
+	var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quaternion()
+	var model_scale := _character_skin.transform.basis.get_scale()
+	_character_skin.transform.basis = Basis(
+		_character_skin.transform.basis.get_rotation_quaternion().slerp(
+			rotation_basis,
+			delta * rotation_speed,
+		)
+	).scaled(model_scale)
+
+
+## Used to register required input actions when copying this character to a different project.
+func _register_input_actions() -> void:
+	const INPUT_ACTIONS := {
+		"move_left": KEY_A,
+		"move_right": KEY_D,
+		"move_up": KEY_W,
+		"move_down": KEY_S,
+		"jump": KEY_SPACE,
+		"attack": MOUSE_BUTTON_LEFT,
+		"aim": MOUSE_BUTTON_RIGHT,
+		"swap_weapons": KEY_TAB,
+		"pause": KEY_ESCAPE,
+		"camera_left": KEY_Q,
+		"camera_right": KEY_E,
+		"camera_up": KEY_R,
+		"camera_down": KEY_F,
+	}
+	for action in INPUT_ACTIONS:
+		if InputMap.has_action(action):
+			continue
+		InputMap.add_action(action)
+		var input_key = InputEventKey.new()
+		input_key.keycode = INPUT_ACTIONS[action]
+		InputMap.action_add_event(action, input_key)
 
 
 func attack() -> void:
@@ -225,22 +284,6 @@ func lose_coins() -> void:
 	_ui_coins_container.update_coins_amount(_coins)
 
 
-func _get_camera_oriented_input() -> Vector3:
-	if _character_melee_area.monitoring:
-		return Vector3.ZERO
-
-	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
-	var input := Vector3.ZERO
-	# This is to ensure that diagonal input isn't stronger than axis aligned input
-	input.x = -raw_input.x * sqrt(1.0 - raw_input.y * raw_input.y / 2.0)
-	input.z = -raw_input.y * sqrt(1.0 - raw_input.x * raw_input.x / 2.0)
-
-	input = _camera_controller.global_transform.basis * input
-	input.y = 0.0
-	return input
-
-
 func play_foot_step_sound() -> void:
 	_step_sound.pitch_scale = randfn(1.2, 0.2)
 	_step_sound.play()
@@ -251,41 +294,3 @@ func damage(_impact_point: Vector3, force: Vector3) -> void:
 	force.y = abs(force.y)
 	velocity = force.limit_length(max_throwback_force)
 	lose_coins()
-
-
-func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
-	var left_axis := Vector3.UP.cross(direction)
-	var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quaternion()
-	var model_scale := _character_skin.transform.basis.get_scale()
-	_character_skin.transform.basis = Basis(
-		_character_skin.transform.basis.get_rotation_quaternion().slerp(
-			rotation_basis,
-			delta * rotation_speed,
-		)
-	).scaled(model_scale)
-
-
-## Used to register required input actions when copying this character to a different project.
-func _register_input_actions() -> void:
-	const INPUT_ACTIONS := {
-		"move_left": KEY_A,
-		"move_right": KEY_D,
-		"move_up": KEY_W,
-		"move_down": KEY_S,
-		"jump": KEY_SPACE,
-		"attack": MOUSE_BUTTON_LEFT,
-		"aim": MOUSE_BUTTON_RIGHT,
-		"swap_weapons": KEY_TAB,
-		"pause": KEY_ESCAPE,
-		"camera_left": KEY_Q,
-		"camera_right": KEY_E,
-		"camera_up": KEY_R,
-		"camera_down": KEY_F,
-	}
-	for action in INPUT_ACTIONS:
-		if InputMap.has_action(action):
-			continue
-		InputMap.add_action(action)
-		var input_key = InputEventKey.new()
-		input_key.keycode = INPUT_ACTIONS[action]
-		InputMap.action_add_event(action, input_key)

@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://c54mpt43fs4wc"]
 
-[ext_resource type="PackedScene" uid="uid://cqw64w6kb0fyg" path="res://player/coin/coin_visuals/coin_model.tscn" id="1_ajpkd"]
 [ext_resource type="Script" uid="uid://dltx4bc41etqs" path="res://player/coin/coin.gd" id="1_netfc"]
+[ext_resource type="PackedScene" uid="uid://dta8u77j4ye4v" path="res://player/coin/coin_visuals/coin_model.glb" id="2_q6dkk"]
 [ext_resource type="AudioStream" uid="uid://dxv00m8q7huw5" path="res://player/coin/audio/completetask_0.mp3" id="3_bn2wr"]
+[ext_resource type="Script" uid="uid://c3q655fuoyb17" path="res://player/coin/coin_visuals/coin_model.gd" id="3_myd2t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5al5l"]
 radius = 0.731329
@@ -12,6 +13,7 @@ radius = 5.0
 
 [node name="Coin" type="RigidBody3D" unique_id=1505589733]
 collision_layer = 0
+collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -22,14 +24,21 @@ script = ExtResource("1_netfc")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.439197, 0)
 shape = SubResource("SphereShape3D_5al5l")
 
-[node name="Coin" parent="." unique_id=914047313 instance=ExtResource("1_ajpkd")]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.679386, 0)
+[node name="Marker3D" type="Marker3D" parent="." unique_id=1143950404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.679, 0)
+
+[node name="CoinModel" parent="Marker3D" unique_id=912301625 instance=ExtResource("2_q6dkk")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+script = ExtResource("3_myd2t")
+y_amplitude = 0.16
 
 [node name="CollectAudio" type="AudioStreamPlayer3D" parent="." unique_id=97915017]
 stream = ExtResource("3_bn2wr")
 volume_db = 1.0
 
 [node name="PlayerDetectionArea" type="Area3D" parent="." unique_id=1623999518]
+collision_mask = 0
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea" unique_id=213537764]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.697551, 0)

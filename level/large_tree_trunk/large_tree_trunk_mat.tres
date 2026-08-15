@@ -1,0 +1,30 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://con3572kpt8a3"]
+
+[ext_resource type="Shader" uid="uid://kf5ye5yuiwtb" path="res://level/large_tree_trunk/large_tree_trunk.gdshader" id="1_sb47v"]
+[ext_resource type="Texture2D" uid="uid://puxw8ak4sfc3" path="res://level/dark_bark/dark_bark_albedo.png" id="2_fy6kl"]
+[ext_resource type="Texture2D" uid="uid://xxp11wuuoht" path="res://level/dark_bark/dark_bark_heightmap.png" id="3_w2ray"]
+[ext_resource type="Texture2D" uid="uid://2fec5qn5vv22" path="res://level/dark_bark/dark_bark_normal.png" id="4_04w8s"]
+[ext_resource type="Texture2D" uid="uid://bcgrggue2d1ax" path="res://level/dark_bark/dark_bark_orm.png" id="5_3fse7"]
+[ext_resource type="Texture2D" uid="uid://cn7jeol1kvocq" path="res://level/large_tree_trunk/moss/moss_albedo.png" id="6_hrgnx"]
+[ext_resource type="Texture2D" uid="uid://dubwk207cispr" path="res://level/large_tree_trunk/moss/moss_normal.png" id="7_i0f02"]
+[ext_resource type="Texture2D" uid="uid://cra3ujt6hgoq8" path="res://level/large_tree_trunk/moss/moss_orm.png" id="8_vkhhn"]
+[ext_resource type="Texture2D" uid="uid://dgpwvrgx1i8um" path="res://level/large_tree_trunk/trunk_top/trunk_top_albedo.png" id="9_hjhry"]
+[ext_resource type="Texture2D" uid="uid://cwf2n313rmv35" path="res://level/large_tree_trunk/trunk_top/trunk_top_normal.png" id="10_6e1en"]
+[ext_resource type="Texture2D" uid="uid://dt6dvupgfyhdw" path="res://level/large_tree_trunk/trunk_top/trunk_top_orm.png" id="11_xcwfh"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_sb47v")
+shader_parameter/bark_albedo_sampler = ExtResource("2_fy6kl")
+shader_parameter/trunk_top_albedo_sampler = ExtResource("9_hjhry")
+shader_parameter/moss_albedo_sampler = ExtResource("6_hrgnx")
+shader_parameter/bark_orm_sampler = ExtResource("5_3fse7")
+shader_parameter/trunk_top_orm_sampler = ExtResource("11_xcwfh")
+shader_parameter/moss_orm_sampler = ExtResource("8_vkhhn")
+shader_parameter/bark_normal_sampler = ExtResource("4_04w8s")
+shader_parameter/trunk_top_normal_sampler = ExtResource("10_6e1en")
+shader_parameter/moss_normal_sampler = ExtResource("7_i0f02")
+shader_parameter/bark_mask_sampler = ExtResource("3_w2ray")
+shader_parameter/triplanar_scale = Vector3(0.1, 0.1, 0.1)
+shader_parameter/triplanar_offset = Vector3(0, 0, 0)
+shader_parameter/triplanar_sharpness = 0.5

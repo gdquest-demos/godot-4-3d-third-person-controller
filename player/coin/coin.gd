@@ -22,9 +22,12 @@ func spawn(coin_delay: float = 0.5) -> void:
 	rand_pos.y = rand_height
 	apply_central_impulse(rand_pos)
 
-	# Delay time for player to be able to collect it
-	get_tree().create_timer(coin_delay).timeout.connect(set_collision_layer_value.bind(3, true))
 	_player_detection_area.body_entered.connect(_on_body_entered)
+
+	# Delay time for player to be able to collect it
+	await get_tree().create_timer(coin_delay).timeout
+	for collision_object: CollisionObject3D in [self, _player_detection_area]:
+		collision_object.set_collision_mask_value(1, true)
 
 
 func set_target(new_target: PhysicsBody3D) -> void:
@@ -45,7 +48,7 @@ func _follow(offset: float) -> void:
 	global_position = lerp(_initial_tween_position, _target.global_position, offset)
 
 
-func _on_body_entered(body: PhysicsBody3D) -> void:
+func _on_body_entered(body: Node) -> void:
 	if body is Player:
 		set_target(body)
 

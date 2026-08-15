@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://b2egwb081rf2j" path="res://enemies/bee_bot/bee_root.gd" id="1_eu6t5"]
 [ext_resource type="PackedScene" uid="uid://f0vfmhexafmx" path="res://enemies/bee_bot/bee_bot.glb" id="1_icaj7"]
 [ext_resource type="Shader" uid="uid://dn0buvkbk5151" path="res://shared/shaders/face_mat.gdshader" id="2_7vdnh"]
-[ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://shared/eye_mask.png" id="3_qgh3u"]
 [ext_resource type="Shader" uid="uid://cgo6mtf3a5e65" path="res://enemies/bee_bot/bee_wings_shader.gdshader" id="4_hnl3k"]
+[ext_resource type="Texture2D" uid="uid://bvxkh2pa1nqdq" path="res://shared/textures/eye_mask.png" id="4_r8les"]
 [ext_resource type="Texture2D" uid="uid://c4mdnjycm0yse" path="res://enemies/bee_bot/wing_pattern.png" id="5_expcp"]
 [ext_resource type="Animation" uid="uid://cyo8mm65jpmga" path="res://enemies/bee_bot/custom_animations/light_power_off.tres" id="7_r8les"]
 
@@ -18,7 +18,7 @@ emission = Color(0.737255, 1, 0.505882, 1)
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_7vdnh")
-shader_parameter/face_texture = ExtResource("3_qgh3u")
+shader_parameter/face_texture = ExtResource("4_r8les")
 shader_parameter/intensity = 4.0
 shader_parameter/screen_color = Color(0.737255, 1, 0.505882, 0.00784314)
 shader_parameter/screen_red_offset = Vector2(0, 0)
@@ -1333,48 +1333,7 @@ script = ExtResource("1_eu6t5")
 
 [node name="bee_bot" parent="." unique_id=1203153416 instance=ExtResource("1_icaj7")]
 
-[node name="Skeleton3D" parent="bee_bot/Armature" parent_id_path=PackedInt32Array(1203153416, 1234253583) index="0" unique_id=1197459726]
-bones/1/position = Vector3(-3.34694e-10, 0.231858, 0.17576823)
-bones/2/rotation = Quaternion(2.3908985e-08, 0.85280854, 0.5222237, 3.7277378e-08)
-bones/3/rotation = Quaternion(0.37454697, 4.0707693e-08, -1.74392e-08, 0.92720795)
-bones/4/rotation = Quaternion(-0.4862877, 0.15639347, -0.1369984, 0.8487031)
-bones/5/rotation = Quaternion(0.8052871, -1.5547518e-09, 5.8602945e-09, 0.59288496)
-bones/6/rotation = Quaternion(0.48584422, 4.8766623e-08, 4.8656524e-08, 0.87404543)
-bones/7/rotation = Quaternion(-0.4862877, -0.15639347, 0.1369984, 0.8487031)
-bones/8/rotation = Quaternion(0.8052871, -9.1834407e-10, -8.665343e-09, 0.59288496)
-bones/9/rotation = Quaternion(0.48584422, -4.8766424e-08, -4.865642e-08, 0.87404543)
-bones/10/rotation = Quaternion(-0.9985812, 4.442584e-09, 4.6413973e-08, 0.05325226)
-bones/11/rotation = Quaternion(-0.12767752, 3.5029593e-10, -7.0924564e-09, 0.99181575)
-bones/12/rotation = Quaternion(0.46537605, 0.48045418, 0.74336004, 0.0021798022)
-bones/13/rotation = Quaternion(-0.45161006, 2.007184e-07, 7.3337056e-08, 0.89221543)
-bones/14/rotation = Quaternion(0.32933262, -0.024559613, -0.12819456, 0.9351487)
-bones/15/rotation = Quaternion(0.32933256, 0.02455922, 0.12819526, 0.9351486)
-bones/16/rotation = Quaternion(-0.00987146, 0.6140662, 0.7888177, 0.024329897)
-bones/17/rotation = Quaternion(-0.5475998, 0.009659391, 0.006986379, 0.83665544)
-bones/18/rotation = Quaternion(0.20734008, -0.022463044, -0.12760769, 0.9696504)
-bones/19/rotation = Quaternion(0.20423943, -0.00066072115, 0.13251378, 0.96991026)
-bones/20/rotation = Quaternion(0.7761467, 0.39691886, 0.41501707, -0.26040858)
-bones/21/rotation = Quaternion(-0.37697375, 0.03292488, 0.014901943, 0.9255186)
-bones/22/rotation = Quaternion(0.33724266, -0.047769945, -0.1206476, 0.9324321)
-bones/23/rotation = Quaternion(0.33244374, 0.012505747, 0.13330296, 0.93357116)
-bones/24/rotation = Quaternion(0.54417527, 0.009786938, 0.16157249, -0.82320833)
-bones/25/rotation = Quaternion(3.7385583e-08, 3.1078282e-09, 0.038235597, 0.9992688)
-bones/26/rotation = Quaternion(0.46534756, -0.49280488, -0.73523045, -0.0055945874)
-bones/27/rotation = Quaternion(-0.4292358, -1.3674874e-07, -6.7922116e-08, 0.9031926)
-bones/28/rotation = Quaternion(0.241328, 0.012583984, 0.12991838, 0.9616256)
-bones/29/rotation = Quaternion(0.24132794, -0.012583585, -0.12991837, 0.9616256)
-bones/30/rotation = Quaternion(-0.009871595, -0.6140662, -0.78881776, 0.02432996)
-bones/31/rotation = Quaternion(-0.48667282, -0.0101320995, -0.0062812963, 0.873503)
-bones/32/rotation = Quaternion(0.34289566, 0.04035121, 0.12312633, 0.93039477)
-bones/33/rotation = Quaternion(0.33986285, -0.018158156, -0.1312659, 0.9310923)
-bones/34/rotation = Quaternion(0.7761464, -0.3969188, -0.41501766, -0.26040852)
-bones/35/rotation = Quaternion(-0.44037586, -0.03180981, -0.017153805, 0.89708596)
-bones/36/rotation = Quaternion(0.20145547, 0.030158581, 0.12620682, 0.9708646)
-bones/37/rotation = Quaternion(0.19654338, 0.006545079, -0.13372855, 0.9713108)
-bones/38/rotation = Quaternion(0.54417527, -0.009786976, -0.16157246, -0.8232083)
-bones/39/rotation = Quaternion(-2.613611e-08, 6.3950636e-09, -0.037325792, 0.9993032)
-
-[node name="bee_bot2" parent="bee_bot/Armature/Skeleton3D" index="0" unique_id=1182172284]
+[node name="bee_bot2" parent="bee_bot/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1203153416, 1197459726) index="0" unique_id=1182172284]
 surface_material_override/1 = SubResource("StandardMaterial3D_pi1a4")
 surface_material_override/2 = SubResource("ShaderMaterial_yemta")
 surface_material_override/3 = SubResource("ShaderMaterial_u2ftd")

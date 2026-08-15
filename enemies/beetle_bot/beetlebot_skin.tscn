@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dbqoj8oam1dsg" path="res://enemies/beetle_bot/beetle_bot_fused.glb" id="1_r7amh"]
 [ext_resource type="Shader" uid="uid://8krt5d53bjk" path="res://player/face_mat.gdshader" id="3_p37mm"]
 [ext_resource type="Material" uid="uid://h2e57pyy6lu4" path="res://enemies/beetle_bot/materials/beetlebot_lights_mat.tres" id="4_4158y"]
-[ext_resource type="Texture2D" uid="uid://d3i42hq0p8ijb" path="res://shared/eye_mask.png" id="4_trpq3"]
+[ext_resource type="Texture2D" uid="uid://bvxkh2pa1nqdq" path="res://shared/textures/eye_mask.png" id="4_mec2i"]
 [ext_resource type="Animation" uid="uid://duogu14026xo6" path="res://enemies/beetle_bot/custom_animations/light_shutdown.tres" id="6_mec2i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_awqgi"]
 render_priority = 0
 shader = ExtResource("3_p37mm")
-shader_parameter/face_texture = ExtResource("4_trpq3")
+shader_parameter/face_texture = ExtResource("4_mec2i")
 shader_parameter/intensity = 2.0
 shader_parameter/screen_color = Color(0.619608, 0.862745, 0, 0.0196078)
 shader_parameter/screen_red_offset = Vector2(0, 0)

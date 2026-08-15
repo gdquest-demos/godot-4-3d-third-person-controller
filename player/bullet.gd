@@ -25,9 +25,9 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position += velocity * delta
 	_time_alive += delta
-	
-	_bullet_visuals.scale = Vector3.ONE * scale_decay.sample(_time_alive/_alive_limit)
-	
+
+	_bullet_visuals.scale = Vector3.ONE * scale_decay.sample(_time_alive / _alive_limit)
+
 	if _time_alive > _alive_limit:
 		queue_free()
 
@@ -35,6 +35,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node3D) -> void:
 	if body == shooter:
 		return
+
 	if body.is_in_group("damageables"):
 		var impact_point := global_position - body.global_position
 		body.damage(impact_point, velocity)

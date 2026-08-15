@@ -18,8 +18,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-CameraMode="*res://camera_mode/camera_mode.tscn"
-FullScreenHandler="*res://full_screen_handler.gd"
+FullScreenHandler="*res://autoloads/full_screen_handler.gd"
+CameraMode="*uid://mrx8xip3m3rb"
 
 [display]
 
